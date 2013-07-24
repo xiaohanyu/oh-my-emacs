@@ -1,0 +1,3 @@
+#+TITLE: Oh My Emacs
+
+Inspired by [[https://github.com/eschulte/emacs24-starter-kit][emacs24-starter-kit]], name come from [[https://github.com/robbyrussell/oh-my-zsh][oh-my-zsh]]. Through emacs is often described as "An os inside an os", I don't want to do everything in Emacs(or live in Emacs). This project will focus on coding and writing problems.

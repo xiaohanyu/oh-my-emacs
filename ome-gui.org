@@ -1,0 +1,27 @@
+#+TITLE: Oh My Emacs GUI
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the oh-my-emacs
+
+* Oh my emacs gui settings
+#+BEGIN_SRC emacs-lisp
+  ;; disable menubar, toolbar and scrollbar
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+
+  ;; show column number and line number
+  (column-number-mode t)
+  (line-number-mode t)
+  (global-linum-mode t)
+
+  ;; show parenthesis match
+  (show-paren-mode 1)
+  (setq show-paren-style 'expression)
+
+  ;; frame font
+  ;; Setting English Font
+  (if (member "Monoco" (font-family-list))
+      (set-face-attribute
+       'default nil :font "Monaco 12"))
+#+END_SRC
