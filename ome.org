@@ -1,8 +1,84 @@
 #+TITLE: Oh My Emacs
 #+OPTIONS: toc:2 num:nil ^:nil
 
+#+BEGIN_QUOTE
+  Emacs outshines all other editing software in approximately the same
+  way that the noonday sun does the stars. It is not just bigger and
+  brighter; it simply makes everything else vanish.
+
+  -- Neal Stephenson, "In the Beginning was the Command Line"
+#+END_QUOTE
+
 * Introduction
-#+name: ome-load
+  :PROPERTIES:
+  :CUSTOME_ID: introduction
+  :END:
+
+This dotemacs project aims to provide an out-of-the-box emacs configuration
+for writing and programming. It is intended for both beginners and
+intermediate users. The name of this project is inspired by [[https://github.com/robbyrussell/oh-my-zsh][oh-my-zsh]], which is
+another out-of-the-box configuration for [[http://www.zsh.org/][zsh]].
+
+The main features of oh-my-emacs are
+- better default settings
+- focus on writing and programming, let emacs do what it really good at
+- "literate" customization embedded in Org-mode files
+- use el-get to manage packages, which is portable, and version control
+  friendly
+- self-adapting, enable features only the system meet the requirements
+
+The latest version is at https://github.com/xiaohanyu/oh-my-emacs.
+
+** Learning Emacs
+   :PROPERTIES:
+   :CUSTOME_ID: learning
+   :END:
+This project won't teach you anything about how to use emacs or why use
+emacs. However, I'll give you some useful resources if you're new to emacs.
+
+The first thing you should refer to is the emacs builtin tutorial, type =C-h
+t= to get it within a running emacs.
+
+Next, you should refer to some general books to get a full view of emacs,
+just search http://www.amazon.com.
+
+Now you should be a intermediate emacs user(or lover, I hope), the final step
+is emacs lisp, which is not that easy as it looks like, since it is not easy to
+get a full understanding of the so-called lisp. But you can still do something
+useful even if you didn't know lisp quite a lot. The builtin [[https://www.gnu.org/software/emacs/manual/html_node/eintr/][An Introduction to
+Programming in Emacs Lisp]] is a really good entry point to emacs lisp
+programming. You can refer to this tutorial by typing =C-h i m Emacs Lisp
+Intro=.
+
+Finally, if you want to do some big jobs in emacs lisp, then there's a long
+adventure waiting for you. The builtin [[http://www.gnu.org/software/emacs/manual/][GNU Emacs Manual]] and [[http://www.gnu.org/software/emacs/manual/html_node/elisp/][GNU Emacs Lisp
+Reference Manual]] is your best friends. Besides these two large books, there're
+various good web sites, such as
+- [[http://www.emacswiki.org/][emacswiki]] :: the largest unofficial emacs lisp repository
+- [[http://wikemacs.org/index.php/Main_Page][wikiemacs]] :: a saner and modern wiki for emacs
+
+Wow, what a long journey, if you're tired, you can [[http://emacsrocks.com/][rock with emacs]].
+
+** Installation
+   :PROPERTIES:
+   :CUSTOME_ID: installation
+   :END:
+
+1. Install Emacs version 24 or greater.  Use your package manager if
+   you have one and it has an install candidate for Emacs 24,
+   otherwise install it directly [[http://savannah.gnu.org/projects/emacs/][from source]], or Mac binaries may be
+   downloaded from the /nightlies/ section of
+   http://emacsformacosx.com/builds
+2. Checkout a version of the starter kit using git -- if you're new to
+   git, checkout this [[http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html][git-tutorial]].
+#+BEGIN_SRC sh
+  git clone http://github.com/xiaohanyu/oh-my-emacs.git
+#+END_SRC
+3. Move the resulting directory to =~/.emacs.d= [1]
+4. Launch Emacs!
+
+
+#+NAME: ome-load
 #+BEGIN_SRC emacs-lisp
   (defun ome-load (file &optional header-or-tag)
     "Load configuration from other ome-*.org files.
@@ -54,9 +130,41 @@
          file))))
 #+END_SRC
 
-* Installing el-get
+** Package Management
+#+BEGIN_QUOTE
+Let's face it -- although a vanilla Emacs installation is quite powerful almost
+nobody is using Emacs without a pile of add-ons. And managing those add-ons is
+quite frankly a pain in the ass. Traditional options included installing Emacs
+add-ons via the operating system's package manager (if available), downloading
+.el files from various locations (everybody hates packages distributed only on
+Emacs Wiki with no canonical version control repo) and simply sticking them on
+the load-path, etc. It's more than obvious that such solutions are less than
+ideal.
 
-#+name: ome-install-el-get
+For instance if you're installing Emacs add-ons via a package manager and you
+have to change OSes (or machines) you're mostly fucked. On the other hand
+piling files manually in .emacs.d is equal to hell in the version and
+dependency tracking department. There has to be a better way, right? Wouldn't
+it be nice if Emacs had its own package manager similar to the likes of
+homebrew, apt or yum?
+
+Emacs 24 finally introduces such a tool -- its name is package.el (very
+original, right?) and it's promise is to make your lives a bit easier. Does it
+manage to deliver on that promise? We'll see that in a bit...
+
+-- [[http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/][Package Management in Emacs: The Good, the Bad and the Ugly]]
+#+END_QUOTE
+
+Ah, a long long quote, really vivid and visual description of the state of
+emacs package management system. [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]] adopt [[https://github.com/dimitri/el-get][el-get]], while other popular
+dotemacs project adopt the builtin =package.el=. You may wonder why, IMHO,
+=package.el= is far from ideal, althouth it is builtin with emacs, however,
+el-get is the practical solution, at least for now. In a word, what el-get
+to emacs is what =apt-get= to debian/ubuntu.
+
+So the first thing oh-my-emacs do to your emacs is to install =el-get=:
+
+#+NAME: ome-install-el-get
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -71,8 +179,16 @@
   (el-get 'sync)
 #+END_SRC
 
+And in the following journey, you may find the great power =el-get= provides
+for you -- which makes it possible to store just dotemacs configuration, no
+need to things like =git submodule=. Thank you, [[http://tapoueh.org/][Dimitri Fontaine]].
+
 * Load settings
-#+name: load various ome files
+#+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
   (ome-load "ome-gui.org")
 #+END_SRC
+
+* Footnotes
+[1] If you already have a directory at =~/.emacs.d= move it out of the way and
+put this there instead. Or you can make a symbolic link.
