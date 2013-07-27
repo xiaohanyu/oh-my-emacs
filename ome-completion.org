@@ -1,0 +1,39 @@
+#+TITLE: Oh My Emacs Completion
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Hippie expand
+=M-x hippie-expand= is a single command providing a variety of completions and
+expansions. The following code segment comes from [[https://github.com/bbatsov/prelude][Emacs Prelude]].
+
+#+name: hippie-expand
+#+BEGIN_SRC emacs-lisp
+;; hippie expand is dabbrev expand on steroids
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially
+                                         try-complete-file-name
+                                         try-expand-all-abbrevs
+                                         try-expand-list
+                                         try-expand-line
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
+#+END_SRC
+
+* Auto complete
+Auto-Complete is an intelligent auto-completion extension for Emacs. It extends
+the standard Emacs completion interface and provides an environment that allows
+users to concentrate more on their own work.
+
+#+name: auto-complete
+#+BEGIN_SRC emacs-lisp
+  (setq el-get-sources
+        '((:name auto-complete
+                 :after (progn
+                          (require 'auto-complete-config)
+                          (ac-config-default)))))
+
+  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+#+END_SRC
