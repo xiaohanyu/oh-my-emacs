@@ -1,27 +1,46 @@
 #+TITLE: Oh My Emacs GUI
 #+OPTIONS: toc:nil num:nil ^:nil
 
-This is part of the oh-my-emacs
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 * Oh my emacs gui settings
 #+BEGIN_SRC emacs-lisp
-  ;; disable menubar, toolbar and scrollbar
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
+  ;; believe me, you don't need menubar, toolbar nor scrollbar
+  (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+    (when (fboundp mode) (funcall mode -1)))
 
   ;; show column number and line number
-  (column-number-mode t)
-  (line-number-mode t)
-  (global-linum-mode t)
+  (dolist (mode '(column-number-mode line-number-mode global-linum-mode))
+    (when (fboundp mode) (funcall mode t)))
+
+  ;; make the fringe thinner (default is 8 in pixels)
+  (fringe-mode 4)
+  ;; make the cursor thinner (as modern editors do)
+  (setq default-cursor-type 'bar)
 
   ;; show parenthesis match
   (show-paren-mode 1)
   (setq show-paren-style 'expression)
+#+END_SRC
 
+* Use monaco as the default English font
+  About how to install monaco fonts in Ubuntu, see https://github.com/cstrap/monaco-font
+
+#+BEGIN_SRC emacs-lisp
   ;; frame font
   ;; Setting English Font
-  (if (member "Monoco" (font-family-list))
+  (if (member "Monaco" (font-family-list))
       (set-face-attribute
        'default nil :font "Monaco 12"))
+#+END_SRC
+
+* Adopt solarized theme
+  see http://ethanschoonover.com/solarized for theme design details
+#+BEGIN_SRC emacs-lisp
+  (setq el-get-sources
+        '((:name color-theme-solarized
+                 :after (progn
+                          (load-theme 'solarized-dark t)))))
+
+  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 #+END_SRC
