@@ -1,0 +1,173 @@
+#+TITLE: Oh My Emacs Basic
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Some Basic Settings
+  :PROPERTIES:
+  :CUSTOM_ID: basic
+  :END:
+
+#+NAME: basic
+#+BEGIN_SRC emacs-lisp
+  ;; set environment coding system
+  (set-language-environment "UTF-8")
+  ;; auto revert buffer globally
+  (global-auto-revert-mode t)
+  ;; set TAB and indention
+  (setq-default tab-width 4)
+  (setq-default indent-tabs-mode nil)
+  ;; y or n is suffice for a yes or no question
+  (fset 'yes-or-no-p 'y-or-n-p)
+  ;; always add new line to the end of a file
+  (setq require-final-newline t)
+  ;; add no new lines when "arrow-down key" at the end of a buffer
+  (setq next-line-add-newlines nil)
+  ;; prevent the annoying beep on errors
+  (setq ring-bell-function 'ignore)
+  ;; remove trailing whitespaces before save
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  ;; enable to support navigate in camelCase words
+  (global-subword-mode t)
+  ;; hide startup splash screen
+  (setq inhibit-startup-screen t)
+
+  ;; shell-mode settings
+  (setq explicit-shell-file-name "/bin/bash")
+  (setq shell-file-name "/bin/bash")
+  ;; always insert at the bottom
+  (setq comint-scroll-to-bottom-on-input t)
+  ;; no duplicates in command history
+  (setq comint-input-ignoredups t)
+  ;; what to run when i press enter on a line above the current prompt
+  (setq comint-get-old-input (lambda () ""))
+  ;; max shell history size
+  (setq comint-input-ring-size 1000)
+  ;; show all in emacs interactive output
+  (setenv "PAGER" "cat")
+  ;; set lang to enable Chinese display in shell-mode
+  (setenv "LANG" "en_US.UTF-8")
+
+  ;; set text-mode as the default major mode, instead of fundamental-mode
+  ;; The first of the two lines in parentheses tells Emacs to turn on Text mode
+  ;; when you find a file, unless that file should go into some other mode, such
+  ;; as C mode.
+  (setq-default major-mode 'text-mode)
+
+  ;;; ido-mode
+  (setq ido-enable-prefix nil)
+  (setq ido-enable-case nil)
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode t)
+
+  ;; use icomplete in minibuffer
+  (icomplete-mode t)
+
+  ;; delete the selection with a keypress
+  (delete-selection-mode t)
+#+END_SRC
+
+* Auto-fill Mode
+  :PROPERTIES:
+  :CUSTOM_ID: auto-fill
+  :END:
+
+[[http://www.gnu.org/software/emacs/manual/html_node/emacs/Auto-Fill.html][Auto Fill mode]] is a buffer-local minor mode in which lines are broken
+automatically when they become too wide. Breaking happens only when you type a
+<SPC> or <RET>.
+
+You may wonder why we still live with 80 columns rule in modern life, in which
+we have large monitors, intelligent editors(or IDEs). I don't explain the
+reasons here, you can refer stackoverflow [[http://stackoverflow.com/questions/110928/is-there-a-valid-reason-for-enforcing-a-maximum-width-of-80-characters-in-a-code][1]] and [[http://stackoverflow.com/questions/373561/do-people-still-live-by-the-80-column-rule][2]] to get some feeling.
+
+I zealously wrap my code at 80 columns if possible, and encourage my colleagues
+to follow the same rule. In fact, there're some projects in which 80 columns
+rule is mandatory.
+
+I enable auto fill minor mode for text-mode and prog-mode and all [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Derived-Modes.html][derived modes]]
+from them[1]. For how to quickly fill a paragraph or region, see [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html][Explicit Fill
+Commands]].
+
+#+NAME: auto-fill
+#+BEGIN_SRC emacs-lisp
+  (setq-default fill-column 79)
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
+  (add-hook 'prog-mode-hook 'turn-on-auto-fill)
+#+END_SRC
+
+* Save Place in Opened Files
+  :PROPERTIES:
+  :CUSTOM_ID: saveplace
+  :END:
+
+When you visit a file, point goes to the last place where it was when you
+previously visited the same file. The following code comes from [[http://emacs-fu.blogspot.com/2009/05/remembering-your-position-in-file.html][emacs-fu]].
+
+#+NAME: saveplace
+#+BEGIN_SRC emacs-lisp
+  (setq-default save-place t)
+  (setq save-place-file "~/.emacs.d/saved-places")
+  (require 'saveplace)
+#+END_SRC
+
+* Recentf
+  :PROPERTIES:
+  :CUSTOM_ID: recentf
+  :END:
+
+All modern editors(or IDEs) provide features like open recent files/projects,
+so does emacs -- =recentf=, a builtin emacs package which maintains a menu for
+visiting files that were operated on recently. Together with =savespace=,
+emacs provides a quick way to restore your workspace.
+
+The following code comes from [[http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/][masteringemacs]], which combined =ido= and
+=recentf=.
+
+#+NAME: recentf
+#+BEGIN_SRC emacs-lisp
+  (require 'recentf)
+
+  ;; get rid of `find-file-read-only' and replace it with something
+  ;; more useful.
+  (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+
+  ;; enable recent files mode.
+  (recentf-mode t)
+
+  ;; 50 files ought to be enough.
+  (setq recentf-max-saved-items 50)
+
+  (defun ido-recentf-open ()
+    "Use `ido-completing-read' to \\[find-file] a recent file"
+    (interactive)
+    (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+        (message "Opening file...")
+      (message "Aborting")))
+#+END_SRC
+
+* Uniquify
+  :PROPERTIES:
+  :CUSTOM_ID: uniquify
+  :END:
+
+Sometimes when you view different files with same filenames, emacs will
+append "<1>", "<2>" to the filename as the buffer name to differentiate
+them. Maybe you do not like the default naming patterns to "uniquify" these
+buffers, so emacs provides a uniquify package which can change the default
+naming of buffers to include parts of the file name (directory names) until the
+buffer names are unique.
+
+You can type =C-h i m emacs RET s uniquify RET= to get the manual about
+uniquify package. Or you can refer to [[http://trey-jackson.blogspot.com/2008/01/emacs-tip-11-uniquify.html][1]] and [[http://emacs-fu.blogspot.com/2009/11/making-buffer-names-unique.html][2]].
+
+#+NAME: uniquify
+#+BEGIN_SRC emacs-lisp
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(require 'uniquify)
+#+END_SRC
+
+
+* Footnotes
+[1] Actually, emacs has only three [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html][basic major modes]], so we actually enable
+auto-fill in almost every programming and writing modes.
