@@ -15,8 +15,6 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
   ;; make the fringe thinner (default is 8 in pixels)
   (fringe-mode 4)
-  ;; make the cursor thinner (as modern editors do)
-  (setq default-cursor-type 'bar)
 
   ;; show parenthesis match
   (show-paren-mode 1)
@@ -41,6 +39,24 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
         '((:name color-theme-solarized
                  :after (progn
                           (load-theme 'solarized-dark t)))))
+
+  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+#+END_SRC
+
+* Emacs powerline
+  :PROPERTIES:
+  :CUSTOM_ID: powerline
+  :END:
+
+Powerline is an eye candy for emacs [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html][mode line]]. Actually, the [[https://github.com/jonathanchu/emacs-powerline][emacs powerline]] is
+inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There're also powerline variants for [[https://github.com/erikw/tmux-powerline][tmux]], [[https://github.com/milkbikis/powerline-shell][shell]], etc.
+
+#+NAME: powerline
+#+BEGIN_SRC emacs-lisp
+  (setq el-get-sources
+        '((:name powerline
+                 :after (progn
+                          (require 'powerline)))))
 
   (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 #+END_SRC
