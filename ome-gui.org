@@ -3,7 +3,8 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
-* Oh my emacs gui settings
+* Basic GUI Settings
+#+NAME: gui-basics
 #+BEGIN_SRC emacs-lisp
   ;; believe me, you don't need menubar, toolbar nor scrollbar
   (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
@@ -21,9 +22,27 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
   (setq show-paren-style 'expression)
 #+END_SRC
 
-* Use monaco as the default English font
-  About how to install monaco fonts in Ubuntu, see https://github.com/cstrap/monaco-font
+* Choose Monaco as the Default English Font
+  :PROPERTIES:
+  :CUSTOM_ID: font
+  :END:
 
+Choosing a good and comfortable font is quite important in your whole coding
+life. Although the default font of emacs is good enough, I believe there're
+better choices. And you can refer to [[http://hivelogic.com/articles/top-10-programming-fonts][TOP 10 PROGRAMMING FONTS]] and [[http://www.sitepoint.com/top-10-programming-fonts/][10 of the
+Best Programming Fonts]] to get some feel of various programming fonts.
+
+And I prefer [[http://en.wikipedia.org/wiki/Monaco_(typeface)][Monaco]]. However, I've googled a lot to prove that Monaco is free
+to use on non-Mac platforms, but found nothing about the official warrant. So
+I pretend that it is free. If you found any illegal issues, please tell me and
+I'll choose another free font. Thanks.
+
+Finally, about how to install Monaco fonts in Linux, see
+https://github.com/cstrap/monaco-font. If you didn't install Monaco,
+oh-my-emacs will fallback to the default font. Yeah, the so-called
+self-adapting.
+
+#+NAME: font
 #+BEGIN_SRC emacs-lisp
   ;; frame font
   ;; Setting English Font
@@ -32,8 +51,15 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
        'default nil :font "Monaco 12"))
 #+END_SRC
 
-* Adopt solarized theme
-  see http://ethanschoonover.com/solarized for theme design details
+* Solarized Color Theme
+  :PROPERTIES:
+  :CUSTOM_ID: color-theme
+  :END:
+
+[[http://ethanschoonover.com/solarized][Solarized]] is my favourite color theme. it is available for multiple
+applications, not only for emacs. I'll set this as the default theme for
+oh-my-emacs.
+#+NAME: color-theme
 #+BEGIN_SRC emacs-lisp
   (setq el-get-sources
         '((:name color-theme-solarized
@@ -43,7 +69,7 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
   (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 #+END_SRC
 
-* Emacs powerline
+* Powerline
   :PROPERTIES:
   :CUSTOM_ID: powerline
   :END:
