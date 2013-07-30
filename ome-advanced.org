@@ -1,0 +1,52 @@
+#+TITLE: Oh My Emacs Advanced
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file contains some advanced features or packages which could make emacs
+look unlike emacs. So ensure you have some basic knowledge and experience
+before loading this file.
+
+* Evil
+  :PROPERTIES:
+  :CUSTOM_ID: evil
+  :END:
+
+#+BEGIN_QUOTE
+As a poke at Emacs' creeping featurism, vi advocates have been known to
+describe Emacs as "a great operating system, lacking only a decent editor".
+
+-- [[http://en.wikipedia.org/wiki/Editor_war][Editor war]]
+#+END_QUOTE
+
+I must say that emacs is a great platform, but lacks a quick and effective
+editor like vi, fortunately, there comes [[http://gitorious.org/evil][evil]].
+
+"Evil is an extensible vi layer for Emacs. It emulates the main features of
+Vim, and provides facilities for writing custom extensions." IMHO, evil is a
+great successor to [[http://www.emacswiki.org/emacs/Vimpulse][Vimpulse]], [[http://www.emacswiki.org/emacs/VimMode][vim-mode]] and [[http://www.emacswiki.org/emacs/ViperMode][ViperMode]].
+
+By default, oh-my-emacs =turn-on-evil-mode= on =text-mode= and =prog-mode=,
+since emacs has only three [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html][basic major modes]], you'll get evil enabled in almost
+all modes which focus on editing, by editing I mean, modes such as =c-mode=,
+=js-mode= would =turn-on-evil-mode=, however, modes such as =dired=, =info=
+would not =turn-on-evil-mode= by default. And since =Info-mode= didn't has a
+parent mode, so we need to =turn-off-evil-mode= manually.
+
+#+NAME: evil
+#+TODO: set different evil cursor color based on emacs color-theme.
+#+BEGIN_SRC emacs-lisp
+  (setq el-get-sources
+        '((:name evil
+                 :after (progn
+                          (setq evil-auto-indent t)
+                          (setq evil-regexp-search t)
+                          (setq evil-want-C-i-jump t)
+                          (setq evil-normal-state-cursor '("white" box))
+                          (setq evil-insert-state-cursor '("white" bar))
+                          (add-hook 'text-mode-hook 'turn-on-evil-mode)
+                          (add-hook 'prog-mode-hook 'turn-on-evil-mode)
+                          (add-hook 'Info-mode-hook 'turn-off-evil-mode)))))
+
+  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+#+END_SRC
