@@ -1,0 +1,66 @@
+#+TITLE: Oh My Emacs Miscs
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Oh-my-emacs Miscs
+
+Things that still don't find a good place to put, :).
+
+** Random Number
+   :PROPERTIES:
+   :CUSTOM_ID: random-number
+   :END:
+
+#+NAME: random-number
+#+BEGIN_SRC emacs-lisp
+  ;; Seed the random-number generator
+  (random t)
+#+END_SRC
+
+** Rainbow Delimiters
+   :PROPERTIES:
+   :CUSTOM_ID: rainbow-delimiters
+   :END:
+
+"RainbowDelimiters is a "rainbow parentheses"-like mode which highlights
+parentheses, brackets, and braces according to their depth. Each successive
+level is highlighted in a different color. This makes it easy to spot matching
+delimiters, orient yourself in the code, and tell which statements are at a
+given depth."
+
+#+NAME: rainbow-delimiters
+#+BEGIN_SRC emacs-lisp
+  (setq el-get-sources
+        '((:name rainbow-delimiters
+                 :after (progn
+                          (global-rainbow-delimiters-mode)))))
+
+  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+#+END_SRC
+
+** Transparently Open Compressed Files
+   :PROPERTIES:
+   :CUSTOM_ID: auto-compression-mode
+   :END:
+
+"Auto Compression mode is a global minor mode.  When enabled, compressed files
+are automatically uncompressed for reading, and compressed when writing."
+
+#+NAME: auto-compression-mode
+#+BEGIN_SRC emacs-lisp
+  (auto-compression-mode t)
+#+END_SRC
+
+
+** Allowing Opening Images
+   :PROPERTIES:
+   :CUSTOM_ID: auto-image-file-mode
+   :END:
+
+"Toggle visiting of image files as images (Auto Image File mode)."
+
+#+NAME: auto-image-file-mode
+#+BEGIN_SRC emacs-lisp
+  (auto-image-file-mode t)
+#+END_SRC
