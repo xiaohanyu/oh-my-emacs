@@ -101,5 +101,24 @@ Blog]] for technical details.
         (el-get 'sync (mapcar 'el-get-source-name el-get-sources))))
 #+END_SRC
 
+** Visual-line-mode
+   :PROPERTIES:
+   :CUSTOM_ID: visual-line-mode
+   :END:
+
+[[http://www.gnu.org/software/emacs/manual/html_node/emacs/Visual-Line-Mode.html][Visual line mode]] is a new mode in Emacs 23. It provides support for editing by
+visual lines. It turns on word-wrapping in the current buffer, and rebinds C-a,
+C-e, and C-k to commands that operate by visual lines instead of logical lines.
+
+[[file:ome-basic.org::*Auto-fill%20Mode][As you know]], we have =turn-on-auto-fill= for =text-mode= and =prog-mode= and
+all derived modes, which may make it useless to turn on =visual-line-mode= most
+of the time. But we still turn on it globally to make it a fallback when
+=auto-fill-mode= was disabled by users.
+
+#+NAME: visual-line-mode
+#+BEGIN_SRC emacs-lisp
+  (global-visual-line-mode t)
+#+END_SRC
+
 * Footnotes
 [1] See [[http://git-scm.com/book/en/Git-Internals][Git Internals]] to technical details.
