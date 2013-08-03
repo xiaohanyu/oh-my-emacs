@@ -1,0 +1,21 @@
+#+TITLE: Oh My Emacs Writing
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file contains some packages for document writing.
+
+* Markdown
+  :PROPERTIES:
+  :CUSTOM_ID: markdown
+  :END:
+[[http://en.wikipedia.org/wiki/Markdown][Markdown]] is a lightweight markup language, which is very popular as a doc
+writing format in many popular open source projects.
+
+#+NAME: markdown
+#+BEGIN_SRC emacs-lisp
+  (setq el-get-sources
+        '((:name markdown-mode)))
+
+  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+#+END_SRC
