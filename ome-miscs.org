@@ -52,7 +52,6 @@ are automatically uncompressed for reading, and compressed when writing."
   (auto-compression-mode t)
 #+END_SRC
 
-
 ** Allowing Opening Images
    :PROPERTIES:
    :CUSTOM_ID: auto-image-file-mode
@@ -64,3 +63,43 @@ are automatically uncompressed for reading, and compressed when writing."
 #+BEGIN_SRC emacs-lisp
   (auto-image-file-mode t)
 #+END_SRC
+** Magit
+   :PROPERTIES:
+   :CUSTOM_ID: magit
+   :END:
+
+[[http://www.git-scm.com/][Git]] might be the most popular version control system in the world by far, every
+programmer should try it, learn it, and finally master it. In fact, mastering
+git will boost your workflow and efficiency to a new level. Besides version
+control, git can also do other useful things such as file and storage
+sync. [[http://en.wikipedia.org/wiki/Linus_Torvalds][Linus Torvalds]], father of git, describes git as [[http://linux.die.net/man/1/git][a stupid content tracker]]:
+
+#+BEGIN_QUOTE
+In many ways you can just see git as a filesystem - it's content-
+addressable, and it has a notion of versioning, but I really really
+designed it coming at the problem from the viewpoint of a _filesystem_
+person (hey, kernels is what I do), and I actually have absolutely _zero_
+interest in creating a traditional SCM system.
+
+-- Linus Torvalds, http://marc.info/?l=linux-kernel&m=111314792424707
+#+END_QUOTE
+
+Actually, "git is fundamentally a content-addressable filesystem with a
+VCS user interface written on top of it[1]".
+
+[[http://magit.github.io/magit/][Magit]] integrate emacs with git, which will make your workflow smoother and more
+enjoyable. Of course there're other choices, but I prefer magit, view [[http://alexott.net/en/writings/emacs-vcs/EmacsGit.html][Alexott's
+Blog]] for technical details.
+
+#+NAME: magit
+#+BEGIN_SRC emacs-lisp
+  (if (executable-find "git")
+      (progn
+        (setq el-get-sources
+              '((:name magit)))
+
+        (el-get 'sync (mapcar 'el-get-source-name el-get-sources))))
+#+END_SRC
+
+* Footnotes
+[1] See [[http://git-scm.com/book/en/Git-Internals][Git Internals]] to technical details.
