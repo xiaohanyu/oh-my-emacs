@@ -25,7 +25,7 @@ The main features of oh-my-emacs are
 - "literate" customization embedded in Org-mode files
 - use el-get to manage packages, which is portable, and version control
   friendly
-- self-adapting, enable features only the system meet the requirements
+- self-adapting, enable features only when the system meet the requirements
 
 The latest version is at https://github.com/xiaohanyu/oh-my-emacs.
 
@@ -56,6 +56,12 @@ Reference Manual]] is your best friends. Besides these two large books, there're
 various good web sites, such as
 - [[http://www.emacswiki.org/][emacswiki]] :: the largest unofficial emacs lisp repository
 - [[http://wikemacs.org/index.php/Main_Page][wikiemacs]] :: a saner and modern wiki for emacs
+- [[http://www.masteringemacs.org/][masteringemacs]] :: a blog about mastering the world's best text editor
+- [[http://emacs-fu.blogspot.com/][emacs-fu]] :: useful tricks for emacs
+- [[http://alexott.net/en/emacs/][Alexott's Blog]] :: some really great articles about emacs
+- [[http://alexott.net/en/emacs/][emacser]] :: an excellent and comprehensive emacs blog written by chinese
+             users.
+
 
 Wow, what a long journey, if you're tired, you can [[http://emacsrocks.com/][rock with emacs]].
 
@@ -69,7 +75,7 @@ Wow, what a long journey, if you're tired, you can [[http://emacsrocks.com/][roc
    otherwise install it directly [[http://savannah.gnu.org/projects/emacs/][from source]], or Mac binaries may be
    downloaded from the /nightlies/ section of
    http://emacsformacosx.com/builds
-2. Checkout a version of the starter kit using git -- if you're new to
+2. Checkout a version of the oh-my-emacs using git -- if you're new to
    git, checkout this [[http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html][git-tutorial]].
 #+BEGIN_SRC sh
   git clone http://github.com/xiaohanyu/oh-my-emacs.git
@@ -77,58 +83,6 @@ Wow, what a long journey, if you're tired, you can [[http://emacsrocks.com/][roc
 3. Move the resulting directory to =~/.emacs.d= [1]
 4. Launch Emacs!
 
-
-#+NAME: ome-load
-#+BEGIN_SRC emacs-lisp
-  (defun ome-load (file &optional header-or-tag)
-    "Load configuration from other ome-*.org files.
-  If the optional argument is the id of a subtree then only
-  configuration from within that subtree will be loaded.  If it is
-  not an id then it will be interpreted as a tag, and only subtrees
-  marked with the given tag will be loaded.
-
-  For example, to load all of ome-lisp.org simply
-  add (ome-load \"lisp\") to your configuration.
-
-  To load only the 'window-system' config from
-  ome-misc-recommended.org add
-   (ome-load \"misc-recommended\" \"window-system\")
-  to your configuration."
-    (let ((file (expand-file-name (if (string-match "ome-.+\.org" file)
-                                      file
-                                    (format "ome-%s.org" file))
-                                  ome-dir)))
-      (org-babel-load-file
-       (if header-or-tag
-           (let* ((base (file-name-nondirectory file))
-                  (dir  (file-name-directory file))
-                  (partial-file (expand-file-name
-                                 (concat "." (file-name-sans-extension base)
-                                         ".part." header-or-tag ".org")
-                                 dir)))
-             (unless (file-exists-p partial-file)
-               (with-temp-file partial-file
-                 (insert
-                  (with-temp-buffer
-                    (insert-file-contents file)
-                    (save-excursion
-                      (condition-case nil ;; collect as a header
-                          (progn
-                            (org-link-search (concat"#"header-or-tag))
-                            (org-narrow-to-subtree)
-                            (buffer-string))
-                        (error ;; collect all entries with as tags
-                         (let (body)
-                           (org-map-entries
-                            (lambda ()
-                              (save-restriction
-                                (org-narrow-to-subtree)
-                                (setq body (concat body "\n" (buffer-string)))))
-                            header-or-tag)
-                           body))))))))
-             partial-file)
-         file))))
-#+END_SRC
 
 ** Package Management
 #+BEGIN_QUOTE
@@ -183,10 +137,86 @@ And in the following journey, you may find the great power =el-get= provides
 for you -- which makes it possible to store just dotemacs configuration, no
 need to things like =git submodule=. Thank you, [[http://tapoueh.org/][Dimitri Fontaine]].
 
+** Structure
+   :PROPERTIES:
+   :CUSTOM_ID: structure
+   :END:
+The =init.el= file is where everything begins. It is loaded
+automatically by Emacs on startup, its sole purpose is to load the
+elisp code embedded in this file.
+
+
+* Implementation
+  :PROPERTIES:
+  :CUSTOM_ID: implementation
+  :END:
+
+** oh-my-emacs basics
+- Functions for loading other ports of oh-my-emacs.
+#+NAME: ome-load
+#+BEGIN_SRC emacs-lisp
+  (defun ome-load (file &optional header-or-tag)
+    "Load configuration from other ome-*.org files.
+  If the optional argument is the id of a subtree then only
+  configuration from within that subtree will be loaded.  If it is
+  not an id then it will be interpreted as a tag, and only subtrees
+  marked with the given tag will be loaded.
+
+  For example, to load all of ome-lisp.org simply
+  add (ome-load \"lisp\") to your configuration.
+
+  To load only the 'window-system' config from
+  ome-misc-recommended.org add
+   (ome-load \"misc-recommended\" \"window-system\")
+  to your configuration."
+    (let ((file (expand-file-name (if (string-match "ome-.+\.org" file)
+                                      file
+                                    (format "ome-%s.org" file))
+                                  ome-dir)))
+      (org-babel-load-file
+       (if header-or-tag
+           (let* ((base (file-name-nondirectory file))
+                  (dir  (file-name-directory file))
+                  (partial-file (expand-file-name
+                                 (concat "." (file-name-sans-extension base)
+                                         ".part." header-or-tag ".org")
+                                 dir)))
+             (unless (file-exists-p partial-file)
+               (with-temp-file partial-file
+                 (insert
+                  (with-temp-buffer
+                    (insert-file-contents file)
+                    (save-excursion
+                      (condition-case nil ;; collect as a header
+                          (progn
+                            (org-link-search (concat"#"header-or-tag))
+                            (org-narrow-to-subtree)
+                            (buffer-string))
+                        (error ;; collect all entries with as tags
+                         (let (body)
+                           (org-map-entries
+                            (lambda ()
+                              (save-restriction
+                                (org-narrow-to-subtree)
+                                (setq body (concat body "\n" (buffer-string)))))
+                            header-or-tag)
+                           body))))))))
+             partial-file)
+         file))))
+#+END_SRC
+
 * Load settings
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
   (ome-load "ome-gui.org")
+  (ome-load "ome-basic.org")
+  (ome-load "ome-miscs.org")
+  (ome-load "ome-completion.org")
+  (ome-load "ome-keybindings.org")
+  (ome-load "ome-org.org")
+  (ome-load "ome-advanced.org")
+  (ome-load "ome-writing.org")
+  (ome-load "ome-cc.org")
 #+END_SRC
 
 * Footnotes
