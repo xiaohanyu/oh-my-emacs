@@ -1,0 +1,22 @@
+#+TITLE: Oh My Emacs Auto-mode
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file contains various settings for minor file types, such as SCons build
+file, archlinux's PKGBUILD file, etc.
+
+* SCons
+  :PROPERTIES:
+  :CUSTOM_ID: scons
+  :END:
+
+[[http://www.scons.org/][SCons]] is a next generation build system that is much easier to configure and
+use than the traditional make utility. SCons uses the Python general purpose
+programming language as a foundation, and all SCons build files are Python
+scripts, so we just set SCons build file work with python-mode.
+
+#+NAME: scons
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("SConstruct" . python-mode))
+#+END_SRC

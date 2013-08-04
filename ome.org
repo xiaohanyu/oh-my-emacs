@@ -217,6 +217,7 @@ elisp code embedded in this file.
   (ome-load "ome-advanced.org")
   (ome-load "ome-writing.org")
   (ome-load "ome-cc.org")
+  (ome-load "ome-auto-mode.org")
 #+END_SRC
 
 * Footnotes
