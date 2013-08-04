@@ -173,6 +173,8 @@ elisp code embedded in this file.
                                       file
                                     (format "ome-%s.org" file))
                                   ome-dir)))
+      ;; ensure el-get-sources is empty before loading "ome-.+\.org" files
+      (setq el-get-sources nil)
       (org-babel-load-file
        (if header-or-tag
            (let* ((base (file-name-nondirectory file))
@@ -203,8 +205,7 @@ elisp code embedded in this file.
                            body))))))))
              partial-file)
          file))
-      (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
-      (setq el-get-sources nil)))
+      (el-get 'sync (mapcar 'el-get-source-name el-get-sources))))
 #+END_SRC
 
 * Load settings
