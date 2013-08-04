@@ -37,3 +37,27 @@ DSL, so the emacs builtin =ruby-mode= is not proper for editing puppet files.
 
 (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 #+END_SRC
+
+* ArchLinux PKGBUILD
+  :PROPERTIES:
+  :CUSTOM_ID: pkgbuild
+  :END:
+
+A PKGBUILD is an Arch Linux package build description file, which is actually
+a shell script. Thus you can edit PKGBUILD file with emacs
+=shell-script-mode=, however, =pkgbuild-mode= provides a better workflow based
+on =shell-script-mode= for PKGBUILD files, including:
+- A default PKGBUILD template as a starting point
+- Some shortcuts to update md5sum, browse package's website, build tarball,
+  etc.
+
+Just install =pkgbuild-mode= from =el-get= will bring all this goodies to your
+fingertips.
+
+#+NAME: pkgbuild
+#+BEGIN_SRC emacs-lisp
+(setq el-get-sources
+      '((:name pkgbuild-mode)))
+
+(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+#+END_SRC
