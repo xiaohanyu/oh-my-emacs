@@ -20,3 +20,20 @@ scripts, so we just set SCons build file work with python-mode.
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'auto-mode-alist '("SConstruct" . python-mode))
 #+END_SRC
+
+* Puppet
+  :PROPERTIES:
+  :CUSTOM_ID: puppet
+  :END:
+
+[[https://puppetlabs.com/][Puppet]] is configuration management tool from [[http://en.wikipedia.org/wiki/Puppet_Labs][Puppet Labs]], it is the de facto
+industry standard for IT automation. Puppet is written by ruby but has its own
+DSL, so the emacs builtin =ruby-mode= is not proper for editing puppet files.
+
+#+NAME: puppet
+#+BEGIN_SRC emacs-lisp
+(setq el-get-sources
+      '((:name puppet-mode)))
+
+(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+#+END_SRC
