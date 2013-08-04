@@ -36,17 +36,15 @@ parent mode, so we need to =turn-off-evil-mode= manually.
 #+NAME: evil
 #+TODO: set different evil cursor color based on emacs color-theme.
 #+BEGIN_SRC emacs-lisp
-  (setq el-get-sources
-        '((:name evil
-                 :after (progn
-                          (setq evil-auto-indent t)
-                          (setq evil-regexp-search t)
-                          (setq evil-want-C-i-jump t)
-                          (setq evil-normal-state-cursor '("white" box))
-                          (setq evil-insert-state-cursor '("white" bar))
-                          (add-hook 'text-mode-hook 'turn-on-evil-mode)
-                          (add-hook 'prog-mode-hook 'turn-on-evil-mode)
-                          (add-hook 'Info-mode-hook 'turn-off-evil-mode)))))
-
-  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+  (add-to-list 'el-get-sources
+               '(:name evil
+                       :after (progn
+                                (setq evil-auto-indent t)
+                                (setq evil-regexp-search t)
+                                (setq evil-want-C-i-jump t)
+                                (setq evil-normal-state-cursor '("white" box))
+                                (setq evil-insert-state-cursor '("white" bar))
+                                (add-hook 'text-mode-hook 'turn-on-evil-mode)
+                                (add-hook 'prog-mode-hook 'turn-on-evil-mode)
+                                (add-hook 'Info-mode-hook 'turn-off-evil-mode))))
 #+END_SRC

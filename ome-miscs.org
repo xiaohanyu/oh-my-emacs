@@ -31,12 +31,10 @@ given depth."
 
 #+NAME: rainbow-delimiters
 #+BEGIN_SRC emacs-lisp
-  (setq el-get-sources
-        '((:name rainbow-delimiters
-                 :after (progn
-                          (global-rainbow-delimiters-mode)))))
-
-  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+  (add-to-list 'el-get-sources
+               '(:name rainbow-delimiters
+                       :after (progn
+                                (global-rainbow-delimiters-mode))))
 #+END_SRC
 
 ** Transparently Open Compressed Files
@@ -95,10 +93,8 @@ Blog]] for technical details.
 #+BEGIN_SRC emacs-lisp
   (if (executable-find "git")
       (progn
-        (setq el-get-sources
-              '((:name magit)))
-
-        (el-get 'sync (mapcar 'el-get-source-name el-get-sources))))
+        (add-to-list 'el-get-sources
+                     '(:name magit))))
 #+END_SRC
 
 ** Visual-line-mode

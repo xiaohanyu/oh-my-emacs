@@ -61,12 +61,10 @@ applications, not only for emacs. I'll set this as the default theme for
 oh-my-emacs.
 #+NAME: color-theme
 #+BEGIN_SRC emacs-lisp
-  (setq el-get-sources
-        '((:name color-theme-solarized
-                 :after (progn
-                          (load-theme 'solarized-dark t)))))
-
-  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+  (add-to-list 'el-get-sources
+               '(:name color-theme-solarized
+                       :after (progn
+                                (load-theme 'solarized-dark t))))
 #+END_SRC
 
 * Powerline
@@ -79,10 +77,8 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
 
 #+NAME: powerline
 #+BEGIN_SRC emacs-lisp
-  (setq el-get-sources
-        '((:name powerline
-                 :after (progn
-                          (require 'powerline)))))
-
-  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+  (add-to-list 'el-get-sources
+               '(:name powerline
+                       :after (progn
+                                (require 'powerline))))
 #+END_SRC

@@ -202,7 +202,9 @@ elisp code embedded in this file.
                             header-or-tag)
                            body))))))))
              partial-file)
-         file))))
+         file))
+      (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+      (setq el-get-sources nil)))
 #+END_SRC
 
 * Load settings

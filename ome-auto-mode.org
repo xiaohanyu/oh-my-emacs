@@ -32,10 +32,8 @@ DSL, so the emacs builtin =ruby-mode= is not proper for editing puppet files.
 
 #+NAME: puppet
 #+BEGIN_SRC emacs-lisp
-(setq el-get-sources
-      '((:name puppet-mode)))
-
-(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+  (add-to-list 'el-get-sources
+               '(:name puppet-mode))
 #+END_SRC
 
 * ArchLinux PKGBUILD
@@ -56,8 +54,6 @@ fingertips.
 
 #+NAME: pkgbuild
 #+BEGIN_SRC emacs-lisp
-(setq el-get-sources
-      '((:name pkgbuild-mode)))
-
-(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+  (add-to-list 'el-get-sources
+               '(:name pkgbuild-mode))
 #+END_SRC
