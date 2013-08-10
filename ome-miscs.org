@@ -7,6 +7,21 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 Things that still don't find a good place to put, :).
 
+** Enable some dangerous commands
+
+Emacs may be slow when you editing large files with many minor modes
+on. [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Narrowing.html][Narrowing]] allows you focus in on some portion of the buffer, making the
+rest temporarily inaccessible. Widening is the reverse of narrowing, which
+cancels the narrowing, and makes the entire buffer once again accessible.
+
+By default, the narrowing commands are considered to be dangerous, we just
+remove the dangerous tag here.
+
+#+BEGIN_SRC emacs-lisp
+  (put 'narrow-to-page 'disabled nil)
+  (put 'narrow-to-region 'disabled nil)
+  (put 'upcase-region 'disabled nil)
+#+END_SRC
 ** Random Number
    :PROPERTIES:
    :CUSTOM_ID: random-number
