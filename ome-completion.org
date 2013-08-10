@@ -29,11 +29,87 @@ users to concentrate more on their own work.
 
 #+name: auto-complete
 #+BEGIN_SRC emacs-lisp
-  (setq el-get-sources
-        '((:name auto-complete
-                 :after (progn
-                          (require 'auto-complete-config)
-                          (ac-config-default)))))
+  (add-to-list 'el-get-sources
+               '(:name auto-complete
+                       :after (progn
+                                (require 'auto-complete-config)
+                                (ac-config-default))))
+#+END_SRC
 
-  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+* Helm
+  :PROPERTIES:
+  :CUSTOM_ID: helm
+  :END:
+
+[[https://github.com/emacs-helm/helm][Helm]] is a incremental completion and selection narrowing framework for
+emacs. It will help steer you in the right direction when you're looking for
+stuff in Emacs (like buffers, files, etc). Helm is a fork of =anything.el=,
+which clean up the legacy code in =anything.el= and provide a cleaner and more
+modular tool.
+
+Actually, helm is not the only [[http://ergoemacs.org/emacs/emacs_name_completion.html][name completion packages in emacs]], there're
+other choices--of course you always have choices in emacs, for example, the
+builtin [[http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/][ido-mode]] is quite a good choice. I also heard of [[http://www.emacswiki.org/emacs/Icicles][icicles]] to be the most
+powerful, but I found its documentatin really awkward. I choose helm since it
+is easy to install and config, user-friendly, powerful enough and quite
+intuitive to boost your workflow.
+
+To wrap your mind around the helm way, you need to remember a few key
+bindings. When helm starts, remember:
+- access the helm action menu with =TAB=. Maybe this is the most whirlwind
+  turnaround since most name completion packages use =TAB= as completion
+  key. Don't worry, helm doesn't need too much completion, since helm provides
+  name completion by navigation instead by using =TAB= to complete character by
+  character. Actually, the helm =TAB= brings you a new world, in which you
+  combine several tasks into a series of successive keystrokes and get your job
+  done.
+- Use persistent actions with =C-z=.
+- Mark candidate with =M-<SPACE>=, thus you can do batch processing through helm.
+
+The [[https://github.com/emacs-helm/helm/wiki][helm wiki]] is a good place to explore this new world, but it's a little long
+and not complete enough to cover all helm power. You can access helm functions
+through the emacs menubar if want to use helm but don't want to remember too
+much helm key bindings. Some shortcuts:
+- =C-x c l=: =helm-locate=
+- =C-x c /=: =helm-find=
+- =C-x c f=: =helm-for-files=
+- =C-x c M-x=: =helm-M-x=
+- =C-x c a=: =helm-apropos=
+- =C-x c r=: =helm-regexp=
+- =C-x c c=: =helm-colors=
+- =C-x c 8=: =helm-ucs=
+- =C-x c i=: =helm-imenu=
+- =C-x c m=: =helm-man-woman=
+- =C-x c t=: =helm-top=
+- =C-x c p=: =helm-list-emacs-process=
+- =C-x c M-y=: =helm-show-kill-ring=
+
+To tell the truth, helm is one of my most favourite emacs packages. The more
+you live with helm, the more you will find that you never want to come
+back. Helm can replace many builtin or third-party emacs packages, or even
+provide a better experience. For example, =helm-M-x= is a good competitor to
+[[https://github.com/nonsequitur/smex][smex]], =helm-show-kill-ring= provides a better way to interact with emacs kill
+ring than [[https://github.com/browse-kill-ring/browse-kill-ring][browse-kill-ring]]. Helm integrates various external tools(such as
+=grep=, =find=, =locate=, =md5sum=, =etags=, etc.) to emacs in a highly
+intuitive and interactive way. Helm can even help you install debian apt
+packages. If you have any question, just type =M-x helm-google-suggest= and
+then helm will fire a web browser opening google for you at your fingertip.
+
+To fully adopt helm power, I also set some custom helm keybindings in
+oh-my-emacs, you can change it as you like. Of course you can disable helm at
+all, then oh-my-emacs will use some other packages such as =ido-mode= as a
+fallback. But I do suggest you to take some time to be familiar with helm.
+
+#+NAME: helm
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name helm
+                       :after (progn
+                                (require 'helm-config)
+                                (helm-mode t)
+                                (global-set-key (kbd "C-x c g") 'helm-do-grep)
+                                (global-set-key (kbd "C-x c o") 'helm-occur)
+                                (global-set-key (kbd "M-x") 'helm-M-x)
+                                (global-set-key (kbd "C-x C-f") 'helm-find-files))))
+
 #+END_SRC
