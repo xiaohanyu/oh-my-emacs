@@ -5,7 +5,7 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 * Oh-my-emacs Miscs
 
-Things that still don't find a good place to put, :).
+Things that still don't find a good place to put, :-).
 
 ** Enable some dangerous commands
 
@@ -22,6 +22,30 @@ remove the dangerous tag here.
   (put 'narrow-to-region 'disabled nil)
   (put 'upcase-region 'disabled nil)
 #+END_SRC
+** Toggle server mode .
+   :PROPERTIES:
+   :CUSTOM_ID: emacs-server
+   :END:
+
+You can [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html][use emacs as a server]], which "listens" for external edit requests and
+acts accordingly. Thus you can =alias vim=emacsclient= as the lucky
+stuff, :-).
+
+There're two ways to turn on =server-mode= on emacs start:
+- =(server-mode t)=
+- =(server-start)=
+
+In either way you can use =emacsclient= to connect an existing emacs server,
+and finish editing by typing =C-x #(server-edit)=, which will "kill" the
+=emacscient=. You can also quit =emacsclient= by =C-x C-c=, but this will kill
+emacs if you use =(server-start)= while keeps emacs alive if you use
+=(server-mode t)=, I don't know why. If you know the details, please tell me.
+
+#+NAME: emacs-server
+#+BEGIN_SRC emacs-lisp
+(server-mode t)
+#+END_SRC
+
 ** Random Number
    :PROPERTIES:
    :CUSTOM_ID: random-number
