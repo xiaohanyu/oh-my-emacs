@@ -51,6 +51,32 @@ self-adapting.
        'default nil :font "Monaco 12"))
 #+END_SRC
 
+* Full screen support
+  :PROPERTIES:
+  :CUSTOM_ID: fullscreen
+  :END:
+
+By default, oh-my-emacs won't bind any shortcut to function keys. There're
+two reasons:
+- Some special keyboards(such as [[http://en.wikipedia.org/wiki/Happy_Hacking_Keyboard][HHKB]]) lacks function keys.
+- Some function keys are occupied by system, either by the windows manager, the
+  operating system, or something else which you have no idea to know it before.
+
+Of course you can overrides this convention as you like, oh-my-emacs is just a
+starting point.
+
+#+BEGIN_SRC emacs-lisp
+  ;; http://www.emacswiki.org/emacs/FullScreen
+  (defun ome-toggle-fullscreen ()
+    "Toggle full screen"
+    (interactive)
+    (set-frame-parameter
+     nil 'fullscreen
+     (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+
+  ;; (global-set-key (kbd "<f11>") 'toggle-fullscreen)
+#+END_SRC
+
 * Solarized Color Theme
   :PROPERTIES:
   :CUSTOM_ID: color-theme
