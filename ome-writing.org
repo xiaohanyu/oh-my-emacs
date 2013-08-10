@@ -12,8 +12,14 @@ This file contains some packages for document writing.
 [[http://en.wikipedia.org/wiki/Markdown][Markdown]] is a lightweight markup language, which is very popular as a doc
 writing format in many popular open source projects.
 
+[[https://github.com/thierryvolpiatto/markdown-pp][markdown-pp]] is a preprocessor for Markdown files to generate a table of
+contents and other documentation needs, so I add "mdpp" file to
+markdown-mode's auto-mode-alist.
+
 #+NAME: markdown
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'el-get-sources
-               '(:name markdown-mode))
+               '(:name markdown-mode
+                       :before (add-to-list 'auto-mode-alist
+                                            '("\\.mdpp" . markdown-mode))))
 #+END_SRC
