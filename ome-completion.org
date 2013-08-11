@@ -23,7 +23,7 @@ expansions. The following code segment comes from [[https://github.com/bbatsov/p
 #+END_SRC
 
 * Auto complete
-Auto-Complete is an intelligent auto-completion extension for Emacs. It extends
+[[http://cx4a.org/software/auto-complete/][Auto-Complete]] is an intelligent auto-completion extension for Emacs. It extends
 the standard Emacs completion interface and provides an environment that allows
 users to concentrate more on their own work.
 
@@ -113,3 +113,55 @@ fallback. But I do suggest you to take some time to be familiar with helm.
                                 (global-set-key (kbd "C-x C-f") 'helm-find-files))))
 
 #+END_SRC
+* Yasnippet
+  :PROPERTIES:
+  :CUSTOM_ID: yasnippet
+  :END:
+
+[[https://github.com/capitaomorte/yasnippet][YASnippet]] is "Yet Another Snippet" expansion system for Emacs. It is inspired by
+[[http://macromates.com/][TextMate]]'s templating syntax. You can see the [[http://capitaomorte.github.io/yasnippet/][intro and tutorial]] or watch this
+[[http://www.youtube.com/watch?v%3DvOj7btx3ATg][video on youtube]] to get some basic knowledge.
+
+Oh-my-emacs do some hacks to =yas-prompt-functions=, it adopts [[https://github.com/m2ym/popup-el][popup]], a visual
+popup interface library extracted from [[http://cx4a.org/software/auto-complete/][auto-complete]] by its author. It has
+better look and feel than all the built-in =yas-prompt-functions=. Also it is
+easy to customize, and its isearch mode is very efficient, the items are
+filtered on-the-fly when typing[1].
+
+TODO:
+- The bundled snippets from official yasnippet is considered frozen, so you
+  should add your own snippets if you want more. Maybe [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]] is a
+  good starting point, but I think it's far from perfect, for example, the
+  emacs-lisp snippet is not quite hard to use.
+
+#+NAME: yasnippet
+#+BEGIN_SRC emacs-lisp
+  (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+    (when (featurep 'popup)
+      (popup-menu*
+       (mapcar
+        (lambda (choice)
+          (popup-make-item
+           (or (and display-fn (funcall display-fn choice))
+               choice)
+           :value choice))
+        choices)
+       :prompt prompt
+       ;; start isearch mode immediately
+       :isearch t)))
+
+  (add-to-list 'el-get-sources
+               '(:name yasnippet
+                       :depends (popup)
+                       :after (progn
+                                (setq yas-prompt-functions
+                                      '(yas-popup-isearch-prompt
+                                        yas-no-prompt))
+                                (yas-reload-all)
+                                (add-hook 'prog-mode-hook
+                                          '(lambda ()
+                                             (yas-minor-mode))))))
+#+END_SRC
+
+* Footnotes
+[1] http://iany.me/2012/03/use-popup-isearch-for-yasnippet-prompt/
