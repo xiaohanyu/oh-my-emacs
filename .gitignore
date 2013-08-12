@@ -19,3 +19,9 @@ el-get
 
 # the generated el files by org-babel
 ome*el
+
+# auto-complete data file
+ac*dat
+
+# saved-places
+*saved-places*
