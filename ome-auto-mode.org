@@ -57,3 +57,27 @@ fingertips.
   (add-to-list 'el-get-sources
                '(:name pkgbuild-mode))
 #+END_SRC
+
+* Wikipedia
+  :PROPERTIES:
+  :CUSTOM_ID: wikipedia
+  :END:
+
+Wikitext language, or [[http://en.wikipedia.org/wiki/Wiki_markup][wiki markup]], is a lightweight markup language used to
+write pages in wiki websites, such as Wikipedia, and is a simplified
+alternative/intermediate to HTML. Its ultimate purpose is to be converted by
+wiki software into HTML, which in turn is served to web browsers.
+
+Unfortunately, there is no commonly accepted standard wikitext language. So I
+just pick =wikipedia-mode=, which is one of the many possible packages from
+el-get, as the mode for editing wiki documents. If you have better choice,
+please tell me.
+
+#+NAME: wikipedia
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name wikipedia-mode
+                       :after (progn
+                                (add-to-list 'auto-mode-alist
+                                             '("\\.wiki\\'" . wikipedia-mode)))))
+#+END_SRC
