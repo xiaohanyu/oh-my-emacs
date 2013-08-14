@@ -1,0 +1,85 @@
+#+TITLE: Oh My Emacs Python
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Elpy
+  :PROPERTIES:
+  :CUSTOM_ID: elpy
+  :END:
+
+The first time I tried to write Python with emacs, I've found there're really
+really too many choices, which may make newbies confusing and disgusting.
+
+Say =python-mode=, before [[http://www.gnu.org/software/emacs/news/NEWS.24.3][Emacs 24.3]], there're at least three choices:
+- The old =python.el= from Emacs, which has some minor problems when dealing
+  with docstring, Python 3k, etc.
+- The =python-mode.el= from the Python community, which provides lots of dirty
+  menu items. It's a tedious long journey to make all this menu items just
+  work.
+- The wonderful =python.el= from [[https://github.com/fgallina/python.el][fgallina]], which overcomes many drawbacks of
+  the old Emacs builtin =python.el=, and has been [[http://from-the-cloud.com/en/emacs/2012/06/18_pythonel-has-landed-on-emacs-trunk.html][integrated to Emacs trunk]]. I
+  think this is the best choice of the three.
+
+Say code checking tools,
+- What is [[https://pypi.python.org/pypi/pep8][pep8]]?
+- What is [[https://pypi.python.org/pypi/pylint][pylint]]?
+- What is [[https://pypi.python.org/pypi/pyflakes/][pyflakes]]?
+- What is [[https://pypi.python.org/pypi/flake8][flake8]]?
+- What's the differences between all these fucking wonderful code checking
+  tools? How and when should I use it? Which one to use? Any shortcuts to fire
+  these tools within =python-mode=?
+
+Say developing tools,
+- What is [[http://www.virtualenv.org/en/latest/][virtualenv]]?
+- What about code completion? Maybe after two days' google, you finally make
+  [[http://cx4a.org/software/auto-complete/][auto-complete]] works with a completion backend, such as [[http://rope.sourceforge.net/][rope]] or [[https://github.com/davidhalter/jedi][jedi]], but how
+  can you make completion be virtualenv-awared?
+
+Choices, choices, choices, choices are where all happiness and headaches
+begins. Just google a minute you'll find articles which use different
+=python-mode=, different dotemacs, different way to get necessary packages,
+are, what's the fuck[1]! I'm just a newbie, any out-of-box solutions?
+Fortunately, there comes [[https://github.com/jorgenschaefer/elpy][elpy]], which saves our lifes.
+
+Beleive me, within minutes, you'll get an out-of-box Emacs Python "IDE". First,
+make sure you have =python= and =pip= installed, and then type =pip install
+elpy= with root priviledge[2], then choose a completion backend, either =pip install rope=
+or =pip install jedi=[3].
+
+Make sure you have others necessary python tools installed:
+- =pip install virtualenv=
+- =pip install pyflakes=
+- =pip install nose=
+
+There're other annoying problems, one of them is the division between Python 2
+and Python 3. So you may need to replace =pip= with =pip2=, or =python= with
+=python2=, etc. Ah, differrent systems has different favors and naming rules.
+
+There's also a [[https://github.com/gabrielelanaro/emacs-for-python][emacs-for-python]] project in github, which attracts more github
+stars than elpy, but I don't like its approach, since it will clean out all
+your existing dotemacs and replace with a wholly new, which is just useful for
+Python. However, elpy is just a plugin, though it implements lots of features
+with the help from other packages, you can still disable or enable elpy,
+without breaking your existing precious dotemacs.
+
+Thanks [[https://github.com/jorgenschaefer/elpy][elpy]] again, for time it saves for us, through which we can focus more
+on Python, on our life, instead of the details to make choices. Elpy is the
+ultimate out-of-box Emacs Python "IDE" solution.
+
+#+NAME: elpy
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name elpy
+                       :after (progn
+                                (elpy-enable)
+                                (elpy-use-ipython)
+                                (define-key python-mode-map (kbd "RET")
+                                  'newline-and-indent))))
+#+END_SRC
+
+* Footnotes
+[1] See [[http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/][here]], [[http://caisah.info/emacs-for-python/][here]], [[http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/][here]], [[http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/][here]], and [[http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/][here]].
+[2] =pip install pkg= with root can make =pkg= accessible in newly created
+virtualenvs.
+[3] See [[https://github.com/jorgenschaefer/elpy/wiki/Backends][elpy wiki]] to get basic knowledge of elpy completion backend.
