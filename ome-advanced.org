@@ -46,5 +46,6 @@ parent mode, so we need to =turn-off-evil-mode= manually.
                                 (setq evil-insert-state-cursor '("white" bar))
                                 (add-hook 'text-mode-hook 'turn-on-evil-mode)
                                 (add-hook 'prog-mode-hook 'turn-on-evil-mode)
+                                (add-hook 'comint-mode-hook 'turn-on-evil-mode)
                                 (add-hook 'Info-mode-hook 'turn-off-evil-mode))))
 #+END_SRC
