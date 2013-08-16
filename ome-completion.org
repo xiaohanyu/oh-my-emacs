@@ -177,33 +177,17 @@ oh-my-emacs, you can change it as you like. Of course you can disable helm at
 all, then oh-my-emacs will use some other packages such as =ido-mode= as a
 fallback. But I do suggest you to take some time to be familiar with helm.
 
-Helm also has some completion support for [[http://www.gnu.org/software/emacs/manual/html_mono/eshell.html][eshell]], which may be duplicate with
-auto-complete. I only enable this feature for experiment, maybe later I'll use
-auto-complete instead.
-
 #+NAME: helm
 #+BEGIN_SRC emacs-lisp
-  (defun ome-helm-config ()
-    (add-hook 'eshell-mode-hook
-              #'(lambda ()
-                  (define-key eshell-mode-map
-                    (kbd "M-p")
-                    'helm-eshell-history)
-                  (define-key eshell-mode-map
-                    [remap eshell-pcomplete]
-                    'helm-esh-pcomplete)))
-    (global-set-key (kbd "C-x c g") 'helm-do-grep)
-    (global-set-key (kbd "C-x c o") 'helm-occur)
-    (global-set-key (kbd "M-x") 'helm-M-x)
-    (global-set-key (kbd "C-x C-f") 'helm-find-files))
-
   (add-to-list 'el-get-sources
                '(:name helm
-                       :after
-                       (progn
-                         (require 'helm-config)
-                         (helm-mode t)
-                         (ome-helm-config))))
+                       :after (progn
+                                (require 'helm-config)
+                                (helm-mode t)
+                                (global-set-key (kbd "C-x c g") 'helm-do-grep)
+                                (global-set-key (kbd "C-x c o") 'helm-occur)
+                                (global-set-key (kbd "M-x") 'helm-M-x)
+                                (global-set-key (kbd "C-x C-f") 'helm-find-files))))
 
 #+END_SRC
 * Yasnippet
