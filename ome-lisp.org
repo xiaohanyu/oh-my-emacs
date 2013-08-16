@@ -1,0 +1,127 @@
+#+TITLE: Oh My Emacs Lisps
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file contains some settings for lisp dialects including [[* Emacs Lisp][Emacs Lisp]], [[*
+     Scheme][Scheme]], [[* Common Lisp][Common Lisp]], and [[* Clojure][Clojure]].
+
+* Basics
+  :PROPERTIES:
+  :CUSTOM_ID: basic-lisp
+  :END:
+
+This section contains some basic settings which is common to all lisp modes.
+
+#+NAME: basic-lisp
+#+BEGIN_SRC emacs-lisp
+  (defvar ome-lisp-modes '(emacs-lisp-mode
+                           inferior-emacs-lisp-mode
+                           lisp-interaction-mode
+                           scheme-mode
+                           lisp-mode
+                           eshell-mode
+                           slime-repl-mode
+                           nrepl-mode
+                           clojure-mode
+                           common-lisp-mode)
+    "List of Lisp modes.")
+#+END_SRC
+
+* Emacs Lisp
+  :PROPERTIES:
+  :CUSTOM_ID: emacs-lisp
+  :END:
+
+Emacs is really a great "IDE" for developing Elisp programs. This section
+contains some goodies for elisp development.
+
+[[https://github.com/purcell/elisp-slime-nav][elisp-slime-nav]] provide some slime-like shortcuts to find function/variable
+definitions, which is useful when you want to know the details, as you know,
+there's no secret with source code. But the default shortcuts for
+=elisp-slime-nav-find-elisp-thing-at-point= has conflicts with =evil-mode=,
+which is enabled by default by oh-my-emacs, I still didn't figure out a good
+way to solve this, so any help will be appreciated.
+
+#+NAME: emacs-lisp
+#+BEGIN_SRC emacs-lisp
+  (defun ome-remove-elc-on-save ()
+    "If you're saving an elisp file, likely the .elc is no longer valid."
+    (make-local-variable 'after-save-hook)
+    (add-hook 'after-save-hook
+              (lambda ()
+                (if (file-exists-p (concat buffer-file-name "c"))
+                    (delete-file (concat buffer-file-name "c"))))))
+
+  (add-hook 'emacs-lisp-mode-hook 'ome-remove-elc-on-save)
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+
+  (defun ome-elisp-slime-nav-setup ()
+    ;; (defun ome-elisp-slime-nav-keybindings-in-evil ()
+    ;;   (if (and (boundp 'evil-mode) evil-mode)
+    ;;       (progn (define-key elisp-slime-nav-mode-map (kbd "C-c C-d .")
+    ;;                'elisp-slime-nav-find-elisp-thing-at-point)
+    ;;              (define-key elisp-slime-nav-mode-map (kbd "C-c C-d ,")
+    ;;                'pop-tag-mark))))
+    (dolist (hook '(emacs-lisp-mode-hook
+                    lisp-interaction-mode-hook
+                    ielm-mode-hook
+                    eshell-mode-hook))
+      (add-hook hook 'turn-on-elisp-slime-nav-mode)))
+      ;; (add-hook hook 'ome-elisp-slime-nav-keybindings-in-evil)))
+
+  (add-to-list 'el-get-sources
+               '(:name elisp-slime-nav
+                       :after (progn
+                                (ome-elisp-slime-nav-setup))))
+#+END_SRC
+
+** IELM
+   :PROPERTIES:
+   :CUSTOM_ID: ielm
+   :END:
+
+[[http://www.emacswiki.org/emacs/InferiorEmacsLispMode][IELM]] is an alternative to Lisp Interactive mode, you can treat IELM as [[http://emacs-fu.blogspot.com/2011/03/ielm-repl-for-emacs.html][a REPL
+for emacs]]. Though convenient, IELM lacks some import features to be a real
+REPL, such as =python-shell-send-defun= in Emacs 24.3 builtin python mode.
+
+#+NAME: emacs-lisp
+#+BEGIN_SRC emacs-lisp
+  (defun ome-visit-ielm ()
+    "Switch to default `ielm' buffer.
+  Start `ielm' if it's not already running."
+    (interactive)
+    (ome-start-or-switch-to 'ielm "*ielm*"))
+
+  (define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ome-visit-ielm)
+  (add-to-list 'ac-modes 'inferior-emacs-lisp-mode)
+  (add-hook 'ielm-mode-hook 'ac-emacs-lisp-mode-setup)
+  (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+#+END_SRC
+
+** Eshell
+   :PROPERTIES:
+   :CUSTOM_ID: eshell
+   :END:
+
+I think you can treat [[http://www.gnu.org/software/emacs/manual/html_mono/eshell.html][Eshell]] as a combination of traditional Unix shell and
+IELM. Eshell is a command shell written in Emacs Lisp, which means it's as
+portable as Emacs itself. In fact, Eshell replicates most of the features and
+commands from GNU CoreUtils and the Bourne-like shells, thus Eshell will
+function identically on any environment Emacs itself runs on.
+
+To your surprise, Eshell does not inherit from =comint-mode=, which means that
+hooks and routines for =comint-mode= won't work for Eshell. For more details
+about how to mastering eshell, see [[http://www.masteringemacs.org/articles/2010/12/13/complete-guide-mastering-eshell/][MASTERING ESHELL]].
+
+#+NAME: eshell
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (add-to-list 'ac-sources 'ac-source-pcomplete)))
+
+  (add-to-list 'ac-modes 'eshell-mode)
+  (add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'eshell-mode-hook 'ac-emacs-lisp-mode-setup)
+#+END_SRC

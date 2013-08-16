@@ -11,7 +11,7 @@
 
 * Introduction
   :PROPERTIES:
-  :CUSTOME_ID: introduction
+  :CUSTOM_ID: introduction
   :END:
 
 This dotemacs project aims to provide an out-of-the-box emacs configuration
@@ -31,7 +31,7 @@ The latest version is at https://github.com/xiaohanyu/oh-my-emacs.
 
 ** Learning Emacs
    :PROPERTIES:
-   :CUSTOME_ID: learning
+   :CUSTOM_ID: learning
    :END:
 This project won't teach you anything about how to use emacs or why use
 emacs. However, I'll give you some useful resources if you're new to emacs.
@@ -67,7 +67,7 @@ Wow, what a long journey, if you're tired, you can [[http://emacsrocks.com/][roc
 
 ** Installation
    :PROPERTIES:
-   :CUSTOME_ID: installation
+   :CUSTOM_ID: installation
    :END:
 
 1. Install Emacs version 24 or greater.  Use your package manager if
@@ -152,7 +152,7 @@ elisp code embedded in this file.
   :END:
 
 ** oh-my-emacs basics
-- Functions for loading other ports of oh-my-emacs.
+- Functions for loading other parts of oh-my-emacs.
 #+NAME: ome-load
 #+BEGIN_SRC emacs-lisp
   (defun ome-load (file &optional header-or-tag)
@@ -206,6 +206,28 @@ elisp code embedded in this file.
              partial-file)
          file))
       (el-get 'sync (mapcar 'el-get-source-name el-get-sources))))
+
+
+#+END_SRC
+
+
+** oh-my-emacs core functions
+   :PROPERTIES:
+   :CUSTOM_ID: core
+   :END:
+
+#+NAME: core
+#+BEGIN_SRC emacs-lisp
+(defun ome-start-or-switch-to (function buffer-name)
+    "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
+  Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
+  the current buffer."
+    (if (not (get-buffer buffer-name))
+        (progn
+          (split-window-sensibly (selected-window))
+          (other-window 1)
+          (funcall function))
+      (switch-to-buffer-other-window buffer-name)))
 #+END_SRC
 
 * Load settings
@@ -220,6 +242,7 @@ elisp code embedded in this file.
   (ome-load "ome-advanced.org")
   (ome-load "ome-writing.org")
   (ome-load "ome-cc.org")
+  (ome-load "ome-lisp.org")
   (ome-load "ome-python.org")
   (ome-load "ome-auto-mode.org")
 #+END_SRC
