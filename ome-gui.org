@@ -108,3 +108,17 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
                        :after (progn
                                 (require 'powerline))))
 #+END_SRC
+* Yascroll
+  :PROPERTIES:
+  :CUSTOM_ID: yascroll
+  :END:
+
+[[https://github.com/m2ym/yascroll-el][yascroll.el]] is Yet Another Scroll Bar Mode for GNU Emacs.
+
+#+NAME: yascroll
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name yascroll
+                       :after (progn
+                                (global-yascroll-bar-mode 1))))
+#+END_SRC
