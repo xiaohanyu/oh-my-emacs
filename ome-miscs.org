@@ -155,5 +155,44 @@ of the time. But we still turn on it globally to make it a fallback when
   (global-visual-line-mode t)
 #+END_SRC
 
+** Projectile
+   :PROPERTIES:
+   :CUSTOM_ID: projectile
+   :END:
+
+Emacs is good at file/buffer management, but lacks support for project level
+management. Fortunately, [[https://github.com/bbatsov/projectile][projectile]], a project created by [[http://batsov.com/][Bozhidar Batsov]], also
+the author of [[https://github.com/bbatsov/prelude][emacs prelude]], solved this problem in a lightweight, elegant,
+flexible and portable way.
+
+The concept of a project in projectile is pretty easy and basic -- just s
+folder containing special file. "Currently =git=, =mercurial=, =darcs= and
+=bazaar= repos are considered projects by default. So are =lein=, =maven=,
+=sbt=, =rebar= and =bundler= projects. If you want to mark a folder manually as
+a project just create an empty .projectile file in it."
+
+Projectile is flexible, you can use different completion backends, such as the
+emacs builtin =ido= with [[https://github.com/lewang/flx][flx-ido]], [[https://github.com/d11wtq/grizzl][grizzl]], or just regular completion, it also
+offers =helm= integration, which is great in oh-my-emacs since oh-my-emacs
+enables =helm= by default. But there's still room for improvement, I think, if
+one project contains multiple files with the same name, you can't
+differentiate them in helm's "projectile files list", so maybe add the
+fullpath aside to filename is a good idea.
+
+With projectile, you can find/grep/list files *within a project*, switch/view
+a list of known project you have viewed recently, kills all project buffers
+with a single shortcut, etc. Sounds great, ha? So, don't hesitate any more,
+just enjoy it!
+
+#+NAME: projectile
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name projectile
+                       :after (progn
+                                (projectile-global-mode)
+                                (setq projectile-enable-caching t)
+                                (global-set-key (kbd "C-x c h") 'helm-projectile))))
+#+END_SRC
+
 * Footnotes
 [1] See [[http://git-scm.com/book/en/Git-Internals][Git Internals]] to technical details.
