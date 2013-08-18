@@ -122,3 +122,26 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
                        :after (progn
                                 (global-yascroll-bar-mode 1))))
 #+END_SRC
+
+* Minimap
+  :PROPERTIES:
+  :CUSTOM_ID: minimap
+  :END:
+
+Minimap comes from [[http://www.sublimetext.com/][Sublime Text]], which offers a code topograph feature to your
+editor. It is very useful for editing huge code files, or get a quick overview
+of your code. Emacs minimap comes from http://www.emacswiki.org/emacs/MiniMap,
+but it has some minor inconvenience, so I adopt
+https://github.com/dustinlacewell/emacs-minimap/, but it still has some
+problems, such as unable to set the position of minimap sidebar, and the code
+hasn't been maintained for two years. So maybe this is a signal to refork?
+
+#+NAME: minimap
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name minimap
+                       :description "Minimap sidebar for Emacs"
+                       :type git
+                       :url "git@github.com:dustinlacewell/emacs-minimap.git"
+                       :features minimap))
+#+END_SRC
