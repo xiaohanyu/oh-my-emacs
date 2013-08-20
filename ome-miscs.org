@@ -194,5 +194,148 @@ just enjoy it!
                                 (global-set-key (kbd "C-x c h") 'helm-projectile))))
 #+END_SRC
 
+** Smartparens
+   :PROPERTIES:
+   :CUSTOM_ID: smartparens
+   :END:
+
+#+BEGIN_QUOTE
+Smartparens is modern minor mode for Emacs that /deals with parens pairs and
+tries to be smart about it/. It is a unification and enhancement effort to
+combine funcitonality of several existing packages in a single, common and
+straightforward way (and most of all compatible). These packages include
+[[https://github.com/capitaomorte/autopair][autopair]], [[http://code.google.com/p/emacs-textmate/][textmate]], [[https://github.com/rejeep/wrap-region][wrap-region]], [[http://emacswiki.org/emacs/ParEdit][paredit]] and others with similar
+philosophies. It also adds support for many more features. [[https://github.com/Fuco1/smartparens/wiki#wiki-what-is-this-package-about?][Here's]] a highlight
+of some features, for a complete list and detailed documentation look in the
+[[https://github.com/Fuco1/smartparens/wiki#wiki-information-for-new-users][manual]].
+
+For the complete picture of what is it about, visit the [[https://github.com/Fuco1/smartparens/wiki][documentation wiki]].
+#+END_QUOTE
+
+Believe me, [[https://github.com/Fuco1/smartparens/wiki][smartparens]] is the future, it is the ultimate solution for paren
+pairs management in Emacs world. It is flexible, uniform and highly
+customizable. It is also bundled with a comprehensive documentation, besides
+the aforementioned wiki, you can also =M-x sp-cheat-sheet= to get live
+examples, which, I think, is really a innovative feature.
+
+Smartparens didn't provide keybindings for most of its commands by default, so
+you must define proper =sp-keymap= by yourself, however, smartparens does
+provide =sp-use-paredit-bindings= and =sp-use-smartparens-bindings= as a good
+starting point. Oh-my-emacs adopt its own keybindings for smartparens, which
+defines =M-s= as the prefix key. The default keybindings provided by
+smartparens has some conflicts with =evil='s =ESC= key. If you have any other
+good suggestions, please tell me, thanks!
+
+I spent about one week's sparetime just learning this amazing
+package. Smartparens is not as strict as paredit, for some people that kind of
+strictness seems annoying and weird at first. Paredit is [[http://emacsrocks.com/e14.html][powerful]], so
+smartparens import many features from paredit and provides a compatible, and
+more powerful, flexible version. For any serious Lispers, I recommand you spend
+some time to master these wonderful commands, which will make your life easier.
+
+#+NAME: smartparens
+#+BEGIN_SRC emacs-lisp
+  (defun ome-create-newline-and-enter-sexp (&rest _ignored)
+    "Open a new brace or bracket expression, with relevant newlines and indent. "
+    (newline)
+    (indent-according-to-mode)
+    (forward-line -1)
+    (indent-according-to-mode))
+
+  (defun ome-sp-config ()
+    ;; global
+    (require 'smartparens-config)
+    (setq sp-autoskip-closing-pair 'always)
+    (setq sp-navigate-close-if-unbalanced t)
+    (smartparens-global-mode t)
+
+    ;; highlights matching pairs
+    (show-smartparens-global-mode t)
+
+    ;; keybinding management
+    (define-key sp-keymap (kbd "M-s f") 'sp-forward-sexp)
+    (define-key sp-keymap (kbd "M-s b") 'sp-backward-sexp)
+
+    (define-key sp-keymap (kbd "M-s d") 'sp-down-sexp)
+    (define-key sp-keymap (kbd "M-s D") 'sp-backward-down-sexp)
+    (define-key sp-keymap (kbd "M-s a") 'sp-beginning-of-sexp)
+    (define-key sp-keymap (kbd "M-s e") 'sp-end-of-sexp)
+
+    (define-key sp-keymap (kbd "M-s u") 'sp-up-sexp)
+    ;; (define-key emacs-lisp-mode-map (kbd ")") 'sp-up-sexp)
+    (define-key sp-keymap (kbd "M-s U") 'sp-backward-up-sexp)
+    (define-key sp-keymap (kbd "M-s t") 'sp-transpose-sexp)
+
+    (define-key sp-keymap (kbd "M-s n") 'sp-next-sexp)
+    (define-key sp-keymap (kbd "M-s p") 'sp-previous-sexp)
+
+    (define-key sp-keymap (kbd "M-s k") 'sp-kill-sexp)
+    (define-key sp-keymap (kbd "M-s w") 'sp-copy-sexp)
+
+    (define-key sp-keymap (kbd "M-s s") 'sp-forward-slurp-sexp)
+    (define-key sp-keymap (kbd "M-s r") 'sp-forward-barf-sexp)
+    (define-key sp-keymap (kbd "M-s S") 'sp-backward-slurp-sexp)
+    (define-key sp-keymap (kbd "M-s R") 'sp-backward-barf-sexp)
+    (define-key sp-keymap (kbd "M-s F") 'sp-forward-symbol)
+    (define-key sp-keymap (kbd "M-s B") 'sp-backward-symbol)
+
+    (define-key sp-keymap (kbd "M-s [") 'sp-select-previous-thing)
+    (define-key sp-keymap (kbd "M-s ]") 'sp-select-next-thing)
+
+    (define-key sp-keymap (kbd "M-s M-i") 'sp-splice-sexp)
+    (define-key sp-keymap (kbd "M-s <delete>") 'sp-splice-sexp-killing-forward)
+    (define-key sp-keymap (kbd "M-s <backspace>") 'sp-splice-sexp-killing-backward)
+    (define-key sp-keymap (kbd "M-s M-<backspace>") 'sp-splice-sexp-killing-around)
+
+    (define-key sp-keymap (kbd "M-s M-d") 'sp-unwrap-sexp)
+    (define-key sp-keymap (kbd "M-s M-b") 'sp-backward-unwrap-sexp)
+
+    (define-key sp-keymap (kbd "M-s M-t") 'sp-prefix-tag-object)
+    (define-key sp-keymap (kbd "M-s M-p") 'sp-prefix-pair-object)
+    (define-key sp-keymap (kbd "M-s M-c") 'sp-convolute-sexp)
+    (define-key sp-keymap (kbd "M-s M-a") 'sp-absorb-sexp)
+    (define-key sp-keymap (kbd "M-s M-e") 'sp-emit-sexp)
+    (define-key sp-keymap (kbd "M-s M-p") 'sp-add-to-previous-sexp)
+    (define-key sp-keymap (kbd "M-s M-n") 'sp-add-to-next-sexp)
+    (define-key sp-keymap (kbd "M-s M-j") 'sp-join-sexp)
+    (define-key sp-keymap (kbd "M-s M-s") 'sp-split-sexp)
+    (define-key sp-keymap (kbd "M-s M-r") 'sp-raise-sexp)
+
+    ;; pair management
+    (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
+
+    ;; markdown-mode
+    (sp-with-modes '(markdown-mode gfm-mode rst-mode)
+      (sp-local-pair "*" "*" :bind "C-*")
+      (sp-local-tag "2" "**" "**")
+      (sp-local-tag "s" "```scheme" "```")
+      (sp-local-tag "<"  "<_>" "</_>" :transform 'sp-match-sgml-tags))
+
+    ;; tex-mode latex-mode
+    (sp-with-modes '(tex-mode plain-tex-mode latex-mode)
+      (sp-local-tag "i" "\"<" "\">"))
+
+    ;; html-mode
+    (sp-with-modes '(html-mode sgml-mode)
+      (sp-local-pair "<" ">"))
+
+    ;; lisp modes
+    (sp-with-modes sp--lisp-modes
+      (sp-local-pair "(" nil :bind "C-("))
+
+    (dolist (mode '(c-mode c++-mode java-mode))
+      (sp-local-pair mode
+                     "{"
+                     nil
+                     :post-handlers
+                     '((ome-create-newline-and-enter-sexp "RET")))))
+
+  (add-to-list 'el-get-sources
+               '(:name smartparens
+                       :after (progn
+                                (ome-sp-config))))
+
+#+END_SRC
+
 * Footnotes
 [1] See [[http://git-scm.com/book/en/Git-Internals][Git Internals]] to technical details.
