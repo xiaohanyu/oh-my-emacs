@@ -63,3 +63,22 @@ makefile.
 #+BEGIN_SRC emacs-lisp
   (add-hook 'makefile-mode-hook 'indent-tabs-mode)
 #+END_SRC
+
+* CMake
+  :PROPERTIES:
+  :CUSTOM_ID: cmake
+  :END:
+
+[[http://www.cmake.org/][CMake]] is my favourate build tool for C/C++ software. To be precise, CMake is
+not a build tool, since it does not build the project, instead, it generates
+the files needed by your build tool(GNU make, Visual Studio, etc). The only
+thing that I dislike about CMake is its syntax, which is weird and hard to
+type. Anyway, it is much better than conventional [[http://en.wikipedia.org/wiki/GNU_build_system][Autotools]], IMHO, Autotools is
+quite complicated, brings more problems than it solves. Do not use it unless
+you have to.
+
+#+NAME: cmake
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name cmake-mode))
+#+END_SRC
