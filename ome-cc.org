@@ -1,0 +1,65 @@
+#+TITLE: Oh My Emacs Advanced
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file contains some settings for =cc-mode=.
+
+* Basic CC-Mode Settings
+  :PROPERTIES:
+  :CUSTOM_ID: basic-cc
+  :END:
+
+=cc-mode= is not a single mode, actually, =cc-mode= is a collection of emacs
+major mode for "editing files containing C, C++, Objective-C, Java, CORBA IDL
+(and the variants CORBA PSDL and CIDL), Pike and AWK code."
+
+Although =cc-mode= is a bit old, it is still powerful and flexible. It
+contains a powerful [[http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html#Indentation-Engine-Basics][indentation engine]], supports various builtin coding
+[[http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html#Styles][styles]], and provides various useful [[http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html#Minor-Modes][minor modes]].
+
+You do need some basic elisp knowledge to master the power of =cc-mode=. For
+example, you need to know what the difference between =setq= and
+=setq-default=, some basic knowledge about elisp hooks, etc.
+
+#+NAME: basic
+#+BEGIN_SRC emacs-lisp
+  (setq c-default-style '((java-mode . "java")
+                          (awk-mode . "awk")
+                          (c-mode . "k&r")
+                          (c++-mode . "stroustrup")
+                          (other . "linux")))
+
+  (setq-default c-basic-offset 4)
+
+  (defun ome-c-initialization-hook ()
+    (define-key c-mode-base-map (kbd "RET") 'c-context-line-break))
+
+  (add-hook 'c-initialization-hook 'ome-c-initialization-hook)
+
+  (defun ome-c-mode-common-hook ()
+    (add-to-list 'c-cleanup-list 'defun-close-semi)
+    (c-toggle-hungry-state)
+    (c-toggle-auto-newline)
+    (subword-mode 1))
+
+  ;; this will affect all modes derived from cc-mode, like
+  ;; java-mode, php-mode, etc
+  (add-hook 'c-mode-common-hook 'ome-c-mode-common-hook)
+#+END_SRC
+
+* Makefile Settings
+  :PROPERTIES:
+  :CUSTOM_ID: makefile
+  :END:
+
+The only thing you need to do in =makefile-mode= is to enable tab indentation
+instead of space indentation, since =makefile-mode= relys on tabs being tabs
+instead of a mixture of spaces and tabs, which I think, is a bug, but used as
+a feature of makefile. Ah, weird details and historial dirty quirks of
+makefile.
+
+#+NAME: makefile
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'makefile-mode-hook 'indent-tabs-mode)
+#+END_SRC
