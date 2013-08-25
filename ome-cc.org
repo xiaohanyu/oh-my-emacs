@@ -119,3 +119,65 @@ If you like, you can even integrate Doxygen to CMake workflow, see [[http://maje
                                 (add-hook 'c-mode-common-hook 'doxymacs-mode)
                                 (add-hook 'c-mode-common-hook 'doxymacs-font-lock))))
 #+END_SRC
+
+* Indexing with Cscope
+  :PROPERTIES:
+  :CUSTOM_ID: cscope
+  :END:
+
+There're multiple tools for source browsing in Emacs, such as the builtin
+[[http://www.gnu.org/software/emacs/manual/html_node/emacs/Tags.html][etags]], and [[http://ctags.sourceforge.net/][ctags]], etc. While etags/ctags supports multiple programming
+languages, [[http://cscope.sourceforge.net/][cscope]] was designed for C code, however, you can do some [[http://cscope.sourceforge.net/cscope_vim_tutorial.html][hack]] to
+make it work with C++/Java.
+
+The limitation of tag-like source code indexing and browsing tools is, all
+these tools lacks deep understanding of the programming language, all they know
+is just symbols/tokens, they know little about semantics, so you may find
+unwanted or wrong results with tag tools. Cscope understands some semantics of
+C programming languages, such as symbol/function definitions, and it will lead
+you to the right place in C programming language. No more promise for other
+lanauges since cscope have no knowledge of OOP.
+
+Cscope has a bundled =xcscope.el=, which provide an Emacs interface to
+cscope. The default keybindings use the =C-c s= prefix:
+- Finding:
+  - =C-c s s= Find symbol.
+  - =C-c s d= Find global definition.
+  - =C-c s g= Find global definition (alternate binding).
+  - =C-c s G= Find global definition without prompting.
+  - =C-c s c= Find functions calling a function.
+  - =C-c s C= Find called functions (list functions called from a function).
+  - =C-c s t= Find text string.
+  - =C-c s e= Find egrep pattern.
+  - =C-c s f= Find a file.
+  - =C-c s i= Find files #including a file.
+- Navigation through the search results:
+  - =C-c s b= Display *cscope* buffer.
+  - =C-c s B= Auto display *cscope* buffer toggle.
+  - =C-c s n= Next symbol.
+  - =C-c s N= Next file.
+  - =C-c s p= Previous symbol.
+  - =C-c s P= Previous file.
+  - =C-c s u= Pop mark.
+- Setting and unsetting the variable, =cscope-initial-directory=, (location
+  searched for the cscope database directory):
+  - =C-c s a= Set initial directory.
+  - =C-c s A= Unset initial directory.
+- Database maintenance:
+  - =C-c s L= Create list of files to index.
+  - =C-c s I= Create list and index.
+  - =C-c s E= Edit list of files to index.
+  - =C-c s W= Locate this buffer's cscope directory ("W" --> "where").
+  - =C-c s S= Locate this buffer's cscope directory. (alternate binding: "S"
+    --> "show").
+  - =C-c s T= Locate this buffer's cscope directory. (alternate binding: "T"
+    --> "tell").
+  - =C-c s D= Dired this buffer's directory.
+
+#+NAME: cscope
+#+BEGIN_SRC emacs-lisp
+  (if (executable-find "cscope")
+      (add-to-list 'el-get-sources
+                   '(:name xcscope)))
+
+#+END_SRC
