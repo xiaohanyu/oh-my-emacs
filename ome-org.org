@@ -98,3 +98,44 @@ directory) file for information on the functions, and see
 
 Code blocks can be loaded into the library of babel from any Org-mode
 file using the `org-babel-lob-ingest' function.
+
+** Htmlize
+   :PROPERTIES:
+   :CUSTOM_ID: htmlize
+   :END:
+
+[[http://www.emacswiki.org/emacs/Htmlize][htmlize.el]] is a package for exporting the contents of an Emacs buffer to HTML
+while respecting display properties such as colors, fonts, underlining,
+invisibility, etc.
+
+Org-mode can utilize =htmlize= when =org-export-as-html= for source code syntax
+highlighting if =htmlize= is available.
+
+However, there's a minor problem with oh-my-emacs's default settings of
+=rainbow-delimiters-mode=. Functions such as =htmlize-buffer= will report an
+error: =htmlize-make-face-map: Wrong type argument: listp,
+"rainbow-delimiters-depth-1-face"=, so I do a small hack to overcome this by
+using the elisp's =defadvice= utility.
+
+Actually, =rainbow-delimiters-mode= still has some problems within org-mode's
+code block, which may be a bug of =rainbow-delimiters-mode=.
+
+#+NAME: htmlize
+#+BEGIN_SRC emacs-lisp
+  (defadvice htmlize-buffer-1 (around ome-htmlize-buffer-1 disable)
+    (rainbow-delimiters-mode -1)
+    ad-do-it
+    (rainbow-delimiters-mode t))
+
+  (defun ome-htmlize-setup ()
+    (if (el-get-read-package-status 'rainbow-delimiters)
+        (progn
+          (ad-enable-advice 'htmlize-buffer-1 'around 'ome-htmlize-buffer-1)
+          (ad-activate 'htmlize-buffer-1))))
+
+  (add-to-list 'el-get-sources
+               '(:name htmlize)
+               :after (progn
+                        (ome-htmlize-setup)))
+
+#+END_SRC
