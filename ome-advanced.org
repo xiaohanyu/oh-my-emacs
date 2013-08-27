@@ -33,6 +33,11 @@ all modes which focus on editing, by editing I mean, modes such as =c-mode=,
 would not =turn-on-evil-mode= by default. And since =Info-mode= didn't has a
 parent mode, so we need to =turn-off-evil-mode= manually.
 
+If you need to turn off evil temporatily for a single buffer, use
+=M-x evil-local-mode= instead of =M-x evil-mode=, since the latter will turn
+off evil-mode globally, which means, evil-mode will be turned off for the whole
+Emacs session.
+
 #+NAME: evil
 #+TODO: set different evil cursor color based on emacs color-theme.
 #+BEGIN_SRC emacs-lisp
