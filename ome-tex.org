@@ -1,0 +1,221 @@
+#+TITLE: Oh My Emacs TeX
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* AUCTeX
+  :PROPERTIES:
+  :CUSTOM_ID: auctex
+  :END:
+
+[[http://www.gnu.org/software/auctex/][AUCTeX]] is the predominant \TeX{}/\LaTeX{} writing environment for
+Emacs/XEmacs.
+
+** Prerequisites and Installation
+\TeX{} is a long history legend in computer typesetting. To configure a
+working \TeX{} environment is far beyond the scope of this project. However,
+I can give you some hint to install a \TeX{} system on Linux. If you are
+- a Ubuntu/Debian/Mint user, install texlive by =sudo apt-get install
+  texlive-full=
+- a Arch Linux user, install texlive by =sudo pacman -S texlive-most
+  texlive-langcjk=
+- a Fedora user, install texlive by =sudo yum -S texlive-all=
+- a SuSE user, install texlive by =sudo zypper in texlive-xetex=
+
+If you are not lucky enough, you should follow the official [[http://www.tug.org/texlive/][texlive]]
+instructions to install it.
+
+There're other annoying problems if you're a [[http://en.wikipedia.org/wiki/CJK_characters][CJK]] user, such as fonts and
+package configurion in \TeX{} documents, but this is further beyond the scope
+of this project. So refer to necessary [[https://tug.org/][TUG]]s, or BBS for help. For chinese user,
+[[http://www.ctex.org/][CTEX]] is a good place to start your journey. [[http://zzg34b.w3.c361.com/][LaTeX编辑部]] also provides lots of
+useful resources written in Chinese.
+
+For all \TeX{} users, the Comprehensive TEX Archive Network ([[http://www.ctan.org/][CTAN]]) is your
+lifelong friend, which act as the central place for all kinds of material
+around \TeX{}. The famous Stack Exchange Network also provides a
+http://tex.stackexchange.com/ which focus on \TeX{} related questions.
+
+Enough, enjoy your journey to \TeX{} world! Now it's time to come back to
+AUCTeX. Besides a working \TeX{} installation, you also need =autoconf= and
+=texinfo= package for =el-get-install auctex=, and a recent [[http://www.ghostscript.com/][Ghostscript]] for
+=preview-latex= in both [[http://en.wikipedia.org/wiki/Device_independent_file_format][DVI]] and [[http://en.wikipedia.org/wiki/Pdf][PDF]] mode.
+
+Finally, if you're tired or afraid to setup a working \TeX{} environment,
+[[https://www.writelatex.com/][writelatex]] provides a really instance starting point with no pain, just try it
+before you fall in love with \TeX{} world.
+
+** Keybindings
+AUCTeX is really flexible and customizable, it also provides a rich set of
+menubar entries. Here's a list of most commonly used keybindings in AUCTeX:
+- Editing
+  - =C-c C-s= =LaTeX-section=
+  - =C-c C-e= =LaTeX-environment=
+  - =C-c C-m= =TeX-insert-macro=
+  - =C-c ]= =LaTeX-close-environment=
+- Marking and Commenting
+  - =C-c *= =LaTeX-mark-section=
+  - =C-c .= =LaTeX-mark-environment=
+  - =C-c ;= =TeX-comment-or-uncomment-region=
+  - =C-c %= =TeX-comment-or-uncomment-paragraph=
+- Folding:
+  - =C-c C-o C-b= =TeX-fold-buffer=
+  - =C-c C-o b= =TeX-fold-clearout-buffer=
+- Command Controlling
+  - =C-c C-c= =TeX-command-master=
+  - =C-c C-r= =TeX-command-region=
+  - =C-c C-b= =TeX-command-buffer=
+  - =C-c C-k= =TeX-kill-job=
+  - =C-c C-l= =TeX-recenter-output-buffer=
+  - =C-c ^= =TeX-home-buffer=
+
+** Checking
+[[http://www.ctan.org/tex-archive/support/lacheck/][lacheck]] and [[http://baruch.ev-en.org/proj/chktex/][chktex]] is the lint tool for \TeX{}, you can install them in Ubuntu
+by =sudo apt-get install lacheck chktex=. AUCTeX has direct support for
+=lacheck= and =chktex=. You can start =lacheck= with =C-c C-c Check <RET>= and
+=chktex= with =C-c C-c ChkTeX <RET>=.
+
+Each of the two utilities will find some errors the other doesn't, but =chktex=
+is more configurable, allowing you to create your own errors
+
+** Reftex
+- =C-c == =reftex-toc= will show a table of contents of the document.
+- =C-c (= =reftex-label= to insert a label at point.
+- =C-c [= =reftex-citation= to insert a citations from BibTeX database.
+
+** Tips and Tricks
+[[http://tex.stackexchange.com/questions/52179/what-is-your-favorite-emacs-and-or-auctex-command-trick][Here]]'s some tips and tricks about AUCTeX.
+
+** Oh-my-emacs settings
+- Use =xetex= as the default =TeX-engine= for better support for \TeX{} font
+  selection and PDF export.
+- Enable =outline-minor-mode= and =flyspell-mode=.
+- Enable =TeX-interactive-mode=, =TeX-PDF-mode=, =TeX-fold-mode= and
+  =reftex-mode=.
+- Favors [[http://okular.kde.org/][Okular]] and [[https://projects.gnome.org/evince/][Evince]] as the default viewer in Linux, and fallbacks to
+  =xdg-open= if both Okular and Evince is unavailable. Since I don't have a
+  Windows or Mac OS X environment, patches are always welcome.
+
+** Coordinations with other packages
+Oh-my-emacs adopts some other awesome packages such as =smartparens= and
+=evil=, which has some conflicts with AUCTeX. so there need some hack, which,
+is always the main topic with Emacs.
+
+=smartparens-latex= provide some goodies for \TeX{} editing. But we need to
+ensure =smartparens= is available before we =require 'smartparens-latex=.
+
+=smartparens= still has some weired problems for inserting "$" in \TeX{}, which
+is a weird problem. In fact, both AUCTeX and =smartparens= provides some pair
+management functions, which may be overlapping. AUCTeX provide a
+=TeX-electric-math=, while =smartparens= was born for pair management. Worse,
+the following =cdlatex.el= also provides some pair management functions. Ah, we
+need some coordination between them. So any ideas or patches will be
+appreciated.
+
+Another oh-my-emacs package, =evil=, shadowed some keybindings for AUCTeX's
+=reftex-toc-mode=. However, I only enable =evil-mode= in =text-mode-hook= and
+=prog-mode-hook=, and =reftex-toc-mode= is derived from =fundamental-mode=, I
+have no idea why =evil-local-mode= is enabled by default when entering
+=reftex-toc-mode=, so I have to =turn-off-evil-mode= explicitly.
+
+** Todo
+- Add =auto-complete= support,
+  https://github.com/monsanto/auto-complete-auctex.
+
+#+NAME: auctex
+#+BEGIN_SRC emacs-lisp
+  (defun ome-auctex-setup ()
+    (when (require 'smartparens nil 'noerror)
+      (require 'smartparens-latex))
+    (setq TeX-auto-save t)                ; Automatically save style information
+                                          ; when saving the buffer
+    (setq TeX-parse-self t)               ; Parse file after loading it if no
+                                          ; style hook is found for it.
+    (setq LaTeX-syntactic-comment t)
+    (setq TeX-auto-untabify t)            ; remove all tabs before saving
+    (setq reftex-plug-into-AUCTeX t)
+    (setq-default TeX-engine 'xetex)      ; use xelatex by default
+
+    ;; Currently, only linux system are tested. Patches for Mac OS and Windows
+    ;; are always welcome.
+    (cond
+     ((eq system-type 'gnu/linux)
+      (cond
+       ((executable-find "okular")
+        (setq TeX-view-program-selection
+              '((output-pdf "Okular")
+                (output-dvi "Okular"))))
+       ((executable-find "evince")
+        (setq TeX-view-program-selection
+              '((output-pdf "Evince")
+                (output-dvi "Evince"))))
+       (t
+        (setq TeX-view-program-selection
+              '((output-pdf "xdg-open")
+                (output-dvi "xdg-open")))))))
+
+    (add-hook 'TeX-mode-hook
+              (lambda ()
+                (outline-minor-mode t)
+                (flyspell-mode t)
+                (TeX-interactive-mode t)
+                (TeX-PDF-mode t)
+                (TeX-fold-mode t)))
+
+    (add-hook 'LaTeX-mode-hook
+              (lambda ()
+                (LaTeX-math-mode t)
+                (reftex-mode t)))
+
+    (add-hook 'reftex-toc-mode-hook
+              (lambda ()
+                (when (featurep 'evil)
+                  (turn-off-evil-mode)))))
+
+  (add-to-list 'el-get-sources
+               '(:name auctex
+                       :after (progn
+                                (ome-auctex-setup))))
+
+#+END_SRC
+
+* CDLaTeX
+  :PROPERTIES:
+  :CUSTOM_ID: cdlatex
+  :END:
+
+#+BEGIN_QUOTE
+CDLaTeX - more LaTeX functionality for Emacs and XEmacs
+
+CDTeX is a minor mode which re-implements many features also found in the
+AUCTeX LaTeX mode. The reason for this is mainly historical - much of it was
+written before I knew about AUCTeX. So check this out if you would like to try
+a different implementation.  Here are some of the differences: Environment
+insertion is template based, and not hook based. Keyword commands (which are
+executed by typing a short (2-4 letters) keyword into the buffer, followed by
+TAB) give very rapid access to the main environment templates and mathematical
+constructs. CDLaTeX knows the difference between text mode and math mode in
+LaTeX and adapts automatically to that. You can download CDLaTeX here.
+
+-- http://staff.science.uva.nl/~dominik/Tools/cdlatex/
+#+END_QUOTE
+
+The comments in =cdlatex.el= said that "CDLaTeX requires texmathp.el which is
+distributed with AUCTeX. Starting with Emacs 21.3, texmathp.el will be part of
+Emacs.", however, I didn't find any =texmathp.el= with current emacs
+distribution. So CDLaTeX requires AUCTeX as a dependency, which means it didn't
+work with Emacs builtin =tex-mode= anymore.
+
+#+NAME: cdlatex
+#+BEGIN_SRC emacs-lisp
+  (defun ome-cdlatex-setup ()
+    (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+    (add-hook 'latex-mode-hook 'turn-on-cdlatex))
+
+  (when (string= (el-get-package-status 'auctex) "installed")
+    (add-to-list 'el-get-sources
+                 '(:name cdlatex-mode
+                         :after (progn
+                                  (ome-cdlatex-setup)))))
+
+#+END_SRC

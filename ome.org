@@ -248,7 +248,7 @@ Till now, Oh-my-emacs includes:
   lisp, scheme and clojure.
 - [[file:ome-python.org][ome-python.org]]: python settings, life is short, =elpy= is amazing.
 - [[file:ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
-
+- [[file:ome-tex.org][ome-tex.org]]: AUCTeX and CDLaTeX for \TeX{} editing.
 
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
@@ -264,6 +264,7 @@ Till now, Oh-my-emacs includes:
   (ome-load "ome-lisp.org")
   (ome-load "ome-python.org")
   (ome-load "ome-auto-mode.org")
+  (ome-load "ome-tex.org")
 #+END_SRC
 
 * Footnotes
