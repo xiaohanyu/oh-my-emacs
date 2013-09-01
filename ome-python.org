@@ -42,19 +42,27 @@ begins. Just google a minute you'll find articles which use different
 are, what's the fuck[1]! I'm just a newbie, any out-of-box solutions?
 Fortunately, there comes [[https://github.com/jorgenschaefer/elpy][elpy]], which saves our lifes.
 
-Beleive me, within minutes, you'll get an out-of-box Emacs Python "IDE". First,
-make sure you have =python= and =pip= installed, and then type =pip install
-elpy= with root priviledge[2], then choose a completion backend, either =pip install rope=
-or =pip install jedi=[3].
+Just like other big emacs packages, elpy has some external dependencies. But
+don't be afraid, beleive me, within minutes, you'll get an out-of-box Emacs
+Python "IDE". First, make sure you have =python= and =pip= installed, and then
+type =pip install elpy= with root priviledge[2], then choose a completion
+backend, either =pip install rope= or =pip install jedi= [3].
 
 Make sure you have others necessary python tools installed:
 - =pip install virtualenv=
 - =pip install pyflakes=
 - =pip install nose=
 
+If you're lucky enough, you can fire up Emacs and start python work right now.
+
 There're other annoying problems, one of them is the division between Python 2
 and Python 3. So you may need to replace =pip= with =pip2=, or =python= with
 =python2=, etc. Ah, differrent systems has different favors and naming rules.
+
+The second thing is, elpy requires Emacs version >= 24.3, since Emacs 24.3
+ships with a new =python.el= [4], which, actually, is the aforementioned
+[[https://github.com/fgallina/python.el][fgallina]]'s =python.el=. So you may need to upgrade your builin =python.el=, but
+don't worry, oh-my-emacs will handle this for you!
 
 There's also a [[https://github.com/gabrielelanaro/emacs-for-python][emacs-for-python]] project in github, which attracts more github
 stars than elpy, but I don't like its approach, since it will clean out all
@@ -76,6 +84,10 @@ ultimate out-of-box Emacs Python "IDE" solution.
     (define-key python-mode-map (kbd "RET")
       'newline-and-indent))
 
+  (when (version< emacs-version "24.3")
+    (add-to-list 'el-get-sources
+                 '(:name python24)))
+
   (add-to-list 'el-get-sources
                '(:name elpy
                        :after (progn
@@ -87,3 +99,4 @@ ultimate out-of-box Emacs Python "IDE" solution.
 [2] =pip install pkg= with root can make =pkg= accessible in newly created
 virtualenvs.
 [3] See [[https://github.com/jorgenschaefer/elpy/wiki/Backends][elpy wiki]] to get basic knowledge of elpy completion backend.
+[4] Check [[http://from-the-cloud.com/en/emacs/2013/03/19_emacs-243-release-and-pythonel.html][Emacs 24.3 release and python.el]] for the author's blog.
