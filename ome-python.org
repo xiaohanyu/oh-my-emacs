@@ -69,13 +69,17 @@ ultimate out-of-box Emacs Python "IDE" solution.
 
 #+NAME: elpy
 #+BEGIN_SRC emacs-lisp
+  (defun ome-python-setup ()
+    (elpy-enable)
+    (when (executable-find "ipython")
+      (elpy-use-ipython))
+    (define-key python-mode-map (kbd "RET")
+      'newline-and-indent))
+
   (add-to-list 'el-get-sources
                '(:name elpy
                        :after (progn
-                                (elpy-enable)
-                                (elpy-use-ipython)
-                                (define-key python-mode-map (kbd "RET")
-                                  'newline-and-indent))))
+                                (ome-python-setup))))
 #+END_SRC
 
 * Footnotes
