@@ -5,6 +5,16 @@
 ;; This is the first thing to get loaded.
 ;;
 
+;; Enter debugger if an error is signaled during Emacs startup.
+;;
+;; This works the same as you boot emacs with "--debug-init" every time, except
+;; for errors in "init.el" itself, which means, if there's an error in
+;; "init.el", "emacs --debug-init" will entering the debugger, while "emacs"
+;; will not; however, if there's an error in other files loaded by init.el,
+;; both "emacs" and "emacs --debug-init" will entering the debugger. I don't
+;; know why.
+(setq debug-on-error t)
+
 ;; load Org-mode from source when the ORG_HOME environment variable is set
 (setq org-home (getenv "ORG_HOME"))
 
