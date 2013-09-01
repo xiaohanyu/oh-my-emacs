@@ -100,6 +100,38 @@ are automatically uncompressed for reading, and compressed when writing."
 #+BEGIN_SRC emacs-lisp
   (auto-image-file-mode t)
 #+END_SRC
+** Outline mode
+   :PROPERTIES:
+   :CUSTOM_ID: outline
+   :END:
+
+Outline mode is the root of org-mode, while =outline-minor-mode= is still
+useful with other major modes when browsing large files. You can get the
+overall structure with =outline-minor-mode=, so oh-my-emacs enabled
+=outline-minor-mode= for all programming modes by adding =outline-minor-mode=
+to =prog-mode-hook=.
+
+By default, outline minor mode provides special key bindings on the =C-c @=
+prefix, which, IMHO, is a little cumbersome to type. You can rebind to other
+keys if you like.
+
+You can get detailed information about =outline-mode= by typing =C-h F
+outline-mode=, and =C-h b= will bring you a full list of keybindings, including
+keybindings for =outline-minor-mode=.
+
+#+NAME: outline
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (outline-minor-mode t)))
+
+  ;; (add-hook 'outline-minor-mode-hook
+  ;;           (lambda ()
+  ;;             (local-set-key (kbd "C-c C-o")
+  ;;                            outline-mode-prefix-map)))
+
+#+END_SRC
+
 ** Magit
    :PROPERTIES:
    :CUSTOM_ID: magit
