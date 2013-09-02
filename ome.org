@@ -152,8 +152,11 @@ elisp code embedded in this file.
 
 ** oh-my-emacs basics
 - Functions for loading other parts of oh-my-emacs.
+
 #+NAME: ome-load
 #+BEGIN_SRC emacs-lisp
+  (setq ome-packages nil)
+
   (defun ome-load (file &optional header-or-tag)
     "Load configuration from other ome-*.org files.
   If the optional argument is the id of a subtree then only
@@ -204,9 +207,70 @@ elisp code embedded in this file.
                            body))))))))
              partial-file)
          file))
-      (el-get 'sync (mapcar 'el-get-source-name el-get-sources))))
+      (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+      (mapcar (lambda (el-get-package)
+                (add-to-list 'ome-packages
+                             (el-get-source-name el-get-package)))
+              el-get-sources)))
 
+#+END_SRC
 
+- Functions for getting information about el-get packages installed by
+  oh-my-emacs.
+#+NAME: ome-packages
+#+BEGIN_SRC emacs-lisp
+  (defun ome-try-get-package-website (package)
+    "el-get's package recipe has multiple type, some contains
+  a :website, some contains just a :url, while some github package
+  just contains a :pkgname. This function try to get a proper
+  website link for an el-get package."
+    (let ((package-def (el-get-package-def package)))
+      (or (plist-get package-def :website)
+          (and (eq (plist-get package-def :type) 'github)
+               (concat "https://github.com/"
+                       (plist-get package-def :pkgname)))
+          (plist-get package-def :url))))
+
+  (defun ome-package-list (ome-packages)
+    "Get a whole list of el-get packages installed by
+  oh-my-emacs. Returns a list of (package-name, package-website,
+  package-description)."
+    (mapcar
+     (lambda (package)
+       (let ((package-def (el-get-package-def package)))
+         (list (ome-try-get-package-website package)
+               (el-get-package-name package)
+               ;; some package's description has multiple lines, so we need to
+               ;; join them together for better auto-fill.
+               (replace-regexp-in-string "\\(\n\\|\\ \\)+" " "
+                                         (plist-get package-def :description)))))
+     (sort ome-packages #'string<)))
+
+  (defun ome-package-list-in-org-format (ome-packages)
+    "A convenient function for constructing oh-my-emacs's
+  README.org file."
+    (mapcar
+     (lambda (ome-package)
+       (format "[[%s][%s]]: %s"
+               (nth 0 ome-package)
+               (nth 1 ome-package)
+               (nth 2 ome-package)))
+     (ome-package-list ome-packages)))
+
+  (defun ome-insert-package-list-in-org-mode ()
+    "Insert all packages info to current `org-mode' files.
+
+  This still has some problems with `org-mode' and `auto-fill-mode'."
+    (interactive)
+    (insert
+     (with-temp-buffer
+       (loop for package
+             in (ome-package-list-in-org-format ome-packages)
+             do (insert "- " package "\n\n"))
+       (fill-region (point-min) (point-max))
+       (replace-string "-\n " "-" nil (point-min) (point-max))
+       (flush-lines "^$" (point-min) (point-max))
+       (buffer-string))))
 #+END_SRC
 
 
@@ -266,7 +330,6 @@ Till now, Oh-my-emacs includes:
   (ome-load "ome-auto-mode.org")
   (ome-load "ome-tex.org")
 #+END_SRC
-
 
 ** Load User/System Specific Files
 *** System/User specific customizations
