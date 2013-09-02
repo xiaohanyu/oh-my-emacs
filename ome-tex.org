@@ -212,7 +212,7 @@ work with Emacs builtin =tex-mode= anymore.
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
     (add-hook 'latex-mode-hook 'turn-on-cdlatex))
 
-  (when (string= (el-get-package-status 'auctex) "installed")
+  (when (el-get-package-is-installed 'auctex)
     (add-to-list 'el-get-sources
                  '(:name cdlatex-mode
                          :after (progn
