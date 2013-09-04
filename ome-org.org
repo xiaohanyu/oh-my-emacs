@@ -139,3 +139,16 @@ code block, which may be a bug of =rainbow-delimiters-mode=.
                         (ome-htmlize-setup)))
 
 #+END_SRC
+** \LaTeX
+   :PROPERTIES:
+   :CUSTOM_ID: org-latex
+   :END:
+
+If [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/][CdLaTeX]] is available, turn on it in org-mode. See "[[http://www.gnu.org/software/emacs/manual/html_node/org/CDLaTeX-mode.html][Using CDLaTeX to enter
+math]]" for details.
+
+#+NAME: org-latex
+#+BEGIN_SRC emacs-lisp
+  (when (el-get-package-is-installed 'cdlatex-mode)
+    (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
+#+END_SRC
