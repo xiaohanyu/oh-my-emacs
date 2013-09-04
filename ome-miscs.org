@@ -369,5 +369,106 @@ some time to master these wonderful commands, which will make your life easier.
 
 #+END_SRC
 
+** Emacs-w3m
+   :PROPERTIES:
+   :CUSTOM_ID: emacs-w3m
+   :END:
+
+[[http://w3m.sourceforge.net/index.en.html][w3m]] is a text-based web browser as well as a pager like =more= or =less=, while
+[[http://emacs-w3m.namazu.org/][emacs-w3m]] is a simple Emacs interface to w3m, thus, to use emacs-w3m, you need
+=w3m= installed, there're other optional [[http://emacs-w3m.namazu.org/info/emacs-w3m_5.html#SEC5][requirements]], which provides a better
+surfing experience, but these are not mandatory, so try it if you like for
+free.
+
+In fact, I'm not that kind of person who does almost everything in Emacs, or
+lives in Emacs. I don't want to use emacs-w3m to do things like watching
+youtube videos, searching google map, etc. So, why emacs-w3m came here?
+
+I want emacs-w3m when I try to configure [[http://common-lisp.net/project/slime/][slime]] with [[http://www.lispworks.com/documentation/common-lisp.html][hyperspec]]. Slime provides
+an great =slime-documentation-lookup= function, which indeed is a wrapper of
+=slime-hyperspec-lookup=, through which you can browser the whole hyperspec
+documentation at your fingertips. Under the hood, =slime-hyperspec-lookup= will
+call =browse-url=, which in turn ask a WWW browser to show the
+documentation. Variable =browse-url-browser-function= says which browser to
+use. Here, I set it to =w3m-browse-url=.
+
+Now follows my secret weapon. I use =sp-copy-sexp= from =smartparens-mode= to
+copy some lisp snippets, and then paste the code snippets back to an lisp
+buffer and sent the snippet to slime to get a quick feedback. Ha, what a
+perfect workflow!  Now you should know why I need =emacs-w3m=.
+
+Some commonly used keybindings for =w3m-mode=:
+- =R= Reload the current page.
+- =r= Redisplay the current page.
+- =[= Move the point to the previous form.
+- =]= Move the point to the next form.
+- ={= Move the point to the previous image.
+- =}= Move the point to the next image.
+- =B= Move back to the previous page in the history.
+- =N= Move forward to the next page in the history.
+- =^= Attempt to move to the parent directory of the page.
+- =U= Visit the web page.
+- =G= Visit the web page in a new session.
+- =H= Go to the Home page.
+- =M= Display the current page using the external browser.
+- =C-c M-l= Delete tabs on the left side of the current tab.
+- =C-c M-r= Delete tabs on the right side of the current tab.
+- =M-d= Download the URL.
+- =d= Download the URL under point.
+- =I= Display the image under point in the external viewer.
+- =M-i= Save the image under point to a file.
+- =t= Toggle the visibility of an image under point.
+- =T= Toggle the visibility of all images.
+- =M-T= Turn off to display all images.
+- =M-[= Zoom in an image on the point.
+- =M-]= Zoom out an image on the point.
+- =u= Display the url under point and put it into `kill-ring'.
+- =c= Display the url of the current page and put it into `kill-ring'.
+- =\= Display the html source of the current page.
+- === Display the header of the current page.
+- =E= Edit the local file displayed as the current page.
+- =e= Edit the local file which is pointed to by URL under point.
+- =M-k= Display cookies and enable you to manage them.
+- =b= Scroll down the current window, or go to the previous page.
+- =J= Scroll the current window up one line (or lines of which the number you
+  specify by the prefix argument).
+- =j= Next line.
+- =k= Previous line.
+- =l= Forward char.
+- =h= Backward char.
+- =s= Display the history of pages you have visited in the session. If it is
+  called with the prefix arg, it displays the arrived URLs.
+- =S= Query to the search engine a word. To change the server, give any prefix
+  argument to the command.
+- =C-t t= Create an empty page as a new session and visit it.
+- =C-c C-t= Create a copy of the current page as a new session.
+- =C-c C-n= Turn the page of emacs-w3m buffers ahead.
+- =C-c C-p= Turn the page of emacs-w3m buffers behind.
+- =C-c RET= Move to the next unseen buffer.
+- =C-c C-s= Pop to the emacs-w3m buffers selection window up.
+- =C-c C-a= Select one of emacs-w3m buffers at the current window.
+- =C-c C-w= Delete the current emacs-w3m buffer.
+- =C-c M-w= Delete emacs-w3m buffers except for the current buffer.
+- =M-x w3m= Start browsing web with emacs-w3m.
+- =q= Close all emacs-w3m windows, without deleteing buffers.
+- =Q= Exit browsing web.  All emacs-w3m buffers will be deleted.
+- =C-c C-k= Try to stop internal processes of a page.
+
+#+NAME: emacs-w3m
+#+BEGIN_SRC emacs-lisp
+  (defun ome-emacs-w3m-setup ()
+    ;; (setq w3m-default-display-inline-images t)
+    (setq w3m-home-page "http://www.google.com/ncr")
+    (setq browse-url-browser-function 'w3m-browse-url)
+    (global-set-key (kbd "C-x w") 'browse-url-at-point))
+
+  (when (executable-find "w3m")
+    (add-to-list 'el-get-sources
+                 '(:name emacs-w3m
+                         :after (progn
+                                  (ome-emacs-w3m-setup)))))
+
+#+END_SRC
+
 * Footnotes
 [1] See [[http://git-scm.com/book/en/Git-Internals][Git Internals]] to technical details.
