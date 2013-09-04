@@ -20,6 +20,9 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
   ;; show parenthesis match
   (show-paren-mode 1)
   (setq show-paren-style 'expression)
+
+  ;; Toggle line highlighting in all buffers
+  (global-hl-line-mode t)
 #+END_SRC
 
 * Choose Monaco as the Default English Font
