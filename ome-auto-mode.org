@@ -81,3 +81,18 @@ please tell me.
                                 (add-to-list 'auto-mode-alist
                                              '("\\.wiki\\'" . wikipedia-mode)))))
 #+END_SRC
+* YAML
+  :PROPERTIES:
+  :CUSTOM_ID: yaml
+  :END:
+
+[[http://www.yaml.org/][YAML]] is a human friendly data serialization standard for all programming
+languages. I really like it for its simplicity and readability. However, Emacs
+didn't have a builtin mode for editing YAML files, so you know how easy to
+solve this by adopting =el-get=. Thanks =el-get= again!
+
+#+NAME: yaml
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name yaml-mode))
+#+END_SRC
