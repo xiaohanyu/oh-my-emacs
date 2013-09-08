@@ -130,12 +130,29 @@ So the first thing oh-my-emacs do to your emacs is to install =el-get=:
         (goto-char (point-max))
         (eval-print-last-sexp))))
 
-  (el-get 'sync)
+  ;; (el-get 'sync)
 #+END_SRC
 
 And in the following journey, you may find the great power =el-get= provides
 for you -- which makes it possible to store just dotemacs configuration, no
 need to things like =git submodule=. Thank you, [[http://tapoueh.org/][Dimitri Fontaine]].
+
+** Cl-lib
+   :PROPERTIES:
+   :CUSTOM_ID: cl-lib
+   :END:
+
+[[http://www.gnu.org/software/emacs/news/NEWS.24.3][Emacs 24.3]] renamed the Common Lisp emulation package from =cl= to =cl-lib=,
+which causes some madness between different Emacs versions. The following hack
+code has been tested on Emacs 24.2.1 and Emacs 24.3.50. Any bug report will be
+appreciated.
+
+#+NAME: cl-lib
+#+BEGIN_SRC emacs-lisp
+  (when (version< emacs-version "24.3")
+    (el-get 'sync '(cl-lib))
+    (add-to-list 'load-path "~/.emacs.d/el-get/cl-lib"))
+#+END_SRC
 
 ** Structure
    :PROPERTIES:
@@ -281,10 +298,13 @@ elisp code embedded in this file.
 
 #+NAME: core
 #+BEGIN_SRC emacs-lisp
-(defun ome-start-or-switch-to (function buffer-name)
+  (add-to-list 'el-get-sources
+               '(:name cl-lib))
+
+  (defun ome-start-or-switch-to (function buffer-name)
     "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
-  Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
-  the current buffer."
+    Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
+    the current buffer."
     (if (not (get-buffer buffer-name))
         (progn
           (split-window-sensibly (selected-window))
