@@ -235,5 +235,63 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
 
 #+END_SRC
 
+* Clojure
+  :PROPERTIES:
+  :CUSTOM_ID: clojure
+  :END:
+
+[[http://www.clojure.org][Clojure]] is a modern Lisp on top of JVM, it is a member of the Lisp family of
+languages. Clojure extends the code-as-data system beyond parenthesized lists
+(s-expressions) to vectors and maps.
+
+Since Clojure is a Lisp dialect, it should work the SLIME way. Yeah, first
+comes [[https://github.com/technomancy/swank-clojure][swank-clojure]], then [[https://github.com/clojure-emacs/nrepl.el][nrepl.el]]. The only thing you need to install is
+[[http://leiningen.org/][leiningen]] 2.x. I recommand you to install it manually, since not all [[https://github.com/technomancy/leiningen/wiki/Packaging][package
+manager]] provides the latest version.
+
+The general way to install lastest stable leiningen is:
+#+BEGIN_SRC sh
+wget -O /tmp/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein
+sudo mv /tmp/lein /usr/bin/lein
+lein version
+#+END_SRC
+
+Or you can see leiningen's [[https://github.com/technomancy/leiningen/wiki/Upgrading][wiki]] for upgrading details.
+
+Now, just open a clojure file, then =nrepl-jack-in=, and you can program
+Clojure the SLIME way. [[http://vimeo.com/22798433][Here]] is an awesome live demo to demostrate the Clojure
+workflow.
+
+It's really really awesome, ah?
+
+#+NAME: clojure
+#+begin_src emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name clojure-mode))
+
+  (defun ome-nrepl-setup ()
+    (add-hook 'nrepl-interaction-mode-hook
+              'nrepl-turn-on-eldoc-mode)
+    (setq nrepl-hide-special-buffers t)
+    (setq nrepl-buffer-name-separator "-")
+    (setq nrepl-buffer-name-show-port t))
+
+  (add-to-list 'el-get-sources
+               '(:name nrepl
+                       :after (progn
+                                (ome-nrepl-setup))))
+
+  (defun ome-ac-nrepl-setup ()
+    (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+    (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+    (eval-after-load "auto-complete"
+      '(add-to-list 'ac-modes 'nrepl-mode)))
+
+  (add-to-list 'el-get-sources
+               '(:name ac-nrepl
+                       :after (progn
+                                (ome-ac-nrepl-setup))))
+#+end_src
+
 * Footnotes
 [1] [[https://github.com/swank-js/swank-js][swank-js]], [[http://common-lisp.net/~crhodes/swankr/][swankr]]
