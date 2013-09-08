@@ -293,5 +293,47 @@ It's really really awesome, ah?
                                 (ome-ac-nrepl-setup))))
 #+end_src
 
+* Scheme
+  :PROPERTIES:
+  :CUSTOM_ID: scheme
+  :END:
+
+[[http://en.wikipedia.org/wiki/Scheme_(programming_language)][Scheme]] is my favourite programming language, it is small, elegant and
+powerful. Unfortunately, there're too many choices for scheme implementation,
+which makes it a headache when you want to do some real world job with scheme.
+
+Oh-my-emacs adopts [[http://www.nongnu.org/geiser/][geiser]], which provides a similar SLIME way to work with
+scheme. To install geiser, you need install =automake= and =autoconf=. And to
+run geiser, you need install at least one of the geiser supported scheme
+implementation, namely, [[http://www.gnu.org/software/guile/][guile]] or [[http://racket-lang.org/][racket]].
+
+#+NAME: geiser
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name geiser))
+
+  ;; (add-to-list 'el-get-sources
+  ;;              '(:name quack))
+#+END_SRC
+
+Actually, the official SLIME contrib has some swank backends for scheme
+implementations, you can try it if you like. There's a [[https://github.com/nickg/swank-chicken][swank-chicken]] for
+[[http://www.call-cc.org/][chicken scheme]], but it only provides a small part of SLIME features. So it is
+disabled by default.
+
+#+NAME: chicken
+#+BEGIN_SRC emacs-lisp :tangle no
+  (defun ome-swank-chicken-setup ()
+    (setq swank-chicken-path "~/.emacs.d/el-get/swank-chicken/swank-chicken.scm")
+    (add-hook 'scheme-mode-hook
+              (lambda ()
+                (slime-mode t))))
+
+  (add-to-list 'el-get-sources
+               '(:name swank-chicken
+                       :after (progn
+                                (ome-swank-chicken-setup))))
+#+END_SRC
+
 * Footnotes
 [1] [[https://github.com/swank-js/swank-js][swank-js]], [[http://common-lisp.net/~crhodes/swankr/][swankr]]
