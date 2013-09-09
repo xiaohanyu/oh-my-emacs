@@ -183,6 +183,7 @@ fallback. But I do suggest you to take some time to be familiar with helm.
                '(:name helm
                        :after (progn
                                 (require 'helm-config)
+                                (setq helm-input-idle-delay 0.2)
                                 (helm-mode t)
                                 (global-set-key (kbd "C-x c g") 'helm-do-grep)
                                 (global-set-key (kbd "C-x c o") 'helm-occur)
@@ -213,6 +214,14 @@ TODO:
 
 #+NAME: yasnippet
 #+BEGIN_SRC emacs-lisp
+  (eval-after-load 'popup
+    '(progn
+       (define-key popup-menu-keymap (kbd "M-n") 'popup-next)
+       (define-key popup-menu-keymap (kbd "TAB") 'popup-next)
+       (define-key popup-menu-keymap (kbd "<tab>") 'popup-next)
+       (define-key popup-menu-keymap (kbd "<backtab>") 'popup-previous)
+       (define-key popup-menu-keymap (kbd "M-p") 'popup-previous)))
+
   (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
     (when (featurep 'popup)
       (popup-menu*
