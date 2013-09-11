@@ -152,3 +152,6 @@ math]]" for details.
   (when (el-get-package-is-installed 'cdlatex-mode)
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
 #+END_SRC
+
+* Todo
+- How to handle =org-mode= format like ===?

@@ -1,4 +1,4 @@
-#+TITLE: Oh My Emacs Advanced
+#+TITLE: Oh My Emacs CC
 #+OPTIONS: toc:2 num:nil ^:nil
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
@@ -183,3 +183,11 @@ cscope. The default keybindings use the =C-c s= prefix:
                    '(:name xcscope)))
 
 #+END_SRC
+* Todo
+- Port cc-mode's =hungry-delete= to other-mode comment block?
+- Documentation for some useful cc-mode keybindings such as
+  - =C-c C-c=
+  - =M-;=
+- Integrate [[http://www.wonderworks.com/download/filladapt.el][filladapt]] package to enhance emacs's adaptive filling.
+- Add special font-lock support for some Qt's "keywords" such as "signal" and
+  "slot".

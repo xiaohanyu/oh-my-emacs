@@ -249,5 +249,15 @@ TODO:
                                              (yas-minor-mode))))))
 #+END_SRC
 
+* Todo
+
+** Helm
+Ah, various ideas to enhance helm:
+- Provide a copy action which just copy the selected items. This is useful when
+  you query a elisp command or function.
+- Provide a doc action which show documentation of elisp function or commands.
+- For helm-projectile, add full path to file list to differentiate same file
+  name files.
+
 * Footnotes
 [1] http://iany.me/2012/03/use-popup-isearch-for-yasnippet-prompt/

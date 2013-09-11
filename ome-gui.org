@@ -125,3 +125,20 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
                        :after (progn
                                 (global-yascroll-bar-mode 1))))
 #+END_SRC
+* Todo
+** Speedbar
+- Combine projectile and speedbar to provide a project navigation
+  feature. [[https://github.com/rdallasgray/graphene][graphene]] has a solution, which may be worth a try.
+
+** Color-theme
+- More color-theme support
+  - https://github.com/lvillani/el-monokai-theme
+  - https://github.com/chriskempson/tomorrow-theme
+  - https://github.com/chriskempson/base16
+  - https://github.com/hbin/molokai-theme
+
+** Scrollbar
+- Smooth scrolling?
+
+** Minimap
+- Currently, none of the minimap projects works the way I want it to.

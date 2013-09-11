@@ -335,5 +335,27 @@ disabled by default.
                                 (ome-swank-chicken-setup))))
 #+END_SRC
 
+* Todos
+** Elisp
+- What is overlay?
+- What is syntax?
+- Learn more knowledge about emacs key-maps, and what's the difference between
+  =global-set-key= and =remap=.
+- Learn more knowledge about emacs syntax-table, functions like
+  =modify-syntax-entry=, etc.
+- What =enable-recursive-minibuffers= means to us?
+- How to do asynchronous programming in emacs lisp?
+- Make =ielm= as a real elisp =REPL=?
+
+** Common Lisp
+- Integrate [[http://www.foldr.org/~michaelw/emacs/redshank/][redshank]]?
+
+** Scheme
+- Write a package "ac-geisure", just like ac-slime.
+
+** Clojure
+- The boot up speed of JVM is too slow, so we may need to refer to
+  http://icylisper.github.io/jark/.
+
 * Footnotes
 [1] [[https://github.com/swank-js/swank-js][swank-js]], [[http://common-lisp.net/~crhodes/swankr/][swankr]]

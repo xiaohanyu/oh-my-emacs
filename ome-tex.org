@@ -219,3 +219,12 @@ work with Emacs builtin =tex-mode= anymore.
                                   (ome-cdlatex-setup)))))
 
 #+END_SRC
+
+* Todo
+
+** AUCTeX
+- Add auto-complete support for auctex. see
+  https://github.com/monsanto/auto-complete-auctex.
+- Investigate on "What is TeX master file?"
+- What is SyncTeX? How to use it?
+- What is =TeX-interactive-mode=?

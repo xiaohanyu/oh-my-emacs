@@ -470,5 +470,48 @@ Some commonly used keybindings for =w3m-mode=:
 
 #+END_SRC
 
+* Todo
+- Enable flyspell and ispell in text-mode.
+- Add a dictionary support, such as =sdcv=? Or a better translator support such
+  as =babel= or =gtranslate=?
+- recentf
+  - set recentf saved file, similar to saveplace.
+  - disable recentf prompting when quit emacs.
+- Set emacs auto-save temporary dir instead of .emacs.d
+- Investigate how to use =imenu= and =imenu rescan=.
+- Add zencoding-mode(emmet-mode) to emacs, maybe I should propose an emmet
+  recipe to =el-get=.
+- Learn more about emacs mark and selection, why CapsLK turn on selection mode.
+- Integrate elnode, skewer-mode and emacs-request to emacs.
+- Write a proper major-mode for GAS assembly language.
+- Diminish package support?
+  - Description: An Emacs package that diminishes the amount of space taken on
+    the mode line by the names of minor modes.
+- Oh-my-emacs keybindings to =C--= conflicts with Emacs's =negative-argument=?
+- Try to get the total boot up time and try to reduce the whole boot up time.
+- Documentation about indentation settings:
+  - http://emacsredux.com/blog/2013/03/29/automatic-electric-indentation/
+- Documentation about occur edit mode, which removes the need of externel
+  packages such as iedit:
+  http://batsov.com/articles/2011/08/19/a-peek-at-emacs24/
+- What is emacs desktop-mode?
+- There're some documentation confusions between =sp-beginning-of-sexp= and
+  =sp-end-of-sexp=.
+- What is raw prefix =- C-u=? This comes from docstring for =sp-kill-sexp=.
+- Integrate travis?
+- Make =ome-load= interactive and buffer recognized.
+  - interactive load files
+    - absolute path such as "/home/xiao/.emacs.d/ome-lisp.org"
+    - relative path such as "ome-lisp.org"
+  - with a prefix key, load current buffer
+- Split oh-my-emacs to different levels, such as core, contrib, etc. Add
+  dependency rules. For example, =auto-complete-clang= depends on
+  =auto-complete=, this is necessary if you need to load
+  =auto-complete-clang=. Oh-my-emacs should privide a way to load each module
+  easily, such as =(ome-load "ome-lisp.org" ["lisp", "emacslisp"])=.
+- More investigation on registers and marks, for better and fast jump in same
+  buffer?
+- Add realtime dictionary support for emacs.
+
 * Footnotes
 [1] See [[http://git-scm.com/book/en/Git-Internals][Git Internals]] to technical details.

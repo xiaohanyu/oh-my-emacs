@@ -23,3 +23,6 @@ markdown-mode's auto-mode-alist.
                        :before (add-to-list 'auto-mode-alist
                                             '("\\.mdpp" . markdown-mode))))
 #+END_SRC
+
+* Todo
+- Integrate [[https://github.com/ppareit/graphviz-dot-mode][graphviz-dot-mode]]
