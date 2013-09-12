@@ -54,8 +54,9 @@ fingertips.
 
 #+NAME: pkgbuild
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name pkgbuild-mode))
+  (when (executable-find "pacman")
+    (add-to-list 'el-get-sources
+                 '(:name pkgbuild-mode)))
 #+END_SRC
 
 * Wikipedia
