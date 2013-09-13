@@ -114,6 +114,27 @@ adapt, ah, finally the Emacs OS get a good editor, evil.
 - [[https://github.com/m2ym/yascroll-el][yascroll]]: Yet Another Scroll Bar Mode
 - [[https://github.com/capitaomorte/yasnippet.git][yasnippet]]: YASnippet is a template system for Emacs.
 
+* Gallary
+[[http://www.douban.com/photos/album/117065634/][Here]]'re some screenshots of oh-my-emacs:
+
+- Startup screen:
+[[http://img3.douban.com/view/photo/large/public/p2134421167.jpg]]
+
+- =org-babel= from org-mode, auto-complete for emacs lisp:
+[[http://img3.douban.com/view/photo/large/public/p2134421326.jpg]]
+
+- helm-grep to search words in multiple files:
+[[http://img3.douban.com/view/photo/large/public/p2134421804.jpg]]
+
+- auto-complete for C++ QT
+[[http://img3.douban.com/view/photo/large/public/p2134420940.jpg]]
+
+- auto-complete for python
+[[http://img4.douban.com/view/photo/large/public/p2134421478.jpg]]
+
+- AUCTeX with outline-minor-mode, helm completion for TeX commands
+[[http://img3.douban.com/view/photo/large/public/p2134420730.jpg]]
+
 * References
 - [[https://github.com/bbatsov/prelude][Emacs Prelude]]: Prelude is an Emacs distribution that aims to enhance the
   default Emacs experience.
