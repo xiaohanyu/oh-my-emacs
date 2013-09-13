@@ -9,6 +9,8 @@ This file contains some settings for =cc-mode=.
 ** Mandatory
 - [[http://www.xmlsoft.org/][libxml2]], you need to =sudo apt-get install libxml2 libxml2-dev= in
   Ubuntu. There is required for el-get to build doxymacs.
+- [[http://clang.llvm.org/][clang]], for auto-complete-clang
+- [[http://www.freedesktop.org/wiki/Software/pkg-config/][pkg-config]], a helper tool used when compiling applications and libraries.
 
 ** Optional
 - [[http://www.cmake.org/][CMake]]
@@ -16,7 +18,6 @@ This file contains some settings for =cc-mode=.
   doxymacs to insert doxygen-style comments. So I make this dependency
   optional.
 - [[http://cscope.sourceforge.net/][Cscope]], for code indexing.
-
 
 * Basic CC-Mode Settings
   :PROPERTIES:
@@ -44,6 +45,7 @@ example, you need to know what the difference between =setq= and
                           (other . "linux")))
 
   (setq-default c-basic-offset 4)
+  (add-to-list 'auto-mode-alist '("\\.h" . c++-mode))
 
   (defun ome-c-initialization-hook ()
     (define-key c-mode-base-map (kbd "RET") 'c-context-line-break))
@@ -197,6 +199,75 @@ cscope. The default keybindings use the =C-c s= prefix:
                    '(:name xcscope)))
 
 #+END_SRC
+* Auto-complete-clang
+  :PROPERTIES:
+  :CUSTOM_ID: auto-complete-clang
+  :END:
+
+Completion in Emacs is always a hot topic in Emacs community. Of course,
+there're always solutions, but none of them is perfect. The traditional
+approach relies on [[http://cedet.sourceforge.net/semantic.shtml][semantic]] from [[http://cedet.sourceforge.net/semantic.shtml][cedet]], which provides a parser for C/C++ and
+various other lanauges. But I don't think it's a good idea to written a parser
+in Elisp, especially a C++ parser. IMHO, semantic is bloated, slow, and often
+make your Emacs stuck. So I didn't use it in oh-my-emacs.
+
+The second choice is [[http://cx4a.org/software/gccsense/][GCCSense]], which is written by the same author of
+[[http://cx4a.org/software/auto-complete/][auto-complete]]. I've read the manual but I found it a little complex to
+install. So I won't adopt it.
+
+Instead, I use [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]], which combines the power of auto-complete,
+clang, and yasnippet. I also write some wrapper functions for it, one of them
+is interactive [[http://www.freedesktop.org/wiki/Software/pkg-config/][pkg-config]] completion support. Thus, if you just write a "hello
+world" program with C/C++ standard library, then the semantic completion is
+already at your fingertips. Otherwise, if you want to write some huge
+programs with third-party libs, then just =M-x
+ome-pkg-config-enable-clang-flag name-of-lib=, and completion will be right
+here. Ensure that you have pkg-config installed and all the necessary libs
+installed if you want to write program with that library.
+
+#+NAME: auto-complete-clang
+#+BEGIN_SRC emacs-lisp
+  (defun ome-auto-complete-clang-setup ()
+    (require 'auto-complete-clang)
+    (setq command "echo | g++ -v -x c++ -E - 2>&1 |
+                   grep -A 20 starts | grep include | grep -v search")
+    (setq ac-clang-flags
+          (mapcar (lambda (item)
+                    (concat "-I" item))
+                  (split-string
+                   (shell-command-to-string command))))
+
+    (defun ome-pkg-config-enable-clang-flag (pkg-config-lib)
+      "This function will add necessary header file path of a
+  specified by `pkg-config-lib' to `ac-clang-flags', which make it
+  completionable by auto-complete-clang"
+      (interactive "spkg-config lib: ")
+      (if (executable-find "pkg-config")
+          (if (= (shell-command
+                  (format "pkg-config %s" pkg-config-lib))
+                 0)
+              (setq ac-clang-flags
+                    (append ac-clang-flags
+                            (split-string
+                             (shell-command-to-string
+                              (format "pkg-config --cflags-only-I %s"
+                                      pkg-config-lib)))))
+            (message "Error, pkg-config lib %s not found." pkg-config-lib))
+        (message "Error: pkg-config tool not found.")))
+
+    ;; (ome-pkg-config-enable-clang-flag "QtGui")
+
+    (add-hook 'c-mode-common-hook
+              (lambda ()
+                (add-to-list 'ac-sources 'ac-source-clang))))
+
+  (when (executable-find "clang")
+    (add-to-list 'el-get-sources
+                 '(:name auto-complete-clang
+                         :after (progn
+                                  (ome-auto-complete-clang-setup)))))
+#+END_SRC
+
 * Todo
 - Port cc-mode's =hungry-delete= to other mode.
 - Documentation for some useful cc-mode keybindings such as
@@ -205,3 +276,10 @@ cscope. The default keybindings use the =C-c s= prefix:
 - Integrate [[http://www.wonderworks.com/download/filladapt.el][filladapt]] package to enhance emacs's adaptive filling.
 - Add special font-lock support for some Qt's "keywords" such as "signal" and
   "slot".
+- Auto-complete-clang:
+  - Completion with function signature still has some problems, see
+    https://github.com/brianjcj/auto-complete-clang/blob/master/screenshot/clang-3.png
+    for an ideal completion.
+  - For huge C/C++ programs, auto-complete-clang maybe a little slow, maybe
+    https://github.com/Golevka/emacs-clang-complete-async is a better
+    solution.
