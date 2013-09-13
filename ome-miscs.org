@@ -3,11 +3,9 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
-* Oh-my-emacs Miscs
+This file contains things that still don't find a good place to put, :-).
 
-Things that still don't find a good place to put, :-).
-
-** Enable some dangerous commands
+* Enable some dangerous commands
 
 Emacs may be slow when you editing large files with many minor modes
 on. [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Narrowing.html][Narrowing]] allows you focus in on some portion of the buffer, making the
@@ -22,10 +20,10 @@ remove the dangerous tag here.
   (put 'narrow-to-region 'disabled nil)
   (put 'upcase-region 'disabled nil)
 #+END_SRC
-** Toggle server mode .
-   :PROPERTIES:
-   :CUSTOM_ID: emacs-server
-   :END:
+* Toggle server mode .
+  :PROPERTIES:
+  :CUSTOM_ID: emacs-server
+  :END:
 
 You can [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html][use emacs as a server]], which "listens" for external edit requests and
 acts accordingly. Thus you can =alias vim=emacsclient= as the lucky
@@ -46,10 +44,10 @@ emacs if you use =(server-start)= while keeps emacs alive if you use
 (server-mode t)
 #+END_SRC
 
-** Random Number
-   :PROPERTIES:
-   :CUSTOM_ID: random-number
-   :END:
+* Random Number
+  :PROPERTIES:
+  :CUSTOM_ID: random-number
+  :END:
 
 #+NAME: random-number
 #+BEGIN_SRC emacs-lisp
@@ -57,10 +55,10 @@ emacs if you use =(server-start)= while keeps emacs alive if you use
   (random t)
 #+END_SRC
 
-** Rainbow Delimiters
-   :PROPERTIES:
-   :CUSTOM_ID: rainbow-delimiters
-   :END:
+* Rainbow Delimiters
+  :PROPERTIES:
+  :CUSTOM_ID: rainbow-delimiters
+  :END:
 
 "RainbowDelimiters is a "rainbow parentheses"-like mode which highlights
 parentheses, brackets, and braces according to their depth. Each successive
@@ -76,10 +74,10 @@ given depth."
                                 (global-rainbow-delimiters-mode))))
 #+END_SRC
 
-** Transparently Open Compressed Files
-   :PROPERTIES:
-   :CUSTOM_ID: auto-compression-mode
-   :END:
+* Transparently Open Compressed Files
+  :PROPERTIES:
+  :CUSTOM_ID: auto-compression-mode
+  :END:
 
 "Auto Compression mode is a global minor mode.  When enabled, compressed files
 are automatically uncompressed for reading, and compressed when writing."
@@ -89,10 +87,10 @@ are automatically uncompressed for reading, and compressed when writing."
   (auto-compression-mode t)
 #+END_SRC
 
-** Allowing Opening Images
-   :PROPERTIES:
-   :CUSTOM_ID: auto-image-file-mode
-   :END:
+* Allowing Opening Images
+  :PROPERTIES:
+  :CUSTOM_ID: auto-image-file-mode
+  :END:
 
 "Toggle visiting of image files as images (Auto Image File mode)."
 
@@ -100,10 +98,10 @@ are automatically uncompressed for reading, and compressed when writing."
 #+BEGIN_SRC emacs-lisp
   (auto-image-file-mode t)
 #+END_SRC
-** Outline mode
-   :PROPERTIES:
-   :CUSTOM_ID: outline
-   :END:
+* Outline mode
+  :PROPERTIES:
+  :CUSTOM_ID: outline
+  :END:
 
 Outline mode is the root of org-mode, while =outline-minor-mode= is still
 useful with other major modes when browsing large files. You can get the
@@ -132,10 +130,10 @@ keybindings for =outline-minor-mode=.
 
 #+END_SRC
 
-** Magit
-   :PROPERTIES:
-   :CUSTOM_ID: magit
-   :END:
+* Magit
+  :PROPERTIES:
+  :CUSTOM_ID: magit
+  :END:
 
 [[http://www.git-scm.com/][Git]] might be the most popular version control system in the world by far, every
 programmer should try it, learn it, and finally master it. In fact, mastering
@@ -168,10 +166,10 @@ Blog]] for technical details.
                      '(:name magit))))
 #+END_SRC
 
-** Visual-line-mode
-   :PROPERTIES:
-   :CUSTOM_ID: visual-line-mode
-   :END:
+* Visual-line-mode
+  :PROPERTIES:
+  :CUSTOM_ID: visual-line-mode
+  :END:
 
 [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Visual-Line-Mode.html][Visual line mode]] is a new mode in Emacs 23. It provides support for editing by
 visual lines. It turns on word-wrapping in the current buffer, and rebinds C-a,
@@ -187,10 +185,10 @@ of the time. But we still turn on it globally to make it a fallback when
   (global-visual-line-mode t)
 #+END_SRC
 
-** Projectile
-   :PROPERTIES:
-   :CUSTOM_ID: projectile
-   :END:
+* Projectile
+  :PROPERTIES:
+  :CUSTOM_ID: projectile
+  :END:
 
 Emacs is good at file/buffer management, but lacks support for project level
 management. Fortunately, [[https://github.com/bbatsov/projectile][projectile]], a project created by [[http://batsov.com/][Bozhidar Batsov]], also
@@ -226,10 +224,10 @@ just enjoy it!
                                 (global-set-key (kbd "C-x c h") 'helm-projectile))))
 #+END_SRC
 
-** Smartparens
-   :PROPERTIES:
-   :CUSTOM_ID: smartparens
-   :END:
+* Smartparens
+  :PROPERTIES:
+  :CUSTOM_ID: smartparens
+  :END:
 
 #+BEGIN_QUOTE
 Smartparens is modern minor mode for Emacs that /deals with parens pairs and
@@ -369,10 +367,10 @@ some time to master these wonderful commands, which will make your life easier.
 
 #+END_SRC
 
-** Emacs-w3m
-   :PROPERTIES:
-   :CUSTOM_ID: emacs-w3m
-   :END:
+* Emacs-w3m
+  :PROPERTIES:
+  :CUSTOM_ID: emacs-w3m
+  :END:
 
 [[http://w3m.sourceforge.net/index.en.html][w3m]] is a text-based web browser as well as a pager like =more= or =less=, while
 [[http://emacs-w3m.namazu.org/][emacs-w3m]] is a simple Emacs interface to w3m, thus, to use emacs-w3m, you need
