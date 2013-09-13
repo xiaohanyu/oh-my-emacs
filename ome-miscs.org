@@ -472,6 +472,20 @@ Some commonly used keybindings for =w3m-mode=:
 
 #+END_SRC
 
+* Quickrun
+  :PROPERTIES:
+  :CUSTOM_ID: quickrun
+  :END:
+
+Just as its name, quickrun let you run your program in a really quick
+way. Just run it, without thinking about too much other chores.
+
+#+NAME: quickrun
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name quickrun))
+#+END_SRC
+
 * Todo
 - Enable flyspell and ispell in text-mode.
 - Add a dictionary support, such as =sdcv=? Or a better translator support such
