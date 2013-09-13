@@ -6,6 +6,12 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 This file contains some settings for lisp dialects including [[* Emacs Lisp][Emacs Lisp]], [[*
  Scheme][Scheme]], [[* Common Lisp][Common Lisp]], and [[* Clojure][Clojure]].
 
+* Prerequisites
+** Mandatory
+- [[http://www.sbcl.org/][SBCL]] or [[http://ccl.clozure.com/][Clozure CL]] or [[http://www.clisp.org/][CLISP]] as a Common Lisp implementation.
+- [[http://www.gnu.org/software/guile/][Guile]] or [[http://racket-lang.org/][Racket]] as a Scheme implementation.
+- [[http://leiningen.org/][Leiningen]] for Clojure
+
 * Basics
   :PROPERTIES:
   :CUSTOM_ID: basic-lisp

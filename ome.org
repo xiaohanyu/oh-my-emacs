@@ -9,6 +9,20 @@
   -- Neal Stephenson, "In the Beginning was the Command Line"
 #+END_QUOTE
 
+* Prerequisites
+** Mandatory
+The following software is really basic that almost every el-get package will
+need one of them.
+
+- [[http://savannah.nongnu.org/projects/cvs][cvs]]
+- [[http://mercurial.selenic.com/][mercurial]]
+- [[http://git-scm.com/][git]]
+- [[http://www.gnu.org/software/make/][make]]
+- [[http://www.gnu.org/software/texinfo/][texinfo]]
+- [[http://gcc.gnu.org/][gcc]]
+- [[http://www.gnu.org/software/automake/][automake]]
+- [[http://www.gnu.org/software/autoconf/][autoconf]]
+
 * Introduction
   :PROPERTIES:
   :CUSTOM_ID: introduction

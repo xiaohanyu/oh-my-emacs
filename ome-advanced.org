@@ -7,6 +7,10 @@ This file contains some advanced features or packages which could make emacs
 look unlike emacs. So ensure you have some basic knowledge and experience
 before loading this file.
 
+* Prerequisites
+- [[http://www.tug.org/texlive/][texlive]], evil from el-get need =texi2pdf= to =make info=, I've made a [[http://gitorious.org/evil/evil/merge_requests/50][patch]]
+  for it.
+
 * Evil
   :PROPERTIES:
   :CUSTOM_ID: evil

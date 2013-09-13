@@ -5,6 +5,10 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 This file contains things that still don't find a good place to put, :-).
 
+* Prerequisites
+** Optional
+- [[http://w3m.sourceforge.net/][w3m]] for [[http://emacs-w3m.namazu.org/][emacs-w3m]]
+
 * Enable some dangerous commands
 
 Emacs may be slow when you editing large files with many minor modes

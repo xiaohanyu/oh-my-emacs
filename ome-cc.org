@@ -5,6 +5,19 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 This file contains some settings for =cc-mode=.
 
+* Prerequisites
+** Mandatory
+- [[http://www.xmlsoft.org/][libxml2]], you need to =sudo apt-get install libxml2 libxml2-dev= in
+  Ubuntu. There is required for el-get to build doxymacs.
+
+** Optional
+- [[http://www.cmake.org/][CMake]]
+- [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]], even if you don't have doxygen installed, you can still use
+  doxymacs to insert doxygen-style comments. So I make this dependency
+  optional.
+- [[http://cscope.sourceforge.net/][Cscope]], for code indexing.
+
+
 * Basic CC-Mode Settings
   :PROPERTIES:
   :CUSTOM_ID: basic-cc
@@ -81,8 +94,9 @@ you have to.
 
 #+NAME: cmake
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name cmake-mode))
+  (when (executable-find "cmake")
+    (add-to-list 'el-get-sources
+                 '(:name cmake-mode)))
 #+END_SRC
 
 * Documentation with Doxymacs
@@ -184,7 +198,7 @@ cscope. The default keybindings use the =C-c s= prefix:
 
 #+END_SRC
 * Todo
-- Port cc-mode's =hungry-delete= to other-mode comment block?
+- Port cc-mode's =hungry-delete= to other mode.
 - Documentation for some useful cc-mode keybindings such as
   - =C-c C-c=
   - =M-;=

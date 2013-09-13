@@ -3,6 +3,9 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
+* Prerequisites
+- [[http://aspell.net/][GNU Aspell]] for spell checking.
+
 * Some Basic Settings
   :PROPERTIES:
   :CUSTOM_ID: basic
@@ -177,8 +180,8 @@ but it is nonsense to enable it by default since most programming mode has
 special keyword which is not always spelled correctly by the judgement of the
 spelling checker.
 
-In order to use =flyspell=, you must install an external spell checker, such
-as [[http://aspell.net/][Aspell]] or [[http://www.gnu.org/software/ispell/][Ispell]], but GNU recommends [[http://aspell.net/man-html/Using-Aspell-as-a-Replacement-for-Ispell.html][Using Aspell as a Replacement for
+In order to use =flyspell=, you must install an external spell checker, such as
+[[http://aspell.net/][Aspell]] or [[http://www.gnu.org/software/ispell/][Ispell]], but GNU recommends [[http://aspell.net/man-html/Using-Aspell-as-a-Replacement-for-Ispell.html][Using Aspell as a Replacement for
 Ispell]]. The following code snippets comes from [[https://github.com/bbatsov/prelude/blob/master/core/prelude-editor.el][emacs prelude]].
 
 #+NAME: flyspell

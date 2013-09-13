@@ -3,6 +3,12 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
+* Prerequisites
+
+** Mandatory
+- [[http://www.tug.org/texlive/][texlive]], the full texlive distribution is really huge, so install necessary
+  parts as you need.
+
 * AUCTeX
   :PROPERTIES:
   :CUSTOM_ID: auctex

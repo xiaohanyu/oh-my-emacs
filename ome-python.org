@@ -3,6 +3,14 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
+* Prerequisites
+** Mandatory
+- [[http://www.python.org/][Python]], currently, I only tested Python 2.
+- [[https://github.com/jorgenschaefer/elpy][elpy]], you can install it using [[http://www.pip-installer.org/en/latest/][pip]].
+
+** Optional
+- [[http://ipython.org/][IPython]]
+
 * Elpy
   :PROPERTIES:
   :CUSTOM_ID: elpy
