@@ -1,7 +1,7 @@
 # Name of your emacs binary
 EMACS=emacs
 
-BATCH=$(EMACS) -batch -Q --eval '(require (quote org))' --eval '(setq ome-dir default-directory)'
+BATCH=$(EMACS) --batch -Q --eval '(require (quote org))' --eval '(setq ome-dir default-directory)'
 
 FILES = ome.org
 
@@ -20,7 +20,7 @@ doc: doc/index.html
 
 doc/index.html:
 	mkdir -p doc
-	$(EMACS) --batch -Q --eval '(org-babel-load-file "ome-publish.org")'
+	$(BATCH) --batch -Q --eval '(org-babel-load-file "ome-publish.org")'
 	rm ome-publish.el
 	cp doc/ome.html doc/index.html
 	echo "Documentation published to doc/"
