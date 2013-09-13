@@ -101,7 +101,7 @@ oh-my-emacs.
   :CUSTOM_ID: powerline
   :END:
 
-Powerline is an eye candy for emacs [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html][mode line]]. Actually, the [[https://github.com/jonathanchu/emacs-powerline][emacs powerline]] is
+Powerline is an eye candy for emacs [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html][mode line]]. Actually, the [[https://github.com/milkypostman/powerline][emacs powerline]] is
 inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There're also powerline variants for [[https://github.com/erikw/tmux-powerline][tmux]], [[https://github.com/milkbikis/powerline-shell][shell]], etc.
 
 #+NAME: powerline
@@ -109,7 +109,7 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
   (add-to-list 'el-get-sources
                '(:name powerline
                        :after (progn
-                                (require 'powerline))))
+                                (powerline-default-theme))))
 #+END_SRC
 * Yascroll
   :PROPERTIES:
