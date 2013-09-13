@@ -3,32 +3,30 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
-* Oh-my-emacs Key Bindings
-
 Key bindings for oh-my-emacs, mainly imported from [[https://github.com/eschulte/emacs24-starter-kit][emacs24-starter-kit]].
 
-** You know, like Readline.
+* You know, like Readline.
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-M-h") 'backward-kill-word)
 #+END_SRC
 
-** Align your code in a pretty way.
+* Align your code in a pretty way.
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x \\") 'align-regexp)
 #+END_SRC
 
-** Completion that uses many different methods to find options.
+* Completion that uses many different methods to find options.
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "M-/") 'hippie-expand)
 #+END_SRC
 
-** Font size
+* Font size
 #+BEGIN_SRC emacs-lisp
   (define-key global-map (kbd "C-=") 'text-scale-increase)
   (define-key global-map (kbd "C--") 'text-scale-decrease)
 #+END_SRC
 
-** Use regex searches by default.
+* Use regex searches by default.
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-s") 'isearch-forward-regexp)
   (global-set-key (kbd "C-r") 'isearch-backward-regexp)
@@ -36,7 +34,7 @@ Key bindings for oh-my-emacs, mainly imported from [[https://github.com/eschulte
   (global-set-key (kbd "C-M-r") 'isearch-backward)
 #+END_SRC
 
-** File finding
+* File finding
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
   (global-set-key (kbd "C-x C-p") 'find-file-at-point)
@@ -46,35 +44,35 @@ Key bindings for oh-my-emacs, mainly imported from [[https://github.com/eschulte
   (global-set-key (kbd "C-x C-b") 'ibuffer)
 #+END_SRC
 
-** Window switching. (C-x o goes to the next window)
+* Window switching.
 #+BEGIN_SRC emacs-lisp
   (windmove-default-keybindings) ;; Shift+direction
   (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;; back one
   (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; forward two
 #+END_SRC
 
-** Indentation help
+* Indentation help
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x ^") 'join-line)
 #+END_SRC
 
-** If you want to be able to M-x without meta
+* If you want to be able to M-x without meta
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 #+END_SRC
 
-** Help should search more than just commands
+* Help should search more than just commands
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-h a") 'apropos)
 #+END_SRC
 
-** Occur
+* Occur
 Occur can show all lines in the current buffer containing a match for REGEXP.
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c o") 'occur)
 #+END_SRC
 
-** RET
+* RET
 
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "RET") 'reindent-then-newline-and-indent)
