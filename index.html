@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs</h1>
+
+<blockquote>
+
+<p>Emacs outshines all other editing software in approximately the same
+way that the noonday sun does the stars. It is not just bigger and
+brighter; it simply makes everything else vanish.
+</p>
+<p>
+&ndash; Neal Stephenson, "In the Beginning was the Command Line"
+</p>
+</blockquote>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Prerequisites</a>
+<ul>
+<li><a href="#sec-1-1">Mandatory</a></li>
+</ul>
+</li>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#learning">Learning Emacs</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#sec-2-3">Package Management</a></li>
+<li><a href="#cl-lib">Cl-lib</a></li>
+<li><a href="#structure">Structure</a></li>
+</ul>
+</li>
+<li><a href="#implementation">Implementation</a>
+<ul>
+<li><a href="#sec-3-1">oh-my-emacs basics</a></li>
+<li><a href="#core">oh-my-emacs core functions</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Load settings</a>
+<ul>
+<li><a href="#sec-4-1">Load User/System Specific Files</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">Todo</a>
+<ul>
+<li><a href="#sec-5-1">Boot up speed optimization</a></li>
+<li><a href="#sec-5-2">El-get</a></li>
+<li><a href="#sec-5-3">Writing Portable Emacs Lisp Configurations</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Prerequisites</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">Mandatory</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>The following software is really basic that almost every el-get package will
+need one of them.
+</p>
+<ul>
+<li><a href="http://savannah.nongnu.org/projects/cvs">cvs</a>
+</li>
+<li><a href="http://mercurial.selenic.com/">mercurial</a>
+</li>
+<li><a href="http://git-scm.com/">git</a>
+</li>
+<li><a href="http://www.gnu.org/software/make/">make</a>
+</li>
+<li><a href="http://www.gnu.org/software/texinfo/">texinfo</a>
+</li>
+<li><a href="http://gcc.gnu.org/">gcc</a>
+</li>
+<li><a href="http://www.gnu.org/software/automake/">automake</a>
+</li>
+<li><a href="http://www.gnu.org/software/autoconf/">autoconf</a>
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-introduction" class="outline-2">
+<h2 id="introduction"><a name="sec-2" id="sec-2"></a>Introduction</h2>
+<div class="outline-text-2" id="text-introduction">
+
+
+<p>
+This dotemacs project aims to provide an out-of-the-box emacs configuration
+for writing and programming. It is intended for both beginners and
+intermediate users. The name of this project is inspired by <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>, which is
+another out-of-the-box configuration for <a href="http://www.zsh.org/">zsh</a>.
+</p>
+<p>
+The main features of oh-my-emacs are
+</p><ul>
+<li>better default settings
+</li>
+<li>focus on writing and programming, let emacs do what it really good at
+</li>
+<li>"literate" customization embedded in Org-mode files
+</li>
+<li>use el-get to manage packages, which is portable, and version control
+  friendly
+</li>
+<li>self-adapting, enable features only when the system meet the requirements
+</li>
+</ul>
+
+
+<p>
+The latest version is at <a href="https://github.com/xiaohanyu/oh-my-emacs">https://github.com/xiaohanyu/oh-my-emacs</a>.
+</p>
+
+</div>
+
+<div id="outline-container-learning" class="outline-3">
+<h3 id="learning"><a name="sec-2-1" id="sec-2-1"></a>Learning Emacs</h3>
+<div class="outline-text-3" id="text-learning">
+
+<p>This project won't teach you anything about how to use emacs or why use
+emacs. However, I'll give you some useful resources if you're new to emacs.
+</p>
+<p>
+The first thing you should refer to is the emacs builtin tutorial, type <code>C-h t</code> to get it within a running emacs.
+</p>
+<p>
+Next, you should refer to some general books to get a full view of emacs,
+just search <a href="http://www.amazon.com">http://www.amazon.com</a>.
+</p>
+<p>
+Now you should be a intermediate emacs user(or lover, I hope), the final step
+is emacs lisp, which is not that easy as it looks like, since it is not easy to
+get a full understanding of the so-called lisp. But you can still do something
+useful even if you didn't know lisp quite a lot. The builtin <a href="https://www.gnu.org/software/emacs/manual/html_node/eintr/">An Introduction to Programming in Emacs Lisp</a> is a really good entry point to emacs lisp
+programming. You can refer to this tutorial by typing <code>C-h i m Emacs Lisp Intro</code>.
+</p>
+<p>
+Finally, if you want to do some big jobs in emacs lisp, then there's a long
+adventure waiting for you. The builtin <a href="http://www.gnu.org/software/emacs/manual/">GNU Emacs Manual</a> and <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/">GNU Emacs Lisp Reference Manual</a> is your best friends. Besides these two large books, there're
+various good web sites, such as
+</p><dl>
+<dt><a href="http://www.emacswiki.org/">emacswiki</a></dt><dd>the largest unofficial emacs lisp repository
+</dd>
+<dt><a href="http://wikemacs.org/index.php/Main_Page">wikiemacs</a></dt><dd>a saner and modern wiki for emacs
+</dd>
+<dt><a href="http://www.masteringemacs.org/">masteringemacs</a></dt><dd>a blog about mastering the world's best text editor
+</dd>
+<dt><a href="http://emacs-fu.blogspot.com/">emacs-fu</a></dt><dd>useful tricks for emacs
+</dd>
+<dt><a href="http://alexott.net/en/emacs/">Alexott's Blog</a></dt><dd>some really great articles about emacs
+</dd>
+<dt><a href="http://alexott.net/en/emacs/">emacser</a></dt><dd>an excellent and comprehensive emacs blog written by chinese
+             users.
+</dd>
+</dl>
+
+
+
+<p>
+Wow, what a long journey, if you're tired, you can <a href="http://emacsrocks.com/">rock with emacs</a>.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-installation" class="outline-3">
+<h3 id="installation"><a name="sec-2-2" id="sec-2-2"></a>Installation</h3>
+<div class="outline-text-3" id="text-installation">
+
+
+<ol>
+<li>Install Emacs version 24 or greater.  Use your package manager if
+   you have one and it has an install candidate for Emacs 24,
+   otherwise install it directly <a href="http://savannah.gnu.org/projects/emacs/">from source</a>, or Mac binaries may be
+   downloaded from the <i>nightlies</i> section of
+   <a href="http://emacsformacosx.com/builds">http://emacsformacosx.com/builds</a>
+</li>
+<li>Checkout a version of the oh-my-emacs using git &ndash; if you're new to
+   git, checkout this <a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">git-tutorial</a>.
+</li>
+</ol>
+
+
+
+
+<pre class="src src-sh">git clone http://github.com/xiaohanyu/oh-my-emacs.git
+</pre>
+
+<ol>
+<li>Move the resulting directory to <code>~/.emacs.d</code> <sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>
+</li>
+<li>Launch Emacs!
+</li>
+</ol>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3">Package Management</h3>
+<div class="outline-text-3" id="text-2-3">
+
+<blockquote>
+
+<p>Let's face it &ndash; although a vanilla Emacs installation is quite powerful almost
+nobody is using Emacs without a pile of add-ons. And managing those add-ons is
+quite frankly a pain in the ass. Traditional options included installing Emacs
+add-ons via the operating system's package manager (if available), downloading
+.el files from various locations (everybody hates packages distributed only on
+Emacs Wiki with no canonical version control repo) and simply sticking them on
+the load-path, etc. It's more than obvious that such solutions are less than
+ideal.
+</p>
+<p>
+For instance if you're installing Emacs add-ons via a package manager and you
+have to change OSes (or machines) you're mostly fucked. On the other hand
+piling files manually in .emacs.d is equal to hell in the version and
+dependency tracking department. There has to be a better way, right? Wouldn't
+it be nice if Emacs had its own package manager similar to the likes of
+homebrew, apt or yum?
+</p>
+<p>
+Emacs 24 finally introduces such a tool &ndash; its name is package.el (very
+original, right?) and it's promise is to make your lives a bit easier. Does it
+manage to deliver on that promise? We'll see that in a bit&hellip;
+</p>
+<p>
+&ndash; <a href="http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/">Package Management in Emacs: The Good, the Bad and the Ugly</a>
+</p>
+</blockquote>
+
+
+<p>
+Ah, a long long quote, really vivid and visual description of the state of
+emacs package management system. <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a> adopt <a href="https://github.com/dimitri/el-get">el-get</a>, while other popular
+dotemacs project adopt the builtin <code>package.el</code>. You may wonder why, IMHO,
+<code>package.el</code> is far from ideal, althouth it is builtin with emacs, however,
+el-get is the practical solution, at least for now. In a word, what el-get
+to emacs is what <code>apt-get</code> to debian/ubuntu.
+</p>
+<p>
+So the first thing oh-my-emacs do to your emacs is to install <code>el-get</code>:
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"~/.emacs.d/el-get/el-get"</span>)
+
+(<span class="org-keyword">unless</span> (<span class="org-keyword">require</span> '<span class="org-constant">el-get</span> nil 'noerror)
+  (<span class="org-keyword">with-current-buffer</span>
+      (url-retrieve-synchronously
+       <span class="org-string">"https://raw.github.com/dimitri/el-get/master/el-get-install.el"</span>)
+    (<span class="org-keyword">let</span> (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">(el-get 'sync)</span>
+</pre>
+
+
+<p>
+And in the following journey, you may find the great power <code>el-get</code> provides
+for you &ndash; which makes it possible to store just dotemacs configuration, no
+need to things like <code>git submodule</code>. Thank you, <a href="http://tapoueh.org/">Dimitri Fontaine</a>.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-cl-lib" class="outline-3">
+<h3 id="cl-lib"><a name="sec-2-4" id="sec-2-4"></a>Cl-lib</h3>
+<div class="outline-text-3" id="text-cl-lib">
+
+
+<p>
+<a href="http://www.gnu.org/software/emacs/news/NEWS.24.3">Emacs 24.3</a> renamed the Common Lisp emulation package from <code>cl</code> to <code>cl-lib</code>,
+which causes some madness between different Emacs versions. The following hack
+code has been tested on Emacs 24.2.1 and Emacs 24.3.50. Any bug report will be
+appreciated.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (version&lt; emacs-version <span class="org-string">"24.3"</span>)
+  (el-get 'sync '(cl-lib))
+  (add-to-list 'load-path <span class="org-string">"~/.emacs.d/el-get/cl-lib"</span>))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-structure" class="outline-3">
+<h3 id="structure"><a name="sec-2-5" id="sec-2-5"></a>Structure</h3>
+<div class="outline-text-3" id="text-structure">
+
+<p>The <code>init.el</code> file is where everything begins. It is loaded
+automatically by Emacs on startup, its sole purpose is to load the
+elisp code embedded in this file.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-implementation" class="outline-2">
+<h2 id="implementation"><a name="sec-3" id="sec-3"></a>Implementation</h2>
+<div class="outline-text-2" id="text-implementation">
+
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1">oh-my-emacs basics</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<ul>
+<li>Functions for loading other parts of oh-my-emacs.
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-emacs-lisp">(setq ome-packages nil)
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-load</span> (file <span class="org-type">&amp;optional</span> header-or-tag)
+  <span class="org-doc">"Load configuration from other ome-*.org files.</span>
+<span class="org-doc">If the optional argument is the id of a subtree then only</span>
+<span class="org-doc">configuration from within that subtree will be loaded.  If it is</span>
+<span class="org-doc">not an id then it will be interpreted as a tag, and only subtrees</span>
+<span class="org-doc">marked with the given tag will be loaded.</span>
+
+<span class="org-doc">For example, to load all of ome-lisp.org simply</span>
+<span class="org-doc">add (ome-load \"lisp\") to your configuration.</span>
+
+<span class="org-doc">To load only the 'window-system' config from</span>
+<span class="org-doc">ome-misc-recommended.org add</span>
+<span class="org-doc"> (ome-load \"misc-recommended\" \"window-system\")</span>
+<span class="org-doc">to your configuration."</span>
+  (<span class="org-keyword">let</span> ((file (expand-file-name (<span class="org-keyword">if</span> (string-match <span class="org-string">"ome-.+\.org"</span> file)
+                                    file
+                                  (format <span class="org-string">"ome-%s.org"</span> file))
+                                ome-dir)))
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">ensure el-get-sources is empty before loading "ome-.+\.org" files</span>
+    (setq el-get-sources nil)
+    (org-babel-load-file
+     (<span class="org-keyword">if</span> header-or-tag
+         (<span class="org-keyword">let*</span> ((base (file-name-nondirectory file))
+                (dir  (file-name-directory file))
+                (partial-file (expand-file-name
+                               (concat <span class="org-string">"."</span> (file-name-sans-extension base)
+                                       <span class="org-string">".part."</span> header-or-tag <span class="org-string">".org"</span>)
+                               dir)))
+           (<span class="org-keyword">unless</span> (file-exists-p partial-file)
+             (<span class="org-keyword">with-temp-file</span> partial-file
+               (insert
+                (<span class="org-keyword">with-temp-buffer</span>
+                  (insert-file-contents file)
+                  (<span class="org-keyword">save-excursion</span>
+                    (<span class="org-keyword">condition-case</span> nil <span class="org-comment-delimiter">;; </span><span class="org-comment">collect as a header</span>
+                        (<span class="org-keyword">progn</span>
+                          (org-link-search (concat<span class="org-string">"#"</span>header-or-tag))
+                          (org-narrow-to-subtree)
+                          (buffer-string))
+                      (<span class="org-warning">error</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">collect all entries with as tags</span>
+                       (<span class="org-keyword">let</span> (body)
+                         (org-map-entries
+                          (<span class="org-keyword">lambda</span> ()
+                            (<span class="org-keyword">save-restriction</span>
+                              (org-narrow-to-subtree)
+                              (setq body (concat body <span class="org-string">"\n"</span> (buffer-string)))))
+                          header-or-tag)
+                         body))))))))
+           partial-file)
+       file))
+    (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+    (mapcar (<span class="org-keyword">lambda</span> (el-get-package)
+              (add-to-list 'ome-packages
+                           (el-get-source-name el-get-package)))
+            el-get-sources)))
+
+</pre>
+
+
+<ul>
+<li>Functions for getting information about el-get packages installed by
+  oh-my-emacs.
+</li>
+</ul>
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-try-get-package-website</span> (package)
+  <span class="org-doc">"el-get's package recipe has multiple type, some contains</span>
+<span class="org-doc">a :website, some contains just a :url, while some github package</span>
+<span class="org-doc">just contains a :pkgname. This function try to get a proper</span>
+<span class="org-doc">website link for an el-get package."</span>
+  (<span class="org-keyword">let</span> ((package-def (el-get-package-def package)))
+    (or (plist-get package-def <span class="org-builtin">:website</span>)
+        (and (eq (plist-get package-def <span class="org-builtin">:type</span>) 'github)
+             (concat <span class="org-string">"https://github.com/"</span>
+                     (plist-get package-def <span class="org-builtin">:pkgname</span>)))
+        (plist-get package-def <span class="org-builtin">:url</span>))))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-package-list</span> (ome-packages)
+  <span class="org-doc">"Get a whole list of el-get packages installed by</span>
+<span class="org-doc">oh-my-emacs. Returns a list of (package-name, package-website,</span>
+<span class="org-doc">package-description)."</span>
+  (mapcar
+   (<span class="org-keyword">lambda</span> (package)
+     (<span class="org-keyword">let</span> ((package-def (el-get-package-def package)))
+       (list (ome-try-get-package-website package)
+             (el-get-package-name package)
+             <span class="org-comment-delimiter">;; </span><span class="org-comment">some package's description has multiple lines, so we need to</span>
+             <span class="org-comment-delimiter">;; </span><span class="org-comment">join them together for better auto-fill.</span>
+             (replace-regexp-in-string <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\n</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">\\ </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">+"</span> <span class="org-string">" "</span>
+                                       (plist-get package-def <span class="org-builtin">:description</span>)))))
+   (sort ome-packages #'string&lt;)))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-package-list-in-org-format</span> (ome-packages)
+  <span class="org-doc">"A convenient function for constructing oh-my-emacs's</span>
+<span class="org-doc">README.org file."</span>
+  (mapcar
+   (<span class="org-keyword">lambda</span> (ome-package)
+     (format <span class="org-string">"[[%s][%s]]: %s"</span>
+             (nth 0 ome-package)
+             (nth 1 ome-package)
+             (nth 2 ome-package)))
+   (ome-package-list ome-packages)))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-insert-package-list-in-org-mode</span> ()
+  <span class="org-doc">"Insert all packages info to current `</span><span class="org-doc"><span class="org-constant">org-mode</span></span><span class="org-doc">' files.</span>
+
+<span class="org-doc">This still has some problems with `</span><span class="org-doc"><span class="org-constant">org-mode</span></span><span class="org-doc">' and `</span><span class="org-doc"><span class="org-constant">auto-fill-mode</span></span><span class="org-doc">'."</span>
+  (interactive)
+  (insert
+   (<span class="org-keyword">with-temp-buffer</span>
+     (<span class="org-keyword">loop</span> for package
+           in (ome-package-list-in-org-format ome-packages)
+           do (insert <span class="org-string">"- "</span> package <span class="org-string">"\n\n"</span>))
+     (fill-region (point-min) (point-max))
+     (replace-string <span class="org-string">"-\n "</span> <span class="org-string">"-"</span> nil (point-min) (point-max))
+     (flush-lines <span class="org-string">"^$"</span> (point-min) (point-max))
+     (buffer-string))))
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-core" class="outline-3">
+<h3 id="core"><a name="sec-3-2" id="sec-3-2"></a>oh-my-emacs core functions</h3>
+<div class="outline-text-3" id="text-core">
+
+
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> cl-lib))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-start-or-switch-to</span> (function buffer-name)
+  <span class="org-doc">"Invoke FUNCTION if there is no buffer with BUFFER-NAME.</span>
+<span class="org-doc">  Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber</span>
+<span class="org-doc">  the current buffer."</span>
+  (<span class="org-keyword">if</span> (not (get-buffer buffer-name))
+      (<span class="org-keyword">progn</span>
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (funcall function))
+    (switch-to-buffer-other-window buffer-name)))
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Load settings</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+Till now, Oh-my-emacs includes:
+</p><ul>
+<li><a href="ome-gui.html">ome-gui.org</a>: settings for color theme, font, modeline, scrollbar, etc.
+</li>
+<li><a href="ome-basic.html">ome-basic.org</a>: basic settings, such as tab, space, auto-fill-mode, flyspell,
+  etc.
+</li>
+<li><a href="ome-miscs.html">ome-miscs.org</a>: misc settings such as <code>magit</code>, <code>smartparens</code>, <code>projectile</code>,
+  etc.
+</li>
+<li><a href="ome-completion.html">ome-completion.org</a>: main settings for completion support.
+</li>
+<li><a href="ome-keybindings.html">ome-keybindings.org</a>: oh-my-emacs keybindings.
+</li>
+<li><a href="ome-org.html">ome-org.org</a>: some refinement for org-mode.
+</li>
+<li><a href="ome-advanced.html">ome-advanced.org</a>: only contains <code>evil</code>.
+</li>
+<li><a href="ome-writing.html">ome-writing.org</a>: for writers, bloggers, only contains <code>markdown-mode</code> for
+  now.
+</li>
+<li><a href="ome-cc.html">ome-cc.org</a>: main settings for <code>cc-mode</code>.
+</li>
+<li><a href="ome-lisp.html">ome-lisp.org</a>: ah, settings for lisp dialects, including emacs lisp, common
+  lisp, scheme and clojure.
+</li>
+<li><a href="ome-python.html">ome-python.org</a>: python settings, life is short, <code>elpy</code> is amazing.
+</li>
+<li><a href="ome-auto-mode.html">ome-auto-mode.org</a>: small and convenient settings for some minor mode package.
+</li>
+<li><a href="ome-tex.html">ome-tex.org</a>: AUCTeX and CDLaTeX for \TeX{} editing.
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-emacs-lisp">(ome-load <span class="org-string">"ome-gui.org"</span>)
+(ome-load <span class="org-string">"ome-basic.org"</span>)
+(ome-load <span class="org-string">"ome-miscs.org"</span>)
+(ome-load <span class="org-string">"ome-completion.org"</span>)
+(ome-load <span class="org-string">"ome-keybindings.org"</span>)
+(ome-load <span class="org-string">"ome-org.org"</span>)
+(ome-load <span class="org-string">"ome-advanced.org"</span>)
+(ome-load <span class="org-string">"ome-writing.org"</span>)
+(ome-load <span class="org-string">"ome-cc.org"</span>)
+(ome-load <span class="org-string">"ome-lisp.org"</span>)
+(ome-load <span class="org-string">"ome-python.org"</span>)
+(ome-load <span class="org-string">"ome-auto-mode.org"</span>)
+(ome-load <span class="org-string">"ome-tex.org"</span>)
+</pre>
+
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1">Load User/System Specific Files</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+</div>
+
+<div id="outline-container-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1">System/User specific customizations</h4>
+<div class="outline-text-4" id="text-4-1-1">
+
+<p>You can keep system- or user-specific customizations here in either raw
+emacs-lisp files or as embedded elisp in org-mode files (as done in this
+document).
+</p>
+<p>
+You can keep elisp source in the <code>src</code> directory.  Packages loaded from here
+will override those installed by ELPA.  This is useful if you want to track the
+development versions of a project, or if a project is not in elpa.
+</p>
+<p>
+After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
+</p>
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">flet</span> ((sk-load (base)
+         (<span class="org-keyword">let*</span> ((path          (expand-file-name base ome-dir))
+                (literate      (concat path <span class="org-string">".org"</span>))
+                (encrypted-org (concat path <span class="org-string">".org.gpg"</span>))
+                (plain         (concat path <span class="org-string">".el"</span>))
+                (encrypted-el  (concat path <span class="org-string">".el.gpg"</span>)))
+           (<span class="org-keyword">cond</span>
+            ((file-exists-p encrypted-org) (org-babel-load-file encrypted-org))
+            ((file-exists-p encrypted-el)  (load encrypted-el))
+            ((file-exists-p literate)      (org-babel-load-file literate))
+            ((file-exists-p plain)         (load plain)))))
+       (remove-extension (name)
+         (string-match <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">.*?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">org</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.gpg</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">?$"</span> name)
+         (match-string 1 name)))
+  (<span class="org-keyword">let</span> ((elisp-dir (expand-file-name <span class="org-string">"src"</span> ome-dir))
+        (user-dir (expand-file-name user-login-name ome-dir)))
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">add the src directory to the load path</span>
+    (add-to-list 'load-path elisp-dir)
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">load specific files</span>
+    (<span class="org-keyword">when</span> (file-exists-p elisp-dir)
+      (<span class="org-keyword">let</span> ((default-directory elisp-dir))
+        (normal-top-level-add-subdirs-to-load-path)))
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">load system-specific config</span>
+    (sk-load system-name)
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">load user-specific config</span>
+    (sk-load user-login-name)
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">load any files in the user's directory</span>
+    (<span class="org-keyword">when</span> (file-exists-p user-dir)
+      (add-to-list 'load-path user-dir)
+      (mapc #'sk-load
+            (remove-duplicates
+             (mapcar #'remove-extension
+                     (directory-files user-dir t <span class="org-string">".*\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">org</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.gpg</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">?$"</span>))
+             <span class="org-builtin">:test</span> #'string=)))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2">Settings from M-x customize</h4>
+<div class="outline-text-4" id="text-4-1-2">
+
+
+
+
+<pre class="src src-emacs-lisp">(setq custom-file (concat ome-dir <span class="org-string">"custom.el"</span>))
+(load custom-file 'noerror)
+</pre>
+
+
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Todo</h2>
+<div class="outline-text-2" id="text-5">
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1">Boot up speed optimization</h3>
+<div class="outline-text-3" id="text-5-1">
+
+<ul>
+<li>Use <code>eval-after-load</code> when possible to inprove the boot up speed.
+</li>
+<li><code>autoload</code> for lazy loading?
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2">El-get</h3>
+<div class="outline-text-3" id="text-5-2">
+
+<ul>
+<li>Documentation work about why choosing <code>el-get</code> over the builtin <code>package.el</code>
+  with <code>melpa</code> in doc.
+</li>
+<li>Investigate whether or not <code>el-get-remove</code> will remove all packages that
+  depends on the removed package, if not, how to solve this problem?
+</li>
+<li>Investigate more on <code>el-get</code> to know how to reinitialize a package without
+  need to <code>el-get-remove</code> then <code>el-get-install</code> if just <code>:after</code> changes a
+  little. This is really a big problem.
+</li>
+<li>Seems that you can write <code>depends</code> in ome <code>el-get-sources</code>, why?
+</li>
+<li>When you <code>el-get-update</code>, <code>el-get</code> will first <code>el-get-remove</code> then
+  <code>el-get-install</code>, any way to just do things like <code>git pull</code> instead of <code>git   clone</code> from the beginning?
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5-3" class="outline-3">
+<h3 id="sec-5-3">Writing Portable Emacs Lisp Configurations</h3>
+<div class="outline-text-3" id="text-5-3">
+
+<ul>
+<li>Use <code>executable-find</code> to set path to external tools instead of by writing the
+  tool full path by hand.
+</li>
+<li>Check necessary external tools before require a package if a package do need
+  that tool.
+</li>
+<li>Try your best to avoid binding keys to function keys since some function keys
+  are easy be conflicted with system keys, and some keyboard do not have
+  function keys at all, such as HHKB.
+</li>
+<li>Narrow you variable definition scope, for example, use <code>define-key</code> with a
+  mode map instead of <code>global-set-key</code>, and you'd better set mode related keys
+  within the mode hook.
+</li>
+<li>Try to use system tools to get necessary configuration, for example, you can
+  use <code>pkg-config</code> to get necessary header file paths for a particular lib,
+  this is useful for settings with <code>auto-complete-clang</code>.
+</li>
+<li>Emacs cannot do all things, it do need some external tools to faciliate its
+  jobs. For example, <code>semantic</code> from <code>cedet</code> is a bad idea, it's bloated, slow
+  and buggy. Consider using clang/jedi for completion. If there is a better
+  external tools, do not hesitate, just use it. Do not reinvent the same wheel
+  in emacs lisp, all you need to do is integrate that tool to emacs with an emacs
+  interface.
+</li>
+</ul>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> If you already have a directory at <code>~/.emacs.d</code> move it out of the way and
+put this there instead. Or you can make a symbolic link.
+</p>
+
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

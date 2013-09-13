@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Basic</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Basic"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Basic</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Prerequisites</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li><a href="http://aspell.net/">GNU Aspell</a> for spell checking.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-basic" class="outline-2">
+<h2 id="basic"><a name="sec-2" id="sec-2"></a>Some Basic Settings</h2>
+<div class="outline-text-2" id="text-basic">
+
+
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">set environment coding system</span>
+(set-language-environment <span class="org-string">"UTF-8"</span>)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">auto revert buffer globally</span>
+(global-auto-revert-mode t)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">set TAB and indention</span>
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">y or n is suffice for a yes or no question</span>
+(fset 'yes-or-no-p 'y-or-n-p)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">always add new line to the end of a file</span>
+(setq require-final-newline t)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">add no new lines when "arrow-down key" at the end of a buffer</span>
+(setq next-line-add-newlines nil)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">prevent the annoying beep on errors</span>
+(setq ring-bell-function 'ignore)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">remove trailing whitespaces before save</span>
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">enable to support navigate in camelCase words</span>
+(global-subword-mode t)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">hide startup splash screen</span>
+(setq inhibit-startup-screen t)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">shell-mode settings</span>
+(setq explicit-shell-file-name <span class="org-string">"/bin/bash"</span>)
+(setq shell-file-name <span class="org-string">"/bin/bash"</span>)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">always insert at the bottom</span>
+(setq comint-scroll-to-bottom-on-input t)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">no duplicates in command history</span>
+(setq comint-input-ignoredups t)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">what to run when i press enter on a line above the current prompt</span>
+(setq comint-get-old-input (<span class="org-keyword">lambda</span> () <span class="org-doc">""</span>))
+<span class="org-comment-delimiter">;; </span><span class="org-comment">max shell history size</span>
+(setq comint-input-ring-size 1000)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">show all in emacs interactive output</span>
+(setenv <span class="org-string">"PAGER"</span> <span class="org-string">"cat"</span>)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">set lang to enable Chinese display in shell-mode</span>
+(setenv <span class="org-string">"LANG"</span> <span class="org-string">"en_US.UTF-8"</span>)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">set text-mode as the default major mode, instead of fundamental-mode</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">The first of the two lines in parentheses tells Emacs to turn on Text mode</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">when you find a file, unless that file should go into some other mode, such</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">as C mode.</span>
+(setq-default major-mode 'text-mode)
+
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">ido-mode</span>
+(setq ido-enable-prefix nil)
+(setq ido-enable-case nil)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode t)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">use icomplete in minibuffer</span>
+(icomplete-mode t)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">delete the selection with a keypress</span>
+(delete-selection-mode t)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-auto-fill" class="outline-2">
+<h2 id="auto-fill"><a name="sec-3" id="sec-3"></a>Auto-fill Mode</h2>
+<div class="outline-text-2" id="text-auto-fill">
+
+
+<p>
+<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Auto-Fill.html">Auto Fill mode</a> is a buffer-local minor mode in which lines are broken
+automatically when they become too wide. Breaking happens only when you type a
+&lt;SPC&gt; or &lt;RET&gt;.
+</p>
+<p>
+You may wonder why we still live with 80 columns rule in modern life, in which
+we have large monitors, intelligent editors(or IDEs). I don't explain the
+reasons here, you can refer stackoverflow <a href="http://stackoverflow.com/questions/110928/is-there-a-valid-reason-for-enforcing-a-maximum-width-of-80-characters-in-a-code">1</a> and <a href="http://stackoverflow.com/questions/373561/do-people-still-live-by-the-80-column-rule">2</a> to get some feeling.
+</p>
+<p>
+I zealously wrap my code at 80 columns if possible, and encourage my colleagues
+to follow the same rule. In fact, there're some projects in which 80 columns
+rule is mandatory.
+</p>
+<p>
+I enable auto fill minor mode for text-mode and prog-mode and all <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Derived-Modes.html">derived modes</a>
+from them<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>. For how to quickly fill a paragraph or region, see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html">Explicit Fill Commands</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(setq-default fill-column 79)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'prog-mode-hook 'turn-on-auto-fill)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-saveplace" class="outline-2">
+<h2 id="saveplace"><a name="sec-4" id="sec-4"></a>Save Place in Opened Files</h2>
+<div class="outline-text-2" id="text-saveplace">
+
+
+<p>
+When you visit a file, point goes to the last place where it was when you
+previously visited the same file. The following code comes from <a href="http://emacs-fu.blogspot.com/2009/05/remembering-your-position-in-file.html">emacs-fu</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(setq-default save-place t)
+(setq save-place-file <span class="org-string">"~/.emacs.d/saved-places"</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">saveplace</span>)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-recentf" class="outline-2">
+<h2 id="recentf"><a name="sec-5" id="sec-5"></a>Recentf</h2>
+<div class="outline-text-2" id="text-recentf">
+
+
+<p>
+All modern editors(or IDEs) provide features like open recent files/projects,
+so does emacs &ndash; <code>recentf</code>, a builtin emacs package which maintains a menu for
+visiting files that were operated on recently. Together with <code>savespace</code>,
+emacs provides a quick way to restore your workspace.
+</p>
+<p>
+The following code comes from <a href="http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/">masteringemacs</a>, which combined <code>ido</code> and
+<code>recentf</code>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">recentf</span>)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">get rid of `</span><span class="org-comment"><span class="org-constant">find-file-read-only</span></span><span class="org-comment">' and replace it with something</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">more useful.</span>
+(global-set-key (kbd <span class="org-string">"C-x C-r"</span>) 'ido-recentf-open)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">enable recent files mode.</span>
+(recentf-mode t)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">50 files ought to be enough.</span>
+(setq recentf-max-saved-items 50)
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ido-recentf-open</span> ()
+  <span class="org-doc">"Use `</span><span class="org-doc"><span class="org-constant">ido-completing-read</span></span><span class="org-doc">' to \\[</span><span class="org-doc"><span class="org-constant">find-file</span></span><span class="org-doc">] a recent file"</span>
+  (interactive)
+  (<span class="org-keyword">if</span> (find-file (ido-completing-read <span class="org-string">"Find recent file: "</span> recentf-list))
+      (message <span class="org-string">"Opening file..."</span>)
+    (message <span class="org-string">"Aborting"</span>)))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-uniquify" class="outline-2">
+<h2 id="uniquify"><a name="sec-6" id="sec-6"></a>Uniquify</h2>
+<div class="outline-text-2" id="text-uniquify">
+
+
+<p>
+Sometimes when you view different files with same filenames, emacs will
+append "&lt;1&gt;", "&lt;2&gt;" to the filename as the buffer name to differentiate
+them. Maybe you do not like the default naming patterns to "uniquify" these
+buffers, so emacs provides a uniquify package which can change the default
+naming of buffers to include parts of the file name (directory names) until the
+buffer names are unique.
+</p>
+<p>
+You can type <code>C-h i m emacs RET s uniquify RET</code> to get the manual about
+uniquify package. Or you can refer to <a href="http://trey-jackson.blogspot.com/2008/01/emacs-tip-11-uniquify.html">1</a> and <a href="http://emacs-fu.blogspot.com/2009/11/making-buffer-names-unique.html">2</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(<span class="org-keyword">require</span> '<span class="org-constant">uniquify</span>)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-flyspell" class="outline-2">
+<h2 id="flyspell"><a name="sec-7" id="sec-7"></a>Flyspell</h2>
+<div class="outline-text-2" id="text-flyspell">
+
+
+<p>
+Emacs has builtin support for <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">spelling checking and correcting</a> &ndash; <code>flyspell</code>,
+but it is nonsense to enable it by default since most programming mode has
+special keyword which is not always spelled correctly by the judgement of the
+spelling checker.
+</p>
+<p>
+In order to use <code>flyspell</code>, you must install an external spell checker, such as
+<a href="http://aspell.net/">Aspell</a> or <a href="http://www.gnu.org/software/ispell/">Ispell</a>, but GNU recommends <a href="http://aspell.net/man-html/Using-Aspell-as-a-Replacement-for-Ispell.html">Using Aspell as a Replacement for Ispell</a>. The following code snippets comes from <a href="https://github.com/bbatsov/prelude/blob/master/core/prelude-editor.el">emacs prelude</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">use aspell instead of ispell</span>
+(setq ispell-program-name <span class="org-string">"aspell"</span>
+      ispell-extra-args '(<span class="org-string">"--sug-mode=ultra"</span>))
+</pre>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> Actually, emacs has only three <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html">basic major modes</a>, so we actually enable
+auto-fill in almost every programming and writing modes.
+</p>
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

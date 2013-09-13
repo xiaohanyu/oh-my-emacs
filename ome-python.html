@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Python</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Python"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Python</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Prerequisites</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">Mandatory</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li><a href="http://www.python.org/">Python</a>, currently, I only tested Python 2.
+</li>
+<li><a href="https://github.com/jorgenschaefer/elpy">elpy</a>, you can install it using <a href="http://www.pip-installer.org/en/latest/">pip</a>.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Optional</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ul>
+<li><a href="http://ipython.org/">IPython</a>
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-elpy" class="outline-2">
+<h2 id="elpy"><a name="sec-2" id="sec-2"></a>Elpy</h2>
+<div class="outline-text-2" id="text-elpy">
+
+
+<p>
+The first time I tried to write Python with emacs, I've found there're really
+really too many choices, which may make newbies confusing and disgusting.
+</p>
+<p>
+Say <code>python-mode</code>, before <a href="http://www.gnu.org/software/emacs/news/NEWS.24.3">Emacs 24.3</a>, there're at least three choices:
+</p><ul>
+<li>The old <code>python.el</code> from Emacs, which has some minor problems when dealing
+  with docstring, Python 3k, etc.
+</li>
+<li>The <code>python-mode.el</code> from the Python community, which provides lots of dirty
+  menu items. It's a tedious long journey to make all this menu items just
+  work.
+</li>
+<li>The wonderful <code>python.el</code> from <a href="https://github.com/fgallina/python.el">fgallina</a>, which overcomes many drawbacks of
+  the old Emacs builtin <code>python.el</code>, and has been <a href="http://from-the-cloud.com/en/emacs/2012/06/18_pythonel-has-landed-on-emacs-trunk.html">integrated to Emacs trunk</a>. I
+  think this is the best choice of the three.
+</li>
+</ul>
+
+
+<p>
+Say code checking tools,
+</p><ul>
+<li>What is <a href="https://pypi.python.org/pypi/pep8">pep8</a>?
+</li>
+<li>What is <a href="https://pypi.python.org/pypi/pylint">pylint</a>?
+</li>
+<li>What is <a href="https://pypi.python.org/pypi/pyflakes/">pyflakes</a>?
+</li>
+<li>What is <a href="https://pypi.python.org/pypi/flake8">flake8</a>?
+</li>
+<li>What's the differences between all these fucking wonderful code checking
+  tools? How and when should I use it? Which one to use? Any shortcuts to fire
+  these tools within <code>python-mode</code>?
+</li>
+</ul>
+
+
+<p>
+Say developing tools,
+</p><ul>
+<li>What is <a href="http://www.virtualenv.org/en/latest/">virtualenv</a>?
+</li>
+<li>What about code completion? Maybe after two days' google, you finally make
+  <a href="http://cx4a.org/software/auto-complete/">auto-complete</a> works with a completion backend, such as <a href="http://rope.sourceforge.net/">rope</a> or <a href="https://github.com/davidhalter/jedi">jedi</a>, but how
+  can you make completion be virtualenv-awared?
+</li>
+</ul>
+
+
+<p>
+Choices, choices, choices, choices are where all happiness and headaches
+begins. Just google a minute you'll find articles which use different
+<code>python-mode</code>, different dotemacs, different way to get necessary packages,
+are, what's the fuck<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>! I'm just a newbie, any out-of-box solutions?
+Fortunately, there comes <a href="https://github.com/jorgenschaefer/elpy">elpy</a>, which saves our lifes.
+</p>
+<p>
+Just like other big emacs packages, elpy has some external dependencies. But
+don't be afraid, beleive me, within minutes, you'll get an out-of-box Emacs
+Python "IDE". First, make sure you have <code>python</code> and <code>pip</code> installed, and then
+type <code>pip install elpy</code> with root priviledge<sup><a class="footref" name="fnr-.2" href="#fn-.2">2</a></sup>, then choose a completion
+backend, either <code>pip install rope</code> or <code>pip install jedi</code> <sup><a class="footref" name="fnr-.3" href="#fn-.3">3</a></sup>.
+</p>
+<p>
+Make sure you have others necessary python tools installed:
+</p><ul>
+<li><code>pip install virtualenv</code>
+</li>
+<li><code>pip install pyflakes</code>
+</li>
+<li><code>pip install nose</code>
+</li>
+</ul>
+
+
+<p>
+If you're lucky enough, you can fire up Emacs and start python work right now.
+</p>
+<p>
+There're other annoying problems, one of them is the division between Python 2
+and Python 3. So you may need to replace <code>pip</code> with <code>pip2</code>, or <code>python</code> with
+<code>python2</code>, etc. Ah, differrent systems has different favors and naming rules.
+</p>
+<p>
+The second thing is, elpy requires Emacs version &gt;= 24.3, since Emacs 24.3
+ships with a new <code>python.el</code> <sup><a class="footref" name="fnr-.4" href="#fn-.4">4</a></sup>, which, actually, is the aforementioned
+<a href="https://github.com/fgallina/python.el">fgallina</a>'s <code>python.el</code>. So you may need to upgrade your builin <code>python.el</code>, but
+don't worry, oh-my-emacs will handle this for you!
+</p>
+<p>
+There's also a <a href="https://github.com/gabrielelanaro/emacs-for-python">emacs-for-python</a> project in github, which attracts more github
+stars than elpy, but I don't like its approach, since it will clean out all
+your existing dotemacs and replace with a wholly new, which is just useful for
+Python. However, elpy is just a plugin, though it implements lots of features
+with the help from other packages, you can still disable or enable elpy,
+without breaking your existing precious dotemacs.
+</p>
+<p>
+Thanks <a href="https://github.com/jorgenschaefer/elpy">elpy</a> again, for time it saves for us, through which we can focus more
+on Python, on our life, instead of the details to make choices. Elpy is the
+ultimate out-of-box Emacs Python "IDE" solution.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-python-setup</span> ()
+  (elpy-enable)
+  (<span class="org-keyword">when</span> (executable-find <span class="org-string">"ipython"</span>)
+    (elpy-use-ipython))
+  (define-key python-mode-map (kbd <span class="org-string">"RET"</span>)
+    'newline-and-indent))
+
+(<span class="org-keyword">when</span> (version&lt; emacs-version <span class="org-string">"24.3"</span>)
+  (add-to-list 'el-get-sources
+               '(<span class="org-builtin">:name</span> python24)))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> elpy
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-python-setup))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Todo</h2>
+<div class="outline-text-2" id="text-3">
+
+<ul>
+<li>Add some django-mode support? Maybe
+  <a href="https://github.com/fgallina/python-django.el">https://github.com/fgallina/python-django.el</a> is a good candidate.
+</li>
+<li>Auto-complete support for completion in <code>inferior-python-mode</code> like
+  SLIME. Maybe the general auto-complete readline backend
+  <a href="https://github.com/monsanto/readline-complete.el">https://github.com/monsanto/readline-complete.el</a> is the ultimate solution
+  for REPL languages.
+</li>
+</ul>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> See <a href="http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/">here</a>, <a href="http://caisah.info/emacs-for-python/">here</a>, <a href="http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/">here</a>, <a href="http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/">here</a>, and <a href="http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/">here</a>.
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn-.2" href="#fnr-.2">2</a></sup> <code>pip install pkg</code> with root can make <code>pkg</code> accessible in newly created
+virtualenvs.
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn-.3" href="#fnr-.3">3</a></sup> See <a href="https://github.com/jorgenschaefer/elpy/wiki/Backends">elpy wiki</a> to get basic knowledge of elpy completion backend.
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn-.4" href="#fnr-.4">4</a></sup> Check <a href="http://from-the-cloud.com/en/emacs/2013/03/19_emacs-243-release-and-pythonel.html">Emacs 24.3 release and python.el</a> for the author's blog.
+</p>
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

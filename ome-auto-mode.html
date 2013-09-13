@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Auto-mode</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Auto-mode"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Auto-mode</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains various settings for minor file types, such as SCons build
+file, archlinux's PKGBUILD file, etc.
+</p>
+
+<div id="outline-container-scons" class="outline-2">
+<h2 id="scons"><a name="sec-1" id="sec-1"></a>SCons</h2>
+<div class="outline-text-2" id="text-scons">
+
+
+<p>
+<a href="http://www.scons.org/">SCons</a> is a next generation build system that is much easier to configure and
+use than the traditional make utility. SCons uses the Python general purpose
+programming language as a foundation, and all SCons build files are Python
+scripts, so we just set SCons build file work with python-mode.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'auto-mode-alist '(<span class="org-string">"SConstruct"</span> . python-mode))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-puppet" class="outline-2">
+<h2 id="puppet"><a name="sec-2" id="sec-2"></a>Puppet</h2>
+<div class="outline-text-2" id="text-puppet">
+
+
+<p>
+<a href="https://puppetlabs.com/">Puppet</a> is configuration management tool from <a href="http://en.wikipedia.org/wiki/Puppet_Labs">Puppet Labs</a>, it is the de facto
+industry standard for IT automation. Puppet is written by ruby but has its own
+DSL, so the emacs builtin <code>ruby-mode</code> is not proper for editing puppet files.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> puppet-mode))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-pkgbuild" class="outline-2">
+<h2 id="pkgbuild"><a name="sec-3" id="sec-3"></a>ArchLinux PKGBUILD</h2>
+<div class="outline-text-2" id="text-pkgbuild">
+
+
+<p>
+A PKGBUILD is an Arch Linux package build description file, which is actually
+a shell script. Thus you can edit PKGBUILD file with emacs
+<code>shell-script-mode</code>, however, <code>pkgbuild-mode</code> provides a better workflow based
+on <code>shell-script-mode</code> for PKGBUILD files, including:
+</p><ul>
+<li>A default PKGBUILD template as a starting point
+</li>
+<li>Some shortcuts to update md5sum, browse package's website, build tarball,
+  etc.
+</li>
+</ul>
+
+
+<p>
+Just install <code>pkgbuild-mode</code> from <code>el-get</code> will bring all this goodies to your
+fingertips.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (executable-find <span class="org-string">"pacman"</span>)
+  (add-to-list 'el-get-sources
+               '(<span class="org-builtin">:name</span> pkgbuild-mode)))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-wikipedia" class="outline-2">
+<h2 id="wikipedia"><a name="sec-4" id="sec-4"></a>Wikipedia</h2>
+<div class="outline-text-2" id="text-wikipedia">
+
+
+<p>
+Wikitext language, or <a href="http://en.wikipedia.org/wiki/Wiki_markup">wiki markup</a>, is a lightweight markup language used to
+write pages in wiki websites, such as Wikipedia, and is a simplified
+alternative/intermediate to HTML. Its ultimate purpose is to be converted by
+wiki software into HTML, which in turn is served to web browsers.
+</p>
+<p>
+Unfortunately, there is no commonly accepted standard wikitext language. So I
+just pick <code>wikipedia-mode</code>, which is one of the many possible packages from
+el-get, as the mode for editing wiki documents. If you have better choice,
+please tell me.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> wikipedia-mode
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (add-to-list 'auto-mode-alist
+                                           '(<span class="org-string">"\\.wiki\\'"</span> . wikipedia-mode)))))
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-yaml" class="outline-2">
+<h2 id="yaml"><a name="sec-5" id="sec-5"></a>YAML</h2>
+<div class="outline-text-2" id="text-yaml">
+
+
+<p>
+<a href="http://www.yaml.org/">YAML</a> is a human friendly data serialization standard for all programming
+languages. I really like it for its simplicity and readability. However, Emacs
+didn't have a builtin mode for editing YAML files, so you know how easy to
+solve this by adopting <code>el-get</code>. Thanks <code>el-get</code> again!
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> yaml-mode))
+</pre>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

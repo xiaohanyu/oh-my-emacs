@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Lisps</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Lisps"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Lisps</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains some settings for lisp dialects including <a href="#sec-3">Emacs Lisp</a>, <a href="#sec-6">Scheme</a>, <a href="#sec-4">Common Lisp</a>, and <a href="#sec-5">Clojure</a>.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Prerequisites</a>
+<ul>
+<li><a href="#sec-1-1">Mandatory</a></li>
+</ul>
+</li>
+<li><a href="#basic-lisp">Basics</a></li>
+<li><a href="#emacs-lisp">Emacs Lisp</a>
+<ul>
+<li><a href="#ielm">IELM</a></li>
+<li><a href="#eshell">Eshell</a></li>
+</ul>
+</li>
+<li><a href="#common-lisp">Common Lisp</a></li>
+<li><a href="#clojure">Clojure</a></li>
+<li><a href="#scheme">Scheme</a></li>
+<li><a href="#sec-7">Todos</a>
+<ul>
+<li><a href="#sec-7-1">Elisp</a></li>
+<li><a href="#sec-7-2">Common Lisp</a></li>
+<li><a href="#sec-7-3">Scheme</a></li>
+<li><a href="#sec-7-4">Clojure</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Prerequisites</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">Mandatory</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li><a href="http://www.sbcl.org/">SBCL</a> or <a href="http://ccl.clozure.com/">Clozure CL</a> or <a href="http://www.clisp.org/">CLISP</a> as a Common Lisp implementation.
+</li>
+<li><a href="http://www.gnu.org/software/guile/">Guile</a> or <a href="http://racket-lang.org/">Racket</a> as a Scheme implementation.
+</li>
+<li><a href="http://leiningen.org/">Leiningen</a> for Clojure
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-basic-lisp" class="outline-2">
+<h2 id="basic-lisp"><a name="sec-2" id="sec-2"></a>Basics</h2>
+<div class="outline-text-2" id="text-basic-lisp">
+
+
+<p>
+This section contains some basic settings which is common to all lisp modes.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">ome-lisp-modes</span> '(emacs-lisp-mode
+                         inferior-emacs-lisp-mode
+                         lisp-interaction-mode
+                         scheme-mode
+                         lisp-mode
+                         eshell-mode
+                         slime-repl-mode
+                         nrepl-mode
+                         clojure-mode
+                         common-lisp-mode)
+  <span class="org-doc">"List of Lisp modes."</span>)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-emacs-lisp" class="outline-2">
+<h2 id="emacs-lisp"><a name="sec-3" id="sec-3"></a>Emacs Lisp</h2>
+<div class="outline-text-2" id="text-emacs-lisp">
+
+
+<p>
+Emacs is really a great "IDE" for developing Elisp programs. This section
+contains some goodies for elisp development.
+</p>
+<p>
+<a href="https://github.com/purcell/elisp-slime-nav">elisp-slime-nav</a> provide some slime-like shortcuts to find function/variable
+definitions, which is useful when you want to know the details, as you know,
+there's no secret with source code. But the default shortcuts for
+<code>elisp-slime-nav-find-elisp-thing-at-point</code> has conflicts with <code>evil-mode</code>,
+which is enabled by default by oh-my-emacs, I still didn't figure out a good
+way to solve this, so any help will be appreciated.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-remove-elc-on-save</span> ()
+  <span class="org-doc">"If you're saving an elisp file, likely the .elc is no longer valid."</span>
+  (make-local-variable 'after-save-hook)
+  (add-hook 'after-save-hook
+            (<span class="org-keyword">lambda</span> ()
+              (<span class="org-keyword">if</span> (file-exists-p (concat buffer-file-name <span class="org-string">"c"</span>))
+                  (delete-file (concat buffer-file-name <span class="org-string">"c"</span>))))))
+
+(add-hook 'emacs-lisp-mode-hook 'ome-remove-elc-on-save)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-elisp-slime-nav-setup</span> ()
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(defun ome-elisp-slime-nav-keybindings-in-evil ()</span>
+  <span class="org-comment-delimiter">;;   </span><span class="org-comment">(if (and (boundp 'evil-mode) evil-mode)</span>
+  <span class="org-comment-delimiter">;;       </span><span class="org-comment">(progn (define-key elisp-slime-nav-mode-map (kbd "C-c C-d .")</span>
+  <span class="org-comment-delimiter">;;                </span><span class="org-comment">'elisp-slime-nav-find-elisp-thing-at-point)</span>
+  <span class="org-comment-delimiter">;;              </span><span class="org-comment">(define-key elisp-slime-nav-mode-map (kbd "C-c C-d ,")</span>
+  <span class="org-comment-delimiter">;;                </span><span class="org-comment">'pop-tag-mark))))</span>
+  (<span class="org-keyword">dolist</span> (hook '(emacs-lisp-mode-hook
+                  lisp-interaction-mode-hook
+                  ielm-mode-hook
+                  eshell-mode-hook))
+    (add-hook hook 'turn-on-elisp-slime-nav-mode)))
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">(add-hook hook 'ome-elisp-slime-nav-keybindings-in-evil)))</span>
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> elisp-slime-nav
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-elisp-slime-nav-setup))))
+</pre>
+
+
+
+</div>
+
+<div id="outline-container-ielm" class="outline-3">
+<h3 id="ielm"><a name="sec-3-1" id="sec-3-1"></a>IELM</h3>
+<div class="outline-text-3" id="text-ielm">
+
+
+<p>
+<a href="http://www.emacswiki.org/emacs/InferiorEmacsLispMode">IELM</a> is an alternative to Lisp Interactive mode, you can treat IELM as <a href="http://emacs-fu.blogspot.com/2011/03/ielm-repl-for-emacs.html">a REPL for emacs</a>. Though convenient, IELM lacks some import features to be a real
+REPL, such as <code>python-shell-send-defun</code> in Emacs 24.3 builtin python mode.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-visit-ielm</span> ()
+  <span class="org-doc">"Switch to default `</span><span class="org-doc"><span class="org-constant">ielm</span></span><span class="org-doc">' buffer.</span>
+<span class="org-doc">Start `</span><span class="org-doc"><span class="org-constant">ielm</span></span><span class="org-doc">' if it's not already running."</span>
+  (interactive)
+  (ome-start-or-switch-to 'ielm <span class="org-string">"*ielm*"</span>))
+
+(define-key emacs-lisp-mode-map (kbd <span class="org-string">"C-c C-z"</span>) 'ome-visit-ielm)
+(add-to-list 'ac-modes 'inferior-emacs-lisp-mode)
+(add-hook 'ielm-mode-hook 'ac-emacs-lisp-mode-setup)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-eshell" class="outline-3">
+<h3 id="eshell"><a name="sec-3-2" id="sec-3-2"></a>Eshell</h3>
+<div class="outline-text-3" id="text-eshell">
+
+
+<p>
+I think you can treat <a href="http://www.gnu.org/software/emacs/manual/html_mono/eshell.html">Eshell</a> as a combination of traditional Unix shell and
+IELM. Eshell is a command shell written in Emacs Lisp, which means it's as
+portable as Emacs itself. In fact, Eshell replicates most of the features and
+commands from GNU CoreUtils and the Bourne-like shells, thus Eshell will
+function identically on any environment Emacs itself runs on.
+</p>
+<p>
+To your surprise, Eshell does not inherit from <code>comint-mode</code>, which means that
+hooks and routines for <code>comint-mode</code> won't work for Eshell. For more details
+about how to mastering eshell, see <a href="http://www.masteringemacs.org/articles/2010/12/13/complete-guide-mastering-eshell/">MASTERING ESHELL</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-hook 'eshell-mode-hook
+          (<span class="org-keyword">lambda</span> ()
+            (add-to-list 'ac-sources 'ac-source-pcomplete)))
+
+(add-to-list 'ac-modes 'eshell-mode)
+(add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'eshell-mode-hook 'ac-emacs-lisp-mode-setup)
+</pre>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-common-lisp" class="outline-2">
+<h2 id="common-lisp"><a name="sec-4" id="sec-4"></a>Common Lisp</h2>
+<div class="outline-text-2" id="text-common-lisp">
+
+
+<p>
+<a href="http://common-lisp.net/project/slime/">SLIME</a> is the Superior Lisp Interaction Mode for Emacs, here're some <a href="http://www.cliki.net/SLIME%20Features">features</a>
+and <a href="http://www.cliki.net/SLIME%20Tips">tips</a>. Believe me, SLIME in Emacs is a subversive developing environment for
+Common Lisp, it is the ultimate solution for languages with a <a href="http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a>. SLIME is
+the bridge between an Editor(here, Emacs for example, vim users have a <a href="http://www.vim.org/scripts/script.php?script_id=2531">slimv</a>
+which is a fork of SLIME to vim) and a running Common Lisp environment. It
+makes your workflow so smooth and enjoyable that you will miss it so much when
+working with other REPL languages such as Python/Ruby/JavaScript<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>, etc.
+</p>
+<p>
+Some good resources about SLIME:
+</p><ul>
+<li><a href="http://bc.tech.coop/blog/081209.html">Understanding SLIME (Using Emacs and Lisp Cooperatively)</a>, a really concise
+  explanation of SLIME's architecture, together with lots of valuable links,
+  from which you will understand why SLIME is so great and amazing.
+</li>
+<li><a href="http://lisp-book.org/contents/chslime.pdf">Chapter 18. SLIME</a> from <a href="http://lisp-book.org/contents/chslime.pdf">Lisp Outside the Box</a> provides a really detailed guide
+  to SLIME.
+</li>
+<li><a href="http://common-lisp.net/project/slime/doc/html/">SLIME User Manual</a> provides expert information and is your lifelong friend.
+</li>
+<li>For Chinese, <a href="http://www.feime.net/2013/%E6%96%B0%E5%B9%B4%E7%AC%AC%E4%B8%80%E7%AF%87-%E7%BB%99lisp%E6%96%B0%E6%89%8B%E4%BB%8B%E7%BB%8D%E4%B8%8Bslime%E8%BF%99%E4%B8%AA%E7%A5%9E%E5%99%A8/">Albertlee's Blog</a> provides a detailed overview of SLIME.
+</li>
+<li><a href="http://ghostopera.org/blog/2012/06/24/the-newbie-guide-to-common-lisp/">The Newbie Guide to Getting Started on Common Lisp</a> provides a concise and
+  helpful guide to start programming with Common Lisp.
+</li>
+</ul>
+
+
+<p>
+To use SLIME, you must install an <a href="http://www.cliki.net/common%20lisp%20implementation">Lisp Implementation</a>, just like if you want to do
+C programming, you must install a C compiler such as GCC. Here I recommend <a href="http://www.sbcl.org/">SBCL</a>
+for you. You can get it by <code>sudo apt-get install sbcl</code> in Ubuntu/Mint/Debian.
+</p>
+<p>
+<a href="http://www.lispworks.com/">LispWorks</a> provides a comprehensive documentation for Common Lisp called
+<a href="http://www.lispworks.com/documentation/HyperSpec/Front/">hyperspec</a>, which integrates quite well with SLIME through
+<code>slime-documentation-lookup</code>. You can get by <code>sudo apt-get install hyperspec</code>
+in Ubuntu/Mint/Debian. To use hyperspec in ubuntu/mint, you can: <code>sudo apt-get install hyperspec</code>, which also set proper <code>common-lisp-hyperspec-root</code> for
+you. On other Linux distributions, maybe you need to set it manually to tell
+SLIME where to find the hyperspec document.
+</p>
+<p>
+You can also get <a href="http://en.wikipedia.org/wiki/Common_Lisp_the_Language">CLTL</a> by <code>sudo apt-get install cltl</code>, which is the defacto
+standard for Common Lisp before the ANSI standard.
+</p>
+<p>
+Oh-my-emacs also configure <a href="http://emacs-w3m.namazu.org/">emacs-w3m</a> as the default documentation browser for
+SLIME.
+</p>
+<p>
+Oh-my-emacs integrates <a href="https://github.com/purcell/ac-slime">ac-slime</a> for instant in-buffer completion, and should be
+self-adapted to your system, by which I mean, it will use an available lisp
+implementation by finding it using <code>executable-find</code> instead of specifying a
+fixed file path like <code>/usr/bin/sbcl</code>.
+</p>
+<p>
+Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-common-lisp-slime-setup</span> ()
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Define multiple lisp backends</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">see http://nklein.com/2010/05/getting-started-with-clojureemacsslime/</span>
+  (<span class="org-keyword">defmacro</span> <span class="org-function-name">defslime-start</span> (name mapping)
+    `(<span class="org-keyword">defun</span> ,name ()
+       (interactive)
+       (<span class="org-keyword">let</span> ((slime-default-lisp ,mapping))
+         (slime))))
+  (setq slime-lisp-implementations
+        `((sbcl (,(executable-find <span class="org-string">"sbcl"</span>)) <span class="org-builtin">:coding-system</span> utf-8-unix)
+          (ccl (,(executable-find <span class="org-string">"ccl"</span>)))
+          (ccl64 (,(executable-find <span class="org-string">"ccl64"</span>)))
+          (clisp (,(executable-find <span class="org-string">"clisp"</span>)))))
+
+  (defslime-start slime-sbcl 'sbcl)
+  (defslime-start slime-ccl 'ccl)
+  (defslime-start slime-ccl64 'ccl64)
+  (defslime-start slime-clisp 'clisp)
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">If you use ubuntu/mint, then "sudo apt-get install hyperspec" will set</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">this for you in a file like "/etc/emacs/site-start.d/60hyperspec.el"</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq common-lisp-hyperspec-root "/usr/share/doc/hyperspec/")</span>
+
+  (global-set-key (kbd <span class="org-string">"C-c s"</span>) 'slime-selector)
+  (setq slime-net-coding-system 'utf-8-unix)
+  (setq slime-complete-symbol*-fancy t)
+  (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+  (setq inferior-lisp-program
+        (or (executable-find <span class="org-string">"sbcl"</span>)
+            (executable-find <span class="org-string">"ccl"</span>)
+            (executable-find <span class="org-string">"ccl64"</span>)
+            (executable-find <span class="org-string">"clisp"</span>)))
+  (slime-setup '(slime-fancy
+                 slime-indentation
+                 slime-banner
+                 slime-highlight-edits)))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> slime
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-common-lisp-slime-setup))))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-ac-slime-setup</span> ()
+  (add-hook 'slime-mode-hook
+            (<span class="org-keyword">lambda</span> ()
+              (set-up-slime-ac t)))     <span class="org-comment-delimiter">; </span><span class="org-comment">use slime-fuzzy-complete-symbol</span>
+  (add-hook 'slime-repl-mode-hook
+            (<span class="org-keyword">lambda</span> ()
+              (set-up-slime-ac t)))
+  (<span class="org-keyword">eval-after-load</span> <span class="org-string">"auto-complete"</span>
+    '(add-to-list 'ac-modes 'slime-repl-mode)))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> ac-slime
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-ac-slime-setup))))
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-clojure" class="outline-2">
+<h2 id="clojure"><a name="sec-5" id="sec-5"></a>Clojure</h2>
+<div class="outline-text-2" id="text-clojure">
+
+
+<p>
+<a href="http://www.clojure.org">Clojure</a> is a modern Lisp on top of JVM, it is a member of the Lisp family of
+languages. Clojure extends the code-as-data system beyond parenthesized lists
+(s-expressions) to vectors and maps.
+</p>
+<p>
+Since Clojure is a Lisp dialect, it should work the SLIME way. Yeah, first
+comes <a href="https://github.com/technomancy/swank-clojure">swank-clojure</a>, then <a href="https://github.com/clojure-emacs/nrepl.el">nrepl.el</a>. The only thing you need to install is
+<a href="http://leiningen.org/">leiningen</a> 2.x. I recommand you to install it manually, since not all <a href="https://github.com/technomancy/leiningen/wiki/Packaging">package manager</a> provides the latest version.
+</p>
+<p>
+The general way to install lastest stable leiningen is:
+</p>
+
+
+<pre class="src src-sh">wget -O /tmp/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein
+sudo mv /tmp/lein /usr/bin/lein
+lein version
+</pre>
+
+
+<p>
+Or you can see leiningen's <a href="https://github.com/technomancy/leiningen/wiki/Upgrading">wiki</a> for upgrading details.
+</p>
+<p>
+Now, just open a clojure file, then <code>nrepl-jack-in</code>, and you can program
+Clojure the SLIME way. <a href="http://vimeo.com/22798433">Here</a> is an awesome live demo to demostrate the Clojure
+workflow.
+</p>
+<p>
+It's really really awesome, ah?
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> clojure-mode))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-nrepl-setup</span> ()
+  (add-hook 'nrepl-interaction-mode-hook
+            'nrepl-turn-on-eldoc-mode)
+  (setq nrepl-hide-special-buffers t)
+  (setq nrepl-buffer-name-separator <span class="org-string">"-"</span>)
+  (setq nrepl-buffer-name-show-port t))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> nrepl
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-nrepl-setup))))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-ac-nrepl-setup</span> ()
+  (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+  (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+  (<span class="org-keyword">eval-after-load</span> <span class="org-string">"auto-complete"</span>
+    '(add-to-list 'ac-modes 'nrepl-mode)))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> ac-nrepl
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-ac-nrepl-setup))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-scheme" class="outline-2">
+<h2 id="scheme"><a name="sec-6" id="sec-6"></a>Scheme</h2>
+<div class="outline-text-2" id="text-scheme">
+
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a> is my favourite programming language, it is small, elegant and
+powerful. Unfortunately, there're too many choices for scheme implementation,
+which makes it a headache when you want to do some real world job with scheme.
+</p>
+<p>
+Oh-my-emacs adopts <a href="http://www.nongnu.org/geiser/">geiser</a>, which provides a similar SLIME way to work with
+scheme. To install geiser, you need install <code>automake</code> and <code>autoconf</code>. And to
+run geiser, you need install at least one of the geiser supported scheme
+implementation, namely, <a href="http://www.gnu.org/software/guile/">guile</a> or <a href="http://racket-lang.org/">racket</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> geiser))
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">(add-to-list 'el-get-sources</span>
+<span class="org-comment-delimiter">;;              </span><span class="org-comment">'(:name quack))</span>
+</pre>
+
+
+<p>
+Actually, the official SLIME contrib has some swank backends for scheme
+implementations, you can try it if you like. There's a <a href="https://github.com/nickg/swank-chicken">swank-chicken</a> for
+<a href="http://www.call-cc.org/">chicken scheme</a>, but it only provides a small part of SLIME features. So it is
+disabled by default.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-swank-chicken-setup</span> ()
+  (setq swank-chicken-path <span class="org-string">"~/.emacs.d/el-get/swank-chicken/swank-chicken.scm"</span>)
+  (add-hook 'scheme-mode-hook
+            (<span class="org-keyword">lambda</span> ()
+              (slime-mode t))))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> swank-chicken
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-swank-chicken-setup))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">Todos</h2>
+<div class="outline-text-2" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-3">
+<h3 id="sec-7-1">Elisp</h3>
+<div class="outline-text-3" id="text-7-1">
+
+<ul>
+<li>What is overlay?
+</li>
+<li>What is syntax?
+</li>
+<li>Learn more knowledge about emacs key-maps, and what's the difference between
+  <code>global-set-key</code> and <code>remap</code>.
+</li>
+<li>Learn more knowledge about emacs syntax-table, functions like
+  <code>modify-syntax-entry</code>, etc.
+</li>
+<li>What <code>enable-recursive-minibuffers</code> means to us?
+</li>
+<li>How to do asynchronous programming in emacs lisp?
+</li>
+<li>Make <code>ielm</code> as a real elisp <code>REPL</code>?
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-3">
+<h3 id="sec-7-2">Common Lisp</h3>
+<div class="outline-text-3" id="text-7-2">
+
+<ul>
+<li>Integrate <a href="http://www.foldr.org/~michaelw/emacs/redshank/">redshank</a>?
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-7-3" class="outline-3">
+<h3 id="sec-7-3">Scheme</h3>
+<div class="outline-text-3" id="text-7-3">
+
+<ul>
+<li>Write a package "ac-geisure", just like ac-slime.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-7-4" class="outline-3">
+<h3 id="sec-7-4">Clojure</h3>
+<div class="outline-text-3" id="text-7-4">
+
+<ul>
+<li>The boot up speed of JVM is too slow, so we may need to refer to
+  <a href="http://icylisper.github.io/jark/">http://icylisper.github.io/jark/</a>.
+</li>
+</ul>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> <a href="https://github.com/swank-js/swank-js">swank-js</a>, <a href="http://common-lisp.net/~crhodes/swankr/">swankr</a>
+</p>
+
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

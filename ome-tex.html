@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs TeX</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Oh My Emacs TeX"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs TeX</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Prerequisites</a>
+<ul>
+<li><a href="#sec-1-1">Mandatory</a></li>
+</ul>
+</li>
+<li><a href="#auctex">AUCTeX</a>
+<ul>
+<li><a href="#sec-2-1">Prerequisites and Installation</a></li>
+<li><a href="#sec-2-2">Keybindings</a></li>
+<li><a href="#sec-2-3">Checking</a></li>
+<li><a href="#sec-2-4">Reftex</a></li>
+<li><a href="#sec-2-5">Tips and Tricks</a></li>
+<li><a href="#sec-2-6">Oh-my-emacs settings</a></li>
+<li><a href="#sec-2-7">Coordinations with other packages</a></li>
+<li><a href="#sec-2-8">Todo</a></li>
+</ul>
+</li>
+<li><a href="#cdlatex">CDLaTeX</a></li>
+<li><a href="#sec-4">Todo</a>
+<ul>
+<li><a href="#sec-4-1">AUCTeX</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Prerequisites</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">Mandatory</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li><a href="http://www.tug.org/texlive/">texlive</a>, the full texlive distribution is really huge, so install necessary
+  parts as you need.
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-auctex" class="outline-2">
+<h2 id="auctex"><a name="sec-2" id="sec-2"></a>AUCTeX</h2>
+<div class="outline-text-2" id="text-auctex">
+
+
+<p>
+<a href="http://www.gnu.org/software/auctex/">AUCTeX</a> is the predominant \TeX{}/\LaTeX{} writing environment for
+Emacs/XEmacs.
+</p>
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1">Prerequisites and Installation</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<p>\TeX{} is a long history legend in computer typesetting. To configure a
+working \TeX{} environment is far beyond the scope of this project. However,
+I can give you some hint to install a \TeX{} system on Linux. If you are
+</p><ul>
+<li>a Ubuntu/Debian/Mint user, install texlive by <code>sudo apt-get install   texlive-full</code>
+</li>
+<li>a Arch Linux user, install texlive by <code>sudo pacman -S texlive-most   texlive-langcjk</code>
+</li>
+<li>a Fedora user, install texlive by <code>sudo yum -S texlive-all</code>
+</li>
+<li>a SuSE user, install texlive by <code>sudo zypper in texlive-xetex</code>
+</li>
+</ul>
+
+
+<p>
+If you are not lucky enough, you should follow the official <a href="http://www.tug.org/texlive/">texlive</a>
+instructions to install it.
+</p>
+<p>
+There're other annoying problems if you're a <a href="http://en.wikipedia.org/wiki/CJK_characters">CJK</a> user, such as fonts and
+package configurion in \TeX{} documents, but this is further beyond the scope
+of this project. So refer to necessary <a href="https://tug.org/">TUG</a>s, or BBS for help. For chinese user,
+<a href="http://www.ctex.org/">CTEX</a> is a good place to start your journey. <a href="http://zzg34b.w3.c361.com/">LaTeX编辑部</a> also provides lots of
+useful resources written in Chinese.
+</p>
+<p>
+For all \TeX{} users, the Comprehensive TEX Archive Network (<a href="http://www.ctan.org/">CTAN</a>) is your
+lifelong friend, which act as the central place for all kinds of material
+around \TeX{}. The famous Stack Exchange Network also provides a
+<a href="http://tex.stackexchange.com/">http://tex.stackexchange.com/</a> which focus on \TeX{} related questions.
+</p>
+<p>
+Enough, enjoy your journey to \TeX{} world! Now it's time to come back to
+AUCTeX. Besides a working \TeX{} installation, you also need <code>autoconf</code> and
+<code>texinfo</code> package for <code>el-get-install auctex</code>, and a recent <a href="http://www.ghostscript.com/">Ghostscript</a> for
+<code>preview-latex</code> in both <a href="http://en.wikipedia.org/wiki/Device_independent_file_format">DVI</a> and <a href="http://en.wikipedia.org/wiki/Pdf">PDF</a> mode.
+</p>
+<p>
+Finally, if you're tired or afraid to setup a working \TeX{} environment,
+<a href="https://www.writelatex.com/">writelatex</a> provides a really instance starting point with no pain, just try it
+before you fall in love with \TeX{} world.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2">Keybindings</h3>
+<div class="outline-text-3" id="text-2-2">
+
+<p>AUCTeX is really flexible and customizable, it also provides a rich set of
+menubar entries. Here's a list of most commonly used keybindings in AUCTeX:
+</p><ul>
+<li>Editing
+<ul>
+<li><code>C-c C-s</code> <code>LaTeX-section</code>
+</li>
+<li><code>C-c C-e</code> <code>LaTeX-environment</code>
+</li>
+<li><code>C-c C-m</code> <code>TeX-insert-macro</code>
+</li>
+<li><code>C-c ]</code> <code>LaTeX-close-environment</code>
+</li>
+</ul>
+
+</li>
+<li>Marking and Commenting
+<ul>
+<li><code>C-c *</code> <code>LaTeX-mark-section</code>
+</li>
+<li><code>C-c .</code> <code>LaTeX-mark-environment</code>
+</li>
+<li><code>C-c ;</code> <code>TeX-comment-or-uncomment-region</code>
+</li>
+<li><code>C-c %</code> <code>TeX-comment-or-uncomment-paragraph</code>
+</li>
+</ul>
+
+</li>
+<li>Folding:
+<ul>
+<li><code>C-c C-o C-b</code> <code>TeX-fold-buffer</code>
+</li>
+<li><code>C-c C-o b</code> <code>TeX-fold-clearout-buffer</code>
+</li>
+</ul>
+
+</li>
+<li>Command Controlling
+<ul>
+<li><code>C-c C-c</code> <code>TeX-command-master</code>
+</li>
+<li><code>C-c C-r</code> <code>TeX-command-region</code>
+</li>
+<li><code>C-c C-b</code> <code>TeX-command-buffer</code>
+</li>
+<li><code>C-c C-k</code> <code>TeX-kill-job</code>
+</li>
+<li><code>C-c C-l</code> <code>TeX-recenter-output-buffer</code>
+</li>
+<li><code>C-c ^</code> <code>TeX-home-buffer</code>
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3">Checking</h3>
+<div class="outline-text-3" id="text-2-3">
+
+<p><a href="http://www.ctan.org/tex-archive/support/lacheck/">lacheck</a> and <a href="http://baruch.ev-en.org/proj/chktex/">chktex</a> is the lint tool for \TeX{}, you can install them in Ubuntu
+by <code>sudo apt-get install lacheck chktex</code>. AUCTeX has direct support for
+<code>lacheck</code> and <code>chktex</code>. You can start <code>lacheck</code> with <code>C-c C-c Check &lt;RET&gt;</code> and
+<code>chktex</code> with <code>C-c C-c ChkTeX &lt;RET&gt;</code>.
+</p>
+<p>
+Each of the two utilities will find some errors the other doesn't, but <code>chktex</code>
+is more configurable, allowing you to create your own errors
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-4" class="outline-3">
+<h3 id="sec-2-4">Reftex</h3>
+<div class="outline-text-3" id="text-2-4">
+
+<ul>
+<li><code>C-c =</code> <code>reftex-toc</code> will show a table of contents of the document.
+</li>
+<li><code>C-c (</code> <code>reftex-label</code> to insert a label at point.
+</li>
+<li><code>C-c [</code> <code>reftex-citation</code> to insert a citations from BibTeX database.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5" class="outline-3">
+<h3 id="sec-2-5">Tips and Tricks</h3>
+<div class="outline-text-3" id="text-2-5">
+
+<p><a href="http://tex.stackexchange.com/questions/52179/what-is-your-favorite-emacs-and-or-auctex-command-trick">Here</a>'s some tips and tricks about AUCTeX.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-6" class="outline-3">
+<h3 id="sec-2-6">Oh-my-emacs settings</h3>
+<div class="outline-text-3" id="text-2-6">
+
+<ul>
+<li>Use <code>xetex</code> as the default <code>TeX-engine</code> for better support for \TeX{} font
+  selection and PDF export.
+</li>
+<li>Enable <code>outline-minor-mode</code> and <code>flyspell-mode</code>.
+</li>
+<li>Enable <code>TeX-interactive-mode</code>, <code>TeX-PDF-mode</code>, <code>TeX-fold-mode</code> and
+  <code>reftex-mode</code>.
+</li>
+<li>Favors <a href="http://okular.kde.org/">Okular</a> and <a href="https://projects.gnome.org/evince/">Evince</a> as the default viewer in Linux, and fallbacks to
+  <code>xdg-open</code> if both Okular and Evince is unavailable. Since I don't have a
+  Windows or Mac OS X environment, patches are always welcome.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-7" class="outline-3">
+<h3 id="sec-2-7">Coordinations with other packages</h3>
+<div class="outline-text-3" id="text-2-7">
+
+<p>Oh-my-emacs adopts some other awesome packages such as <code>smartparens</code> and
+<code>evil</code>, which has some conflicts with AUCTeX. so there need some hack, which,
+is always the main topic with Emacs.
+</p>
+<p>
+<code>smartparens-latex</code> provide some goodies for \TeX{} editing. But we need to
+ensure <code>smartparens</code> is available before we <code>require 'smartparens-latex</code>.
+</p>
+<p>
+<code>smartparens</code> still has some weired problems for inserting "$" in \TeX{}, which
+is a weird problem. In fact, both AUCTeX and <code>smartparens</code> provides some pair
+management functions, which may be overlapping. AUCTeX provide a
+<code>TeX-electric-math</code>, while <code>smartparens</code> was born for pair management. Worse,
+the following <code>cdlatex.el</code> also provides some pair management functions. Ah, we
+need some coordination between them. So any ideas or patches will be
+appreciated.
+</p>
+<p>
+Another oh-my-emacs package, <code>evil</code>, shadowed some keybindings for AUCTeX's
+<code>reftex-toc-mode</code>. However, I only enable <code>evil-mode</code> in <code>text-mode-hook</code> and
+<code>prog-mode-hook</code>, and <code>reftex-toc-mode</code> is derived from <code>fundamental-mode</code>, I
+have no idea why <code>evil-local-mode</code> is enabled by default when entering
+<code>reftex-toc-mode</code>, so I have to <code>turn-off-evil-mode</code> explicitly.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-8" class="outline-3">
+<h3 id="sec-2-8">Todo</h3>
+<div class="outline-text-3" id="text-2-8">
+
+<ul>
+<li>Add <code>auto-complete</code> support,
+  <a href="https://github.com/monsanto/auto-complete-auctex">https://github.com/monsanto/auto-complete-auctex</a>.
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-auctex-setup</span> ()
+  (<span class="org-keyword">when</span> (<span class="org-keyword">require</span> '<span class="org-constant">smartparens</span> nil 'noerror)
+    (<span class="org-keyword">require</span> '<span class="org-constant">smartparens-latex</span>))
+  (setq TeX-auto-save t)                <span class="org-comment-delimiter">; </span><span class="org-comment">Automatically save style information</span>
+                                        <span class="org-comment-delimiter">; </span><span class="org-comment">when saving the buffer</span>
+  (setq TeX-parse-self t)               <span class="org-comment-delimiter">; </span><span class="org-comment">Parse file after loading it if no</span>
+                                        <span class="org-comment-delimiter">; </span><span class="org-comment">style hook is found for it.</span>
+  (setq LaTeX-syntactic-comment t)
+  (setq TeX-auto-untabify t)            <span class="org-comment-delimiter">; </span><span class="org-comment">remove all tabs before saving</span>
+  (setq reftex-plug-into-AUCTeX t)
+  (setq-default TeX-engine 'xetex)      <span class="org-comment-delimiter">; </span><span class="org-comment">use xelatex by default</span>
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Currently, only linux system are tested. Patches for Mac OS and Windows</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">are always welcome.</span>
+  (<span class="org-keyword">cond</span>
+   ((eq system-type 'gnu/linux)
+    (<span class="org-keyword">cond</span>
+     ((executable-find <span class="org-string">"okular"</span>)
+      (setq TeX-view-program-selection
+            '((output-pdf <span class="org-string">"Okular"</span>)
+              (output-dvi <span class="org-string">"Okular"</span>))))
+     ((executable-find <span class="org-string">"evince"</span>)
+      (setq TeX-view-program-selection
+            '((output-pdf <span class="org-string">"Evince"</span>)
+              (output-dvi <span class="org-string">"Evince"</span>))))
+     (t
+      (setq TeX-view-program-selection
+            '((output-pdf <span class="org-string">"xdg-open"</span>)
+              (output-dvi <span class="org-string">"xdg-open"</span>)))))))
+
+  (add-hook 'TeX-mode-hook
+            (<span class="org-keyword">lambda</span> ()
+              (outline-minor-mode t)
+              (flyspell-mode t)
+              (TeX-interactive-mode t)
+              (TeX-PDF-mode t)
+              (TeX-fold-mode t)))
+
+  (add-hook 'LaTeX-mode-hook
+            (<span class="org-keyword">lambda</span> ()
+              (LaTeX-math-mode t)
+              (reftex-mode t)))
+
+  (add-hook 'reftex-toc-mode-hook
+            (<span class="org-keyword">lambda</span> ()
+              (<span class="org-keyword">when</span> (<span class="org-keyword">featurep</span> '<span class="org-constant">evil</span>)
+                (turn-off-evil-mode)))))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> auctex
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-auctex-setup))))
+
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-cdlatex" class="outline-2">
+<h2 id="cdlatex"><a name="sec-3" id="sec-3"></a>CDLaTeX</h2>
+<div class="outline-text-2" id="text-cdlatex">
+
+
+<blockquote>
+
+<p>CDLaTeX - more LaTeX functionality for Emacs and XEmacs
+</p>
+<p>
+CDTeX is a minor mode which re-implements many features also found in the
+AUCTeX LaTeX mode. The reason for this is mainly historical - much of it was
+written before I knew about AUCTeX. So check this out if you would like to try
+a different implementation.  Here are some of the differences: Environment
+insertion is template based, and not hook based. Keyword commands (which are
+executed by typing a short (2-4 letters) keyword into the buffer, followed by
+TAB) give very rapid access to the main environment templates and mathematical
+constructs. CDLaTeX knows the difference between text mode and math mode in
+LaTeX and adapts automatically to that. You can download CDLaTeX here.
+</p>
+<p>
+&ndash; <a href="http://staff.science.uva.nl/~dominik/Tools/cdlatex/">http://staff.science.uva.nl/~dominik/Tools/cdlatex/</a>
+</p>
+</blockquote>
+
+
+<p>
+The comments in <code>cdlatex.el</code> said that "CDLaTeX requires texmathp.el which is
+distributed with AUCTeX. Starting with Emacs 21.3, texmathp.el will be part of
+Emacs.", however, I didn't find any <code>texmathp.el</code> with current emacs
+distribution. So CDLaTeX requires AUCTeX as a dependency, which means it didn't
+work with Emacs builtin <code>tex-mode</code> anymore.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-cdlatex-setup</span> ()
+  (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+  (add-hook 'latex-mode-hook 'turn-on-cdlatex))
+
+(<span class="org-keyword">when</span> (el-get-package-is-installed 'auctex)
+  (add-to-list 'el-get-sources
+               '(<span class="org-builtin">:name</span> cdlatex-mode
+                       <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                                (ome-cdlatex-setup)))))
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Todo</h2>
+<div class="outline-text-2" id="text-4">
+
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1">AUCTeX</h3>
+<div class="outline-text-3" id="text-4-1">
+
+<ul>
+<li>Add auto-complete support for auctex. see
+  <a href="https://github.com/monsanto/auto-complete-auctex">https://github.com/monsanto/auto-complete-auctex</a>.
+</li>
+<li>Investigate on "What is TeX master file?"
+</li>
+<li>What is SyncTeX? How to use it?
+</li>
+<li>What is <code>TeX-interactive-mode</code>?
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

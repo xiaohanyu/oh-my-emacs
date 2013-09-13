@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Keybindings</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Keybindings"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Keybindings</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/eschulte/emacs24-starter-kit">emacs24-starter-kit</a>.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">You know, like Readline.</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-M-h"</span>) 'backward-kill-word)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Align your code in a pretty way.</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x \\"</span>) 'align-regexp)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Completion that uses many different methods to find options.</h2>
+<div class="outline-text-2" id="text-3">
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-/"</span>) 'hippie-expand)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Font size</h2>
+<div class="outline-text-2" id="text-4">
+
+
+
+
+<pre class="src src-emacs-lisp">(define-key global-map (kbd <span class="org-string">"C-="</span>) 'text-scale-increase)
+(define-key global-map (kbd <span class="org-string">"C--"</span>) 'text-scale-decrease)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Use regex searches by default.</h2>
+<div class="outline-text-2" id="text-5">
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-s"</span>) 'isearch-forward-regexp)
+(global-set-key (kbd <span class="org-string">"C-r"</span>) 'isearch-backward-regexp)
+(global-set-key (kbd <span class="org-string">"C-M-s"</span>) 'isearch-forward)
+(global-set-key (kbd <span class="org-string">"C-M-r"</span>) 'isearch-backward)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">File finding</h2>
+<div class="outline-text-2" id="text-6">
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x M-f"</span>) 'ido-find-file-other-window)
+(global-set-key (kbd <span class="org-string">"C-x C-p"</span>) 'find-file-at-point)
+(global-set-key (kbd <span class="org-string">"C-c y"</span>) 'bury-buffer)
+(global-set-key (kbd <span class="org-string">"C-c r"</span>) 'revert-buffer)
+(global-set-key (kbd <span class="org-string">"M-`"</span>) 'file-cache-minibuffer-complete)
+(global-set-key (kbd <span class="org-string">"C-x C-b"</span>) 'ibuffer)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">Window switching.</h2>
+<div class="outline-text-2" id="text-7">
+
+
+
+
+<pre class="src src-emacs-lisp">(windmove-default-keybindings) <span class="org-comment-delimiter">;; </span><span class="org-comment">Shift+direction</span>
+(global-set-key (kbd <span class="org-string">"C-x O"</span>) (<span class="org-keyword">lambda</span> () (interactive) (other-window -1))) <span class="org-comment-delimiter">;; </span><span class="org-comment">back one</span>
+(global-set-key (kbd <span class="org-string">"C-x C-o"</span>) (<span class="org-keyword">lambda</span> () (interactive) (other-window 2))) <span class="org-comment-delimiter">;; </span><span class="org-comment">forward two</span>
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8">Indentation help</h2>
+<div class="outline-text-2" id="text-8">
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x ^"</span>) 'join-line)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9">If you want to be able to M-x without meta</h2>
+<div class="outline-text-2" id="text-9">
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x C-m"</span>) 'execute-extended-command)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-10" class="outline-2">
+<h2 id="sec-10">Help should search more than just commands</h2>
+<div class="outline-text-2" id="text-10">
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-h a"</span>) 'apropos)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-11" class="outline-2">
+<h2 id="sec-11">Occur</h2>
+<div class="outline-text-2" id="text-11">
+
+<p>Occur can show all lines in the current buffer containing a match for REGEXP.
+</p>
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c o"</span>) 'occur)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-12" class="outline-2">
+<h2 id="sec-12">RET</h2>
+<div class="outline-text-2" id="text-12">
+
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"RET"</span>) 'reindent-then-newline-and-indent)
+</pre>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

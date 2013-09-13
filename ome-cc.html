@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs CC</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs CC"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs CC</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains some settings for <code>cc-mode</code>.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Prerequisites</a>
+<ul>
+<li><a href="#sec-1-1">Mandatory</a></li>
+<li><a href="#sec-1-2">Optional</a></li>
+</ul>
+</li>
+<li><a href="#basic-cc">Basic CC-Mode Settings</a></li>
+<li><a href="#makefile">Makefile Settings</a></li>
+<li><a href="#cmake">CMake</a></li>
+<li><a href="#doxymacs">Documentation with Doxymacs</a></li>
+<li><a href="#cscope">Indexing with Cscope</a></li>
+<li><a href="#auto-complete-clang">Auto-complete-clang</a></li>
+<li><a href="#sec-8">Todo</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Prerequisites</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">Mandatory</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li><a href="http://www.xmlsoft.org/">libxml2</a>, you need to <code>sudo apt-get install libxml2 libxml2-dev</code> in
+  Ubuntu. There is required for el-get to build doxymacs.
+</li>
+<li><a href="http://clang.llvm.org/">clang</a>, for auto-complete-clang
+</li>
+<li><a href="http://www.freedesktop.org/wiki/Software/pkg-config/">pkg-config</a>, a helper tool used when compiling applications and libraries.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Optional</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ul>
+<li><a href="http://www.cmake.org/">CMake</a>
+</li>
+<li><a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a>, even if you don't have doxygen installed, you can still use
+  doxymacs to insert doxygen-style comments. So I make this dependency
+  optional.
+</li>
+<li><a href="http://cscope.sourceforge.net/">Cscope</a>, for code indexing.
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-basic-cc" class="outline-2">
+<h2 id="basic-cc"><a name="sec-2" id="sec-2"></a>Basic CC-Mode Settings</h2>
+<div class="outline-text-2" id="text-basic-cc">
+
+
+<p>
+<code>cc-mode</code> is not a single mode, actually, <code>cc-mode</code> is a collection of emacs
+major mode for "editing files containing C, C++, Objective-C, Java, CORBA IDL
+(and the variants CORBA PSDL and CIDL), Pike and AWK code."
+</p>
+<p>
+Although <code>cc-mode</code> is a bit old, it is still powerful and flexible. It
+contains a powerful <a href="http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html#Indentation-Engine-Basics">indentation engine</a>, supports various builtin coding
+<a href="http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html#Styles">styles</a>, and provides various useful <a href="http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html#Minor-Modes">minor modes</a>.
+</p>
+<p>
+You do need some basic elisp knowledge to master the power of <code>cc-mode</code>. For
+example, you need to know what the difference between <code>setq</code> and
+<code>setq-default</code>, some basic knowledge about elisp hooks, etc.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(setq c-default-style '((java-mode . <span class="org-string">"java"</span>)
+                        (awk-mode . <span class="org-string">"awk"</span>)
+                        (c-mode . <span class="org-string">"k&amp;r"</span>)
+                        (c++-mode . <span class="org-string">"stroustrup"</span>)
+                        (other . <span class="org-string">"linux"</span>)))
+
+(setq-default c-basic-offset 4)
+(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.h"</span> . c++-mode))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-c-initialization-hook</span> ()
+  (define-key c-mode-base-map (kbd <span class="org-string">"RET"</span>) 'c-context-line-break))
+
+(add-hook 'c-initialization-hook 'ome-c-initialization-hook)
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-c-mode-common-hook</span> ()
+  (add-to-list 'c-cleanup-list 'defun-close-semi)
+  (c-toggle-hungry-state)
+  (c-toggle-auto-newline)
+  (subword-mode 1))
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">this will affect all modes derived from cc-mode, like</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">java-mode, php-mode, etc</span>
+(add-hook 'c-mode-common-hook 'ome-c-mode-common-hook)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-makefile" class="outline-2">
+<h2 id="makefile"><a name="sec-3" id="sec-3"></a>Makefile Settings</h2>
+<div class="outline-text-2" id="text-makefile">
+
+
+<p>
+The only thing you need to do in <code>makefile-mode</code> is to enable tab indentation
+instead of space indentation, since <code>makefile-mode</code> relys on tabs being tabs
+instead of a mixture of spaces and tabs, which I think, is a bug, but used as
+a feature of makefile. Ah, weird details and historial dirty quirks of
+makefile.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-hook 'makefile-mode-hook
+          (<span class="org-keyword">lambda</span> ()
+            (setq indent-tabs-mode t)))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-cmake" class="outline-2">
+<h2 id="cmake"><a name="sec-4" id="sec-4"></a>CMake</h2>
+<div class="outline-text-2" id="text-cmake">
+
+
+<p>
+<a href="http://www.cmake.org/">CMake</a> is my favourate build tool for C/C++ software. To be precise, CMake is
+not a build tool, since it does not build the project, instead, it generates
+the files needed by your build tool(GNU make, Visual Studio, etc). The only
+thing that I dislike about CMake is its syntax, which is weird and hard to
+type. Anyway, it is much better than conventional <a href="http://en.wikipedia.org/wiki/GNU_build_system">Autotools</a>, IMHO, Autotools is
+quite complicated, brings more problems than it solves. Do not use it unless
+you have to.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (executable-find <span class="org-string">"cmake"</span>)
+  (add-to-list 'el-get-sources
+               '(<span class="org-builtin">:name</span> cmake-mode)))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-doxymacs" class="outline-2">
+<h2 id="doxymacs"><a name="sec-5" id="sec-5"></a>Documentation with Doxymacs</h2>
+<div class="outline-text-2" id="text-doxymacs">
+
+
+<blockquote>
+
+<p>Doxygen is the de facto standard tool for generating documentation from
+annotated C++ sources, but it also supports other popular programming languages
+such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and
+UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.
+</p>
+<p>
+&ndash; <a href="http://www.doxygen.org/">http://www.doxygen.org/</a>
+</p>
+</blockquote>
+
+
+<p>
+<a href="http://doxymacs.sourceforge.net/">Doxymacs</a> brings the power of doxygen to Emacs, you can easily insert Doxygen
+style comments in emacs. The default keybindings are:
+</p><ul>
+<li><code>C-c d ?</code> look up documentation for the symbol under the point.
+</li>
+<li><code>C-c d r</code> rescan your Doxygen tags file.
+</li>
+<li><code>C-c d f</code> insert a Doxygen comment for the next function.
+</li>
+<li><code>C-c d i</code> insert a Doxygen comment for the current file.
+</li>
+<li><code>C-c d ;</code> insert a Doxygen comment for a member variable on the current line
+  (like M-;).
+</li>
+<li><code>C-c d m</code> insert a blank multi-line Doxygen comment.
+</li>
+<li><code>C-c d s</code> insert a blank single-line Doxygen comment.
+</li>
+<li><code>C-c d @</code> insert grouping comments around the current region.
+</li>
+</ul>
+
+
+<p>
+If you like, you can even integrate Doxygen to CMake workflow, see <a href="http://majewsky.wordpress.com/2010/08/14/tip-of-the-day-cmake-and-doxygen/">here</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> doxymacs
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (add-hook 'c-mode-common-hook 'doxymacs-mode)
+                              (add-hook 'c-mode-common-hook 'doxymacs-font-lock))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-cscope" class="outline-2">
+<h2 id="cscope"><a name="sec-6" id="sec-6"></a>Indexing with Cscope</h2>
+<div class="outline-text-2" id="text-cscope">
+
+
+<p>
+There're multiple tools for source browsing in Emacs, such as the builtin
+<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Tags.html">etags</a>, and <a href="http://ctags.sourceforge.net/">ctags</a>, etc. While etags/ctags supports multiple programming
+languages, <a href="http://cscope.sourceforge.net/">cscope</a> was designed for C code, however, you can do some <a href="http://cscope.sourceforge.net/cscope_vim_tutorial.html">hack</a> to
+make it work with C++/Java.
+</p>
+<p>
+The limitation of tag-like source code indexing and browsing tools is, all
+these tools lacks deep understanding of the programming language, all they know
+is just symbols/tokens, they know little about semantics, so you may find
+unwanted or wrong results with tag tools. Cscope understands some semantics of
+C programming languages, such as symbol/function definitions, and it will lead
+you to the right place in C programming language. No more promise for other
+lanauges since cscope have no knowledge of OOP.
+</p>
+<p>
+Cscope has a bundled <code>xcscope.el</code>, which provide an Emacs interface to
+cscope. The default keybindings use the <code>C-c s</code> prefix:
+</p><ul>
+<li>Finding:
+<ul>
+<li><code>C-c s s</code> Find symbol.
+</li>
+<li><code>C-c s d</code> Find global definition.
+</li>
+<li><code>C-c s g</code> Find global definition (alternate binding).
+</li>
+<li><code>C-c s G</code> Find global definition without prompting.
+</li>
+<li><code>C-c s c</code> Find functions calling a function.
+</li>
+<li><code>C-c s C</code> Find called functions (list functions called from a function).
+</li>
+<li><code>C-c s t</code> Find text string.
+</li>
+<li><code>C-c s e</code> Find egrep pattern.
+</li>
+<li><code>C-c s f</code> Find a file.
+</li>
+<li><code>C-c s i</code> Find files #including a file.
+</li>
+</ul>
+
+</li>
+<li>Navigation through the search results:
+<ul>
+<li><code>C-c s b</code> Display <b>cscope</b> buffer.
+</li>
+<li><code>C-c s B</code> Auto display <b>cscope</b> buffer toggle.
+</li>
+<li><code>C-c s n</code> Next symbol.
+</li>
+<li><code>C-c s N</code> Next file.
+</li>
+<li><code>C-c s p</code> Previous symbol.
+</li>
+<li><code>C-c s P</code> Previous file.
+</li>
+<li><code>C-c s u</code> Pop mark.
+</li>
+</ul>
+
+</li>
+<li>Setting and unsetting the variable, <code>cscope-initial-directory</code>, (location
+  searched for the cscope database directory):
+<ul>
+<li><code>C-c s a</code> Set initial directory.
+</li>
+<li><code>C-c s A</code> Unset initial directory.
+</li>
+</ul>
+
+</li>
+<li>Database maintenance:
+<ul>
+<li><code>C-c s L</code> Create list of files to index.
+</li>
+<li><code>C-c s I</code> Create list and index.
+</li>
+<li><code>C-c s E</code> Edit list of files to index.
+</li>
+<li><code>C-c s W</code> Locate this buffer's cscope directory ("W" &ndash;&gt; "where").
+</li>
+<li><code>C-c s S</code> Locate this buffer's cscope directory. (alternate binding: "S"
+    &ndash;&gt; "show").
+</li>
+<li><code>C-c s T</code> Locate this buffer's cscope directory. (alternate binding: "T"
+    &ndash;&gt; "tell").
+</li>
+<li><code>C-c s D</code> Dired this buffer's directory.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">if</span> (executable-find <span class="org-string">"cscope"</span>)
+    (add-to-list 'el-get-sources
+                 '(<span class="org-builtin">:name</span> xcscope)))
+
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-auto-complete-clang" class="outline-2">
+<h2 id="auto-complete-clang"><a name="sec-7" id="sec-7"></a>Auto-complete-clang</h2>
+<div class="outline-text-2" id="text-auto-complete-clang">
+
+
+<p>
+Completion in Emacs is always a hot topic in Emacs community. Of course,
+there're always solutions, but none of them is perfect. The traditional
+approach relies on <a href="http://cedet.sourceforge.net/semantic.shtml">semantic</a> from <a href="http://cedet.sourceforge.net/semantic.shtml">cedet</a>, which provides a parser for C/C++ and
+various other lanauges. But I don't think it's a good idea to written a parser
+in Elisp, especially a C++ parser. IMHO, semantic is bloated, slow, and often
+make your Emacs stuck. So I didn't use it in oh-my-emacs.
+</p>
+<p>
+The second choice is <a href="http://cx4a.org/software/gccsense/">GCCSense</a>, which is written by the same author of
+<a href="http://cx4a.org/software/auto-complete/">auto-complete</a>. I've read the manual but I found it a little complex to
+install. So I won't adopt it.
+</p>
+<p>
+Instead, I use <a href="https://github.com/brianjcj/auto-complete-clang">auto-complete-clang</a>, which combines the power of auto-complete,
+clang, and yasnippet. I also write some wrapper functions for it, one of them
+is interactive <a href="http://www.freedesktop.org/wiki/Software/pkg-config/">pkg-config</a> completion support. Thus, if you just write a "hello
+world" program with C/C++ standard library, then the semantic completion is
+already at your fingertips. Otherwise, if you want to write some huge
+programs with third-party libs, then just <code>M-x ome-pkg-config-enable-clang-flag name-of-lib</code>, and completion will be right
+here. Ensure that you have pkg-config installed and all the necessary libs
+installed if you want to write program with that library.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-auto-complete-clang-setup</span> ()
+  (<span class="org-keyword">require</span> '<span class="org-constant">auto-complete-clang</span>)
+  (setq command <span class="org-string">"echo | g++ -v -x c++ -E - 2&gt;&amp;1 |</span>
+<span class="org-string">                 grep -A 20 starts | grep include | grep -v search"</span>)
+  (setq ac-clang-flags
+        (mapcar (<span class="org-keyword">lambda</span> (item)
+                  (concat <span class="org-string">"-I"</span> item))
+                (split-string
+                 (shell-command-to-string command))))
+
+  (<span class="org-keyword">defun</span> <span class="org-function-name">ome-pkg-config-enable-clang-flag</span> (pkg-config-lib)
+    <span class="org-doc">"This function will add necessary header file path of a</span>
+<span class="org-doc">specified by `</span><span class="org-doc"><span class="org-constant">pkg-config-lib</span></span><span class="org-doc">' to `</span><span class="org-doc"><span class="org-constant">ac-clang-flags</span></span><span class="org-doc">', which make it</span>
+<span class="org-doc">completionable by auto-complete-clang"</span>
+    (interactive <span class="org-string">"spkg-config lib: "</span>)
+    (<span class="org-keyword">if</span> (executable-find <span class="org-string">"pkg-config"</span>)
+        (<span class="org-keyword">if</span> (= (shell-command
+                (format <span class="org-string">"pkg-config %s"</span> pkg-config-lib))
+               0)
+            (setq ac-clang-flags
+                  (append ac-clang-flags
+                          (split-string
+                           (shell-command-to-string
+                            (format <span class="org-string">"pkg-config --cflags-only-I %s"</span>
+                                    pkg-config-lib)))))
+          (message <span class="org-string">"Error, pkg-config lib %s not found."</span> pkg-config-lib))
+      (message <span class="org-string">"Error: pkg-config tool not found."</span>)))
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(ome-pkg-config-enable-clang-flag "QtGui")</span>
+
+  (add-hook 'c-mode-common-hook
+            (<span class="org-keyword">lambda</span> ()
+              (add-to-list 'ac-sources 'ac-source-clang))))
+
+(<span class="org-keyword">when</span> (executable-find <span class="org-string">"clang"</span>)
+  (add-to-list 'el-get-sources
+               '(<span class="org-builtin">:name</span> auto-complete-clang
+                       <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                                (ome-auto-complete-clang-setup)))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8">Todo</h2>
+<div class="outline-text-2" id="text-8">
+
+<ul>
+<li>Port cc-mode's <code>hungry-delete</code> to other mode.
+</li>
+<li>Documentation for some useful cc-mode keybindings such as
+<ul>
+<li><code>C-c C-c</code>
+</li>
+<li><code>M-;</code>
+</li>
+</ul>
+
+</li>
+<li>Integrate <a href="http://www.wonderworks.com/download/filladapt.el">filladapt</a> package to enhance emacs's adaptive filling.
+</li>
+<li>Add special font-lock support for some Qt's "keywords" such as "signal" and
+  "slot".
+</li>
+<li>Auto-complete-clang:
+<ul>
+<li>Completion with function signature still has some problems, see
+    <img src="https://github.com/brianjcj/auto-complete-clang/blob/master/screenshot/clang-3.png"  alt="https://github.com/brianjcj/auto-complete-clang/blob/master/screenshot/clang-3.png" />
+    for an ideal completion.
+</li>
+<li>For huge C/C++ programs, auto-complete-clang maybe a little slow, maybe
+    <a href="https://github.com/Golevka/emacs-clang-complete-async">https://github.com/Golevka/emacs-clang-complete-async</a> is a better
+    solution.
+</li>
+</ul>
+
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

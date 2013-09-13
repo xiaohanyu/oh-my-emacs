@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Completion</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Completion"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Completion</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Hippie expand</h2>
+<div class="outline-text-2" id="text-1">
+
+<p><code>M-x hippie-expand</code> is a single command providing a variety of completions and
+expansions. The following code segment comes from <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">hippie expand is dabbrev expand on steroids</span>
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially
+                                         try-complete-file-name
+                                         try-expand-all-abbrevs
+                                         try-expand-list
+                                         try-expand-line
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-auto-complete" class="outline-2">
+<h2 id="auto-complete"><a name="sec-2" id="sec-2"></a>Auto complete</h2>
+<div class="outline-text-2" id="text-auto-complete">
+
+
+<p>
+<a href="http://cx4a.org/software/auto-complete/">Auto-Complete</a> is an intelligent auto-completion extension for Emacs. It extends
+the standard Emacs completion interface and provides an environment that allows
+users to concentrate more on their own work.
+</p>
+<p>
+Actually, there're multiple completion packages for Emacs, say Emacs builtin
+<a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html">completion</a>, there're <code>completion-at-point</code> function for <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Completion-in-Buffers.html">completion in buffers</a>,
+<a href="http://www.emacswiki.org/emacs/ProgrammableCompletion">pcomplete</a> for completion mainly for <code>comint-mode</code>, such as <a href="http://www.masteringemacs.org/articles/2012/01/16/pcomplete-context-sensitive-completion-emacs/">completion in Eshell</a>, <code>ido-mode</code> for completion in minibuffers. Say auto-complete, there's
+also a <a href="http://stackoverflow.com/questions/4704748/emacs-completion-autocomplete-or-company">competitive</a> <a href="http://company-mode.github.io/">company-mode</a>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> auto-complete
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (<span class="org-keyword">require</span> '<span class="org-constant">auto-complete-config</span>)
+                              (ac-config-default))))
+</pre>
+
+
+
+</div>
+
+<div id="outline-container-ac-source-pcomplete" class="outline-3">
+<h3 id="ac-source-pcomplete"><a name="sec-2-1" id="sec-2-1"></a>Integrate pcomplete with Auto-complete</h3>
+<div class="outline-text-3" id="text-ac-source-pcomplete">
+
+
+<p>
+You may wonder why oh-my-emacs choose auto-complete? In a word, auto-complete
+is flexible which provides a plugin mechanism through which you can define your
+own <code>ac-source</code>, thus you get unlimited possibilities to complete in various
+programming langagues, major modes, etc.
+</p>
+<p>
+The following code comes from <a href="http://www.emacswiki.org/emacs/EshellCompletion">EmacsWiki</a>, which defines a <code>ac-source-pcomplete</code>
+that integrates pcomplete as a completion backend to auto-complete.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ac-pcomplete</span> ()
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">eshell uses `</span><span class="org-comment"><span class="org-constant">insert-and-inherit</span></span><span class="org-comment">' to insert a \t if no completion</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">can be found, but this must not happen as auto-complete source</span>
+  (<span class="org-keyword">flet</span> ((insert-and-inherit (<span class="org-type">&amp;rest</span> args)))
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">this code is stolen from `</span><span class="org-comment"><span class="org-constant">pcomplete</span></span><span class="org-comment">' in pcomplete.el</span>
+    (<span class="org-keyword">let*</span> (tramp-mode <span class="org-comment-delimiter">;; </span><span class="org-comment">do not automatically complete remote stuff</span>
+           (pcomplete-stub)
+           (pcomplete-show-list t) <span class="org-comment-delimiter">;; </span><span class="org-comment">inhibit patterns like * being deleted</span>
+           pcomplete-seen pcomplete-norm-func
+           pcomplete-args pcomplete-last pcomplete-index
+           (pcomplete-autolist pcomplete-autolist)
+           (pcomplete-suffix-list pcomplete-suffix-list)
+           (candidates (pcomplete-completions))
+           (beg (pcomplete-begin))
+           <span class="org-comment-delimiter">;; </span><span class="org-comment">note, buffer text and completion argument may be</span>
+           <span class="org-comment-delimiter">;; </span><span class="org-comment">different because the buffer text may bet transformed</span>
+           <span class="org-comment-delimiter">;; </span><span class="org-comment">before being completed (e.g. variables like $HOME may be</span>
+           <span class="org-comment-delimiter">;; </span><span class="org-comment">expanded)</span>
+           (buftext (buffer-substring beg (point)))
+           (arg (nth pcomplete-index pcomplete-args)))
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">we auto-complete only if the stub is non-empty and matches</span>
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">the end of the buffer text</span>
+      (<span class="org-keyword">when</span> (and (not (zerop (length pcomplete-stub)))
+                 (or (string= pcomplete-stub <span class="org-comment-delimiter">; </span><span class="org-comment">Emacs 23</span>
+                              (substring buftext
+                                         (max 0
+                                              (- (length buftext)
+                                                 (length pcomplete-stub)))))
+                     (string= pcomplete-stub <span class="org-comment-delimiter">; </span><span class="org-comment">Emacs 24</span>
+                              (substring arg
+                                         (max 0
+                                              (- (length arg)
+                                                 (length pcomplete-stub)))))))
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Collect all possible completions for the stub. Note that</span>
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">`candidates` may be a function, that's why we use</span>
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">`all-completions`.</span>
+        (<span class="org-keyword">let*</span> ((cnds (all-completions pcomplete-stub candidates))
+               (bnds (completion-boundaries pcomplete-stub
+                                            candidates
+                                            nil
+                                            <span class="org-string">""</span>))
+               (skip (- (length pcomplete-stub) (car bnds))))
+          <span class="org-comment-delimiter">;; </span><span class="org-comment">We replace the stub at the beginning of each candidate by</span>
+          <span class="org-comment-delimiter">;; </span><span class="org-comment">the real buffer content.</span>
+          (mapcar #'(<span class="org-keyword">lambda</span> (cand) (concat buftext (substring cand skip)))
+                  cnds))))))
+
+(<span class="org-keyword">defvar</span> <span class="org-variable-name">ac-source-pcomplete</span>
+  '((candidates . ac-pcomplete)))
+</pre>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-helm" class="outline-2">
+<h2 id="helm"><a name="sec-3" id="sec-3"></a>Helm</h2>
+<div class="outline-text-2" id="text-helm">
+
+
+<p>
+<a href="https://github.com/emacs-helm/helm">Helm</a> is a incremental completion and selection narrowing framework for
+emacs. It will help steer you in the right direction when you're looking for
+stuff in Emacs (like buffers, files, etc). Helm is a fork of <code>anything.el</code>,
+which clean up the legacy code in <code>anything.el</code> and provide a cleaner and more
+modular tool.
+</p>
+<p>
+Actually, helm is not the only <a href="http://ergoemacs.org/emacs/emacs_name_completion.html">name completion packages in emacs</a>, there're
+other choices&ndash;of course you always have choices in emacs, for example, the
+builtin <a href="http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/">ido-mode</a> is quite a good choice. I also heard of <a href="http://www.emacswiki.org/emacs/Icicles">icicles</a> to be the most
+powerful, but I found its documentatin really awkward. I choose helm since it
+is easy to install and config, user-friendly, powerful enough and quite
+intuitive to boost your workflow.
+</p>
+<p>
+To wrap your mind around the helm way, you need to remember a few key
+bindings. When helm starts, remember:
+</p><ul>
+<li>access the helm action menu with <code>TAB</code>. Maybe this is the most whirlwind
+  turnaround since most name completion packages use <code>TAB</code> as completion
+  key. Don't worry, helm doesn't need too much completion, since helm provides
+  name completion by navigation instead by using <code>TAB</code> to complete character by
+  character. Actually, the helm <code>TAB</code> brings you a new world, in which you
+  combine several tasks into a series of successive keystrokes and get your job
+  done.
+</li>
+<li>Use persistent actions with <code>C-z</code>.
+</li>
+<li>Mark candidate with <code>M-&lt;SPACE&gt;</code>, thus you can do batch processing through helm.
+</li>
+</ul>
+
+
+<p>
+The <a href="https://github.com/emacs-helm/helm/wiki">helm wiki</a> is a good place to explore this new world, but it's a little long
+and not complete enough to cover all helm power. You can access helm functions
+through the emacs menubar if want to use helm but don't want to remember too
+much helm key bindings. Some shortcuts:
+</p><ul>
+<li><code>C-x c l</code>: <code>helm-locate</code>
+</li>
+<li><code>C-x c /</code>: <code>helm-find</code>
+</li>
+<li><code>C-x c f</code>: <code>helm-for-files</code>
+</li>
+<li><code>C-x c M-x</code>: <code>helm-M-x</code>
+</li>
+<li><code>C-x c a</code>: <code>helm-apropos</code>
+</li>
+<li><code>C-x c r</code>: <code>helm-regexp</code>
+</li>
+<li><code>C-x c c</code>: <code>helm-colors</code>
+</li>
+<li><code>C-x c 8</code>: <code>helm-ucs</code>
+</li>
+<li><code>C-x c i</code>: <code>helm-imenu</code>
+</li>
+<li><code>C-x c m</code>: <code>helm-man-woman</code>
+</li>
+<li><code>C-x c t</code>: <code>helm-top</code>
+</li>
+<li><code>C-x c p</code>: <code>helm-list-emacs-process</code>
+</li>
+<li><code>C-x c M-y</code>: <code>helm-show-kill-ring</code>
+</li>
+</ul>
+
+
+<p>
+To tell the truth, helm is one of my most favourite emacs packages. The more
+you live with helm, the more you will find that you never want to come
+back. Helm can replace many builtin or third-party emacs packages, or even
+provide a better experience. For example, <code>helm-M-x</code> is a good competitor to
+<a href="https://github.com/nonsequitur/smex">smex</a>, <code>helm-show-kill-ring</code> provides a better way to interact with emacs kill
+ring than <a href="https://github.com/browse-kill-ring/browse-kill-ring">browse-kill-ring</a>. Helm integrates various external tools(such as
+<code>grep</code>, <code>find</code>, <code>locate</code>, <code>md5sum</code>, <code>etags</code>, etc.) to emacs in a highly
+intuitive and interactive way. Helm can even help you install debian apt
+packages. If you have any question, just type <code>M-x helm-google-suggest</code> and
+then helm will fire a web browser opening google for you at your fingertip.
+</p>
+<p>
+To fully adopt helm power, I also set some custom helm keybindings in
+oh-my-emacs, you can change it as you like. Of course you can disable helm at
+all, then oh-my-emacs will use some other packages such as <code>ido-mode</code> as a
+fallback. But I do suggest you to take some time to be familiar with helm.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> helm
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (<span class="org-keyword">require</span> '<span class="org-constant">helm-config</span>)
+                              (setq helm-input-idle-delay 0.2)
+                              (helm-mode t)
+                              (global-set-key (kbd <span class="org-string">"C-x c g"</span>) 'helm-do-grep)
+                              (global-set-key (kbd <span class="org-string">"C-x c o"</span>) 'helm-occur)
+                              (global-set-key (kbd <span class="org-string">"M-x"</span>) 'helm-M-x)
+                              (global-set-key (kbd <span class="org-string">"C-x C-f"</span>) 'helm-find-files))))
+
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-yasnippet" class="outline-2">
+<h2 id="yasnippet"><a name="sec-4" id="sec-4"></a>Yasnippet</h2>
+<div class="outline-text-2" id="text-yasnippet">
+
+
+<p>
+<a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> is "Yet Another Snippet" expansion system for Emacs. It is inspired by
+<a href="http://macromates.com/">TextMate</a>'s templating syntax. You can see the <a href="http://capitaomorte.github.io/yasnippet/">intro and tutorial</a> or watch this
+<a href="http://www.youtube.com/watch?v=vOj7btx3ATg">video on youtube</a> to get some basic knowledge.
+</p>
+<p>
+Oh-my-emacs do some hacks to <code>yas-prompt-functions</code>, it adopts <a href="https://github.com/m2ym/popup-el">popup</a>, a visual
+popup interface library extracted from <a href="http://cx4a.org/software/auto-complete/">auto-complete</a> by its author. It has
+better look and feel than all the built-in <code>yas-prompt-functions</code>. Also it is
+easy to customize, and its isearch mode is very efficient, the items are
+filtered on-the-fly when typing<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>.
+</p>
+<p>
+TODO:
+</p><ul>
+<li>The bundled snippets from official yasnippet is considered frozen, so you
+  should add your own snippets if you want more. Maybe <a href="https://github.com/AndreaCrotti/yasnippet-snippets">yasnippet-snippets</a> is a
+  good starting point, but I think it's far from perfect, for example, the
+  emacs-lisp snippet is not quite hard to use.
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'popup
+  '(<span class="org-keyword">progn</span>
+     (define-key popup-menu-keymap (kbd <span class="org-string">"M-n"</span>) 'popup-next)
+     (define-key popup-menu-keymap (kbd <span class="org-string">"TAB"</span>) 'popup-next)
+     (define-key popup-menu-keymap (kbd <span class="org-string">"&lt;tab&gt;"</span>) 'popup-next)
+     (define-key popup-menu-keymap (kbd <span class="org-string">"&lt;backtab&gt;"</span>) 'popup-previous)
+     (define-key popup-menu-keymap (kbd <span class="org-string">"M-p"</span>) 'popup-previous)))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">yas-popup-isearch-prompt</span> (prompt choices <span class="org-type">&amp;optional</span> display-fn)
+  (<span class="org-keyword">when</span> (<span class="org-keyword">featurep</span> '<span class="org-constant">popup</span>)
+    (popup-menu*
+     (mapcar
+      (<span class="org-keyword">lambda</span> (choice)
+        (popup-make-item
+         (or (and display-fn (funcall display-fn choice))
+             choice)
+         <span class="org-builtin">:value</span> choice))
+      choices)
+     <span class="org-builtin">:prompt</span> prompt
+     <span class="org-comment-delimiter">;; </span><span class="org-comment">start isearch mode immediately</span>
+     <span class="org-builtin">:isearch</span> t)))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> yasnippet
+                     <span class="org-builtin">:depends</span> (popup)
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (setq yas-prompt-functions
+                                    '(yas-popup-isearch-prompt
+                                      yas-no-prompt))
+                              (yas-reload-all)
+                              (add-hook 'prog-mode-hook
+                                        '(<span class="org-keyword">lambda</span> ()
+                                           (yas-minor-mode))))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Todo</h2>
+<div class="outline-text-2" id="text-5">
+
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1">Helm</h3>
+<div class="outline-text-3" id="text-5-1">
+
+<p>Ah, various ideas to enhance helm:
+</p><ul>
+<li>Provide a copy action which just copy the selected items. This is useful when
+  you query a elisp command or function.
+</li>
+<li>Provide a doc action which show documentation of elisp function or commands.
+</li>
+<li>For helm-projectile, add full path to file list to differentiate same file
+  name files.
+</li>
+</ul>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> <a href="http://iany.me/2012/03/use-popup-isearch-for-yasnippet-prompt/">http://iany.me/2012/03/use-popup-isearch-for-yasnippet-prompt/</a>
+</p>
+
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

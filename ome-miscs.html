@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Miscs</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Miscs"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Miscs</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains things that still don't find a good place to put, :-).
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Prerequisites</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">Optional</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li><a href="http://w3m.sourceforge.net/">w3m</a> for <a href="http://emacs-w3m.namazu.org/">emacs-w3m</a>
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Enable some dangerous commands</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+Emacs may be slow when you editing large files with many minor modes
+on. <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Narrowing.html">Narrowing</a> allows you focus in on some portion of the buffer, making the
+rest temporarily inaccessible. Widening is the reverse of narrowing, which
+cancels the narrowing, and makes the entire buffer once again accessible.
+</p>
+<p>
+By default, the narrowing commands are considered to be dangerous, we just
+remove the dangerous tag here.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-emacs-server" class="outline-2">
+<h2 id="emacs-server"><a name="sec-3" id="sec-3"></a>Toggle server mode .</h2>
+<div class="outline-text-2" id="text-emacs-server">
+
+
+<p>
+You can <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html">use emacs as a server</a>, which "listens" for external edit requests and
+acts accordingly. Thus you can <code>alias vim=emacsclient</code> as the lucky
+stuff, :-).
+</p>
+<p>
+There're two ways to turn on <code>server-mode</code> on emacs start:
+</p><ul>
+<li><code>(server-mode t)</code>
+</li>
+<li><code>(server-start)</code>
+</li>
+</ul>
+
+
+<p>
+In either way you can use <code>emacsclient</code> to connect an existing emacs server,
+and finish editing by typing <code>C-x #(server-edit)</code>, which will "kill" the
+<code>emacscient</code>. You can also quit <code>emacsclient</code> by <code>C-x C-c</code>, but this will kill
+emacs if you use <code>(server-start)</code> while keeps emacs alive if you use
+<code>(server-mode t)</code>, I don't know why. If you know the details, please tell me.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(server-mode t)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-random-number" class="outline-2">
+<h2 id="random-number"><a name="sec-4" id="sec-4"></a>Random Number</h2>
+<div class="outline-text-2" id="text-random-number">
+
+
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Seed the random-number generator</span>
+(random t)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-rainbow-delimiters" class="outline-2">
+<h2 id="rainbow-delimiters"><a name="sec-5" id="sec-5"></a>Rainbow Delimiters</h2>
+<div class="outline-text-2" id="text-rainbow-delimiters">
+
+
+<p>
+"RainbowDelimiters is a "rainbow parentheses"-like mode which highlights
+parentheses, brackets, and braces according to their depth. Each successive
+level is highlighted in a different color. This makes it easy to spot matching
+delimiters, orient yourself in the code, and tell which statements are at a
+given depth."
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> rainbow-delimiters
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (global-rainbow-delimiters-mode))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-auto-compression-mode" class="outline-2">
+<h2 id="auto-compression-mode"><a name="sec-6" id="sec-6"></a>Transparently Open Compressed Files</h2>
+<div class="outline-text-2" id="text-auto-compression-mode">
+
+
+<p>
+"Auto Compression mode is a global minor mode.  When enabled, compressed files
+are automatically uncompressed for reading, and compressed when writing."
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(auto-compression-mode t)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-auto-image-file-mode" class="outline-2">
+<h2 id="auto-image-file-mode"><a name="sec-7" id="sec-7"></a>Allowing Opening Images</h2>
+<div class="outline-text-2" id="text-auto-image-file-mode">
+
+
+<p>
+"Toggle visiting of image files as images (Auto Image File mode)."
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(auto-image-file-mode t)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-outline" class="outline-2">
+<h2 id="outline"><a name="sec-8" id="sec-8"></a>Outline mode</h2>
+<div class="outline-text-2" id="text-outline">
+
+
+<p>
+Outline mode is the root of org-mode, while <code>outline-minor-mode</code> is still
+useful with other major modes when browsing large files. You can get the
+overall structure with <code>outline-minor-mode</code>, so oh-my-emacs enabled
+<code>outline-minor-mode</code> for all programming modes by adding <code>outline-minor-mode</code>
+to <code>prog-mode-hook</code>.
+</p>
+<p>
+By default, outline minor mode provides special key bindings on the <code>C-c @</code>
+prefix, which, IMHO, is a little cumbersome to type. You can rebind to other
+keys if you like.
+</p>
+<p>
+You can get detailed information about <code>outline-mode</code> by typing <code>C-h F outline-mode</code>, and <code>C-h b</code> will bring you a full list of keybindings, including
+keybindings for <code>outline-minor-mode</code>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-hook 'prog-mode-hook
+          (<span class="org-keyword">lambda</span> ()
+            (outline-minor-mode t)))
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">(add-hook 'outline-minor-mode-hook</span>
+<span class="org-comment-delimiter">;;           </span><span class="org-comment">(lambda ()</span>
+<span class="org-comment-delimiter">;;             </span><span class="org-comment">(local-set-key (kbd "C-c C-o")</span>
+<span class="org-comment-delimiter">;;                            </span><span class="org-comment">outline-mode-prefix-map)))</span>
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-magit" class="outline-2">
+<h2 id="magit"><a name="sec-9" id="sec-9"></a>Magit</h2>
+<div class="outline-text-2" id="text-magit">
+
+
+<p>
+<a href="http://www.git-scm.com/">Git</a> might be the most popular version control system in the world by far, every
+programmer should try it, learn it, and finally master it. In fact, mastering
+git will boost your workflow and efficiency to a new level. Besides version
+control, git can also do other useful things such as file and storage
+sync. <a href="http://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a>, father of git, describes git as <a href="http://linux.die.net/man/1/git">a stupid content tracker</a>:
+</p>
+<blockquote>
+
+<p>In many ways you can just see git as a filesystem - it's content-
+addressable, and it has a notion of versioning, but I really really
+designed it coming at the problem from the viewpoint of a <span style="text-decoration:underline;">filesystem</span>
+person (hey, kernels is what I do), and I actually have absolutely <span style="text-decoration:underline;">zero</span>
+interest in creating a traditional SCM system.
+</p>
+<p>
+&ndash; Linus Torvalds, <a href="http://marc.info/?l=linux-kernel&amp;m=111314792424707">http://marc.info/?l=linux-kernel&amp;m=111314792424707</a>
+</p>
+</blockquote>
+
+
+<p>
+Actually, "git is fundamentally a content-addressable filesystem with a
+VCS user interface written on top of it<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>".
+</p>
+<p>
+<a href="http://magit.github.io/magit/">Magit</a> integrate emacs with git, which will make your workflow smoother and more
+enjoyable. Of course there're other choices, but I prefer magit, view <a href="http://alexott.net/en/writings/emacs-vcs/EmacsGit.html">Alexott's Blog</a> for technical details.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">if</span> (executable-find <span class="org-string">"git"</span>)
+    (<span class="org-keyword">progn</span>
+      (add-to-list 'el-get-sources
+                   '(<span class="org-builtin">:name</span> magit))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-visual-line-mode" class="outline-2">
+<h2 id="visual-line-mode"><a name="sec-10" id="sec-10"></a>Visual-line-mode</h2>
+<div class="outline-text-2" id="text-visual-line-mode">
+
+
+<p>
+<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Visual-Line-Mode.html">Visual line mode</a> is a new mode in Emacs 23. It provides support for editing by
+visual lines. It turns on word-wrapping in the current buffer, and rebinds C-a,
+C-e, and C-k to commands that operate by visual lines instead of logical lines.
+</p>
+<p>
+<a href="ome-basic.html">As you know</a>, we have <code>turn-on-auto-fill</code> for <code>text-mode</code> and <code>prog-mode</code> and
+all derived modes, which may make it useless to turn on <code>visual-line-mode</code> most
+of the time. But we still turn on it globally to make it a fallback when
+<code>auto-fill-mode</code> was disabled by users.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(global-visual-line-mode t)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-projectile" class="outline-2">
+<h2 id="projectile"><a name="sec-11" id="sec-11"></a>Projectile</h2>
+<div class="outline-text-2" id="text-projectile">
+
+
+<p>
+Emacs is good at file/buffer management, but lacks support for project level
+management. Fortunately, <a href="https://github.com/bbatsov/projectile">projectile</a>, a project created by <a href="http://batsov.com/">Bozhidar Batsov</a>, also
+the author of <a href="https://github.com/bbatsov/prelude">emacs prelude</a>, solved this problem in a lightweight, elegant,
+flexible and portable way.
+</p>
+<p>
+The concept of a project in projectile is pretty easy and basic &ndash; just s
+folder containing special file. "Currently <code>git</code>, <code>mercurial</code>, <code>darcs</code> and
+<code>bazaar</code> repos are considered projects by default. So are <code>lein</code>, <code>maven</code>,
+<code>sbt</code>, <code>rebar</code> and <code>bundler</code> projects. If you want to mark a folder manually as
+a project just create an empty .projectile file in it."
+</p>
+<p>
+Projectile is flexible, you can use different completion backends, such as the
+emacs builtin <code>ido</code> with <a href="https://github.com/lewang/flx">flx-ido</a>, <a href="https://github.com/d11wtq/grizzl">grizzl</a>, or just regular completion, it also
+offers <code>helm</code> integration, which is great in oh-my-emacs since oh-my-emacs
+enables <code>helm</code> by default. But there's still room for improvement, I think, if
+one project contains multiple files with the same name, you can't
+differentiate them in helm's "projectile files list", so maybe add the
+fullpath aside to filename is a good idea.
+</p>
+<p>
+With projectile, you can find/grep/list files <b>within a project</b>, switch/view
+a list of known project you have viewed recently, kills all project buffers
+with a single shortcut, etc. Sounds great, ha? So, don't hesitate any more,
+just enjoy it!
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> projectile
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (projectile-global-mode)
+                              (setq projectile-enable-caching t)
+                              (global-set-key (kbd <span class="org-string">"C-x c h"</span>) 'helm-projectile))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-smartparens" class="outline-2">
+<h2 id="smartparens"><a name="sec-12" id="sec-12"></a>Smartparens</h2>
+<div class="outline-text-2" id="text-smartparens">
+
+
+<blockquote>
+
+<p>Smartparens is modern minor mode for Emacs that <i>deals with parens pairs and tries to be smart about it</i>. It is a unification and enhancement effort to
+combine funcitonality of several existing packages in a single, common and
+straightforward way (and most of all compatible). These packages include
+<a href="https://github.com/capitaomorte/autopair">autopair</a>, <a href="http://code.google.com/p/emacs-textmate/">textmate</a>, <a href="https://github.com/rejeep/wrap-region">wrap-region</a>, <a href="http://emacswiki.org/emacs/ParEdit">paredit</a> and others with similar
+philosophies. It also adds support for many more features. <a href="https://github.com/Fuco1/smartparens/wiki#wiki-what-is-this-package-about?">Here's</a> a highlight
+of some features, for a complete list and detailed documentation look in the
+<a href="https://github.com/Fuco1/smartparens/wiki#wiki-information-for-new-users">manual</a>.
+</p>
+<p>
+For the complete picture of what is it about, visit the <a href="https://github.com/Fuco1/smartparens/wiki">documentation wiki</a>.
+</p>
+</blockquote>
+
+
+<p>
+Believe me, <a href="https://github.com/Fuco1/smartparens/wiki">smartparens</a> is the future, it is the ultimate solution for paren
+pairs management in Emacs world. It is flexible, uniform and highly
+customizable. It is also bundled with a comprehensive documentation, besides
+the aforementioned wiki, you can also <code>M-x sp-cheat-sheet</code> to get live
+examples, which, I think, is really a innovative feature.
+</p>
+<p>
+Smartparens didn't provide keybindings for most of its commands by default, so
+you must define proper <code>sp-keymap</code> by yourself, however, smartparens does
+provide <code>sp-use-paredit-bindings</code> and <code>sp-use-smartparens-bindings</code> as a good
+starting point. Oh-my-emacs adopt its own keybindings for smartparens, which
+defines <code>M-s</code> as the prefix key. The default keybindings provided by
+smartparens has some conflicts with <code>evil</code>'s <code>ESC</code> key. If you have any other
+good suggestions, please tell me, thanks!
+</p>
+<p>
+I spent about one week's sparetime just learning this amazing
+package. Smartparens is not as strict as paredit, for some people that kind of
+strictness seems annoying and weird at first. Paredit is <a href="http://emacsrocks.com/e14.html">powerful</a>, so
+smartparens import many features from paredit and provides a compatible, and
+more powerful, flexible version. For any serious Lispers, I recommand you spend
+some time to master these wonderful commands, which will make your life easier.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-create-newline-and-enter-sexp</span> (<span class="org-type">&amp;rest</span> _ignored)
+  <span class="org-doc">"Open a new brace or bracket expression, with relevant newlines and indent. "</span>
+  (newline)
+  (indent-according-to-mode)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-sp-config</span> ()
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">global</span>
+  (<span class="org-keyword">require</span> '<span class="org-constant">smartparens-config</span>)
+  (setq sp-autoskip-closing-pair 'always)
+  (setq sp-navigate-close-if-unbalanced t)
+  (smartparens-global-mode t)
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">highlights matching pairs</span>
+  (show-smartparens-global-mode t)
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">keybinding management</span>
+  (define-key sp-keymap (kbd <span class="org-string">"M-s f"</span>) 'sp-forward-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s b"</span>) 'sp-backward-sexp)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s d"</span>) 'sp-down-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s D"</span>) 'sp-backward-down-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s a"</span>) 'sp-beginning-of-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s e"</span>) 'sp-end-of-sexp)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s u"</span>) 'sp-up-sexp)
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(define-key emacs-lisp-mode-map (kbd ")") 'sp-up-sexp)</span>
+  (define-key sp-keymap (kbd <span class="org-string">"M-s U"</span>) 'sp-backward-up-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s t"</span>) 'sp-transpose-sexp)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s n"</span>) 'sp-next-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s p"</span>) 'sp-previous-sexp)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s k"</span>) 'sp-kill-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s w"</span>) 'sp-copy-sexp)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s s"</span>) 'sp-forward-slurp-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s r"</span>) 'sp-forward-barf-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s S"</span>) 'sp-backward-slurp-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s R"</span>) 'sp-backward-barf-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s F"</span>) 'sp-forward-symbol)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s B"</span>) 'sp-backward-symbol)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s ["</span>) 'sp-select-previous-thing)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s ]"</span>) 'sp-select-next-thing)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-i"</span>) 'sp-splice-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s &lt;delete&gt;"</span>) 'sp-splice-sexp-killing-forward)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s &lt;backspace&gt;"</span>) 'sp-splice-sexp-killing-backward)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-&lt;backspace&gt;"</span>) 'sp-splice-sexp-killing-around)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-d"</span>) 'sp-unwrap-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-b"</span>) 'sp-backward-unwrap-sexp)
+
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-t"</span>) 'sp-prefix-tag-object)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-p"</span>) 'sp-prefix-pair-object)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-c"</span>) 'sp-convolute-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-a"</span>) 'sp-absorb-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-e"</span>) 'sp-emit-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-p"</span>) 'sp-add-to-previous-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-n"</span>) 'sp-add-to-next-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-j"</span>) 'sp-join-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-s"</span>) 'sp-split-sexp)
+  (define-key sp-keymap (kbd <span class="org-string">"M-s M-r"</span>) 'sp-raise-sexp)
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">pair management</span>
+  (sp-local-pair 'minibuffer-inactive-mode <span class="org-string">"'"</span> nil <span class="org-builtin">:actions</span> nil)
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">markdown-mode</span>
+  (sp-with-modes '(markdown-mode gfm-mode rst-mode)
+    (sp-local-pair <span class="org-string">"*"</span> <span class="org-string">"*"</span> <span class="org-builtin">:bind</span> <span class="org-string">"C-*"</span>)
+    (sp-local-tag <span class="org-string">"2"</span> <span class="org-string">"**"</span> <span class="org-string">"**"</span>)
+    (sp-local-tag <span class="org-string">"s"</span> <span class="org-string">"```scheme"</span> <span class="org-string">"```"</span>)
+    (sp-local-tag <span class="org-string">"&lt;"</span>  <span class="org-string">"&lt;_&gt;"</span> <span class="org-string">"&lt;/_&gt;"</span> <span class="org-builtin">:transform</span> 'sp-match-sgml-tags))
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">tex-mode latex-mode</span>
+  (sp-with-modes '(tex-mode plain-tex-mode latex-mode)
+    (sp-local-tag <span class="org-string">"i"</span> <span class="org-string">"\"&lt;"</span> <span class="org-string">"\"&gt;"</span>))
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">html-mode</span>
+  (sp-with-modes '(html-mode sgml-mode)
+    (sp-local-pair <span class="org-string">"&lt;"</span> <span class="org-string">"&gt;"</span>))
+
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">lisp modes</span>
+  (sp-with-modes sp--lisp-modes
+    (sp-local-pair <span class="org-string">"("</span> nil <span class="org-builtin">:bind</span> <span class="org-string">"C-("</span>))
+
+  (<span class="org-keyword">dolist</span> (mode '(c-mode c++-mode java-mode))
+    (sp-local-pair mode
+                   <span class="org-string">"{"</span>
+                   nil
+                   <span class="org-builtin">:post-handlers</span>
+                   '((ome-create-newline-and-enter-sexp <span class="org-string">"RET"</span>)))))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> smartparens
+                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                              (ome-sp-config))))
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-emacs-w3m" class="outline-2">
+<h2 id="emacs-w3m"><a name="sec-13" id="sec-13"></a>Emacs-w3m</h2>
+<div class="outline-text-2" id="text-emacs-w3m">
+
+
+<p>
+<a href="http://w3m.sourceforge.net/index.en.html">w3m</a> is a text-based web browser as well as a pager like <code>more</code> or <code>less</code>, while
+<a href="http://emacs-w3m.namazu.org/">emacs-w3m</a> is a simple Emacs interface to w3m, thus, to use emacs-w3m, you need
+<code>w3m</code> installed, there're other optional <a href="http://emacs-w3m.namazu.org/info/emacs-w3m_5.html#SEC5">requirements</a>, which provides a better
+surfing experience, but these are not mandatory, so try it if you like for
+free.
+</p>
+<p>
+In fact, I'm not that kind of person who does almost everything in Emacs, or
+lives in Emacs. I don't want to use emacs-w3m to do things like watching
+youtube videos, searching google map, etc. So, why emacs-w3m came here?
+</p>
+<p>
+I want emacs-w3m when I try to configure <a href="http://common-lisp.net/project/slime/">slime</a> with <a href="http://www.lispworks.com/documentation/common-lisp.html">hyperspec</a>. Slime provides
+an great <code>slime-documentation-lookup</code> function, which indeed is a wrapper of
+<code>slime-hyperspec-lookup</code>, through which you can browser the whole hyperspec
+documentation at your fingertips. Under the hood, <code>slime-hyperspec-lookup</code> will
+call <code>browse-url</code>, which in turn ask a WWW browser to show the
+documentation. Variable <code>browse-url-browser-function</code> says which browser to
+use. Here, I set it to <code>w3m-browse-url</code>.
+</p>
+<p>
+Now follows my secret weapon. I use <code>sp-copy-sexp</code> from <code>smartparens-mode</code> to
+copy some lisp snippets, and then paste the code snippets back to an lisp
+buffer and sent the snippet to slime to get a quick feedback. Ha, what a
+perfect workflow!  Now you should know why I need <code>emacs-w3m</code>.
+</p>
+<p>
+Some commonly used keybindings for <code>w3m-mode</code>:
+</p><ul>
+<li><code>R</code> Reload the current page.
+</li>
+<li><code>r</code> Redisplay the current page.
+</li>
+<li><code>[</code> Move the point to the previous form.
+</li>
+<li><code>]</code> Move the point to the next form.
+</li>
+<li><code>{</code> Move the point to the previous image.
+</li>
+<li><code>}</code> Move the point to the next image.
+</li>
+<li><code>B</code> Move back to the previous page in the history.
+</li>
+<li><code>N</code> Move forward to the next page in the history.
+</li>
+<li><code>^</code> Attempt to move to the parent directory of the page.
+</li>
+<li><code>U</code> Visit the web page.
+</li>
+<li><code>G</code> Visit the web page in a new session.
+</li>
+<li><code>H</code> Go to the Home page.
+</li>
+<li><code>M</code> Display the current page using the external browser.
+</li>
+<li><code>C-c M-l</code> Delete tabs on the left side of the current tab.
+</li>
+<li><code>C-c M-r</code> Delete tabs on the right side of the current tab.
+</li>
+<li><code>M-d</code> Download the URL.
+</li>
+<li><code>d</code> Download the URL under point.
+</li>
+<li><code>I</code> Display the image under point in the external viewer.
+</li>
+<li><code>M-i</code> Save the image under point to a file.
+</li>
+<li><code>t</code> Toggle the visibility of an image under point.
+</li>
+<li><code>T</code> Toggle the visibility of all images.
+</li>
+<li><code>M-T</code> Turn off to display all images.
+</li>
+<li><code>M-[</code> Zoom in an image on the point.
+</li>
+<li><code>M-]</code> Zoom out an image on the point.
+</li>
+<li><code>u</code> Display the url under point and put it into `kill-ring'.
+</li>
+<li><code>c</code> Display the url of the current page and put it into `kill-ring'.
+</li>
+<li><code>\</code> Display the html source of the current page.
+</li>
+<li>=== Display the header of the current page.
+</li>
+<li><code>E</code> Edit the local file displayed as the current page.
+</li>
+<li><code>e</code> Edit the local file which is pointed to by URL under point.
+</li>
+<li><code>M-k</code> Display cookies and enable you to manage them.
+</li>
+<li><code>b</code> Scroll down the current window, or go to the previous page.
+</li>
+<li><code>J</code> Scroll the current window up one line (or lines of which the number you
+  specify by the prefix argument).
+</li>
+<li><code>j</code> Next line.
+</li>
+<li><code>k</code> Previous line.
+</li>
+<li><code>l</code> Forward char.
+</li>
+<li><code>h</code> Backward char.
+</li>
+<li><code>s</code> Display the history of pages you have visited in the session. If it is
+  called with the prefix arg, it displays the arrived URLs.
+</li>
+<li><code>S</code> Query to the search engine a word. To change the server, give any prefix
+  argument to the command.
+</li>
+<li><code>C-t t</code> Create an empty page as a new session and visit it.
+</li>
+<li><code>C-c C-t</code> Create a copy of the current page as a new session.
+</li>
+<li><code>C-c C-n</code> Turn the page of emacs-w3m buffers ahead.
+</li>
+<li><code>C-c C-p</code> Turn the page of emacs-w3m buffers behind.
+</li>
+<li><code>C-c RET</code> Move to the next unseen buffer.
+</li>
+<li><code>C-c C-s</code> Pop to the emacs-w3m buffers selection window up.
+</li>
+<li><code>C-c C-a</code> Select one of emacs-w3m buffers at the current window.
+</li>
+<li><code>C-c C-w</code> Delete the current emacs-w3m buffer.
+</li>
+<li><code>C-c M-w</code> Delete emacs-w3m buffers except for the current buffer.
+</li>
+<li><code>M-x w3m</code> Start browsing web with emacs-w3m.
+</li>
+<li><code>q</code> Close all emacs-w3m windows, without deleteing buffers.
+</li>
+<li><code>Q</code> Exit browsing web.  All emacs-w3m buffers will be deleted.
+</li>
+<li><code>C-c C-k</code> Try to stop internal processes of a page.
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-emacs-w3m-setup</span> ()
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq w3m-default-display-inline-images t)</span>
+  (setq w3m-home-page <span class="org-string">"http://www.google.com/ncr"</span>)
+  (setq browse-url-browser-function 'w3m-browse-url)
+  (global-set-key (kbd <span class="org-string">"C-x w"</span>) 'browse-url-at-point))
+
+(<span class="org-keyword">when</span> (executable-find <span class="org-string">"w3m"</span>)
+  (add-to-list 'el-get-sources
+               '(<span class="org-builtin">:name</span> emacs-w3m
+                       <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                                (ome-emacs-w3m-setup)))))
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-quickrun" class="outline-2">
+<h2 id="quickrun"><a name="sec-14" id="sec-14"></a>Quickrun</h2>
+<div class="outline-text-2" id="text-quickrun">
+
+
+<p>
+Just as its name, quickrun let you run your program in a really quick
+way. Just run it, without thinking about too much other chores.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> quickrun))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-15" class="outline-2">
+<h2 id="sec-15">Todo</h2>
+<div class="outline-text-2" id="text-15">
+
+<ul>
+<li>Enable flyspell and ispell in text-mode.
+</li>
+<li>Add a dictionary support, such as <code>sdcv</code>? Or a better translator support such
+  as <code>babel</code> or <code>gtranslate</code>?
+</li>
+<li>recentf
+<ul>
+<li>set recentf saved file, similar to saveplace.
+</li>
+<li>disable recentf prompting when quit emacs.
+</li>
+</ul>
+
+</li>
+<li>Set emacs auto-save temporary dir instead of .emacs.d
+</li>
+<li>Investigate how to use <code>imenu</code> and <code>imenu rescan</code>.
+</li>
+<li>Add zencoding-mode(emmet-mode) to emacs, maybe I should propose an emmet
+  recipe to <code>el-get</code>.
+</li>
+<li>Learn more about emacs mark and selection, why CapsLK turn on selection mode.
+</li>
+<li>Integrate elnode, skewer-mode and emacs-request to emacs.
+</li>
+<li>Write a proper major-mode for GAS assembly language.
+</li>
+<li>Diminish package support?
+<ul>
+<li>Description: An Emacs package that diminishes the amount of space taken on
+    the mode line by the names of minor modes.
+</li>
+</ul>
+
+</li>
+<li>Oh-my-emacs keybindings to <code>C--</code> conflicts with Emacs's <code>negative-argument</code>?
+</li>
+<li>Try to get the total boot up time and try to reduce the whole boot up time.
+</li>
+<li>Documentation about indentation settings:
+<ul>
+<li><a href="http://emacsredux.com/blog/2013/03/29/automatic-electric-indentation/">http://emacsredux.com/blog/2013/03/29/automatic-electric-indentation/</a>
+</li>
+</ul>
+
+</li>
+<li>Documentation about occur edit mode, which removes the need of externel
+  packages such as iedit:
+  <a href="http://batsov.com/articles/2011/08/19/a-peek-at-emacs24/">http://batsov.com/articles/2011/08/19/a-peek-at-emacs24/</a>
+</li>
+<li>What is emacs desktop-mode?
+</li>
+<li>There're some documentation confusions between <code>sp-beginning-of-sexp</code> and
+  <code>sp-end-of-sexp</code>.
+</li>
+<li>What is raw prefix <code>- C-u</code>? This comes from docstring for <code>sp-kill-sexp</code>.
+</li>
+<li>Integrate travis?
+</li>
+<li>Make <code>ome-load</code> interactive and buffer recognized.
+<ul>
+<li>interactive load files
+<ul>
+<li>absolute path such as "<i>home/xiao</i>.emacs.d/ome-lisp.org"
+</li>
+<li>relative path such as "ome-lisp.org"
+</li>
+</ul>
+
+</li>
+<li>with a prefix key, load current buffer
+</li>
+</ul>
+
+</li>
+<li>Split oh-my-emacs to different levels, such as core, contrib, etc. Add
+  dependency rules. For example, <code>auto-complete-clang</code> depends on
+  <code>auto-complete</code>, this is necessary if you need to load
+  <code>auto-complete-clang</code>. Oh-my-emacs should privide a way to load each module
+  easily, such as <code>(ome-load "ome-lisp.org" ["lisp", "emacslisp"])</code>.
+</li>
+<li>More investigation on registers and marks, for better and fast jump in same
+  buffer?
+</li>
+<li>Add realtime dictionary support for emacs.
+</li>
+</ul>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> See <a href="http://git-scm.com/book/en/Git-Internals">Git Internals</a> to technical details.
+</p>
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

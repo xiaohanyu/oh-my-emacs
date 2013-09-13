@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Org</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Org"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-13T22:22+0800"/>
+<meta name="author" content="Xiao Hanyu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+  <style type="text/css">
+    pre{background:#232323; color:#E6E1DC;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Org</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains configuration for the eminently useful <a href="http://orgmode.org/">Org Mode</a>.
+</p>
+<p>
+Org-mode is for keeping notes, maintaining ToDo lists, doing project
+planning, and authoring with a fast and effective plain-text system.
+Org Mode can be used as a very simple folding outliner or as a complex
+GTD system or tool for reproducible research and literate programming.
+</p>
+<p>
+For more information on org-mode check out <a href="http://orgmode.org/worg/">worg</a>, a large Org-mode wiki
+which is also <b>implemented using</b> Org-mode and <a href="http://git-scm.com/">git</a>.
+</p>
+
+<div id="outline-container-keybindings" class="outline-2">
+<h2 id="keybindings"><a name="sec-1" id="sec-1"></a>Keybindings</h2>
+<div class="outline-text-2" id="text-keybindings">
+
+
+
+
+<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook
+          (<span class="org-keyword">lambda</span> ()
+            (local-set-key <span class="org-string">"\M-\C-n"</span> 'outline-next-visible-heading)
+            (local-set-key <span class="org-string">"\M-\C-p"</span> 'outline-previous-visible-heading)
+            (local-set-key <span class="org-string">"\M-\C-u"</span> 'outline-up-heading)
+            <span class="org-comment-delimiter">;; </span><span class="org-comment">table</span>
+            (local-set-key <span class="org-string">"\M-\C-w"</span> 'org-table-copy-region)
+            (local-set-key <span class="org-string">"\M-\C-y"</span> 'org-table-paste-rectangle)
+            (local-set-key <span class="org-string">"\M-\C-l"</span> 'org-table-sort-lines)
+            <span class="org-comment-delimiter">;; </span><span class="org-comment">display images</span>
+            (local-set-key <span class="org-string">"\M-I"</span> 'org-toggle-iimage-in-org)))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-speed-keys" class="outline-2">
+<h2 id="speed-keys"><a name="sec-2" id="sec-2"></a>Speed keys</h2>
+<div class="outline-text-2" id="text-speed-keys">
+
+<p>Speed commands enable single-letter commands in Org-mode files when
+the point is at the beginning of a headline, or at the beginning of a
+code block.
+</p>
+<p>
+See the `=org-speed-commands-default=' variable for a list of the keys
+and commands enabled at the beginning of headlines.  All code blocks
+are available at the beginning of a code block, the following key
+sequence <code>C-c C-v h</code> (bound to `=org-babel-describe-bindings=') will
+display a list of the code blocks commands and their related keys.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(setq org-use-speed-commands t)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-babel" class="outline-2">
+<h2 id="babel"><a name="sec-3" id="sec-3"></a>Code blocks</h2>
+<div class="outline-text-2" id="text-babel">
+
+<p>This activates a number of widely used languages, you are encouraged
+to activate more languages using the customize interface for the
+`=org-babel-load-languages=' variable, or with an elisp form like the
+one below.  The customize interface of `=org-babel-load-languages='
+contains an up to date list of the currently supported languages.
+</p>
+
+
+<pre class="src src-emacs-lisp">(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (sh . t)))
+</pre>
+
+
+<p>
+You are encouraged to add the following to your personal configuration
+although it is not added by default as a security precaution.
+</p>
+
+
+<pre class="src src-emacs-lisp">(setq org-confirm-babel-evaluate nil)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-code-block-fontification" class="outline-2">
+<h2 id="code-block-fontification"><a name="sec-4" id="sec-4"></a>Code block fontification</h2>
+<div class="outline-text-2" id="text-code-block-fontification">
+
+<p>The following displays the contents of code blocks in Org-mode files
+using the major-mode of the code.  It also changes the behavior of
+<code>TAB</code> to as if it were used in the appropriate major mode.  This means
+that reading and editing code form inside of your Org-mode files is
+much more like reading and editing of code using its major mode.
+</p>
+
+
+<pre class="src src-emacs-lisp">(setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-library-of-babel" class="outline-2">
+<h2 id="library-of-babel"><a name="sec-5" id="sec-5"></a>The Library of Babel</h2>
+<div class="outline-text-2" id="text-library-of-babel">
+
+<p>The library of babel contains makes many useful functions available
+for use by code blocks in <b>any</b> emacs file.  See the actual
+<code>library-of-babel.org</code> (located in the Org-mode <code>contrib/babel</code>
+directory) file for information on the functions, and see
+<a href="http://orgmode.org/worg/org-contrib/babel/intro.php#library-of-babel">worg:library-of-babel</a> for more usage information.
+</p>
+<p>
+Code blocks can be loaded into the library of babel from any Org-mode
+file using the `org-babel-lob-ingest' function.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-htmlize" class="outline-2">
+<h2 id="htmlize"><a name="sec-6" id="sec-6"></a>Htmlize</h2>
+<div class="outline-text-2" id="text-htmlize">
+
+
+<p>
+<a href="http://www.emacswiki.org/emacs/Htmlize">htmlize.el</a> is a package for exporting the contents of an Emacs buffer to HTML
+while respecting display properties such as colors, fonts, underlining,
+invisibility, etc.
+</p>
+<p>
+Org-mode can utilize <code>htmlize</code> when <code>org-export-as-html</code> for source code syntax
+highlighting if <code>htmlize</code> is available.
+</p>
+<p>
+However, there's a minor problem with oh-my-emacs's default settings of
+<code>rainbow-delimiters-mode</code>. Functions such as <code>htmlize-buffer</code> will report an
+error: =htmlize-make-face-map: Wrong type argument: listp,
+"rainbow-delimiters-depth-1-face"=, so I do a small hack to overcome this by
+using the elisp's <code>defadvice</code> utility.
+</p>
+<p>
+Actually, <code>rainbow-delimiters-mode</code> still has some problems within org-mode's
+code block, which may be a bug of <code>rainbow-delimiters-mode</code>.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defadvice</span> <span class="org-function-name">htmlize-buffer-1</span> (around ome-htmlize-buffer-1 disable)
+  (rainbow-delimiters-mode -1)
+  ad-do-it
+  (rainbow-delimiters-mode t))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">ome-htmlize-setup</span> ()
+  (<span class="org-keyword">if</span> (el-get-read-package-status 'rainbow-delimiters)
+      (<span class="org-keyword">progn</span>
+        (ad-enable-advice 'htmlize-buffer-1 'around 'ome-htmlize-buffer-1)
+        (ad-activate 'htmlize-buffer-1))))
+
+(add-to-list 'el-get-sources
+             '(<span class="org-builtin">:name</span> htmlize)
+             <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
+                      (ome-htmlize-setup)))
+
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-org-latex" class="outline-2">
+<h2 id="org-latex"><a name="sec-7" id="sec-7"></a>Org-CDLaTeX</h2>
+<div class="outline-text-2" id="text-org-latex">
+
+
+<p>
+If <a href="http://staff.science.uva.nl/~dominik/Tools/cdlatex/">CDLaTeX</a> is available, turn on it in org-mode. See "<a href="http://www.gnu.org/software/emacs/manual/html_node/org/CDLaTeX-mode.html">Using CDLaTeX to enter math</a>" for details.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (el-get-package-is-installed 'cdlatex-mode)
+  (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8">Todo</h2>
+<div class="outline-text-2" id="text-8">
+
+<ul>
+<li>How to handle <code>org-mode</code> format like ===?
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
