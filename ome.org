@@ -376,8 +376,8 @@ will override those installed by ELPA.  This is useful if you want to track the
 development versions of a project, or if a project is not in elpa.
 
 After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
-#+name: ome-load-files
-#+begin_src emacs-lisp
+#+NAME: ome-load-files
+#+BEGIN_SRC emacs-lisp
   (flet ((sk-load (base)
            (let* ((path          (expand-file-name base ome-dir))
                   (literate      (concat path ".org"))
@@ -412,7 +412,7 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
                (mapcar #'remove-extension
                        (directory-files user-dir t ".*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
                :test #'string=)))))
-#+end_src
+#+END_SRC
 
 *** Settings from M-x customize
 #+NAME: m-x-customize-customizations

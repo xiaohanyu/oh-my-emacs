@@ -9,7 +9,8 @@ in the =doc/= directory.
 This code defines the =ome-project= which is used to publish
 the documentation for the oh-my-emacs to html.
 
-#+begin_src emacs-lisp :results silent
+#+NAME: ome-publish
+#+BEGIN_SRC emacs-lisp :results silent
   (unless (boundp 'org-publish-project-alist)
     (setq org-publish-project-alist nil))
 
@@ -45,5 +46,4 @@ the documentation for the oh-my-emacs to html.
     ;; copy ome.html to index.html
     (copy-file (expand-file-name "ome.html" (expand-file-name "doc" this-dir))
                (expand-file-name "index.html" (expand-file-name "doc" this-dir)) t))
-
-  #+end_src
+#+END_SRC

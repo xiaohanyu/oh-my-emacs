@@ -17,7 +17,9 @@ which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
   :PROPERTIES:
   :CUSTOM_ID: keybindings
   :END:
-#+begin_src emacs-lisp
+
+#+NAME: keybindings
+#+BEGIN_SRC emacs-lisp
   (add-hook 'org-mode-hook
             (lambda ()
               (local-set-key "\M-\C-n" 'outline-next-visible-heading)
@@ -29,7 +31,7 @@ which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
               (local-set-key "\M-\C-l" 'org-table-sort-lines)
               ;; display images
               (local-set-key "\M-I" 'org-toggle-iimage-in-org)))
-#+end_src
+#+END_SRC
 
 * Speed keys
   :PROPERTIES:
@@ -45,9 +47,10 @@ are available at the beginning of a code block, the following key
 sequence =C-c C-v h= (bound to `=org-babel-describe-bindings=') will
 display a list of the code blocks commands and their related keys.
 
-#+begin_src emacs-lisp
+#+NAME: speed-keys
+#+BEGIN_SRC emacs-lisp
   (setq org-use-speed-commands t)
-#+end_src
+#+END_SRC
 
 * Code blocks
   :PROPERTIES:
@@ -58,18 +61,20 @@ to activate more languages using the customize interface for the
 `=org-babel-load-languages=' variable, or with an elisp form like the
 one below.  The customize interface of `=org-babel-load-languages='
 contains an up to date list of the currently supported languages.
-#+begin_src emacs-lisp :tangle no
+
+#+NAME: babel
+#+BEGIN_SRC emacs-lisp :tangle no
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
      (sh . t)))
-#+end_src
+#+END_SRC
 
 You are encouraged to add the following to your personal configuration
 although it is not added by default as a security precaution.
-#+begin_src emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
   (setq org-confirm-babel-evaluate nil)
-#+end_src
+#+END_SRC
 
 * Code block fontification
   :PROPERTIES:
@@ -80,10 +85,12 @@ using the major-mode of the code.  It also changes the behavior of
 =TAB= to as if it were used in the appropriate major mode.  This means
 that reading and editing code form inside of your Org-mode files is
 much more like reading and editing of code using its major mode.
-#+begin_src emacs-lisp
+
+#+NAME: code-block-fontification
+#+BEGIN_SRC emacs-lisp
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
-#+end_src
+#+END_SRC
 
 * The Library of Babel
   :PROPERTIES:

@@ -271,7 +271,7 @@ workflow.
 It's really really awesome, ah?
 
 #+NAME: clojure
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (add-to-list 'el-get-sources
                '(:name clojure-mode))
 
@@ -297,7 +297,7 @@ It's really really awesome, ah?
                '(:name ac-nrepl
                        :after (progn
                                 (ome-ac-nrepl-setup))))
-#+end_src
+#+END_SRC
 
 * Scheme
   :PROPERTIES:
