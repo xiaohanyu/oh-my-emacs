@@ -1,0 +1,95 @@
+#+TITLE: Oh My Emacs ChangeLog
+
+* V0.1
+** Basic settings
+*** Basic stuff
+   - set =tab-width= to 4
+   - =uniquify= buffers with same name
+   - =saveplace= and =recentf=
+   - =turn-on-auto-fill= for =text-mode= and =prog-mode=
+   - =global-auto-revert-mode= for monitoring file changes
+   - =global-subword-mode= for better code navigation
+   - =delete-trailing-whitespace= before save.
+   - other convenient settings such as =yes-or-no-p= prompt, bell rings, etc.
+*** GUI
+   - =powerline=
+   - =yascroll= for a tiny scrollbar
+   - use "Monaco" font if available
+   - disable menu-bar by default
+   - adopt solarized color-theme
+
+** cc-mode
+- Adopt =c-context-line-break= for =(kbd "RET")=
+- Toggle on hungry-delete and auto-newline
+- Open ".h" file in =c++-mode= by default
+- CMake file editing support
+- Doxymacs support
+- Cscope for code indexing
+- Completion with =auto-complete-clang=
+
+** Completion everywhere
+- =M-/= for =hippie-expand=
+- Enable =auto-complete= by default, together with an ac support for =pcomplete=
+- Use the ubiquitous helm for minibuffer, files/buffer switch completion
+  support
+- Yasnippet for template insertion
+
+** Lisp
+*** Emacs Lisp
+    - =turn-on-eldoc-mode= by default
+    - auto-complete in ielm and eshell
+
+*** Common Lisp
+    - Adopt SLIME with a fancy default settings
+    - ac-slime provide auto-complete backend
+    - Out-of-box support for sbcl/ccl/clisp
+
+*** Clojure
+    - Adopt nrepl, which is similar with SLIME
+    - ac-nrepl provide auto-complete backend
+
+*** Scheme
+    - Adopt geiser, which is similar with SLIME
+    - Also provide a pseudo code snippet for swank-chicken if you like
+
+
+** Miscs
+- Enable some dangerous commands such as =narrow-to-page=, =narrow-to-region=
+- Toggle on emacs server mode by default
+- Adopt =rainbow-delimiters-mode= for colorful parens
+- Open image and compressed files transparently
+- Enable =outline-minor-mode= for =prog-mode=
+- Adopt =magit= for git integration
+- =global-visual-line-mode t=
+- Projectile for simple project management
+- Smartparens as the ultimate solution for pair management in Emacs
+- Emacs-w3m for browsing html docs when you don't want to leave Emacs
+- Quickrun to run code snippets instantly
+
+
+** Org-mode settings
+- Enable org-mode speed keys by default
+- Enable =org-src-fontify-natively=
+- Integrate with =htmlize= for html export, solves a conflict between htmlize
+  and rainbow-delimiters-mode
+- Enable cdlatex for org-mode
+
+
+** Python
+- Adopt elpy, the one for all solution for Python in Emacs, together with a
+  comprehensive documentation
+
+
+** \TeX and \LaTeX
+- Use =xetex= as the default =TeX-engine= for better support for \TeX{} font
+  selection and PDF export.
+- Enable =outline-minor-mode= and =flyspell-mode=.
+- Enable =TeX-interactive-mode=, =TeX-PDF-mode=, =TeX-fold-mode= and
+  =reftex-mode=.
+- Favors [[http://okular.kde.org/][Okular]] and [[https://projects.gnome.org/evince/][Evince]] as the default viewer in Linux, and fallbacks to
+  =xdg-open= if both Okular and Evince is unavailable.
+- =turn-on-cdlatex= with AUCTeX
+
+
+** Writing
+- =markdown-mode= support
