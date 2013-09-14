@@ -45,7 +45,7 @@ example, you need to know what the difference between =setq= and
                           (other . "linux")))
 
   (setq-default c-basic-offset 4)
-  (add-to-list 'auto-mode-alist '("\\.h" . c++-mode))
+  (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
   (defun ome-c-initialization-hook ()
     (define-key c-mode-base-map (kbd "RET") 'c-context-line-break))
@@ -55,8 +55,7 @@ example, you need to know what the difference between =setq= and
   (defun ome-c-mode-common-hook ()
     (add-to-list 'c-cleanup-list 'defun-close-semi)
     (c-toggle-hungry-state)
-    (c-toggle-auto-newline)
-    (subword-mode 1))
+    (c-toggle-auto-newline))
 
   ;; this will affect all modes derived from cc-mode, like
   ;; java-mode, php-mode, etc
