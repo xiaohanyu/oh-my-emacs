@@ -54,7 +54,7 @@ also a [[http://stackoverflow.com/questions/4704748/emacs-completion-autocomplet
 You may wonder why oh-my-emacs choose auto-complete? In a word, auto-complete
 is flexible which provides a plugin mechanism through which you can define your
 own =ac-source=, thus you get unlimited possibilities to complete in various
-programming langagues, major modes, etc.
+programming languages, major modes, etc.
 
 The following code comes from [[http://www.emacswiki.org/emacs/EshellCompletion][EmacsWiki]], which defines a =ac-source-pcomplete=
 that integrates pcomplete as a completion backend to auto-complete.

@@ -236,7 +236,7 @@ just enjoy it!
 #+BEGIN_QUOTE
 Smartparens is modern minor mode for Emacs that /deals with parens pairs and
 tries to be smart about it/. It is a unification and enhancement effort to
-combine funcitonality of several existing packages in a single, common and
+combine functionality of several existing packages in a single, common and
 straightforward way (and most of all compatible). These packages include
 [[https://github.com/capitaomorte/autopair][autopair]], [[http://code.google.com/p/emacs-textmate/][textmate]], [[https://github.com/rejeep/wrap-region][wrap-region]], [[http://emacswiki.org/emacs/ParEdit][paredit]] and others with similar
 philosophies. It also adds support for many more features. [[https://github.com/Fuco1/smartparens/wiki#wiki-what-is-this-package-about?][Here's]] a highlight
@@ -260,11 +260,11 @@ defines =M-s= as the prefix key. The default keybindings provided by
 smartparens has some conflicts with =evil='s =ESC= key. If you have any other
 good suggestions, please tell me, thanks!
 
-I spent about one week's sparetime just learning this amazing
+I spent about one week's spare time just learning this amazing
 package. Smartparens is not as strict as paredit, for some people that kind of
 strictness seems annoying and weird at first. Paredit is [[http://emacsrocks.com/e14.html][powerful]], so
 smartparens import many features from paredit and provides a compatible, and
-more powerful, flexible version. For any serious Lispers, I recommand you spend
+more powerful, flexible version. For any serious Lispers, I recommend you spend
 some time to master these wonderful commands, which will make your life easier.
 
 #+NAME: smartparens
@@ -507,7 +507,7 @@ way. Just run it, without thinking about too much other chores.
 - Try to get the total boot up time and try to reduce the whole boot up time.
 - Documentation about indentation settings:
   - http://emacsredux.com/blog/2013/03/29/automatic-electric-indentation/
-- Documentation about occur edit mode, which removes the need of externel
+- Documentation about occur edit mode, which removes the need of external
   packages such as iedit:
   http://batsov.com/articles/2011/08/19/a-peek-at-emacs24/
 - What is emacs desktop-mode?

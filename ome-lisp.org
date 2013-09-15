@@ -252,7 +252,7 @@ languages. Clojure extends the code-as-data system beyond parenthesized lists
 
 Since Clojure is a Lisp dialect, it should work the SLIME way. Yeah, first
 comes [[https://github.com/technomancy/swank-clojure][swank-clojure]], then [[https://github.com/clojure-emacs/nrepl.el][nrepl.el]]. The only thing you need to install is
-[[http://leiningen.org/][leiningen]] 2.x. I recommand you to install it manually, since not all [[https://github.com/technomancy/leiningen/wiki/Packaging][package
+[[http://leiningen.org/][leiningen]] 2.x. I recommend you to install it manually, since not all [[https://github.com/technomancy/leiningen/wiki/Packaging][package
 manager]] provides the latest version.
 
 The general way to install lastest stable leiningen is:
@@ -265,7 +265,7 @@ lein version
 Or you can see leiningen's [[https://github.com/technomancy/leiningen/wiki/Upgrading][wiki]] for upgrading details.
 
 Now, just open a clojure file, then =nrepl-jack-in=, and you can program
-Clojure the SLIME way. [[http://vimeo.com/22798433][Here]] is an awesome live demo to demostrate the Clojure
+Clojure the SLIME way. [[http://vimeo.com/22798433][Here]] is an awesome live demo to demonstrate the Clojure
 workflow.
 
 It's really really awesome, ah?
@@ -355,6 +355,8 @@ disabled by default.
 
 ** Common Lisp
 - Integrate [[http://www.foldr.org/~michaelw/emacs/redshank/][redshank]]?
+- Find a method to rebase the source tree of various CL implementations, which
+  is useful for =slime-edit-definition=.
 
 ** Scheme
 - Write a package "ac-geisure", just like ac-slime.

@@ -73,7 +73,7 @@ various good web sites, such as
 - [[http://www.masteringemacs.org/][masteringemacs]] :: a blog about mastering the world's best text editor
 - [[http://emacs-fu.blogspot.com/][emacs-fu]] :: useful tricks for emacs
 - [[http://alexott.net/en/emacs/][Alexott's Blog]] :: some really great articles about emacs
-- [[http://alexott.net/en/emacs/][emacser]] :: an excellent and comprehensive emacs blog written by chinese
+- [[http://alexott.net/en/emacs/][emacser]] :: an excellent and comprehensive emacs blog written by Chinese
              users.
 
 
@@ -126,7 +126,7 @@ manage to deliver on that promise? We'll see that in a bit...
 Ah, a long long quote, really vivid and visual description of the state of
 emacs package management system. [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]] adopt [[https://github.com/dimitri/el-get][el-get]], while other popular
 dotemacs project adopt the builtin =package.el=. You may wonder why, IMHO,
-=package.el= is far from ideal, althouth it is builtin with emacs, however,
+=package.el= is far from ideal, although it is builtin with emacs, however,
 el-get is the practical solution, at least for now. In a word, what el-get
 to emacs is what =apt-get= to debian/ubuntu.
 
@@ -424,7 +424,7 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 
 * Todo
 ** Boot up speed optimization
-- Use =eval-after-load= when possible to inprove the boot up speed.
+- Use =eval-after-load= when possible to improve the boot up speed.
 - =autoload= for lazy loading?
 
 ** El-get
@@ -454,7 +454,7 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 - Try to use system tools to get necessary configuration, for example, you can
   use =pkg-config= to get necessary header file paths for a particular lib,
   this is useful for settings with =auto-complete-clang=.
-- Emacs cannot do all things, it do need some external tools to faciliate its
+- Emacs cannot do all things, it do need some external tools to facilitate its
   jobs. For example, =semantic= from =cedet= is a bad idea, it's bloated, slow
   and buggy. Consider using clang/jedi for completion. If there is a better
   external tools, do not hesitate, just use it. Do not reinvent the same wheel

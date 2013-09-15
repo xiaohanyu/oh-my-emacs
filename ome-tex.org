@@ -32,8 +32,8 @@ If you are not lucky enough, you should follow the official [[http://www.tug.org
 instructions to install it.
 
 There're other annoying problems if you're a [[http://en.wikipedia.org/wiki/CJK_characters][CJK]] user, such as fonts and
-package configurion in \TeX{} documents, but this is further beyond the scope
-of this project. So refer to necessary [[https://tug.org/][TUG]]s, or BBS for help. For chinese user,
+package configuration in \TeX{} documents, but this is further beyond the scope
+of this project. So refer to necessary [[https://tug.org/][TUG]]s, or BBS for help. For Chinese user,
 [[http://www.ctex.org/][CTEX]] is a good place to start your journey. [[http://zzg34b.w3.c361.com/][LaTeX编辑部]] also provides lots of
 useful resources written in Chinese.
 
@@ -110,7 +110,7 @@ is always the main topic with Emacs.
 =smartparens-latex= provide some goodies for \TeX{} editing. But we need to
 ensure =smartparens= is available before we =require 'smartparens-latex=.
 
-=smartparens= still has some weired problems for inserting "$" in \TeX{}, which
+=smartparens= still has some weird problems for inserting "$" in \TeX{}, which
 is a weird problem. In fact, both AUCTeX and =smartparens= provides some pair
 management functions, which may be overlapping. AUCTeX provide a
 =TeX-electric-math=, while =smartparens= was born for pair management. Worse,
@@ -193,7 +193,7 @@ have no idea why =evil-local-mode= is enabled by default when entering
 #+BEGIN_QUOTE
 CDLaTeX - more LaTeX functionality for Emacs and XEmacs
 
-CDTeX is a minor mode which re-implements many features also found in the
+CDLaTeX is a minor mode which re-implements many features also found in the
 AUCTeX LaTeX mode. The reason for this is mainly historical - much of it was
 written before I knew about AUCTeX. So check this out if you would like to try
 a different implementation.  Here are some of the differences: Environment

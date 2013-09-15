@@ -51,7 +51,7 @@ are, what's the fuck[1]! I'm just a newbie, any out-of-box solutions?
 Fortunately, there comes [[https://github.com/jorgenschaefer/elpy][elpy]], which saves our lifes.
 
 Just like other big emacs packages, elpy has some external dependencies. But
-don't be afraid, beleive me, within minutes, you'll get an out-of-box Emacs
+don't be afraid, believe me, within minutes, you'll get an out-of-box Emacs
 Python "IDE". First, make sure you have =python= and =pip= installed, and then
 type =pip install elpy= with root priviledge[2], then choose a completion
 backend, either =pip install rope= or =pip install jedi= [3].
@@ -65,7 +65,7 @@ If you're lucky enough, you can fire up Emacs and start python work right now.
 
 There're other annoying problems, one of them is the division between Python 2
 and Python 3. So you may need to replace =pip= with =pip2=, or =python= with
-=python2=, etc. Ah, differrent systems has different favors and naming rules.
+=python2=, etc. Ah, different systems has different favors and naming rules.
 
 The second thing is, elpy requires Emacs version >= 24.3, since Emacs 24.3
 ships with a new =python.el= [4], which, actually, is the aforementioned

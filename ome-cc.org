@@ -68,9 +68,9 @@ example, you need to know what the difference between =setq= and
   :END:
 
 The only thing you need to do in =makefile-mode= is to enable tab indentation
-instead of space indentation, since =makefile-mode= relys on tabs being tabs
+instead of space indentation, since =makefile-mode= relies on tabs being tabs
 instead of a mixture of spaces and tabs, which I think, is a bug, but used as
-a feature of makefile. Ah, weird details and historial dirty quirks of
+a feature of makefile. Ah, weird details and historical dirty quirks of
 makefile.
 
 #+NAME: makefile
@@ -85,7 +85,7 @@ makefile.
   :CUSTOM_ID: cmake
   :END:
 
-[[http://www.cmake.org/][CMake]] is my favourate build tool for C/C++ software. To be precise, CMake is
+[[http://www.cmake.org/][CMake]] is my favourite build tool for C/C++ software. To be precise, CMake is
 not a build tool, since it does not build the project, instead, it generates
 the files needed by your build tool(GNU make, Visual Studio, etc). The only
 thing that I dislike about CMake is its syntax, which is weird and hard to

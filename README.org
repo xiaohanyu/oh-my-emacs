@@ -37,8 +37,8 @@ by [[https://github.com/robbyrussell/oh-my-zsh][oh-my-zsh]].
 - Better default settings with various eye candy, powerline, scrollbar,
   color-theme, fonts, etc.
 - Adopt =el-get= as the default package manager for Emacs, instead of the
-  default builtin =package.el=, say goodbay to =./configure; make; make
-  install= and explicitly mananully management of =load-path=. =el-get= also
+  default builtin =package.el=, say goodbye to =./configure; make; make
+  install= and explicitly manually management of =load-path=. =el-get= also
   provides automatic documentation management, customizable user's recipe
   support, etc.
 - Self-adapted, only install necessary packages when it satisfy the
@@ -65,7 +65,7 @@ Then just fire up your Emacs and make a coffee, and you should have a
 full-blown Emacs OS!
 
 Note that the default oh-my-emacs enabled [[http://gitorious.org/evil/pages/Home][evil]] by default, you can disable it
-globally by =M-x evil-mode=, but I do recommand you enable it and try to
+globally by =M-x evil-mode=, but I do recommend you enable it and try to
 adapt, ah, finally the Emacs OS get a good editor, evil.
 
 * What's in Oh-my-emacs
@@ -114,7 +114,7 @@ adapt, ah, finally the Emacs OS get a good editor, evil.
 - [[https://github.com/m2ym/yascroll-el][yascroll]]: Yet Another Scroll Bar Mode
 - [[https://github.com/capitaomorte/yasnippet.git][yasnippet]]: YASnippet is a template system for Emacs.
 
-* Gallary
+* Gallery
 [[http://www.douban.com/photos/album/117065634/][Here]]'re some screenshots of oh-my-emacs:
 
 - Startup screen:
