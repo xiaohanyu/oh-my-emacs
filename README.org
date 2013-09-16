@@ -54,8 +54,12 @@ by [[https://github.com/robbyrussell/oh-my-zsh][oh-my-zsh]].
 - Full-blown, oh-my-emacs is not another starter kit, it is hacker kit.
 
 * Quick Start
-Simple enough, ensure you have a good network(Chinese users should get rid of
-GFW when possible to avoid many weird problems during first startup), then
+Simple enough, first, ensure you have a good network(Chinese users should get
+rid of GFW when possible to avoid many weird problems during first startup);
+second, *ensure that you have installed the necessary tools* pointed out by the
+*Prerequisites* sections from oh-my-emacs modules. Basically, you need to
+install git/cvs/mercurial, make/automake/autoconf, texinfo and gcc, which is
+the mandatory prerequisites of [[https://github.com/xiaohanyu/oh-my-emacs/blob/master/ome.org][ome.org]].
 
 #+BEGIN_SRC sh
 git clone git@github.com:xiaohanyu/oh-my-emacs.git $HOME/.emacs.d
@@ -64,9 +68,32 @@ git clone git@github.com:xiaohanyu/oh-my-emacs.git $HOME/.emacs.d
 Then just fire up your Emacs and make a coffee, and you should have a
 full-blown Emacs OS!
 
-Note that the default oh-my-emacs enabled [[http://gitorious.org/evil/pages/Home][evil]] by default, you can disable it
-globally by =M-x evil-mode=, but I do recommend you enable it and try to
-adapt, ah, finally the Emacs OS get a good editor, evil.
+** Evil
+
+Note that oh-my-emacs enabled [[http://gitorious.org/evil/pages/Home][evil]] by default, you can disable it globally by
+=M-x evil-mode=, however, I do recommend you enable it and try to adapt, ah,
+finally the Emacs OS get a good editor, evil.
+
+OS X users may have problems with evil installation, such as
+https://github.com/xiaohanyu/oh-my-emacs/issues/2. To skip this, you can first
+=M-x el-get-remove evil= and then comment out code like =(load
+"ome-advanced.org")= from =ome.org=.
+
+** Helm
+You may miss the old =M-x= when you first start with oh-my-emacs, me too,
+before I fall in love with [[https://github.com/emacs-helm/helm][helm]]. I highly recommend you to adapt with the helm
+way. Believe me, helm will bring you lots of surprise.
+
+There're two key points for helm beginners:
+- In helm, =TAB= is not used as the traditional completion key. Maybe this is
+  the most whirlwind turnaround with helm since so many packages use =TAB= for
+  completion. Remember, =TAB= in helm is used to access the helm action
+  menu. You may wonder, then, how can I do type completion in helm? The answer
+  is, no need to do type completion explicitly. Just type, and helm will lead
+  you to the right place.
+- oh-my-emacs bind the traditional =C-x C-f= to =helm-find-files= by
+  default. You should use =C-l= to go to the precedent directory level instead
+  of =DEL=.
 
 * What's in Oh-my-emacs
 - [[https://github.com/purcell/ac-nrepl][ac-nrepl]]: Nrepl completion source for Emacs auto-complete package
