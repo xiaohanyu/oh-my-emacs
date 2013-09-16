@@ -3,8 +3,7 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
-This file contains some settings for lisp dialects including [[* Emacs Lisp][Emacs Lisp]], [[*
- Scheme][Scheme]], [[* Common Lisp][Common Lisp]], and [[* Clojure][Clojure]].
+This file contains some settings for lisp dialects including [[* Emacs Lisp][Emacs Lisp]], [[* Scheme][Scheme]], [[* Common Lisp][Common Lisp]], and [[* Clojure][Clojure]].
 
 * Prerequisites
 ** Mandatory

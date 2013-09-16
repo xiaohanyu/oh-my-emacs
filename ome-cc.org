@@ -8,7 +8,8 @@ This file contains some settings for =cc-mode=.
 * Prerequisites
 ** Mandatory
 - [[http://www.xmlsoft.org/][libxml2]], you need to =sudo apt-get install libxml2 libxml2-dev= in
-  Ubuntu. There is required for el-get to build doxymacs.
+  Ubuntu, and =brew install libxml2 libxslt= =brew link --force libxml2
+  libxslt= in Mac with homebrew. There is required for el-get to build doxymacs.
 - [[http://clang.llvm.org/][clang]], for auto-complete-clang
 - [[http://www.freedesktop.org/wiki/Software/pkg-config/][pkg-config]], a helper tool used when compiling applications and libraries.
 

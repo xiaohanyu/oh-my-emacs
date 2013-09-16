@@ -26,6 +26,9 @@ ac*dat
 # saved-places
 *saved-places*
 
+# recentf
+.recentf
+
 # projectile
 projectile*
 
