@@ -118,7 +118,7 @@ previously visited the same file. The following code comes from [[http://emacs-f
 #+NAME: saveplace
 #+BEGIN_SRC emacs-lisp
   (setq-default save-place t)
-  (setq save-place-file "~/.emacs.d/saved-places")
+  (setq save-place-file (concat user-emacs-directory "saved-places"))
   (require 'saveplace)
 #+END_SRC
 
@@ -142,6 +142,9 @@ The following code comes from [[http://www.masteringemacs.org/articles/2011/01/2
   ;; get rid of `find-file-read-only' and replace it with something
   ;; more useful.
   (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+
+  ;; save the .recentf file to .emacs.d/
+  (setq recentf-save-file (concat user-emacs-directory ".recentf"))
 
   ;; enable recent files mode.
   (recentf-mode t)
