@@ -68,3 +68,4 @@ Emacs session.
   temporarily disable =evil-local-mode= when I do operations like
   =sp-up-sexp=. Maybe I can get this by =post-command-hook= or smartparens's
   =post-command-handler=? Or just use =defadvice=?
+- More investigation [[https://github.com/timcharper/evil-surround][evil-surround]] and [[https://github.com/cofi/evil-leader][evil-leader]]. Thanks [[http://www.reddit.com/user/MoreHugs][MoreHugs]].

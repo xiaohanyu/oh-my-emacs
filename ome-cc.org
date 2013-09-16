@@ -283,3 +283,4 @@ installed if you want to write program with that library.
   - For huge C/C++ programs, auto-complete-clang maybe a little slow, maybe
     https://github.com/Golevka/emacs-clang-complete-async is a better
     solution.
+- Learn something about [[http://www.gnu.org/software/global/][GNU Global]], thanks [[http://www.reddit.com/user/stack_pivot][stack_pivot]].

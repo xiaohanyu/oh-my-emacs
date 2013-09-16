@@ -423,6 +423,27 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 
 
 * Todo
+
+** Blueprint
+- Refactor the codebase, just like [[https://github.com/bbatsov/prelude][prelude]], oh-my-emacs should classify its
+  files to "core" and "modules", or something like this. "core" is the
+  foundation of oh-my-emacs, which must be loaded by default at startup, while
+  "modules" contains optional files which can be loaded when necessary.
+- Turn the "Prerequisites" section into a more feasible "Prerequisites
+  Matrix", by which, I mean, the header row tags the operating system, while
+  the first column tags the mandatory/optional softwares, and the body
+  contains the concrete command to specify how to install software A, B, C in
+  operating system X, Y, Z.
+- Show all =ome-packages= by group instead by alphabetic order, which is
+  better for users to know what oh-my-emacs provide for them and how awesome
+  oh-my-emacs is. :-)
+- Add functions to rollback el-get. For example, users may have different
+  environments, which may result in a failure of one oh-my-emacs module A. Thus
+  users may want to remove all the packages installed by module A. So maybe I
+  need a function =(ome-unload "ome-module-A.org")=, which just remove all
+  oh-my-emacs by calling =el-get-remove=, and rollback the user's .emacs.d to
+  a previous workable state(hope).
+
 ** Boot up speed optimization
 - Use =eval-after-load= when possible to improve the boot up speed.
 - =autoload= for lazy loading?
