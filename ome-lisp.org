@@ -205,6 +205,9 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
     ;; this for you in a file like "/etc/emacs/site-start.d/60hyperspec.el"
     ;; (setq common-lisp-hyperspec-root "/usr/share/doc/hyperspec/")
 
+    ;; Open SBCL rc file in lisp-mode
+    (add-to-list 'auto-mode-alist '("\\.sbclrc$" . lisp-mode))
+
     (global-set-key (kbd "C-c s") 'slime-selector)
     (setq slime-net-coding-system 'utf-8-unix)
     (setq slime-complete-symbol*-fancy t)
