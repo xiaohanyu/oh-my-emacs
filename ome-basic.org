@@ -44,8 +44,9 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
   (setq inhibit-startup-screen t)
 
   ;; shell-mode settings
-  (setq explicit-shell-file-name "/bin/bash")
-  (setq shell-file-name "/bin/bash")
+  (unless (eq system-type 'windows-nt)
+    (setq explicit-shell-file-name "/bin/bash")
+    (setq shell-file-name "/bin/bash"))
   ;; always insert at the bottom
   (setq comint-scroll-to-bottom-on-input t)
   ;; no duplicates in command history
