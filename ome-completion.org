@@ -113,6 +113,25 @@ that integrates pcomplete as a completion backend to auto-complete.
 #+END_SRC
 
 
+** Auto-complete usability matrix
+   :PROPERTIES:
+   :CUSTOM_ID: auto-complete-usability-matrix
+   :END:
+
+Semantic completion based on [[http://cx4a.org/software/auto-complete/][auto-complete]] is one of the major goals of
+oh-my-emacs. The following matrix show the current status of oh-my-emacs
+semantic completion.
+
+#+NAME: auto-complete-usability-matrix
+|             | AC Usability | AC Backend          | Detail                             |
+|-------------+--------------+---------------------+------------------------------------|
+| C/C++       |          80% | [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]] | Issue with function argument list. |
+| Python      |         100% | [[https://github.com/jorgenschaefer/elpy][elpy]]                | elpy is amazing.                   |
+| Emacs Lisp  |         100% | Builtin             | You kown taht.                     |
+| Common Lisp |         100% | [[https://github.com/purcell/ac-slime][ac-slime]]            | SLIME is amazing, too.             |
+| Scheme      |          30% | None                | ac-geiser is not born yet for now. |
+| Clojure     |         100% | [[https://github.com/clojure-emacs/ac-nrepl][ac-nrepl]]            | It even completes Java!            |
+
 * Helm
   :PROPERTIES:
   :CUSTOM_ID: helm
