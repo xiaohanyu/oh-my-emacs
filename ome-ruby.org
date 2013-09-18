@@ -1,0 +1,115 @@
+#+TITLE: Oh My Emacs Ruby
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* El-get Packages
+  :PROPERTIES:
+  :CUSTOM_ID: ruby-el-get-packages
+  :END:
+
+#+NAME: ruby-el-get-packages
+|                    | Status     | Detail                            |
+|--------------------+------------+-----------------------------------|
+| [[https://github.com/qoobaa/ruby-electric][ruby-electric]]      | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.           |
+| [[https://github.com/adolfosousa/ruby-block.el][ruby-block]]         | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.           |
+| [[https://github.com/rejeep/ruby-end][ruby-end]]           | Deprecated | [[https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby.el][smartparens-ruby]] is amazing, too. |
+| [[http://rubygems.org/gems/rcodetools][rcodetools]]         | Deprecated | Long time no update.              |
+| [[http://www.cx4a.org/pub/auto-complete-ruby.el][auto-complete-ruby]] | Deprecated | Depends on [[http://rubygems.org/gems/rcodetools][rcodetools]].            |
+
+* Prerequisites Matrix
+  :PROPERTIES:
+  :CUSTOM_ID: ruby-prerequisites-matrix
+  :END:
+
+This is a experimental prerequisites matrix. Somebody said we can convert this
+type of matrix into a runnable script, however, I think it requires too much
+work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
+
+#+NAME: ruby-prerequisites-matrix
+|      | Ubuntu/Debian/Mint   | ArchLinux       | CentOS           | Mac OS X        | Mandatory? |
+|------+----------------------+-----------------+------------------+-----------------+------------|
+| ruby | apt-get install ruby | pacman -S ruby  | yum install ruby |                 | Yes        |
+| pry  | gem install pry      | gem install pry | gem install pry  | gem install pry | No         |
+
+* Ruby-mode
+  :PROPERTIES:
+  :CUSTOM_ID: ruby-mode
+  :END:
+
+The builtin =ruby-mode= in Emacs is quite simple, it just provides some simple
+functions for font-locking, indentation and code navigation.
+
+#+NAME: ruby-mode
+#+BEGIN_SRC emacs-lisp
+  (defun ome-ruby-mode-setup ()
+    ;; Ah, this huge auto-mode-alist list comes from emacs prelude
+    (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode)))
+
+  (ome-ruby-mode-setup)
+#+END_SRC
+
+* Inf-ruby
+  :PROPERTIES:
+  :CUSTOM_ID: inf-ruby
+  :END:
+
+I have a dream that one day the builtin =ruby-mode= and [[https://github.com/nonsequitur/inf-ruby][inf-ruby]] will merge
+together to form a new, more powerful =ruby-mode=, just like the builtin
+=python-mode=.
+
+Fortunately, inf-ruby support multiple ruby implementations in a simple
+way. Oh-my-emacs will use [[http://pryrepl.org/][pry]] if available.
+
+There still lacks a good auto-complete support, however, I think it shouldn't
+be too hard to add auto-complete support by leveraging =inf-ruby-complete=
+provided by =inf-ruby=.
+
+Oh-my-emacs also bind =C-c C-z= to =run-ruby=, instead of the original
+=ruby-switch-to-inf= to make the workflow smoother when you just want to
+evaluate ruby code snippets.
+
+#+NAME: inf-ruby
+#+BEGIN_SRC emacs-lisp
+  (defun ome-inf-ruby-setup ()
+    (define-key inf-ruby-minor-mode-map (kbd "C-c C-z") 'run-ruby)
+    (when (executable-find "pry")
+      (add-to-list 'inf-ruby-implementations '("pry" . "pry"))
+      (setq inf-ruby-default-implementation "pry")))
+
+  (add-to-list 'el-get-sources
+               '(:name inf-ruby
+                       :after (progn
+                                (ome-inf-ruby-setup))))
+#+END_SRC
+
+* Smartparens-ruby
+  :PROPERTIES:
+  :CUSTOM_ID: smartparens-ruby
+  :END:
+
+[[https://github.com/Fuco1/smartparens][smartparens]] is amazing, which deprecates [[https://github.com/qoobaa/ruby-electric][ruby-electric]]. In fact, it is so
+amazing that one single [[https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby][smartparens-ruby]] deprecates other two el-get packages:
+[[https://github.com/adolfosousa/ruby-block.el][ruby-block]] and [[https://github.com/rejeep/ruby-end][ruby-end]]. Just enjoy it! Thanks [[https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby][Matus Goljer]] again for this
+amazing, elegant package.
+
+#+NAME: smartparens-ruby
+#+BEGIN_SRC emacs-lisp
+  (when (require 'smartparens nil 'noerror)
+    (require 'smartparens-ruby))
+#+END_SRC
+
+* Todo
+- Auto-complete support, maybe [[https://github.com/dgutov/robe][robe]] is a good choice.
+- Ah, rails support, lots of works, so, as it always said, any help will be
+  appreciated.

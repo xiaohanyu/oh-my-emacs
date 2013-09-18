@@ -347,6 +347,7 @@ Till now, Oh-my-emacs includes:
 - [[file:ome-python.org][ome-python.org]]: python settings, life is short, =elpy= is amazing.
 - [[file:ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
 - [[file:ome-tex.org][ome-tex.org]]: AUCTeX and CDLaTeX for \TeX{} editing.
+- [[file:ome-ruby.org][ome-ruby.org]]: Ruby support including =inf-ruby= and =smartparens-ruby=.
 
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
@@ -363,6 +364,7 @@ Till now, Oh-my-emacs includes:
   (ome-load "ome-python.org")
   (ome-load "ome-auto-mode.org")
   (ome-load "ome-tex.org")
+  (ome-load "ome-ruby.org")
 #+END_SRC
 
 ** Load User/System Specific Files
