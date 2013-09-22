@@ -6,10 +6,45 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 This file contains some settings for lisp dialects including [[* Emacs Lisp][Emacs Lisp]], [[* Scheme][Scheme]], [[* Common Lisp][Common Lisp]], and [[* Clojure][Clojure]].
 
 * Prerequisites
-** Mandatory
-- [[http://www.sbcl.org/][SBCL]] or [[http://ccl.clozure.com/][Clozure CL]] or [[http://www.clisp.org/][CLISP]] as a Common Lisp implementation.
-- [[http://www.gnu.org/software/guile/][Guile]] or [[http://racket-lang.org/][Racket]] as a Scheme implementation.
-- [[http://leiningen.org/][Leiningen]] for Clojure
+  :PROPERTIES:
+  :CUSTOM_ID: lisp-prerequisites
+  :END:
+
+#+NAME: lisp-prerequisites
+#+CAPTION: Prerequisites for ome-lisp module
+|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|------------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.sbcl.org/][SBCL]]       |         | sbcl               |           |        |          | Yes        |
+| [[http://ccl.clozure.com/][Clozure CL]] |         | [web]              |           |        |          | No         |
+| [[http://www.clisp.org/][CLISP]]      |         | clisp              |           |        |          | No         |
+| [[http://www.gnu.org/software/guile/][Guile]]      |         | guile-2.0          |           |        |          | Yes        |
+| [[http://racket-lang.org/][Racket]]     |         | racket             |           |        |          | No         |
+| [[http://leiningen.org/][Leiningen]]  | [web]   | [web]              | [web]     | [web]  | [web]    | Yes        |
+
+Note:
+- [[http://www.sbcl.org/][SBCL]] or [[http://ccl.clozure.com/][Clozure CL]] or [[http://www.clisp.org/][CLISP]] as a Common Lisp implementation. I recommend
+  SBCL since it has good performance, and is easy to install via package
+  manager.
+- [[http://www.gnu.org/software/guile/][Guile]] or [[http://racket-lang.org/][Racket]] as a Scheme implementation. Geiser requires Guile >= 2.0.
+- [[http://leiningen.org/][Leiningen]] for Clojure. I recommend you install leiningen from the official
+  website to keep update with the lastest version.
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: lisp-el-get-packages
+  :END:
+
+#+NAME: gui-el-get-packages
+#+CAPTION: El-get packages for ome-lisp module
+|                 | Status   | Description                                    |
+|-----------------+----------+------------------------------------------------|
+| [[https://github.com/purcell/elisp-slime-nav][elisp-slime-nav]] | Required | Shortcuts for browsing elisp code.             |
+| [[http://common-lisp.net/project/slime/][slime]]           | Required | One of the most amazing package for Emacs.     |
+| [[https://github.com/purcell/ac-slime][ac-slime]]        | Required | AC backend for slime.                          |
+| [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]]    | Required | Major mode for Clojure.                        |
+| [[https://github.com/clojure-emacs/nrepl.el][nrepl.el]]        | Required | Nrepl to Clojure is what slime to Common Lisp. |
+| [[https://github.com/purcell/ac-nrepl.git][ac-nrepl]]        | Required | AC backend for nrepl.                          |
+| [[http://www.nongnu.org/geiser/][geiser]]          | Required | Geiser to Scheme is what slime to Common Lisp. |
 
 * Basics
   :PROPERTIES:

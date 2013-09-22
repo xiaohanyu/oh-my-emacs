@@ -3,6 +3,19 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
+* El-get Packages
+  :PROPERTIES:
+  :CUSTOM_ID: completion-el-get-packages
+  :END:
+
+#+NAME: completion-el-get-packages
+#+CAPTION: El-get packages for ome-completion module
+|                 | Status   | Description                               |
+|-----------------+----------+-------------------------------------------|
+| [[http://cx4a.org/software/auto-complete/][auto-completion]] | Required | I really like it.                         |
+| [[https://github.com/emacs-helm/helm][helm]]            | Required | Completion everywhere, highly recommended. |
+| [[https://github.com/capitaomorte/yasnippet][YASnippet]]       | Required | Quick snippet template insertion.         |
+
 * Hippie expand
 =M-x hippie-expand= is a single command providing a variety of completions and
 expansions. The following code segment comes from [[https://github.com/bbatsov/prelude][Emacs Prelude]].

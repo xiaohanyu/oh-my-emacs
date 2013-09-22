@@ -6,8 +6,32 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 This file contains things that still don't find a good place to put, :-).
 
 * Prerequisites
-** Optional
-- [[http://w3m.sourceforge.net/][w3m]] for [[http://emacs-w3m.namazu.org/][emacs-w3m]]
+  :PROPERTIES:
+  :CUSTOM_ID: miscs-prerequisites
+  :END:
+
+#+NAME: miscs-prerequisites
+#+CAPTION: Prerequisites for ome-miscs module
+|     | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|-----+---------+--------------------+-----------+--------+----------+------------|
+| [[http://w3m.sourceforge.net/][w3m]] |         | w3m, w3m-img       |           |        |          | No         |
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: miscs-el-get-packages
+  :END:
+
+#+NAME: miscs-el-get-packages
+#+CAPTION: El-get packages for ome-miscs module
+|                    | Status      | Description                                        |
+|--------------------+-------------+----------------------------------------------------|
+| [[https://github.com/jlr/rainbow-delimiters][rainbow-delimiters]] | Required    | Colorful parens.                                   |
+| [[http://magit.github.io/magit/][magit]]              | Required    | Git in Emacs.                                      |
+| [[https://github.com/bbatsov/projectile][projectile]]         | Required    | Project managment in Emacs.                        |
+| [[https://github.com/Fuco1/smartparens][smartparens]]        | Required    | The ulitimate paren management solution for Emacs. |
+| [[http://emacs-w3m.namazu.org/][emacs-w3m]]          | Recommended | Browsing HTML docs in Emacs.                       |
+| [[https://github.com/syohex/emacs-quickrun][quickrun]]           | Recommended | Just as its name said.                             |
+| [[http://www.emacswiki.org/emacs/LaCarte][lacarte]]            | Recommended | Access menubar in minibuffer command loop.         |
 
 * Enable some dangerous commands
 
@@ -246,7 +270,7 @@ of some features, for a complete list and detailed documentation look in the
 For the complete picture of what is it about, visit the [[https://github.com/Fuco1/smartparens/wiki][documentation wiki]].
 #+END_QUOTE
 
-Believe me, [[https://github.com/Fuco1/smartparens/wiki][smartparens]] is the future, it is the ultimate solution for paren
+Believe me, [[https://github.com/Fuco1/smartparens][smartparens]] is the future, it is the ultimate solution for paren
 pairs management in Emacs world. It is flexible, uniform and highly
 customizable. It is also bundled with a comprehensive documentation, besides
 the aforementioned wiki, you can also =M-x sp-cheat-sheet= to get live

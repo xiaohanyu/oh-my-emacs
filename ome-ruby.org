@@ -3,23 +3,9 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
-* El-get Packages
+* Prerequisites
   :PROPERTIES:
-  :CUSTOM_ID: ruby-el-get-packages
-  :END:
-
-#+NAME: ruby-el-get-packages
-|                    | Status     | Detail                            |
-|--------------------+------------+-----------------------------------|
-| [[https://github.com/qoobaa/ruby-electric][ruby-electric]]      | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.           |
-| [[https://github.com/adolfosousa/ruby-block.el][ruby-block]]         | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.           |
-| [[https://github.com/rejeep/ruby-end][ruby-end]]           | Deprecated | [[https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby.el][smartparens-ruby]] is amazing, too. |
-| [[http://rubygems.org/gems/rcodetools][rcodetools]]         | Deprecated | Long time no update.              |
-| [[http://www.cx4a.org/pub/auto-complete-ruby.el][auto-complete-ruby]] | Deprecated | Depends on [[http://rubygems.org/gems/rcodetools][rcodetools]].            |
-
-* Prerequisites Matrix
-  :PROPERTIES:
-  :CUSTOM_ID: ruby-prerequisites-matrix
+  :CUSTOM_ID: ruby-prerequisites
   :END:
 
 This is a experimental prerequisites matrix. Somebody said we can convert this
@@ -27,10 +13,28 @@ type of matrix into a runnable script, however, I think it requires too much
 work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
 
 #+NAME: ruby-prerequisites-matrix
-|      | Ubuntu/Debian/Mint   | ArchLinux       | CentOS           | Mac OS X        | Mandatory? |
-|------+----------------------+-----------------+------------------+-----------------+------------|
-| ruby | apt-get install ruby | pacman -S ruby  | yum install ruby |                 | Yes        |
-| pry  | gem install pry      | gem install pry | gem install pry  | gem install pry | No         |
+#+CAPTION: Prerequisites for ome-ruby module
+|      | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|------+---------+--------------------+-----------+--------+----------+------------|
+| ruby |         | ruby               | ruby      | ruby   |          | Yes        |
+| pry  |         | [gem]              | [gem]     | [gem]  | [gem]    | No         |
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: ruby-el-get-packages
+  :END:
+
+#+NAME: ruby-el-get-packages
+#+CAPTION: El-get packages for ome-ruby module
+|                    | Status     | Description                       |
+|--------------------+------------+-----------------------------------|
+| [[https://github.com/qoobaa/ruby-electric][ruby-electric]]      | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.           |
+| [[https://github.com/adolfosousa/ruby-block.el][ruby-block]]         | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.           |
+| [[https://github.com/rejeep/ruby-end][ruby-end]]           | Deprecated | [[https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby.el][smartparens-ruby]] is amazing, too. |
+| [[http://rubygems.org/gems/rcodetools][rcodetools]]         | Deprecated | Long time no update.              |
+| [[http://www.cx4a.org/pub/auto-complete-ruby.el][auto-complete-ruby]] | Deprecated | Depends on [[http://rubygems.org/gems/rcodetools][rcodetools]].            |
+| [[https://github.com/nonsequitur/inf-ruby][inf-ruby]]           | Required   | Ruby [[http://en.wikipedia.org/wiki/Read%25E2%2580%2593eval%25E2%2580%2593print_loop][REPL]] in Emacs.               |
+| [[https://github.com/Fuco1/smartparens][smartparens]]        | Required   | Smartparens is amazing.           |
 
 * Ruby-mode
   :PROPERTIES:

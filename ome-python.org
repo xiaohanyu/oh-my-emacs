@@ -4,12 +4,31 @@
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 * Prerequisites
-** Mandatory
-- [[http://www.python.org/][Python]], currently, I only tested Python 2.
-- [[https://github.com/jorgenschaefer/elpy][elpy]], you can install it using [[http://www.pip-installer.org/en/latest/][pip]].
+  :PROPERTIES:
+  :CUSTOM_ID: python-prerequisites
+  :END:
 
-** Optional
-- [[http://ipython.org/][IPython]]
+#+NAME: python-prerequisites
+#+CAPTION: Prerequisites for ome-python module
+|         | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.python.org/][Python]]  |         | python             |           |        |          | Yes        |
+| [[http://www.pip-installer.org/en/latest/][pip]]     |         | python-pip         |           |        |          | Yes        |
+| [[http://ipython.org/][IPython]] |         | ipython            |           |        |          | No         |
+
+Notes:
+- [[http://www.python.org/][Python]], currently, I only tested Python 2.
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: python-el-get-packages
+  :END:
+
+#+NAME: python-el-get-packages
+#+CAPTION: El-get packages for ome-python module
+|      | Status   | Description                                    |
+|------+----------+------------------------------------------------|
+| [[https://github.com/jorgenschaefer/elpy][elpy]] | Required | Elpy is the one for all Emacs python solution. |
 
 * Elpy
   :PROPERTIES:

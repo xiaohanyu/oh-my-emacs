@@ -5,6 +5,18 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 This file contains some packages for document writing.
 
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: writing-el-get-packages
+  :END:
+
+#+NAME: writing-el-get-packages
+#+CAPTION: El-get packages for ome-writing module
+|               | Status   | Description                                          |
+|---------------+----------+------------------------------------------------------|
+| [[http://jblevins.org/projects/markdown-mode/][markdown-mode]] | Required | Markdown is so popular that this package is required |
+
+
 * Markdown
   :PROPERTIES:
   :CUSTOM_ID: markdown

@@ -13,6 +13,19 @@ GTD system or tool for reproducible research and literate programming.
 For more information on org-mode check out [[http://orgmode.org/worg/][worg]], a large Org-mode wiki
 which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
 
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: org-el-get-packages
+  :END:
+
+#+NAME: org-el-get-packages
+#+CAPTION: El-get packages for ome-org module
+|            | Status      | Description                      |
+|------------+-------------+----------------------------------|
+| [[http://www.emacswiki.org/emacs/Htmlize][htmlize]].el | Recommended | Export an buffer to html format. |
+| [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/][CDLaTeX]]    | Recommended | Speedy \LaTeX{} input.           |
+
+
 * Keybindings
   :PROPERTIES:
   :CUSTOM_ID: keybindings
@@ -140,10 +153,9 @@ code block, which may be a bug of =rainbow-delimiters-mode=.
           (ad-activate 'htmlize-buffer-1))))
 
   (add-to-list 'el-get-sources
-               '(:name htmlize)
-               :after (progn
-                        (ome-htmlize-setup)))
-
+               '(:name htmlize
+                       :after (progn
+                                (ome-htmlize-setup))))
 #+END_SRC
 * Org-CDLaTeX
   :PROPERTIES:

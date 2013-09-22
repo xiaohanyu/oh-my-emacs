@@ -6,19 +6,43 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 This file contains some settings for =cc-mode=.
 
 * Prerequisites
-** Mandatory
+  :PROPERTIES:
+  :CUSTOM_ID: cc-prerequisites
+  :END:
+
+#+NAME: cc-prerequisites
+#+CAPTION: Prerequisites for ome-cc module
+|            | Windows | Ubuntu/Debian/Mint  | ArchLinux | Fedora | Mac OS X        | Mandatory? |
+|------------+---------+---------------------+-----------+--------+-----------------+------------|
+| [[http://www.xmlsoft.org/][libxml2]]    |         | libxml2 libxml2-dev |           |        | libxml2 libxslt | Yes        |
+| [[http://clang.llvm.org/][clang]]      |         | clang               |           |        |                 | Yes        |
+| [[http://www.freedesktop.org/wiki/Software/pkg-config/][pkg-config]] |         | pkg-config          |           |        |                 | Yes        |
+| [[http://www.cmake.org/][CMake]]      |         | cmake               |           |        |                 | No         |
+| [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]]    |         | doxygen             |           |        |                 | No         |
+| [[http://cscope.sourceforge.net/][Cscope]]     |         | cscope              |           |        |                 | No         |
+
+Note:
 - [[http://www.xmlsoft.org/][libxml2]], you need to =sudo apt-get install libxml2 libxml2-dev= in
   Ubuntu, and =brew install libxml2 libxslt= =brew link --force libxml2
   libxslt= in Mac with homebrew. There is required for el-get to build doxymacs.
-- [[http://clang.llvm.org/][clang]], for auto-complete-clang
-- [[http://www.freedesktop.org/wiki/Software/pkg-config/][pkg-config]], a helper tool used when compiling applications and libraries.
-
-** Optional
-- [[http://www.cmake.org/][CMake]]
 - [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]], even if you don't have doxygen installed, you can still use
   doxymacs to insert doxygen-style comments. So I make this dependency
   optional.
-- [[http://cscope.sourceforge.net/][Cscope]], for code indexing.
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: cc-el-get-packages
+  :END:
+
+#+NAME: cc-el-get-packages
+#+CAPTION: El-get packages for ome-cc module
+|                     | Status      | Description                     |
+|---------------------+-------------+---------------------------------|
+| cc-mode             | Builtin     | Where all the magic starts.     |
+| [[http://www.itk.org/Wiki/CMake_Editors_Support][cmake-mode]]          | Recommended | Editing support for CMake.      |
+| [[http://doxymacs.sourceforge.net/][doxymacs]]            | Recommended | Literate comments for cc-mode.  |
+| [[https://github.com/vmfhrmfoaj/cscope-el.git][xcscope]]             | Recommended | Code indexing and browsing.     |
+| [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]] | Required    | Semantic completiong for C/C++. |
 
 * Basic CC-Mode Settings
   :PROPERTIES:

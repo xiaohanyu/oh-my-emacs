@@ -4,7 +4,29 @@
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 * Prerequisites
-- [[http://aspell.net/][GNU Aspell]] for spell checking.
+  :PROPERTIES:
+  :CUSTOM_ID: basic-prerequisites
+  :END:
+
+#+NAME: basic-prerequisites
+#+CAPTION: Prerequisites for ome-basic module
+|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|------------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://aspell.net/][GNU Aspell]] |         | aspell, aspell-en  |           |        |          |            |
+
+* El-get Packages
+  :PROPERTIES:
+  :CUSTOM_ID: basic-el-get-packages
+  :END:
+
+#+NAME: basic-el-get-packages
+#+CAPTION: el-get packages for ome-basic module
+|                | Status  | Description                                       |
+|----------------+---------+---------------------------------------------------|
+| saveplace      | Builtin | Save cursor place in opened files.                |
+| recentf        | Builtin | Maintains a recent opened file list.              |
+| uniquify       | Builtin | Better differentiate buffers with same file name. |
+| auto-fill-mode | Builtin | We should still obey the 80-characters rule.      |
 
 * Some Basic Settings
   :PROPERTIES:
@@ -202,7 +224,6 @@ Ispell]]. The following code snippets comes from [[https://github.com/bbatsov/pr
   (setq ispell-program-name "aspell"
         ispell-extra-args '("--sug-mode=ultra"))
 #+END_SRC
-
 
 * Footnotes
 [1] Actually, emacs has only three [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html][basic major modes]], so we actually enable

@@ -8,8 +8,33 @@ look unlike emacs. So ensure you have some basic knowledge and experience
 before loading this file.
 
 * Prerequisites
-- [[http://www.tug.org/texlive/][texlive]], evil from el-get need =texi2pdf= to =make info=, I've made a [[http://gitorious.org/evil/evil/merge_requests/50][patch]]
-  for it.
+  :PROPERTIES:
+  :CUSTOM_ID: advanced-prerequisites
+  :END:
+
+#+NAME: advanced-prerequisites
+#+CAPTION: Prerequisites for ome-advanced module
+|         | Windows | Ubuntu/Debian/Mint        | ArchLinux                    | Fedora      | Mac OS X | Mandatory? |
+|---------+---------+---------------------------+------------------------------+-------------+----------+------------|
+| [[http://www.tug.org/texlive/][texlive]] |         | texlive-full latex-beamer | texlive-most texlive-langcjk | texlive-all |          | Yes        |
+
+Notes:
+- [[http://www.tug.org/texlive/][texlive]] is required by evil, since evil need =texi2pdf= to =make
+  info=. However, I don't think it is a good idea to install the huge texlive
+  just to build evil, so I've made a [[http://gitorious.org/evil/evil/merge_requests/50][patch]] for it.
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: advanced-el-get-packages
+  :END:
+
+#+NAME: advanced-el-get-packages
+#+CAPTION: El-get packages matrix for ome-advanced module
+|                       | Status     | Description                              |
+|-----------------------+------------+------------------------------------------|
+| [[http://gitorious.org/evil][evil]]                  | Required   | Finally, the Emacs OS get a good editor. |
+| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]              | Deprecated | Use evil instead.                        |
+| viper(need hyperlink) | Deprecated | Use evil instead.                        |
 
 * Evil
   :PROPERTIES:

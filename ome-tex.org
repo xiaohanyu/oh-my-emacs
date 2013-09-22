@@ -4,10 +4,33 @@
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 * Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: tex-prerequisites
+  :END:
 
-** Mandatory
+#+NAME: tex-prerequisites
+#+CAPTION: Prerequisites for ome-tex module
+|         | Windows | Ubuntu/Debian/Mint        | ArchLinux                | Fedora      | Mac OS X | Mandatory? |
+|---------+---------+---------------------------+--------------------------+-------------+----------+------------|
+| [[http://www.tug.org/texlive/][texlive]] |         | texlive-full latex-beamer | texlive-most texlive-cjk | texlive-all |          | Yes        |
+
+
+Note:
 - [[http://www.tug.org/texlive/][texlive]], the full texlive distribution is really huge, so install necessary
   parts as you need.
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: tex-el-get-packages
+  :END:
+
+#+NAME: tex-el-get-packages
+#+CAPTION: El-get packages for ome-tex module
+|         | Status   | Description              |
+|---------+----------+--------------------------|
+| [[http://www.gnu.org/software/auctex/][AUCTeX]]  | Required | You need it, believe me. |
+| [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/][CDLaTeX]] | Optional | Speedy \LaTeX{} typing.  |
+
 
 * AUCTeX
   :PROPERTIES:
