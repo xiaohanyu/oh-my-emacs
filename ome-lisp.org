@@ -350,10 +350,25 @@ scheme. To install geiser, you need install =automake= and =autoconf=. And to
 run geiser, you need install at least one of the geiser supported scheme
 implementation, namely, [[http://www.gnu.org/software/guile/][guile]] or [[http://racket-lang.org/][racket]].
 
+There's a new experimental [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]] project, written by me --- yeah, it's me,
+I am the author, which provides a auto-complete backend for geiser. It is
+still in beta version, however, and will be sent to el-get when stable.
+
 #+NAME: geiser
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'el-get-sources
                '(:name geiser))
+
+  (defun ome-ac-geiser-setup ()
+    (add-hook 'geiser-mode-hook 'ac-geiser-setup)
+    (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
+    (eval-after-load "auto-complete"
+      '(add-to-list 'ac-modes 'geiser-repl-mode)))
+
+  (add-to-list 'el-get-sources
+               '(:name ac-geiser
+                       :after (progn
+                                (ome-ac-geiser-setup))))
 
   ;; (add-to-list 'el-get-sources
   ;;              '(:name quack))

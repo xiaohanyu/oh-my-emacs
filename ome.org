@@ -144,6 +144,8 @@ So the first thing oh-my-emacs do to your emacs is to install =el-get=:
         (goto-char (point-max))
         (eval-print-last-sexp))))
 
+  (add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
+
   ;; (el-get 'sync)
 #+END_SRC
 

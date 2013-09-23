@@ -142,7 +142,7 @@ semantic completion.
 | Python      |         100% | [[https://github.com/jorgenschaefer/elpy][elpy]]                | elpy is amazing.                   |
 | Emacs Lisp  |         100% | Builtin             | You kown taht.                     |
 | Common Lisp |         100% | [[https://github.com/purcell/ac-slime][ac-slime]]            | SLIME is amazing, too.             |
-| Scheme      |          30% | None                | ac-geiser is not born yet for now. |
+| Scheme      |          80% | [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]]           | Yeah, I'm the author of ac-geiser. |
 | Clojure     |         100% | [[https://github.com/clojure-emacs/ac-nrepl][ac-nrepl]]            | It even completes Java!            |
 
 * Helm
