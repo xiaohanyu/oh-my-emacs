@@ -125,7 +125,6 @@ that integrates pcomplete as a completion backend to auto-complete.
     '((candidates . ac-pcomplete)))
 #+END_SRC
 
-
 ** Auto-complete usability matrix
    :PROPERTIES:
    :CUSTOM_ID: auto-complete-usability-matrix
@@ -140,7 +139,7 @@ semantic completion.
 |-------------+--------------+---------------------+------------------------------------|
 | C/C++       |          80% | [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]] | Issue with function argument list. |
 | Python      |         100% | [[https://github.com/jorgenschaefer/elpy][elpy]]                | elpy is amazing.                   |
-| Emacs Lisp  |         100% | Builtin             | You kown taht.                     |
+| Emacs Lisp  |         100% | Builtin             | You kown that.                     |
 | Common Lisp |         100% | [[https://github.com/purcell/ac-slime][ac-slime]]            | SLIME is amazing, too.             |
 | Scheme      |          80% | [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]]           | Yeah, I'm the author of ac-geiser. |
 | Clojure     |         100% | [[https://github.com/clojure-emacs/ac-nrepl][ac-nrepl]]            | It even completes Java!            |

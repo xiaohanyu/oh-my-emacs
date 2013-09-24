@@ -41,11 +41,11 @@ by [[https://github.com/robbyrussell/oh-my-zsh][oh-my-zsh]].
   install= and explicitly manually management of =load-path=. =el-get= also
   provides automatic documentation management, customizable user's recipe
   support, etc.
-- Self-adapted, only install necessary packages when it satisfy the
+- Self-adapted, only install necessary packages when it satisfies the
   prerequisities. You need to install [[http://clang.llvm.org/][clang]] for [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]], for
   example.
 - Modular, only load necessary packages as you need.
-- Literate, each package have comprehensive documentation or even a tiny
+- Literate, each package has comprehensive documentation or even a tiny
   tutorial with it, together with necessary web links. Say goodbye to old,
   out-dated emacs lisp code from Google.
 - Work as expected, completion every where when possible, semantic code
