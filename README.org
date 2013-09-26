@@ -69,8 +69,10 @@ prerequisites of [[https://github.com/xiaohanyu/oh-my-emacs/blob/master/ome.org]
 - [[http://www.gnu.org/software/automake/][automake]]
 - [[http://www.gnu.org/software/autoconf/][autoconf]]
 
+Please backup your old =.emacs= and =.emacs.d= before you join the journey:
+
 #+BEGIN_SRC sh
-git clone git@github.com:xiaohanyu/oh-my-emacs.git $HOME/.emacs.d
+git clone https://github.com/xiaohanyu/oh-my-emacs $HOME/.emacs.d
 #+END_SRC
 
 Then just fire up your Emacs and make a coffee, and you should have a
