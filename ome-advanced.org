@@ -14,9 +14,10 @@ before loading this file.
 
 #+NAME: advanced-prerequisites
 #+CAPTION: Prerequisites for ome-advanced module
-|         | Windows | Ubuntu/Debian/Mint        | ArchLinux                    | Fedora      | Mac OS X | Mandatory? |
-|---------+---------+---------------------------+------------------------------+-------------+----------+------------|
-| [[http://www.tug.org/texlive/][texlive]] |         | texlive-full latex-beamer | texlive-most texlive-langcjk | texlive-all |          | Yes        |
+|          | Windows | Ubuntu/Debian/Mint        | ArchLinux                    | Fedora      | Mac OS X | Mandatory? |
+|----------+---------+---------------------------+------------------------------+-------------+----------+------------|
+| [[http://www.tug.org/texlive/][texlive]]  |         | texlive-full latex-beamer | texlive-most texlive-langcjk | texlive-all |          | Yes        |
+| [[http://beyondgrep.com/][ack-grep]] | ack     | ack-grep                  | ack                          | ack         | ack      | No         |
 
 Notes:
 - [[http://www.tug.org/texlive/][texlive]] is required by evil, since evil need =texi2pdf= to =make
@@ -30,11 +31,12 @@ Notes:
 
 #+NAME: advanced-el-get-packages
 #+CAPTION: El-get packages matrix for ome-advanced module
-|          | Status     | Description                              |
-|----------+------------+------------------------------------------|
-| [[http://gitorious.org/evil][evil]]     | Required   | Finally, the Emacs OS get a good editor. |
-| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]] | Deprecated | Use evil instead.                        |
-| [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]    | Deprecated | Use evil instead.                        |
+|                | Status      | Description                              |
+|----------------+-------------+------------------------------------------|
+| [[http://gitorious.org/evil][evil]]           | Required    | Finally, the Emacs OS get a good editor. |
+| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]       | Deprecated  | Use evil instead.                        |
+| [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]          | Deprecated  | Use evil instead.                        |
+| [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]] | Recommended | Yet another emacs front-end to ack       |
 
 * Evil
   :PROPERTIES:
@@ -79,6 +81,30 @@ Emacs session.
                                 (add-hook 'prog-mode-hook 'turn-on-evil-mode)
                                 (add-hook 'comint-mode-hook 'turn-on-evil-mode)
                                 (add-hook 'Info-mode-hook 'turn-off-evil-mode))))
+#+END_SRC
+
+* Ack-and-a-half
+  :PROPERTIES:
+  :CUSTOM_ID: ack-and-a-ha
+  :END:
+
+As we all know, Emacs is a good text editor. However, in some cases, we may
+spend most of our time to text reading instead of editing. As an advanced Emacs
+user, you may know [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Grep-Searching.html][grep-find]], and you may also know that you can jump to the
+next matching item by =M-g n=, oh, that's cool, really. But you still need to
+specify what type of file to search. You don't want to touch binary files with
+Emacs, ha? And, certainly you do want to ignore some hidden files such as files
+and directories used by various version control system. So there comes [[http://beyondgrep.com/][ack]],
+which works as expected.
+
+With the help of [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]], just go to the right place, then =M-x ack=,
+you'll get all you need. Enjoy it.
+
+#+NAME: ack-and-a-half
+#+BEGIN_SRC emacs-lisp
+  (when (or (executable-find "ack") (executable-find "ack-grep"))
+    (add-to-list 'el-get-sources
+                 '(:name ack-and-a-half)))
 #+END_SRC
 
 * Todo
