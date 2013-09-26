@@ -30,11 +30,11 @@ Notes:
 
 #+NAME: advanced-el-get-packages
 #+CAPTION: El-get packages matrix for ome-advanced module
-|                       | Status     | Description                              |
-|-----------------------+------------+------------------------------------------|
-| [[http://gitorious.org/evil][evil]]                  | Required   | Finally, the Emacs OS get a good editor. |
-| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]              | Deprecated | Use evil instead.                        |
-| viper(need hyperlink) | Deprecated | Use evil instead.                        |
+|          | Status     | Description                              |
+|----------+------------+------------------------------------------|
+| [[http://gitorious.org/evil][evil]]     | Required   | Finally, the Emacs OS get a good editor. |
+| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]] | Deprecated | Use evil instead.                        |
+| [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]    | Deprecated | Use evil instead.                        |
 
 * Evil
   :PROPERTIES:
@@ -68,7 +68,6 @@ off evil-mode globally, which means, evil-mode will be turned off for the whole
 Emacs session.
 
 #+NAME: evil
-#+TODO: set different evil cursor color based on emacs color-theme.
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'el-get-sources
                '(:name evil
@@ -76,8 +75,6 @@ Emacs session.
                                 (setq evil-auto-indent t)
                                 (setq evil-regexp-search t)
                                 (setq evil-want-C-i-jump t)
-                                (setq evil-normal-state-cursor '("white" box))
-                                (setq evil-insert-state-cursor '("white" bar))
                                 (add-hook 'text-mode-hook 'turn-on-evil-mode)
                                 (add-hook 'prog-mode-hook 'turn-on-evil-mode)
                                 (add-hook 'comint-mode-hook 'turn-on-evil-mode)
