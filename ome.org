@@ -10,18 +10,25 @@
 #+END_QUOTE
 
 * Prerequisites
-** Mandatory
+  :PROPERTIES:
+  :CUSTOM_ID: ome-prerequisites
+  :END:
+
 The following software is really basic that almost every el-get package will
 need one of them.
 
-- [[http://savannah.nongnu.org/projects/cvs][cvs]]
-- [[http://mercurial.selenic.com/][mercurial]]
-- [[http://git-scm.com/][git]]
-- [[http://www.gnu.org/software/make/][make]]
-- [[http://www.gnu.org/software/texinfo/][texinfo]]
-- [[http://gcc.gnu.org/][gcc]]
-- [[http://www.gnu.org/software/automake/][automake]]
-- [[http://www.gnu.org/software/autoconf/][autoconf]]
+#+NAME: ome-prerequisites
+#+CAPTION: Prerequisites for all oh-my-emacs module.
+|           | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|-----------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://savannah.nongnu.org/projects/cvs][cvs]]       |         |                    |           |        |          | Yes        |
+| [[http://mercurial.selenic.com/][mercurial]] |         |                    |           |        |          | Yes        |
+| [[http://git-scm.com/][git]]       |         |                    |           |        |          | Yes        |
+| [[http://www.gnu.org/software/make/][make]]      |         |                    |           |        |          | Yes        |
+| [[http://www.gnu.org/software/texinfo/][texinfo]]   |         |                    |           |        |          | Yes        |
+| [[http://gcc.gnu.org/][gcc]]       |         |                    |           |        |          | Yes        |
+| [[http://www.gnu.org/software/automake/][automake]]  |         |                    |           |        |          | Yes        |
+| [[http://www.gnu.org/software/autoconf/][autoconf]]  |         |                    |           |        |          | Yes        |
 
 * Introduction
   :PROPERTIES:
