@@ -34,7 +34,8 @@ Notes:
 |                  | Status      | Description                                   |
 |------------------+-------------+-----------------------------------------------|
 | [[http://gitorious.org/evil][evil]]             | Required    | Finally, the Emacs OS get a good editor.      |
-| [[https://github.com/cofi/evil-leader][evil-leader]]      | Required    | <leader> key for evil                         |
+| [[https://github.com/cofi/evil-leader][evil-leader]]      | Required    | <leader> key for evil.                        |
+| [[https://github.com/timcharper/evil-surround][evil-surround]]    | Recommended | Surround.vim for evil.                        |
 | [[https://github.com/magnars/expand-region.el][expand-region.el]] | Recommended | Expand and select.                            |
 | [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]         | Deprecated  | Use evil instead.                             |
 | [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]            | Deprecated  | Use evil instead.                             |
@@ -125,6 +126,30 @@ BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
     (add-to-list 'el-get-sources
                  '(:name evil-leader
                          :after (ome-evil-leader-setup))))
+#+END_SRC
+
+* Evil-surround
+  :PROPERTIES:
+  :CUSTOM_ID: evil-surround
+  :END:
+
+As I said, =smartparens= is the ultimate pair management solution for
+Emacs. So why [[https://github.com/timcharper/evil-surround][evil-surround]]?
+
+[[https://github.com/timcharper/evil-surround][evil-surround]] is a port of [[https://github.com/tpope/vim-surround][vim-surround]] to evil. I think you can treat
+=evil-surround= as a complement of =smartparens= in pair changing, deleting
+and adding, while =smartparens= is good at pair inserting and operating.
+
+IMHO, no editors can compete with Vim in pure text editing speed[1]. So I
+think =evil-surround= is still worth a try. [[http://www.catonmat.net/blog/vim-plugins-surround-vim/][Here]] is an excellent and concise
+tutorial for =vim-surround=. Note that there may be some minor differences
+between =evil-surround= and =vim-surround=. However, for daily use, they're
+almost the same.
+
+#+NAME: evil-surround
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name evil-surround))
 #+END_SRC
 
 * Expand-region
@@ -238,3 +263,6 @@ you'll get all you need. Enjoy it.
   =sp-up-sexp=. Maybe I can get this by =post-command-hook= or smartparens's
   =post-command-handler=? Or just use =defadvice=?
 - More investigation [[https://github.com/timcharper/evil-surround][evil-surround]] and [[https://github.com/cofi/evil-leader][evil-leader]]. Thanks [[http://www.reddit.com/user/MoreHugs][MoreHugs]].
+
+* Footnotes
+[1] See [[http://vimgolf.com/][vimgolf]] for funny things.
