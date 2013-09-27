@@ -34,6 +34,7 @@ Notes:
 |                | Status      | Description                              |
 |----------------+-------------+------------------------------------------|
 | [[http://gitorious.org/evil][evil]]           | Required    | Finally, the Emacs OS get a good editor. |
+| [[https://github.com/cofi/evil-leader][evil-leader]]    | Required    | <leader> key for evil                    |
 | [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]       | Deprecated  | Use evil instead.                        |
 | [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]          | Deprecated  | Use evil instead.                        |
 | [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]] | Recommended | Yet another emacs front-end to ack       |
@@ -81,6 +82,47 @@ Emacs session.
                                 (add-hook 'prog-mode-hook 'turn-on-evil-mode)
                                 (add-hook 'comint-mode-hook 'turn-on-evil-mode)
                                 (add-hook 'Info-mode-hook 'turn-off-evil-mode))))
+#+END_SRC
+
+* Evil-leader
+  :PROPERTIES:
+  :CUSTOM_ID: evil-leader
+  :END:
+
+The keyboard is a real and heavily occupied estate in both Emacs and
+Vim. Specially, just about every key is already bound to a command in normal
+state Vim. Fortunately, Vim provides an easy way to define additional mappings
+on these keys. It's called a [[http://usevim.com/2012/07/20/vim101-leader/][mapleader]].
+
+Evil leader just provides the =<leader>= feature from Vim to evil, which
+provides an easy way to bind keys under a variable prefix key. The default
+binding of =<leader>= is =\=, which is not easy to reach, so oh-my-emacs bind
+it to =<SPC>=, you don't use =<SPC>= to move right, ha?  Some other people
+prefer to bind the =<leader>= key to comma =,=, but =,= already has a
+binding(=evil-repeat-find-char-revers= in evil normal state).
+
+BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
+=helm-find-files= simply by =<SPC> e=, for example. Enjoy it.
+
+#+NAME: evil-leader
+#+BEGIN_SRC emacs-lisp
+  (defun ome-evil-leader-setup ()
+    (evil-leader/set-leader "<SPC>")
+    (if (featurep 'helm)
+        (evil-leader/set-key
+          "e" 'helm-find-files
+          "b" 'helm-buffers-list)
+      (evil-leader/set-key
+        "e" 'find-file
+        "b" 'switch-to-buffer))
+    (evil-leader/set-key
+      "k" 'kill-buffer)
+    (global-evil-leader-mode))
+
+  (when (featurep 'evil)
+    (add-to-list 'el-get-sources
+                 '(:name evil-leader
+                         :after (ome-evil-leader-setup))))
 #+END_SRC
 
 * Ack-and-a-half
