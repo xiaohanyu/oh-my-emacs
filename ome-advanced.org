@@ -31,14 +31,15 @@ Notes:
 
 #+NAME: advanced-el-get-packages
 #+CAPTION: El-get packages matrix for ome-advanced module
-|                | Status      | Description                                   |
-|----------------+-------------+-----------------------------------------------|
-| [[http://gitorious.org/evil][evil]]           | Required    | Finally, the Emacs OS get a good editor.      |
-| [[https://github.com/cofi/evil-leader][evil-leader]]    | Required    | <leader> key for evil                         |
-| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]       | Deprecated  | Use evil instead.                             |
-| [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]          | Deprecated  | Use evil instead.                             |
-| [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]] | Recommended | Yet another emacs front-end to ack.           |
-| [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]  | Recommended | A quick cursor location minor mode for emacs. |
+|                  | Status      | Description                                   |
+|------------------+-------------+-----------------------------------------------|
+| [[http://gitorious.org/evil][evil]]             | Required    | Finally, the Emacs OS get a good editor.      |
+| [[https://github.com/cofi/evil-leader][evil-leader]]      | Required    | <leader> key for evil                         |
+| [[https://github.com/magnars/expand-region.el][expand-region.el]] | Recommended | Expand and select.                            |
+| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]         | Deprecated  | Use evil instead.                             |
+| [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]            | Deprecated  | Use evil instead.                             |
+| [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]]   | Recommended | Yet another emacs front-end to ack.           |
+| [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]    | Recommended | A quick cursor location minor mode for emacs. |
 
 * Evil
   :PROPERTIES:
@@ -124,6 +125,47 @@ BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
     (add-to-list 'el-get-sources
                  '(:name evil-leader
                          :after (ome-evil-leader-setup))))
+#+END_SRC
+
+* Expand-region
+  :PROPERTIES:
+  :CUSTOM_ID: expand-region
+  :END:
+
+Often we need to select text. We select since we want to limit our operation to
+a small region. For a long time, people select text by =C-@= and then manually
+moving the point with =C-f=, =M-f= or something similar.
+
+However, most of the time, we want to select text by semantic unit, such as
+sentences, paragraphs, s-exps, code blocks, instead of just select character by
+character, or word by word. So there comes [[https://github.com/magnars/expand-region.el][expand-region.el]], created by
+[[https://github.com/magnars/expand-region.el][magnars]], the author of [[http://emacsrocks.com/][emacsrocks]].
+
+As its name, =expand-region= can expand/contract the selected region by
+ semantic units. Just keep pressing the key until it selects what you
+want. Here's a live [[http://emacsrocks.com/e09.html][demo]] of expand-region from emacsrocks.
+
+Again, oh-my-emacs defines two extra lazy keys with the help of =evil-leader=,
+thus, in normal-state evil, you can trigger =(er/expand-region)= by =<Leader>
+xx=, and then expand/contract the region by hitting =x= or =z=.
+
+If you are in =evil-insert-state=, you can trigger =(er/expand-region)= by
+=C-==. Ah, in this case, =smartparens= is your good friend. You can select the
+region, then QUOTE the region with =smartparens= pairs. Sounds amazing, ha?
+Just try it and you will love it.
+
+#+NAME: expand-region
+#+BEGIN_SRC emacs-lisp
+  (defun ome-expand-region-setup ()
+    (when (and (featurep 'evil) (featurep 'evil-leader))
+      (setq expand-region-contract-fast-key "z")
+      (evil-leader/set-key "xx" 'er/expand-region))
+    (global-set-key (kbd "C-=") 'er/expand-region))
+
+  (add-to-list 'el-get-sources
+               '(:name expand-region
+                       :after (progn
+                                (ome-expand-region-setup))))
 #+END_SRC
 
 * Ace-jump-mode
