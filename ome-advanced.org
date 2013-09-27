@@ -31,13 +31,14 @@ Notes:
 
 #+NAME: advanced-el-get-packages
 #+CAPTION: El-get packages matrix for ome-advanced module
-|                | Status      | Description                              |
-|----------------+-------------+------------------------------------------|
-| [[http://gitorious.org/evil][evil]]           | Required    | Finally, the Emacs OS get a good editor. |
-| [[https://github.com/cofi/evil-leader][evil-leader]]    | Required    | <leader> key for evil                    |
-| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]       | Deprecated  | Use evil instead.                        |
-| [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]          | Deprecated  | Use evil instead.                        |
-| [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]] | Recommended | Yet another emacs front-end to ack       |
+|                | Status      | Description                                   |
+|----------------+-------------+-----------------------------------------------|
+| [[http://gitorious.org/evil][evil]]           | Required    | Finally, the Emacs OS get a good editor.      |
+| [[https://github.com/cofi/evil-leader][evil-leader]]    | Required    | <leader> key for evil                         |
+| [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]       | Deprecated  | Use evil instead.                             |
+| [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]          | Deprecated  | Use evil instead.                             |
+| [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]] | Recommended | Yet another emacs front-end to ack.           |
+| [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]  | Recommended | A quick cursor location minor mode for emacs. |
 
 * Evil
   :PROPERTIES:
@@ -123,6 +124,42 @@ BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
     (add-to-list 'el-get-sources
                  '(:name evil-leader
                          :after (ome-evil-leader-setup))))
+#+END_SRC
+
+* Ace-jump-mode
+  :PROPERTIES:
+  :CUSTOM_ID: ace-jump-mode
+  :END:
+
+[[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]] is a minor mode for Emacs, enabling fast/direct cursor movement
+in current view. "You can move your cursor to ANY position (across window and
+frame) in emacs by using only 3 times key press."
+
+To tell the truth, I still don't why it it called "ace-jump". Seems [[https://github.com/johnlindquist/AceJump][AceJump]]
+first appears as an [[http://www.jetbrains.com/idea/][Intellij]] [[http://plugins.jetbrains.com/plugin/7086?pr%3DphpStorm][plugin]]. [[http://www.vim.org/scripts/script.php?script_id%3D3526][EasyMotion]] provides a similar feature to
+Vim.
+
+Oh-my-emacs adopt [[https://github.com/cofi/evil-leader][evil-leader]] and bind serveral keys to ace-jump-mode commands:
+- =<Leader> c=: =ace-jump-char-mode=
+- =<Leader> w=: =ace-jump-word-mode=
+- =<Leader> l=: =ace-jump-line-mode=
+
+By default, =<Leader>= is =<SPC>=, so you can use =<SPC> c= to activate
+=ace-jump-char-mode=, and move you cursor quickly and directly. Enjoy it.
+
+#+NAME: ace-jump-mode
+#+BEGIN_SRC emacs-lisp
+  (defun ome-ace-jump-mode-setup ()
+    (when (and (featurep 'evil) (featurep 'evil-leader))
+      (evil-leader/set-key
+        "c" 'ace-jump-char-mode
+        "w" 'ace-jump-word-mode
+        "l" 'ace-jump-line-mode)))
+
+  (add-to-list 'el-get-sources
+               '(:name ace-jump-mode
+                       :after (progn
+                                (ome-ace-jump-mode-setup))))
 #+END_SRC
 
 * Ack-and-a-half
