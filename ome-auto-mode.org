@@ -32,8 +32,14 @@ DSL, so the emacs builtin =ruby-mode= is not proper for editing puppet files.
 
 #+NAME: puppet
 #+BEGIN_SRC emacs-lisp
+  (defun ome-puppet-mode-setup ()
+    (when (featurep 'evil)
+      (add-hook 'puppet-mode-hook 'turn-on-evil-mode)))
+
   (add-to-list 'el-get-sources
-               '(:name puppet-mode))
+               '(:name puppet-mode
+                       :after (progn
+                                (ome-puppet-mode-setup))))
 #+END_SRC
 
 * ArchLinux PKGBUILD
