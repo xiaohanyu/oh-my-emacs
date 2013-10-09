@@ -338,42 +338,45 @@ elisp code embedded in this file.
 
 * Load settings
 
-Till now, Oh-my-emacs includes:
-- [[file:ome-gui.org][ome-gui.org]]: settings for color theme, font, modeline, scrollbar, etc.
+Files in oh-my-emacs =core= will be loaded by default:
+- [[file:ome-advanced.org][ome-advanced.org]]: contains =evil=, =ace-jump-mode=, =ack-and-a-half=, etc.
+- [[file:ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
 - [[file:ome-basic.org][ome-basic.org]]: basic settings, such as tab, space, auto-fill-mode, flyspell,
+- [[file:ome-completion.org][ome-completion.org]]: main settings for completion support.
+- [[file:ome-gui.org][ome-gui.org]]: settings for color theme, font, modeline, scrollbar, etc.
   etc.
+- [[file:ome-keybindings.org][ome-keybindings.org]]: oh-my-emacs keybindings.
 - [[file:ome-miscs.org][ome-miscs.org]]: misc settings such as =magit=, =smartparens=, =projectile=,
   etc.
-- [[file:ome-completion.org][ome-completion.org]]: main settings for completion support.
-- [[file:ome-keybindings.org][ome-keybindings.org]]: oh-my-emacs keybindings.
 - [[file:ome-org.org][ome-org.org]]: some refinement for org-mode.
-- [[file:ome-advanced.org][ome-advanced.org]]: only contains =evil=.
 - [[file:ome-writing.org][ome-writing.org]]: for writers, bloggers, only contains =markdown-mode= for
   now.
+
+Files in oh-my-emacs =modules= is optional, you can load necessary one when
+you really need it.
 - [[file:ome-cc.org][ome-cc.org]]: main settings for =cc-mode=.
 - [[file:ome-lisp.org][ome-lisp.org]]: ah, settings for lisp dialects, including emacs lisp, common
   lisp, scheme and clojure.
 - [[file:ome-python.org][ome-python.org]]: python settings, life is short, =elpy= is amazing.
-- [[file:ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
+- [[file:ome-ruby.org][ome-ruby.org]]: Ruby support including =inf-ruby= and by =smartparens-ruby=.
 - [[file:ome-tex.org][ome-tex.org]]: AUCTeX and CDLaTeX for \TeX{} editing.
-- [[file:ome-ruby.org][ome-ruby.org]]: Ruby support including =inf-ruby= and =smartparens-ruby=.
 
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
-  (ome-load "ome-gui.org")
-  (ome-load "ome-basic.org")
-  (ome-load "ome-miscs.org")
-  (ome-load "ome-completion.org")
-  (ome-load "ome-keybindings.org")
-  (ome-load "ome-org.org")
-  (ome-load "ome-advanced.org")
-  (ome-load "ome-writing.org")
-  (ome-load "ome-cc.org")
-  (ome-load "ome-lisp.org")
-  (ome-load "ome-python.org")
-  (ome-load "ome-auto-mode.org")
-  (ome-load "ome-tex.org")
-  (ome-load "ome-ruby.org")
+  (ome-load "core/ome-advanced.org")
+  (ome-load "core/ome-auto-mode.org")
+  (ome-load "core/ome-basic.org")
+  (ome-load "core/ome-completion.org")
+  (ome-load "core/ome-gui.org")
+  (ome-load "core/ome-keybindings.org")
+  (ome-load "core/ome-miscs.org")
+  (ome-load "core/ome-org.org")
+  (ome-load "core/ome-writing.org")
+  (ome-load "modules/ome-cc.org")
+  (ome-load "modules/ome-lisp.org")
+  (ome-load "modules/ome-python.org")
+  (ome-load "modules/ome-ruby.org")
+  (ome-load "modules/ome-tex.org")
 #+END_SRC
 
 ** Load User/System Specific Files
