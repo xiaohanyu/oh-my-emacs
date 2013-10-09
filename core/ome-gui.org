@@ -24,8 +24,13 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
     (when (fboundp mode) (funcall mode -1)))
 
   ;; show column number and line number
-  (dolist (mode '(column-number-mode line-number-mode global-linum-mode))
+  (dolist (mode '(column-number-mode line-number-mode))
     (when (fboundp mode) (funcall mode t)))
+
+  (dolist (mode-hook '(text-mode-hook prog-mode-hook))
+    (add-hook mode-hook
+              (lambda ()
+                (linum-mode 1))))
 
   ;; make the fringe thinner (default is 8 in pixels)
   (fringe-mode 4)
