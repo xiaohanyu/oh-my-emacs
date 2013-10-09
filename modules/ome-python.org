@@ -91,6 +91,9 @@ ships with a new =python.el= [4], which, actually, is the aforementioned
 [[https://github.com/fgallina/python.el][fgallina]]'s =python.el=. So you may need to upgrade your builin =python.el=, but
 don't worry, oh-my-emacs will handle this for you!
 
+Third, current elpy use [[http://www.gnu.org/software/emacs/manual/html_node/flymake/index.html][flymake]] as its syntax checker, while oh-my-emacs favors
+[[https://github.com/flycheck/flycheck][flycheck]]. Seems elpy has a [[https://github.com/jorgenschaefer/elpy/issues/137][plan]] to support both flycheck and flymake.
+
 There's also a [[https://github.com/gabrielelanaro/emacs-for-python][emacs-for-python]] project in github, which attracts more github
 stars than elpy, but I don't like its approach, since it will clean out all
 your existing dotemacs and replace with a wholly new, which is just useful for
@@ -108,6 +111,10 @@ ultimate out-of-box Emacs Python "IDE" solution.
     (elpy-enable)
     (when (executable-find "ipython")
       (elpy-use-ipython))
+    (when (featurep 'flycheck)
+      (setq elpy-default-minor-modes
+            (remove 'flymake-mode
+                    elpy-default-minor-modes)))
     (define-key python-mode-map (kbd "RET")
       'newline-and-indent))
 
