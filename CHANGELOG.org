@@ -1,5 +1,42 @@
 #+TITLE: Oh My Emacs ChangeLog
 
+* v0.2
+** Documentation
+   - Add prerequisites matrix and el-get packages matrix.
+
+** Evil
+   - add =evil-leader=
+   - add =evil-surround=
+   - fix evil cursor color for better compatibility with Emacs color-theme
+
+
+** Completion
+   - Add completion matrix to show the current status of auto-complete support
+     to various programming languages.
+   - add =ac-geiser=, new auto-complete backend for geiser.
+
+
+** Ruby
+   - Basic ruby support
+     - =inf-ruby=
+     - =smartparens-ruby=
+     - auto-mode-alist for ruby
+
+** ome-advanced module
+   - add =expand-region.el=
+   - add =ace-jump-mode=
+   - add =ack-and-a-half=
+
+
+** Compatibility
+   - Fix a $PATH problem in Mac OS, thanks @judevc.
+
+
+** Miscs
+   - add =lacarte=, the interactive menubar
+   - Basic flycheck support.
+   - lots of typo fix.
+
 * V0.1
 ** Basic settings
 *** Basic stuff
