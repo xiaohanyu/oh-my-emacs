@@ -52,3 +52,15 @@ idea. =sr-speedbar= solves this problem, however, it brings some new problems:
                        :after (progn
                                 (ome-sr-speedbar-setup))))
 #+END_SRC
+* Smooth-scrolling
+  :PROPERTIES:
+  :CUSTOM_ID: smooth-scrolling
+  :END:
+
+Make emacs scroll smoothly.
+
+#+NAME: smooth-scrolling
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'el-get-sources
+               '(:name smooth-scrolling))
+#+END_SRC
