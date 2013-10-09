@@ -1,0 +1,54 @@
+#+TITLE: Oh My Emacs GUI
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file contains some experimental packages, which may be:
+- not stable enough
+- usable, with some minor annoying problems
+- young packages without long time testing and validating.
+
+Load necessary packages as you like.
+
+* Sr-speedbar
+  :PROPERTIES:
+  :CUSTOM_ID: sr-speedbar
+  :END:
+
+[[http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html][Speedbar]] is a program for Emacs which provides a special frame for conveniently
+navigating in or operating on another frame. The original inpiration comes from
+the "explorer" feature often used in modern development environments.
+
+By default, speedbar will fork a new frame, which, IMHO, is a bad
+idea. =sr-speedbar= solves this problem, however, it brings some new problems:
+- By default, the value of =sr-speedbar-right-side= is =t=. And this windows
+  will be occupied by =helm= when you do things with =helm=, which is quite
+  boring. So I have to =(setq sr-speedbar-right-side nil)=.
+- By default, the width of =sr-speedbar= window will change when you resize
+  the Emacs frame, so I have to adopt a code snippet from [[http://www.emacswiki.org/emacs/SrSpeedbar][emacswiki]].
+- Even we =(setq window-size-fixed 'width)=, the width of =sr-speedbar= window
+  still changes in some rare cases. For example, when you delete "window-1" by
+  =delete-window= in the following layout, =sr-speedbar= will expand, while
+  "window-2" will keep its width unchanged.
+
+| sr-speedbar | window-1 | window-2 |
+
+#+NAME: sr-speedbar
+#+BEGIN_SRC emacs-lisp
+  (defadvice sr-speedbar-open (around ome-sr-speedbar-open disable)
+    ad-do-it
+    (with-current-buffer sr-speedbar-buffer-name
+      (setq window-size-fixed 'width)))
+
+  (defun ome-sr-speedbar-setup ()
+    ;;keep speed bar window width after resizing
+    (ad-enable-advice 'sr-speedbar-open 'around 'ome-sr-speedbar-open)
+    (ad-activate 'sr-speedbar-open)
+    (setq sr-speedbar-skip-other-window-p t)
+    (setq sr-speedbar-right-side nil))
+
+  (add-to-list 'el-get-sources
+               '(:name sr-speedbar
+                       :after (progn
+                                (ome-sr-speedbar-setup))))
+#+END_SRC
