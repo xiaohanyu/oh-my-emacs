@@ -237,7 +237,7 @@ work with Emacs builtin =tex-mode= anymore.
 
 #+NAME: cdlatex
 #+BEGIN_SRC emacs-lisp
-  (defun ome-cdlatex-setup ()
+  (defun ome-cdlatex-mode-setup ()
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
     (add-hook 'latex-mode-hook 'turn-on-cdlatex))
 
@@ -245,7 +245,7 @@ work with Emacs builtin =tex-mode= anymore.
     (add-to-list 'el-get-sources
                  '(:name cdlatex-mode
                          :after (progn
-                                  (ome-cdlatex-setup)))))
+                                  (ome-cdlatex-mode-setup)))))
 
 #+END_SRC
 

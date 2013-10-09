@@ -155,11 +155,14 @@ If you like, you can even integrate Doxygen to CMake workflow, see [[http://maje
 
 #+NAME: doxymacs
 #+BEGIN_SRC emacs-lisp
+  (defun ome-doxymacs-setup ()
+    (add-hook 'c-mode-common-hook 'doxymacs-mode)
+    (add-hook 'c-mode-common-hook 'doxymacs-font-lock))
+
   (add-to-list 'el-get-sources
                '(:name doxymacs
                        :after (progn
-                                (add-hook 'c-mode-common-hook 'doxymacs-mode)
-                                (add-hook 'c-mode-common-hook 'doxymacs-font-lock))))
+                                (ome-doxymacs-setup))))
 #+END_SRC
 
 * Indexing with Cscope
@@ -251,6 +254,26 @@ installed if you want to write program with that library.
 
 #+NAME: auto-complete-clang
 #+BEGIN_SRC emacs-lisp
+  (defun ome-pkg-config-enable-clang-flag (pkg-config-lib)
+    "This function will add necessary header file path of a
+  specified by `pkg-config-lib' to `ac-clang-flags', which make it
+  completionable by auto-complete-clang"
+    (interactive "spkg-config lib: ")
+    (if (executable-find "pkg-config")
+        (if (= (shell-command
+                (format "pkg-config %s" pkg-config-lib))
+               0)
+            (setq ac-clang-flags
+                  (append ac-clang-flags
+                          (split-string
+                           (shell-command-to-string
+                            (format "pkg-config --cflags-only-I %s"
+                                    pkg-config-lib)))))
+          (message "Error, pkg-config lib %s not found." pkg-config-lib))
+      (message "Error: pkg-config tool not found.")))
+
+  ;; (ome-pkg-config-enable-clang-flag "QtGui")
+
   (defun ome-auto-complete-clang-setup ()
     (require 'auto-complete-clang)
     (setq command "echo | g++ -v -x c++ -E - 2>&1 |
@@ -260,27 +283,6 @@ installed if you want to write program with that library.
                     (concat "-I" item))
                   (split-string
                    (shell-command-to-string command))))
-
-    (defun ome-pkg-config-enable-clang-flag (pkg-config-lib)
-      "This function will add necessary header file path of a
-  specified by `pkg-config-lib' to `ac-clang-flags', which make it
-  completionable by auto-complete-clang"
-      (interactive "spkg-config lib: ")
-      (if (executable-find "pkg-config")
-          (if (= (shell-command
-                  (format "pkg-config %s" pkg-config-lib))
-                 0)
-              (setq ac-clang-flags
-                    (append ac-clang-flags
-                            (split-string
-                             (shell-command-to-string
-                              (format "pkg-config --cflags-only-I %s"
-                                      pkg-config-lib)))))
-            (message "Error, pkg-config lib %s not found." pkg-config-lib))
-        (message "Error: pkg-config tool not found.")))
-
-    ;; (ome-pkg-config-enable-clang-flag "QtGui")
-
     (add-hook 'c-mode-common-hook
               (lambda ()
                 (add-to-list 'ac-sources 'ac-source-clang))))

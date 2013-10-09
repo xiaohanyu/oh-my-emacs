@@ -52,11 +52,14 @@ also a [[http://stackoverflow.com/questions/4704748/emacs-completion-autocomplet
 
 #+NAME: auto-complete
 #+BEGIN_SRC emacs-lisp
+  (defun ome-auto-complete-setup ()
+    (require 'auto-complete-config)
+    (ac-config-default))
+
   (add-to-list 'el-get-sources
                '(:name auto-complete
                        :after (progn
-                                (require 'auto-complete-config)
-                                (ac-config-default))))
+                                (ome-auto-complete-setup))))
 #+END_SRC
 
 ** Integrate pcomplete with Auto-complete
@@ -210,16 +213,19 @@ fallback. But I do suggest you to take some time to be familiar with helm.
 
 #+NAME: helm
 #+BEGIN_SRC emacs-lisp
+  (defun ome-helm-setup ()
+    (require 'helm-config)
+    (setq helm-input-idle-delay 0.2)
+    (helm-mode t)
+    (global-set-key (kbd "C-x c g") 'helm-do-grep)
+    (global-set-key (kbd "C-x c o") 'helm-occur)
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files))
+
   (add-to-list 'el-get-sources
                '(:name helm
                        :after (progn
-                                (require 'helm-config)
-                                (setq helm-input-idle-delay 0.2)
-                                (helm-mode t)
-                                (global-set-key (kbd "C-x c g") 'helm-do-grep)
-                                (global-set-key (kbd "C-x c o") 'helm-occur)
-                                (global-set-key (kbd "M-x") 'helm-M-x)
-                                (global-set-key (kbd "C-x C-f") 'helm-find-files))))
+                                (ome-helm-setup))))
 
 #+END_SRC
 * Yasnippet
@@ -267,17 +273,20 @@ TODO:
        ;; start isearch mode immediately
        :isearch t)))
 
+  (defun ome-yasnippet-setup ()
+    (setq yas-prompt-functions
+          '(yas-popup-isearch-prompt
+            yas-no-prompt))
+    (yas-reload-all)
+    (add-hook 'prog-mode-hook
+              '(lambda ()
+                 (yas-minor-mode))))
+
   (add-to-list 'el-get-sources
                '(:name yasnippet
                        :depends (popup)
                        :after (progn
-                                (setq yas-prompt-functions
-                                      '(yas-popup-isearch-prompt
-                                        yas-no-prompt))
-                                (yas-reload-all)
-                                (add-hook 'prog-mode-hook
-                                          '(lambda ()
-                                             (yas-minor-mode))))))
+                                (ome-yasnippet-setup))))
 #+END_SRC
 
 * Todo

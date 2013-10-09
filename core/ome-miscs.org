@@ -96,10 +96,13 @@ given depth."
 
 #+NAME: rainbow-delimiters
 #+BEGIN_SRC emacs-lisp
+  (defun ome-rainbow-delimiters-setup ()
+    (global-rainbow-delimiters-mode))
+
   (add-to-list 'el-get-sources
                '(:name rainbow-delimiters
                        :after (progn
-                                (global-rainbow-delimiters-mode))))
+                                (ome-rainbow-delimiters-setup))))
 #+END_SRC
 
 * Transparently Open Compressed Files
@@ -244,12 +247,15 @@ just enjoy it!
 
 #+NAME: projectile
 #+BEGIN_SRC emacs-lisp
+  (defun ome-projectile-setup ()
+    (projectile-global-mode)
+    (setq projectile-enable-caching t)
+    (global-set-key (kbd "C-x c h") 'helm-projectile))
+
   (add-to-list 'el-get-sources
                '(:name projectile
                        :after (progn
-                                (projectile-global-mode)
-                                (setq projectile-enable-caching t)
-                                (global-set-key (kbd "C-x c h") 'helm-projectile))))
+                                (ome-projectile-setup))))
 #+END_SRC
 
 * Smartparens
@@ -294,13 +300,13 @@ some time to master these wonderful commands, which will make your life easier.
 #+NAME: smartparens
 #+BEGIN_SRC emacs-lisp
   (defun ome-create-newline-and-enter-sexp (&rest _ignored)
-    "Open a new brace or bracket expression, with relevant newlines and indent. "
-    (newline)
-    (indent-according-to-mode)
-    (forward-line -1)
-    (indent-according-to-mode))
+      "Open a new brace or bracket expression, with relevant newlines and indent. "
+      (newline)
+      (indent-according-to-mode)
+      (forward-line -1)
+      (indent-according-to-mode))
 
-  (defun ome-sp-config ()
+  (defun ome-smartparens-setup ()
     ;; global
     (require 'smartparens-config)
     (setq sp-autoskip-closing-pair 'always)
@@ -391,7 +397,7 @@ some time to master these wonderful commands, which will make your life easier.
   (add-to-list 'el-get-sources
                '(:name smartparens
                        :after (progn
-                                (ome-sp-config))))
+                                (ome-smartparens-setup))))
 
 #+END_SRC
 

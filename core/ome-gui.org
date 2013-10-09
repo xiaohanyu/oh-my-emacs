@@ -108,10 +108,13 @@ applications, not only for emacs. I'll set this as the default theme for
 oh-my-emacs.
 #+NAME: color-theme
 #+BEGIN_SRC emacs-lisp
+  (defun ome-color-theme-solarized-setup ()
+    (load-theme 'solarized-dark t))
+
   (add-to-list 'el-get-sources
                '(:name color-theme-solarized
                        :after (progn
-                                (load-theme 'solarized-dark t))))
+                                (ome-color-theme-solarized-setup))))
 #+END_SRC
 
 * Powerline
@@ -124,10 +127,13 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
 
 #+NAME: powerline
 #+BEGIN_SRC emacs-lisp
+  (defun ome-powerline-setup ()
+    (powerline-default-theme))
+
   (add-to-list 'el-get-sources
                '(:name powerline
                        :after (progn
-                                (powerline-default-theme))))
+                                (ome-powerline-setup))))
 #+END_SRC
 * Yascroll
   :PROPERTIES:
@@ -138,10 +144,13 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
 
 #+NAME: yascroll
 #+BEGIN_SRC emacs-lisp
+  (defun ome-yascroll-setup ()
+    (global-yascroll-bar-mode 1))
+
   (add-to-list 'el-get-sources
                '(:name yascroll
                        :after (progn
-                                (global-yascroll-bar-mode 1))))
+                                (ome-yascroll-setup))))
 #+END_SRC
 * Todo
 ** Speedbar

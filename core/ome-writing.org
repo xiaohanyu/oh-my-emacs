@@ -30,10 +30,14 @@ markdown-mode's auto-mode-alist.
 
 #+NAME: markdown
 #+BEGIN_SRC emacs-lisp
+  (defun ome-markdown-mode-setup ()
+    (add-to-list 'auto-mode-alist
+                 '("\\.mdpp" . markdown-mode)))
+
   (add-to-list 'el-get-sources
                '(:name markdown-mode
-                       :before (add-to-list 'auto-mode-alist
-                                            '("\\.mdpp" . markdown-mode))))
+                       :after (progn
+                                (ome-markdown-mode-setup))))
 #+END_SRC
 
 * Todo

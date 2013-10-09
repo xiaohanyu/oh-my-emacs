@@ -75,16 +75,19 @@ Emacs session.
 
 #+NAME: evil
 #+BEGIN_SRC emacs-lisp
+  (defun ome-evil-setup ()
+    (setq evil-auto-indent t)
+    (setq evil-regexp-search t)
+    (setq evil-want-C-i-jump t)
+    (add-hook 'text-mode-hook 'turn-on-evil-mode)
+    (add-hook 'prog-mode-hook 'turn-on-evil-mode)
+    (add-hook 'comint-mode-hook 'turn-on-evil-mode)
+    (add-hook 'Info-mode-hook 'turn-off-evil-mode))
+
   (add-to-list 'el-get-sources
                '(:name evil
                        :after (progn
-                                (setq evil-auto-indent t)
-                                (setq evil-regexp-search t)
-                                (setq evil-want-C-i-jump t)
-                                (add-hook 'text-mode-hook 'turn-on-evil-mode)
-                                (add-hook 'prog-mode-hook 'turn-on-evil-mode)
-                                (add-hook 'comint-mode-hook 'turn-on-evil-mode)
-                                (add-hook 'Info-mode-hook 'turn-off-evil-mode))))
+                                (ome-evil-setup))))
 #+END_SRC
 
 * Evil-leader
@@ -148,8 +151,9 @@ almost the same.
 
 #+NAME: evil-surround
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name evil-surround))
+  (when (el-get-package-installed-p 'evil)
+    (add-to-list 'el-get-sources
+                 '(:name evil-surround)))
 #+END_SRC
 
 * Expand-region
@@ -182,9 +186,11 @@ Just try it and you will love it.
 #+NAME: expand-region
 #+BEGIN_SRC emacs-lisp
   (defun ome-expand-region-setup ()
-    (when (and (featurep 'evil) (featurep 'evil-leader))
-      (setq expand-region-contract-fast-key "z")
-      (evil-leader/set-key "xx" 'er/expand-region))
+    (when (or (featurep 'evil) (featurep 'evil-leader)))
+    (eval-after-load 'evil-leader
+      (progn
+        (setq expand-region-contract-fast-key "z")
+        (evil-leader/set-key "xx" 'er/expand-region)))
     (global-set-key (kbd "C-=") 'er/expand-region))
 
   (add-to-list 'el-get-sources

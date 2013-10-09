@@ -107,7 +107,7 @@ ultimate out-of-box Emacs Python "IDE" solution.
 
 #+NAME: elpy
 #+BEGIN_SRC emacs-lisp
-  (defun ome-python-setup ()
+  (defun ome-elpy-setup ()
     (elpy-enable)
     (when (executable-find "ipython")
       (elpy-use-ipython))
@@ -125,7 +125,7 @@ ultimate out-of-box Emacs Python "IDE" solution.
   (add-to-list 'el-get-sources
                '(:name elpy
                        :after (progn
-                                (ome-python-setup))))
+                                (ome-elpy-setup))))
 #+END_SRC
 
 * Todo

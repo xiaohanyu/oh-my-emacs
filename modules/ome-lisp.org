@@ -216,7 +216,7 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
 
 #+NAME: slime
 #+BEGIN_SRC emacs-lisp
-  (defun ome-common-lisp-slime-setup ()
+  (defun ome-slime-setup ()
     ;; Define multiple lisp backends
     ;; see http://nklein.com/2010/05/getting-started-with-clojureemacsslime/
     (defmacro defslime-start (name mapping)
@@ -259,7 +259,7 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
   (add-to-list 'el-get-sources
                '(:name slime
                        :after (progn
-                                (ome-common-lisp-slime-setup))))
+                                (ome-slime-setup))))
 
   (defun ome-ac-slime-setup ()
     (add-hook 'slime-mode-hook

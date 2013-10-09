@@ -339,7 +339,6 @@ elisp code embedded in this file.
 * Load settings
 
 Files in oh-my-emacs =core= will be loaded by default:
-- [[file:ome-advanced.org][ome-advanced.org]]: contains =evil=, =ace-jump-mode=, =ack-and-a-half=, etc.
 - [[file:ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
 - [[file:ome-basic.org][ome-basic.org]]: basic settings, such as tab, space, auto-fill-mode, flyspell,
 - [[file:ome-completion.org][ome-completion.org]]: main settings for completion support.
@@ -351,6 +350,7 @@ Files in oh-my-emacs =core= will be loaded by default:
 - [[file:ome-org.org][ome-org.org]]: some refinement for org-mode.
 - [[file:ome-writing.org][ome-writing.org]]: for writers, bloggers, only contains =markdown-mode= for
   now.
+- [[file:ome-advanced.org][ome-advanced.org]]: contains =evil=, =ace-jump-mode=, =ack-and-a-half=, etc.
 
 Files in oh-my-emacs =modules= is optional, you can load necessary one when
 you really need it.
@@ -363,7 +363,6 @@ you really need it.
 
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
-  (ome-load "core/ome-advanced.org")
   (ome-load "core/ome-auto-mode.org")
   (ome-load "core/ome-basic.org")
   (ome-load "core/ome-completion.org")
@@ -372,6 +371,7 @@ you really need it.
   (ome-load "core/ome-miscs.org")
   (ome-load "core/ome-org.org")
   (ome-load "core/ome-writing.org")
+  (ome-load "core/ome-advanced.org")
   (ome-load "modules/ome-cc.org")
   (ome-load "modules/ome-lisp.org")
   (ome-load "modules/ome-python.org")
