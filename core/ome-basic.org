@@ -41,6 +41,7 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
     (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
       (setenv "PATH" path-from-shell)
       (setq exec-path (split-string path-from-shell path-separator))))
+
   (when (eq system-type 'darwin)
     (when window-system (ome-set-exec-path-from-shell-PATH)))
 
@@ -142,7 +143,7 @@ previously visited the same file. The following code comes from [[http://emacs-f
 #+NAME: saveplace
 #+BEGIN_SRC emacs-lisp
   (setq-default save-place t)
-  (setq save-place-file (concat user-emacs-directory "saved-places"))
+  (setq save-place-file (concat user-emacs-directory ".saved-places"))
   (require 'saveplace)
 #+END_SRC
 
