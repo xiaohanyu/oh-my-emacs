@@ -197,62 +197,65 @@ elisp code embedded in this file.
 #+BEGIN_SRC emacs-lisp
   (setq ome-packages nil)
 
-  (defun ome-load (file &optional header-or-tag)
+  (defun ome-load (file &rest header-or-tags)
     "Load configuration from other ome-*.org files.
   If the optional argument is the id of a subtree then only
   configuration from within that subtree will be loaded.  If it is
   not an id then it will be interpreted as a tag, and only subtrees
   marked with the given tag will be loaded.
 
-  For example, to load all of ome-lisp.org simply
-  add (ome-load \"lisp\") to your configuration.
+  For example, to load all of ome-lisp.org simply add (ome-load
+  \"ome-lisp\") to your configuration.
 
-  To load only the 'window-system' config from
-  ome-misc-recommended.org add
-   (ome-load \"misc-recommended\" \"window-system\")
-  to your configuration."
+  To load only the 'window-system' config from ome-miscs.org add
+   (ome-load \"ome-miscs.org\" \"window-system\") to your
+  configuration.
+
+  The good news is, you can load multiple parts config from one single file by
+  simply (ome-load \"ome-module.org\" \"part1\" \"part2\")."
     (let ((file (expand-file-name (if (string-match "ome-.+\.org" file)
                                       file
                                     (format "ome-%s.org" file))
                                   ome-dir)))
       ;; ensure el-get-sources is empty before loading "ome-.+\.org" files
       (setq el-get-sources nil)
-      (org-babel-load-file
-       (if header-or-tag
-           (let* ((base (file-name-nondirectory file))
-                  (dir  (file-name-directory file))
-                  (partial-file (expand-file-name
-                                 (concat "." (file-name-sans-extension base)
-                                         ".part." header-or-tag ".org")
-                                 dir)))
-             (unless (file-exists-p partial-file)
-               (with-temp-file partial-file
-                 (insert
-                  (with-temp-buffer
-                    (insert-file-contents file)
-                    (save-excursion
-                      (condition-case nil ;; collect as a header
-                          (progn
-                            (org-link-search (concat"#"header-or-tag))
-                            (org-narrow-to-subtree)
-                            (buffer-string))
-                        (error ;; collect all entries with as tags
-                         (let (body)
-                           (org-map-entries
-                            (lambda ()
-                              (save-restriction
-                                (org-narrow-to-subtree)
-                                (setq body (concat body "\n" (buffer-string)))))
-                            header-or-tag)
-                           body))))))))
-             partial-file)
-         file))
+
+      (if header-or-tags
+          (dolist (header-or-tag header-or-tags)
+            (let* ((base (file-name-nondirectory file))
+                   (dir  (file-name-directory file))
+                   (partial-file (expand-file-name
+                                  (concat "." (file-name-sans-extension base)
+                                          ".part." header-or-tag ".org")
+                                  dir)))
+              (unless (file-exists-p partial-file)
+                (with-temp-file partial-file
+                  (insert
+                   (with-temp-buffer
+                     (insert-file-contents file)
+                     (save-excursion
+                       (condition-case nil ;; collect as a header
+                           (progn
+                             (org-link-search (concat "#" header-or-tag))
+                             (org-narrow-to-subtree)
+                             (buffer-string))
+                         (error ;; collect all entries with as tags
+                          (let (body)
+                            (org-map-entries
+                             (lambda ()
+                               (save-restriction
+                                 (org-narrow-to-subtree)
+                                 (setq body (concat body "\n" (buffer-string)))))
+                             header-or-tag)
+                            body))))))))
+              (org-babel-load-file partial-file)))
+        (org-babel-load-file file))
+
       (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
       (mapcar (lambda (el-get-package)
                 (add-to-list 'ome-packages
                              (el-get-source-name el-get-package)))
               el-get-sources)))
-
 #+END_SRC
 
 - Functions for getting information about el-get packages installed by
