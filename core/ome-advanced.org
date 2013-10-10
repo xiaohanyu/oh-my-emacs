@@ -121,6 +121,10 @@ BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
       (evil-leader/set-key
         "e" 'find-file
         "b" 'switch-to-buffer))
+    (if (featurep 'expand-region)
+        (progn
+          (setq expand-region-contract-fast-key "z")
+          (evil-leader/set-key "xx" 'er/expand-region)))
     (evil-leader/set-key
       "k" 'kill-buffer)
     (global-evil-leader-mode))
@@ -186,11 +190,6 @@ Just try it and you will love it.
 #+NAME: expand-region
 #+BEGIN_SRC emacs-lisp
   (defun ome-expand-region-setup ()
-    (when (or (featurep 'evil) (featurep 'evil-leader)))
-    (eval-after-load 'evil-leader
-      (progn
-        (setq expand-region-contract-fast-key "z")
-        (evil-leader/set-key "xx" 'er/expand-region)))
     (global-set-key (kbd "C-=") 'er/expand-region))
 
   (add-to-list 'el-get-sources
