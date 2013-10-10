@@ -219,6 +219,8 @@ elisp code embedded in this file.
                                   ome-dir)))
       ;; ensure el-get-sources is empty before loading "ome-.+\.org" files
       (setq el-get-sources nil)
+      ;; enable git shallow clone to save time and bandwidth
+      (setq el-get-git-shallow-clone t)
 
       (if header-or-tags
           (dolist (header-or-tag header-or-tags)
