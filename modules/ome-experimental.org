@@ -64,3 +64,24 @@ Make emacs scroll smoothly.
   (add-to-list 'el-get-sources
                '(:name smooth-scrolling))
 #+END_SRC
+
+* Hungry-delete
+  :PROPERTIES:
+  :CUSTOM_ID: hungry-delete
+  :END:
+
+CC-mode does have some good [[http://www.gnu.org/software/emacs/manual/html_node/ccmode/Minor-Modes.html][innovations]], among which hungry-delete is what I
+want most. Fortunately, a good guy ported [[https://github.com/nflath/hungry-delete][hungry-delete]] from cc-mode to a
+independent package.
+
+#+NAME: hungry-delete
+#+BEGIN_SRC emacs-lisp
+  (defun ome-hungry-delete-setup ()
+    (dolist (hook '(text-mode-hook prog-mode-hook comint-mode-hook))
+      (add-hook hook 'turn-on-hungry-delete-mode)))
+
+  (add-to-list 'el-get-sources
+               '(:name hungry-delete
+                       :after (progn
+                                (ome-hungry-delete-setup))))
+#+END_SRC

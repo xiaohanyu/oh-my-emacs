@@ -1,0 +1,5 @@
+(:name hungry-delete
+       :description "Enables hungry deletion in all modes."
+       :type github
+       :pkgname "nflath/hungry-delete"
+       :features hungry-delete)
