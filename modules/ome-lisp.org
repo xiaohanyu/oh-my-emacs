@@ -356,18 +356,8 @@ still in beta version, however, and will be sent to el-get when stable.
 
 #+NAME: geiser
 #+BEGIN_SRC emacs-lisp
-  (defun ome-geiser-setup ()
-    (when (featurep 'smartparens)
-      ;; disable ', it's the quote character!
-      (sp-local-pair 'geiser-repl-mode "'" nil :actions nil)
-      ;; also only use the pseudo-quote inside strings where it serve as
-      ;; hyperlink.
-      (sp-local-pair 'geiser-repl-mode "`" "'" :when '(sp-in-string-p))))
-
   (add-to-list 'el-get-sources
-               '(:name geiser
-                       :after (progn
-                                (ome-geiser-setup))))
+               '(:name geiser))
 
   (defun ome-ac-geiser-setup ()
     (add-hook 'geiser-mode-hook 'ac-geiser-setup)
