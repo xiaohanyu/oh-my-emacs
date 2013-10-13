@@ -219,11 +219,13 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
   (defun ome-slime-setup ()
     ;; Define multiple lisp backends
     ;; see http://nklein.com/2010/05/getting-started-with-clojureemacsslime/
-    (defmacro defslime-start (name mapping)
-      `(defun ,name ()
-         (interactive)
-         (let ((slime-default-lisp ,mapping))
-           (slime))))
+    (defmacro defslime-start (name lisp-impl)
+      `(when (executable-find (symbol-name ,lisp-impl))
+         (defun ,name ()
+           (interactive)
+           (let ((slime-default-lisp ,lisp-impl))
+             (slime)))))
+
     (setq slime-lisp-implementations
           `((sbcl (,(executable-find "sbcl")) :coding-system utf-8-unix)
             (ccl (,(executable-find "ccl")))
