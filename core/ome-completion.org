@@ -50,10 +50,17 @@ Actually, there're multiple completion packages for Emacs, say Emacs builtin
 Eshell]], =ido-mode= for completion in minibuffers. Say auto-complete, there's
 also a [[http://stackoverflow.com/questions/4704748/emacs-completion-autocomplete-or-company][competitive]] [[http://company-mode.github.io/][company-mode]].
 
+By default, function =global-auto-complete-mode= will toggle on auto-complete
+according to =ac-modes=, which in turn determines what major mode
+=auto-complete-mode= can run on. Oh-my-emacs add =org-mode= and =text-mode= to
+=ac-modes=.
+
 #+NAME: auto-complete
 #+BEGIN_SRC emacs-lisp
   (defun ome-auto-complete-setup ()
     (require 'auto-complete-config)
+    (add-to-list 'ac-modes 'org-mode)
+    (add-to-list 'ac-modes 'text-mode)
     (ac-config-default))
 
   (add-to-list 'el-get-sources
