@@ -59,8 +59,15 @@ according to =ac-modes=, which in turn determines what major mode
 #+BEGIN_SRC emacs-lisp
   (defun ome-auto-complete-setup ()
     (require 'auto-complete-config)
-    (add-to-list 'ac-modes 'org-mode)
-    (add-to-list 'ac-modes 'text-mode)
+
+    (dolist (ac-mode '(text-mode org-mode))
+      (add-to-list 'ac-modes ac-mode))
+    (dolist (ac-mode-hook '(text-mode-hook org-mode-hook))
+      (add-hook ac-mode-hook
+                (lambda ()
+                  (add-to-list 'ac-sources 'ac-source-files-in-current-dir)
+                  (add-to-list 'ac-sources 'ac-source-filename))))
+
     (ac-config-default))
 
   (add-to-list 'el-get-sources
