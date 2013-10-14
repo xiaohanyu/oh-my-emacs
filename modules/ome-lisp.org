@@ -412,9 +412,6 @@ disabled by default.
 - Find a method to rebase the source tree of various CL implementations, which
   is useful for =slime-edit-definition=.
 
-** Scheme
-- Write a package "ac-geisure", just like ac-slime.
-
 ** Clojure
 - The boot up speed of JVM is too slow, so we may need to refer to
   http://icylisper.github.io/jark/.

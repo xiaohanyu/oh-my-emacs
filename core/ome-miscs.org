@@ -553,9 +553,6 @@ details.
 - Enable flyspell and ispell in text-mode.
 - Add a dictionary support, such as =sdcv=? Or a better translator support such
   as =babel= or =gtranslate=?
-- recentf
-  - set recentf saved file, similar to saveplace.
-  - disable recentf prompting when quit emacs.
 - Set emacs auto-save temporary dir instead of .emacs.d
 - Investigate how to use =imenu= and =imenu rescan=.
 - Add zencoding-mode(emmet-mode) to emacs, maybe I should propose an emmet
