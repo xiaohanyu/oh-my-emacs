@@ -36,10 +36,7 @@ DSL, so the emacs builtin =ruby-mode= is not proper for editing puppet files.
     (when (featurep 'evil)
       (add-hook 'puppet-mode-hook 'turn-on-evil-mode)))
 
-  (add-to-list 'el-get-sources
-               '(:name puppet-mode
-                       :after (progn
-                                (ome-puppet-mode-setup))))
+  (ome-install 'puppet-mode)
 #+END_SRC
 
 * ArchLinux PKGBUILD
@@ -61,8 +58,7 @@ fingertips.
 #+NAME: pkgbuild
 #+BEGIN_SRC emacs-lisp
   (when (executable-find "pacman")
-    (add-to-list 'el-get-sources
-                 '(:name pkgbuild-mode)))
+    (ome-install 'pkgbuild-mode))
 #+END_SRC
 
 * Wikipedia
@@ -82,11 +78,11 @@ please tell me.
 
 #+NAME: wikipedia
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name wikipedia-mode
-                       :after (progn
-                                (add-to-list 'auto-mode-alist
-                                             '("\\.wiki\\'" . wikipedia-mode)))))
+  (defun ome-wikipedia-mode-setup ()
+    (add-to-list 'auto-mode-alist
+                 '("\\.wiki\\'" . wikipedia-mode)))
+
+  (ome-install 'wikipedia-mode)
 #+END_SRC
 * YAML
   :PROPERTIES:
@@ -100,6 +96,5 @@ solve this by adopting =el-get=. Thanks =el-get= again!
 
 #+NAME: yaml
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name yaml-mode))
+  (ome-install 'yaml-mode)
 #+END_SRC

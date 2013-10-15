@@ -99,10 +99,7 @@ given depth."
   (defun ome-rainbow-delimiters-setup ()
     (global-rainbow-delimiters-mode))
 
-  (add-to-list 'el-get-sources
-               '(:name rainbow-delimiters
-                       :after (progn
-                                (ome-rainbow-delimiters-setup))))
+  (ome-install 'rainbow-delimiters)
 #+END_SRC
 
 * Transparently Open Compressed Files
@@ -192,9 +189,7 @@ Blog]] for technical details.
 #+NAME: magit
 #+BEGIN_SRC emacs-lisp
   (if (executable-find "git")
-      (progn
-        (add-to-list 'el-get-sources
-                     '(:name magit))))
+      (ome-install 'magit))
 #+END_SRC
 
 * Visual-line-mode
@@ -252,10 +247,7 @@ just enjoy it!
     (setq projectile-enable-caching t)
     (global-set-key (kbd "C-x c h") 'helm-projectile))
 
-  (add-to-list 'el-get-sources
-               '(:name projectile
-                       :after (progn
-                                (ome-projectile-setup))))
+  (ome-install 'projectile)
 #+END_SRC
 
 * Smartparens
@@ -394,10 +386,7 @@ some time to master these wonderful commands, which will make your life easier.
                      :post-handlers
                      '((ome-create-newline-and-enter-sexp "RET")))))
 
-  (add-to-list 'el-get-sources
-               '(:name smartparens
-                       :after (progn
-                                (ome-smartparens-setup))))
+  (ome-install 'smartparens)
 
 #+END_SRC
 
@@ -495,11 +484,7 @@ Some commonly used keybindings for =w3m-mode=:
     (global-set-key (kbd "C-x w") 'browse-url-at-point))
 
   (when (executable-find "w3m")
-    (add-to-list 'el-get-sources
-                 '(:name emacs-w3m
-                         :after (progn
-                                  (ome-emacs-w3m-setup)))))
-
+    (ome-install 'emacs-w3m))
 #+END_SRC
 
 * Quickrun
@@ -512,8 +497,7 @@ way. Just run it, without thinking about too much other chores.
 
 #+NAME: quickrun
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name quickrun))
+  (ome-install 'quickrun)
 #+END_SRC
 
 * Lacarte
@@ -543,10 +527,7 @@ details.
     (global-set-key (kbd "C-c M-x") 'lacarte-execute-command)
     (global-set-key (kbd "C-c M-m") 'lacarte-execute-menu-command))
 
-  (add-to-list 'el-get-sources
-               '(:name lacarte
-                       :after (progn
-                                (ome-lacarte-setup))))
+  (ome-install 'lacarte)
 #+END_SRC
 
 * Todo

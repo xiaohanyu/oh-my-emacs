@@ -152,10 +152,7 @@ code block, which may be a bug of =rainbow-delimiters-mode=.
           (ad-enable-advice 'htmlize-buffer-1 'around 'ome-htmlize-buffer-1)
           (ad-activate 'htmlize-buffer-1))))
 
-  (add-to-list 'el-get-sources
-               '(:name htmlize
-                       :after (progn
-                                (ome-htmlize-setup))))
+  (ome-install 'htmlize)
 #+END_SRC
 * Org-CDLaTeX
   :PROPERTIES:

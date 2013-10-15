@@ -47,10 +47,7 @@ idea. =sr-speedbar= solves this problem, however, it brings some new problems:
     (setq sr-speedbar-skip-other-window-p t)
     (setq sr-speedbar-right-side nil))
 
-  (add-to-list 'el-get-sources
-               '(:name sr-speedbar
-                       :after (progn
-                                (ome-sr-speedbar-setup))))
+  (ome-install 'sr-speedbar)
 #+END_SRC
 * Smooth-scrolling
   :PROPERTIES:
@@ -61,8 +58,7 @@ Make emacs scroll smoothly.
 
 #+NAME: smooth-scrolling
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name smooth-scrolling))
+  (ome-install 'smooth-scrolling)
 #+END_SRC
 
 * Hungry-delete
@@ -75,13 +71,10 @@ want most. Fortunately, a good guy ported [[https://github.com/nflath/hungry-del
 independent package.
 
 #+NAME: hungry-delete
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
   (defun ome-hungry-delete-setup ()
     (dolist (hook '(text-mode-hook prog-mode-hook comint-mode-hook))
       (add-hook hook 'turn-on-hungry-delete-mode)))
 
-  (add-to-list 'el-get-sources
-               '(:name hungry-delete
-                       :after (progn
-                                (ome-hungry-delete-setup))))
+  (ome-install 'hungry-delete)
 #+END_SRC

@@ -201,10 +201,7 @@ have no idea why =evil-local-mode= is enabled by default when entering
                 (when (featurep 'evil)
                   (turn-off-evil-mode)))))
 
-  (add-to-list 'el-get-sources
-               '(:name auctex
-                       :after (progn
-                                (ome-auctex-setup))))
+  (ome-install 'auctex)
 
 #+END_SRC
 
@@ -242,10 +239,7 @@ work with Emacs builtin =tex-mode= anymore.
     (add-hook 'latex-mode-hook 'turn-on-cdlatex))
 
   (when (el-get-package-is-installed 'auctex)
-    (add-to-list 'el-get-sources
-                 '(:name cdlatex-mode
-                         :after (progn
-                                  (ome-cdlatex-mode-setup)))))
+    (ome-install 'cdlatex-mode))
 
 #+END_SRC
 

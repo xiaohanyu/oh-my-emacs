@@ -111,10 +111,7 @@ oh-my-emacs.
   (defun ome-color-theme-solarized-setup ()
     (load-theme 'solarized-dark t))
 
-  (add-to-list 'el-get-sources
-               '(:name color-theme-solarized
-                       :after (progn
-                                (ome-color-theme-solarized-setup))))
+  (ome-install 'color-theme-solarized)
 #+END_SRC
 
 * Powerline
@@ -130,10 +127,7 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
   (defun ome-powerline-setup ()
     (powerline-default-theme))
 
-  (add-to-list 'el-get-sources
-               '(:name powerline
-                       :after (progn
-                                (ome-powerline-setup))))
+  (ome-install 'powerline)
 #+END_SRC
 * Yascroll
   :PROPERTIES:
@@ -147,10 +141,7 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
   (defun ome-yascroll-setup ()
     (global-yascroll-bar-mode 1))
 
-  (add-to-list 'el-get-sources
-               '(:name yascroll
-                       :after (progn
-                                (ome-yascroll-setup))))
+  (ome-install 'yascroll)
 #+END_SRC
 * Todo
 ** Speedbar

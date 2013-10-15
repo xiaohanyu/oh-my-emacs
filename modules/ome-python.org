@@ -107,6 +107,9 @@ ultimate out-of-box Emacs Python "IDE" solution.
 
 #+NAME: elpy
 #+BEGIN_SRC emacs-lisp
+  (when (version< emacs-version "24.3")
+    (ome-install 'python24))
+
   (defun ome-elpy-setup ()
     (elpy-enable)
     (when (executable-find "ipython")
@@ -118,14 +121,7 @@ ultimate out-of-box Emacs Python "IDE" solution.
     (define-key python-mode-map (kbd "RET")
       'newline-and-indent))
 
-  (when (version< emacs-version "24.3")
-    (add-to-list 'el-get-sources
-                 '(:name python24)))
-
-  (add-to-list 'el-get-sources
-               '(:name elpy
-                       :after (progn
-                                (ome-elpy-setup))))
+  (ome-install 'elpy)
 #+END_SRC
 
 * Todo

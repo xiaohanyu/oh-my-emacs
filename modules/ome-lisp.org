@@ -111,10 +111,7 @@ way to solve this, so any help will be appreciated.
       (add-hook hook 'turn-on-elisp-slime-nav-mode)))
       ;; (add-hook hook 'ome-elisp-slime-nav-keybindings-in-evil)))
 
-  (add-to-list 'el-get-sources
-               '(:name elisp-slime-nav
-                       :after (progn
-                                (ome-elisp-slime-nav-setup))))
+  (ome-install 'elisp-slime-nav)
 #+END_SRC
 
 ** IELM
@@ -258,10 +255,7 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
                    slime-banner
                    slime-highlight-edits)))
 
-  (add-to-list 'el-get-sources
-               '(:name slime
-                       :after (progn
-                                (ome-slime-setup))))
+  (ome-install 'slime)
 
   (defun ome-ac-slime-setup ()
     (add-hook 'slime-mode-hook
@@ -273,11 +267,7 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
     (eval-after-load "auto-complete"
       '(add-to-list 'ac-modes 'slime-repl-mode)))
 
-  (add-to-list 'el-get-sources
-               '(:name ac-slime
-                       :after (progn
-                                (ome-ac-slime-setup))))
-
+  (ome-install 'ac-slime)
 #+END_SRC
 
 * Clojure
@@ -311,8 +301,7 @@ It's really really awesome, ah?
 
 #+NAME: clojure
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name clojure-mode))
+  (ome-install 'clojure-mode)
 
   (defun ome-nrepl-setup ()
     (add-hook 'nrepl-interaction-mode-hook
@@ -321,10 +310,7 @@ It's really really awesome, ah?
     (setq nrepl-buffer-name-separator "-")
     (setq nrepl-buffer-name-show-port t))
 
-  (add-to-list 'el-get-sources
-               '(:name nrepl
-                       :after (progn
-                                (ome-nrepl-setup))))
+  (ome-install 'nrepl)
 
   (defun ome-ac-nrepl-setup ()
     (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
@@ -332,10 +318,7 @@ It's really really awesome, ah?
     (eval-after-load "auto-complete"
       '(add-to-list 'ac-modes 'nrepl-mode)))
 
-  (add-to-list 'el-get-sources
-               '(:name ac-nrepl
-                       :after (progn
-                                (ome-ac-nrepl-setup))))
+  (ome-install 'ac-nrepl)
 #+END_SRC
 
 * Scheme
@@ -358,8 +341,7 @@ still in beta version, however, and will be sent to el-get when stable.
 
 #+NAME: geiser
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name geiser))
+  (ome-install 'geiser)
 
   (defun ome-ac-geiser-setup ()
     (add-hook 'geiser-mode-hook 'ac-geiser-setup)
@@ -367,13 +349,9 @@ still in beta version, however, and will be sent to el-get when stable.
     (eval-after-load "auto-complete"
       '(add-to-list 'ac-modes 'geiser-repl-mode)))
 
-  (add-to-list 'el-get-sources
-               '(:name ac-geiser
-                       :after (progn
-                                (ome-ac-geiser-setup))))
+  (ome-install 'ac-geiser)
 
-  ;; (add-to-list 'el-get-sources
-  ;;              '(:name quack))
+  ;; (ome-install 'quack)
 #+END_SRC
 
 Actually, the official SLIME contrib has some swank backends for scheme
@@ -389,10 +367,7 @@ disabled by default.
               (lambda ()
                 (slime-mode t))))
 
-  (add-to-list 'el-get-sources
-               '(:name swank-chicken
-                       :after (progn
-                                (ome-swank-chicken-setup))))
+  (ome-install 'swank-chicken)
 #+END_SRC
 
 * Todos

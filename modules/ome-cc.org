@@ -121,8 +121,7 @@ you have to.
 #+NAME: cmake
 #+BEGIN_SRC emacs-lisp
   (when (executable-find "cmake")
-    (add-to-list 'el-get-sources
-                 '(:name cmake-mode)))
+    (ome-install 'cmake-mode))
 #+END_SRC
 
 * Documentation with Doxymacs
@@ -159,10 +158,7 @@ If you like, you can even integrate Doxygen to CMake workflow, see [[http://maje
     (add-hook 'c-mode-common-hook 'doxymacs-mode)
     (add-hook 'c-mode-common-hook 'doxymacs-font-lock))
 
-  (add-to-list 'el-get-sources
-               '(:name doxymacs
-                       :after (progn
-                                (ome-doxymacs-setup))))
+  (ome-install 'doxymacs)
 #+END_SRC
 
 * Indexing with Cscope
@@ -222,8 +218,7 @@ cscope. The default keybindings use the =C-c s= prefix:
 #+NAME: cscope
 #+BEGIN_SRC emacs-lisp
   (if (executable-find "cscope")
-      (add-to-list 'el-get-sources
-                   '(:name xcscope)))
+      (ome-install 'xcscope))
 
 #+END_SRC
 * Auto-complete-clang
@@ -288,10 +283,7 @@ installed if you want to write program with that library.
                 (add-to-list 'ac-sources 'ac-source-clang))))
 
   (when (executable-find "clang")
-    (add-to-list 'el-get-sources
-                 '(:name auto-complete-clang
-                         :after (progn
-                                  (ome-auto-complete-clang-setup)))))
+    (ome-install 'auto-complete-clang))
 #+END_SRC
 
 * Todo

@@ -260,6 +260,30 @@ elisp code embedded in this file.
               el-get-sources)))
 #+END_SRC
 
+- Functions for installing el-get packages
+
+#+NAME: ome-install
+#+BEGIN_SRC emacs-lisp
+  (defun ome-install (el-get-package)
+    "Add EL-GET-PACKAGE to `el-get-sources'.
+
+  This package will be installed when `ome-load'. Users can make
+  his own customization by providing a \"ome-package-name-setup\"
+  function."
+    (let ((ome-package-setup-func
+           (intern
+            (concat "ome-"
+                    (el-get-as-string el-get-package)
+                    "-setup"))))
+      (if (fboundp ome-package-setup-func)
+          (add-to-list 'el-get-sources
+                       `(:name ,el-get-package
+                               :after (progn
+                                        (,ome-package-setup-func))))
+        (add-to-list 'el-get-sources
+                     `(:name ,el-get-package)))))
+#+END_SRC
+
 - Functions for getting information about el-get packages installed by
   oh-my-emacs.
 #+NAME: ome-packages
@@ -439,7 +463,6 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
   (setq custom-file (concat ome-dir "custom.el"))
   (load custom-file 'noerror)
 #+END_SRC
-
 
 * Todo
 

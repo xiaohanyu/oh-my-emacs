@@ -70,10 +70,7 @@ according to =ac-modes=, which in turn determines what major mode
 
     (ac-config-default))
 
-  (add-to-list 'el-get-sources
-               '(:name auto-complete
-                       :after (progn
-                                (ome-auto-complete-setup))))
+  (ome-install 'auto-complete)
 #+END_SRC
 
 ** Integrate pcomplete with Auto-complete
@@ -236,10 +233,7 @@ fallback. But I do suggest you to take some time to be familiar with helm.
     (global-set-key (kbd "M-x") 'helm-M-x)
     (global-set-key (kbd "C-x C-f") 'helm-find-files))
 
-  (add-to-list 'el-get-sources
-               '(:name helm
-                       :after (progn
-                                (ome-helm-setup))))
+  (ome-install 'helm)
 
 #+END_SRC
 * Yasnippet
@@ -296,11 +290,8 @@ TODO:
               '(lambda ()
                  (yas-minor-mode))))
 
-  (add-to-list 'el-get-sources
-               '(:name yasnippet
-                       :depends (popup)
-                       :after (progn
-                                (ome-yasnippet-setup))))
+  (ome-install 'popup)
+  (ome-install 'yasnippet)
 #+END_SRC
 
 * Todo

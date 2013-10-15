@@ -84,10 +84,7 @@ Emacs session.
     (add-hook 'comint-mode-hook 'turn-on-evil-mode)
     (add-hook 'Info-mode-hook 'turn-off-evil-mode))
 
-  (add-to-list 'el-get-sources
-               '(:name evil
-                       :after (progn
-                                (ome-evil-setup))))
+  (ome-install 'evil)
 #+END_SRC
 
 * Evil-leader
@@ -130,9 +127,7 @@ BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
     (global-evil-leader-mode))
 
   (when (featurep 'evil)
-    (add-to-list 'el-get-sources
-                 '(:name evil-leader
-                         :after (ome-evil-leader-setup))))
+    (ome-install 'evil-leader))
 #+END_SRC
 
 * Evil-surround
@@ -156,8 +151,7 @@ almost the same.
 #+NAME: evil-surround
 #+BEGIN_SRC emacs-lisp
   (when (el-get-package-installed-p 'evil)
-    (add-to-list 'el-get-sources
-                 '(:name evil-surround)))
+    (ome-install 'evil-surround))
 #+END_SRC
 
 * Expand-region
@@ -192,10 +186,7 @@ Just try it and you will love it.
   (defun ome-expand-region-setup ()
     (global-set-key (kbd "C-=") 'er/expand-region))
 
-  (add-to-list 'el-get-sources
-               '(:name expand-region
-                       :after (progn
-                                (ome-expand-region-setup))))
+  (ome-install 'expand-region)
 #+END_SRC
 
 * Ace-jump-mode
@@ -228,10 +219,7 @@ By default, =<Leader>= is =<SPC>=, so you can use =<SPC> c= to activate
         "w" 'ace-jump-word-mode
         "l" 'ace-jump-line-mode)))
 
-  (add-to-list 'el-get-sources
-               '(:name ace-jump-mode
-                       :after (progn
-                                (ome-ace-jump-mode-setup))))
+  (ome-install 'ace-jump-mode)
 #+END_SRC
 
 * Ack-and-a-half
@@ -254,8 +242,7 @@ you'll get all you need. Enjoy it.
 #+NAME: ack-and-a-half
 #+BEGIN_SRC emacs-lisp
   (when (or (executable-find "ack") (executable-find "ack-grep"))
-    (add-to-list 'el-get-sources
-                 '(:name ack-and-a-half)))
+    (ome-install 'ack-and-a-half))
 #+END_SRC
 
 * Todo

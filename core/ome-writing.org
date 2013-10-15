@@ -34,10 +34,7 @@ markdown-mode's auto-mode-alist.
     (add-to-list 'auto-mode-alist
                  '("\\.mdpp" . markdown-mode)))
 
-  (add-to-list 'el-get-sources
-               '(:name markdown-mode
-                       :after (progn
-                                (ome-markdown-mode-setup))))
+  (ome-install 'markdown-mode)
 #+END_SRC
 
 * Todo

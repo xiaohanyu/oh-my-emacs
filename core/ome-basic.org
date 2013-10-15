@@ -242,10 +242,7 @@ extension for GNU Emacs 24.
       '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
     (add-hook 'prog-mode-hook 'flycheck-mode))
 
-  (add-to-list 'el-get-sources
-               '(:name flycheck
-                       :after (progn
-                                (ome-flycheck-setup))))
+  (ome-install 'flycheck)
 #+END_SRC
 
 * Todo

@@ -92,10 +92,7 @@ evaluate ruby code snippets.
       (add-to-list 'inf-ruby-implementations '("pry" . "pry"))
       (setq inf-ruby-default-implementation "pry")))
 
-  (add-to-list 'el-get-sources
-               '(:name inf-ruby
-                       :after (progn
-                                (ome-inf-ruby-setup))))
+  (ome-install 'inf-ruby)
 #+END_SRC
 
 * Smartparens-ruby
