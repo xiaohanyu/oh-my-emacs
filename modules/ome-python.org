@@ -105,13 +105,19 @@ Thanks [[https://github.com/jorgenschaefer/elpy][elpy]] again, for time it saves
 on Python, on our life, instead of the details to make choices. Elpy is the
 ultimate out-of-box Emacs Python "IDE" solution.
 
+By default, =(elpy-enable)= will [[https://github.com/jorgenschaefer/elpy/blob/master/elpy.el#L343][modify]] auto-complete's keymap, which would
+make auto-complete unoperative when you try to complete function arguments with
+[[https://github.com/brianjcj/auto-complete-clang/blob/master/screenshot/clang-3.png][auto-complete-clang]] by utilize =yas-expand= from YASnippet. I've spent a whole
+day to trace this problem and finally find here. So I use =(elpy-enable t)=
+instead. Please =C-h f elpy-enable RET= to get details.
+
 #+NAME: elpy
 #+BEGIN_SRC emacs-lisp
   (when (version< emacs-version "24.3")
     (ome-install 'python24))
 
   (defun ome-elpy-setup ()
-    (elpy-enable)
+    (elpy-enable t)
     (when (executable-find "ipython")
       (elpy-use-ipython))
     (when (featurep 'flycheck)
