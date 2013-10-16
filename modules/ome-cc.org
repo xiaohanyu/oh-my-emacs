@@ -247,6 +247,10 @@ ome-pkg-config-enable-clang-flag name-of-lib=, and completion will be right
 here. Ensure that you have pkg-config installed and all the necessary libs
 installed if you want to write program with that library.
 
+The default auto-complete-clang package didn't provide completion for C/C++
+macros, so I did a little hack by setting =ac-clang-flags=, see
+https://github.com/Rip-Rip/clang_complete/issues/42 for technical details.
+
 #+NAME: auto-complete-clang
 #+BEGIN_SRC emacs-lisp
   (defun ome-pkg-config-enable-clang-flag (pkg-config-lib)
@@ -278,9 +282,13 @@ installed if you want to write program with that library.
                     (concat "-I" item))
                   (split-string
                    (shell-command-to-string command))))
-    (add-hook 'c-mode-common-hook
-              (lambda ()
-                (add-to-list 'ac-sources 'ac-source-clang))))
+    ;; completion for C/C++ macros.
+    (push "-code-completion-macros" ac-clang-flags)
+    (push "-code-completion-patterns" ac-clang-flags)
+    (dolist (mode-hook '(c-mode-hook c++-mode-hook))
+      (add-hook mode-hook
+                (lambda ()
+                  (add-to-list 'ac-sources 'ac-source-clang)))))
 
   (when (executable-find "clang")
     (ome-install 'auto-complete-clang))
