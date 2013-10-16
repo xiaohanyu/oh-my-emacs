@@ -402,6 +402,7 @@ you really need it.
   (ome-load "core/ome-writing.org")
   (ome-load "core/ome-advanced.org")
   (ome-load "modules/ome-cc.org")
+  (ome-load "modules/ome-java.org")
   (ome-load "modules/ome-lisp.org")
   (ome-load "modules/ome-python.org")
   (ome-load "modules/ome-ruby.org")

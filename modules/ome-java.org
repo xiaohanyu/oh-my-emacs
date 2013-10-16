@@ -1,0 +1,123 @@
+#+TITLE: Oh My Emacs Java
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: java-prerequisites
+  :END:
+
+#+NAME: java-prerequisites
+#+CAPTION: Prerequisites for ome-java module
+|         | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.eclipse.org/][eclipse]] |         |                    |           |        |          | Yes        |
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: java-el-get-packages
+  :END:
+
+#+NAME: java-el-get-packages
+#+CAPTION: El-get packages for ome-java module
+
+|             | Status   | Description                           |
+|-------------+----------+---------------------------------------|
+| [[https://github.com/senny/emacs-eclim][emacs-eclim]] | Required | The bridge between emacs and eclipse. |
+
+* Eclim
+  :PROPERTIES:
+  :CUSTOM_ID: eclim
+  :END:
+
+#+BEGIN_QUOTE
+Emacs was a really great idea in the seventies and one of the frightening
+things about Emacs today is if you skip the last 20 years it is much the same.
+
+-- [[http://www.computerworld.com.au/article/207799/don_t_use_emacs_says_java_father/][Don't use Emacs, says Java's father]]
+#+END_QUOTE
+
+I must say that it is really a pain to do Java programming with Emacs,
+however, when I turn to a modern IDE(eclipse/netbeans), just as Java's father
+said, I would miss Emacs again. You want to know why? Refer to [[http://gnuvince.wordpress.com/2012/02/19/why-i-still-use-emacs/][Why I Still Use
+Emacs]].
+
+However, Eclipse, or some other java IDEs, do provide some fascinating features
+such as refactoring, 100% absolutely correct semantic completion, on-the-fly
+syntax checking, maven/ant integration, etc.
+
+Fortunately, there comes [[https://github.com/senny/emacs-eclim][emacs-eclim]], which brings the power of Eclipse to
+Emacs by utilizing [[http://eclim.org/][eclim]], ah, the best of both world.
+
+To install eclim, first you need to install Eclipse. You can install Eclipse
+through your OS package manager, or you can download a tarball directly from
+[[http://www.eclipse.org/downloads/][official eclipse website]]. I recommend the later method since it is much more
+portable, and dumps all eclipse files to a single folder, say, =/opt/eclipse/=
+for example. And one extra advice, I recommend you install Eclipse version 3.x
+instead of 4.x since 4.x is not stable enough IMHO. My working environments
+include Eclipse 3.7 and eclim_1.7.18. I didn't have too much time to test
+other combinations, so if you encounter problems, don't hesitate to open a new
+issue in oh-my-emacs's github.
+
+Then you should download and install eclim, see [[http://eclim.org/install.html][eclim install guide]] for
+details. I use the following command to do an automated install.
+
+#+BEGIN_SRC sh
+  java -Dvim.files=$HOME/.vim -Declipse.home=/opt/eclipse -jar eclim_1.7.18.jar install
+#+END_SRC
+
+Oh-my-emacs assumes that you install Eclipse to =/opt/eclipse/= directory, and
+set your Eclipse workspace to =$HOME/workspace=. So if your settings are
+different, don't forget to set =eclim-executable= and =eclimd-executable=
+properly. Finally, ensure that you can find =eclipse= in your shell's =$PATH=
+since oh-my-emacs relies on this way to determine the availability of Eclipse.
+
+Ok, that's enough, you want to know what eclim can provide for you? [[http://www.skybert.net/emacs/java/][Enterprise
+Java Development in Emacs]] show you an illustrated guide.
+
+#+NAME: eclim
+#+BEGIN_SRC emacs-lisp
+  (defun ome-eclim-setup ()
+    ;; (add-to-list 'eclim-eclipse-dirs "/opt/eclipse")
+    (setq eclim-auto-save t
+          eclim-executable (or (executable-find "eclim") "/opt/eclipse/eclim")
+          eclimd-executable (or (executable-find "eclimd") "/opt/eclipse/eclimd")
+          eclimd-wait-for-process nil
+          eclimd-default-workspace "~/workspace/"
+          help-at-pt-display-when-idle t
+          help-at-pt-timer-delay 0.1)
+
+    ;; Call the help framework with the settings above & activate
+    ;; eclim-mode
+    (help-at-pt-set-timer)
+
+    ;; keep consistent which other auto-complete backend.
+    (custom-set-faces
+     '(ac-emacs-eclim-candidate-face ((t (:inherit ac-candidate-face))))
+     '(ac-emacs-eclim-selection-face ((t (:inherit ac-selection-face)))))
+
+    ;; Hook eclim up with auto complete mode
+    (require 'ac-emacs-eclim-source)
+    ;; (ac-emacs-eclim-config)
+
+    (require 'eclimd)
+
+    (add-hook 'java-mode-hook
+              (lambda ()
+                (add-to-list 'ac-sources 'ac-source-emacs-eclim)
+                (eclim-mode t))))
+
+  (when (executable-find "eclipse")
+    (ome-install 'eclim))
+#+END_SRC
+
+* Todo
+- Complitation support, use =M-n= and =M-p= to navigate the eclim warnings and
+  errors just like =c-mode= and =c++-mode=.
+- Provide a menubar to eclim thus users can get a quick overview of eclim
+  features.
+- Seems =java-mode-hook= will run twice, so as other cc-mode's hook such as
+  =c-mode-hook=. Try to figure out.
+- Eclim would report warnings like =describe-mode: Symbol's function definition
+  is void: eclim-project-mode= when you hit =C-h m= in auxiliary eclim modes.
