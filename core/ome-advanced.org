@@ -126,8 +126,7 @@ BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
       "k" 'kill-buffer)
     (global-evil-leader-mode))
 
-  (when (featurep 'evil)
-    (ome-install 'evil-leader))
+  (ome-install 'evil-leader)
 #+END_SRC
 
 * Evil-surround
@@ -150,8 +149,7 @@ almost the same.
 
 #+NAME: evil-surround
 #+BEGIN_SRC emacs-lisp
-  (when (el-get-package-installed-p 'evil)
-    (ome-install 'evil-surround))
+  (ome-install 'evil-surround)
 #+END_SRC
 
 * Expand-region
