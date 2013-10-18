@@ -341,15 +341,15 @@ still in beta version, however, and will be sent to el-get when stable.
 
 #+NAME: geiser
 #+BEGIN_SRC emacs-lisp
-  (ome-install 'geiser)
-
   (defun ome-ac-geiser-setup ()
     (add-hook 'geiser-mode-hook 'ac-geiser-setup)
     (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
     (eval-after-load "auto-complete"
       '(add-to-list 'ac-modes 'geiser-repl-mode)))
 
-  (ome-install 'ac-geiser)
+  (when (or (executable-find "guile") (executable-find "racket"))
+    (ome-install 'geiser)
+    (ome-install 'ac-geiser))
 
   ;; (ome-install 'quack)
 #+END_SRC
