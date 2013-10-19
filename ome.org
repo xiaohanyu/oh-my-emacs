@@ -19,16 +19,17 @@ need one of them.
 
 #+NAME: ome-prerequisites
 #+CAPTION: Prerequisites for all oh-my-emacs module.
-|           | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|-----------+---------+--------------------+-----------+--------+----------+------------|
-| [[http://savannah.nongnu.org/projects/cvs][cvs]]       |         |                    |           |        |          | Yes        |
-| [[http://mercurial.selenic.com/][mercurial]] |         |                    |           |        |          | Yes        |
-| [[http://git-scm.com/][git]]       |         |                    |           |        |          | Yes        |
-| [[http://www.gnu.org/software/make/][make]]      |         |                    |           |        |          | Yes        |
-| [[http://www.gnu.org/software/texinfo/][texinfo]]   |         |                    |           |        |          | Yes        |
-| [[http://gcc.gnu.org/][gcc]]       |         |                    |           |        |          | Yes        |
-| [[http://www.gnu.org/software/automake/][automake]]  |         |                    |           |        |          | Yes        |
-| [[http://www.gnu.org/software/autoconf/][autoconf]]  |         |                    |           |        |          | Yes        |
+|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora     | Mac OS X | Mandatory? |
+|------------+---------+--------------------+-----------+------------+----------+------------|
+| [[http://savannah.nongnu.org/projects/cvs][cvs]]        |         | cvs                |           | cvs        |          | Yes        |
+| [[http://subversion.apache.org/][subversion]] |         | subversion         |           | subversion |          | Yes        |
+| [[http://mercurial.selenic.com/][mercurial]]  |         | mercurial          |           | mercurial  |          | Yes        |
+| [[http://git-scm.com/][git]]        |         | git                |           | git        |          | Yes        |
+| [[http://www.gnu.org/software/make/][make]]       |         | make               |           | make       |          | Yes        |
+| [[http://www.gnu.org/software/texinfo/][texinfo]]    |         | texinfo            |           | texinfo    |          | Yes        |
+| [[http://gcc.gnu.org/][gcc]]        |         | gcc                |           | gcc        |          | Yes        |
+| [[http://www.gnu.org/software/automake/][automake]]   |         | automake           |           | automake   |          | Yes        |
+| [[http://www.gnu.org/software/autoconf/][autoconf]]   |         | autoconf           |           | autoconf   |          | Yes        |
 
 * Introduction
   :PROPERTIES:
