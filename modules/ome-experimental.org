@@ -10,6 +10,21 @@ This file contains some experimental packages, which may be:
 
 Load necessary packages as you like.
 
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: experimental-el-get-packages
+  :END:
+#+NAME: experimental-el-get-packages
+#+CAPTION: El-get packages for ome-experimental module
+
+|                  | Status       | Description                                |
+|------------------+--------------+--------------------------------------------|
+| [[http://www.emacswiki.org/emacs/LaCarte][lacarte]]          | Recommended  | Access menubar in minibuffer command loop. |
+| [[http://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]]       | Experimental | Make [[http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html][Speedbar]] show in same frame.          |
+| [[https://github.com/aspiers/smooth-scrolling][smooth-scrolling]] | Recommended  | Emacs smooth scrolling package.            |
+| [[https://github.com/nflath/hungry-delete][hungry-delete]]    | Experimental | Enables hungry deletion in all modes.      |
+
 * Lacarte
   :PROPERTIES:
   :CUSTOM_ID: lacarte

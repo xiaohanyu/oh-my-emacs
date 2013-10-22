@@ -55,6 +55,14 @@ The latest version is at https://github.com/xiaohanyu/oh-my-emacs.
    :PROPERTIES:
    :CUSTOM_ID: learning
    :END:
+
+#+BEGIN_QUOTE
+People talk about getting used to a new editor, but over time, it is precisely
+the opposite that should happen --- the editor should get used to us.
+
+-- Vivek Haldar
+#+END_QUOTE
+
 This project won't teach you anything about how to use emacs or why use
 emacs. However, I'll give you some useful resources if you're new to emacs.
 
@@ -83,7 +91,7 @@ various good web sites, such as
 - [[http://alexott.net/en/emacs/][Alexott's Blog]] :: some really great articles about emacs
 - [[http://alexott.net/en/emacs/][emacser]] :: an excellent and comprehensive emacs blog written by Chinese
              users.
-
+- [[http://whattheemacsd.com/][whattheemacsd]] :: contains some really great tips.
 
 Wow, what a long journey, if you're tired, you can [[http://emacsrocks.com/][rock with emacs]].
 
