@@ -10,6 +10,36 @@ This file contains some experimental packages, which may be:
 
 Load necessary packages as you like.
 
+* Lacarte
+  :PROPERTIES:
+  :CUSTOM_ID: lacarte
+  :END:
+
+By default, oh-my-emacs disables =menu-bar-mode=. Of course you can turn it on
+by =M-x menu-bar-mode=, however, most of the time menubar in Emacs is useless.
+Unfortunately, there may be some times that we want to access the menubar just
+to find or execute oblivious command. For example, the prefix key of
+=outline-mode= is =C-c @=, which is quite hard to type, and I often forgot the
+normal keybindings of outline-minor-mode. The normal workflow for this case is
+divided into three steps:
+1. turn on the menubar by =M-x menu-bar-mode=
+2. find/execute the command you want
+3. turn off the menubar again by =M-x menu-bar-mode=
+
+Ah, a little tedious, isn't it? Fortunately, with [[http://www.emacswiki.org/emacs/LaCarte][lacarte]], I can just =M-x
+lacarte-execute-menu-command=, and it will lead me to the right place. Helm
+also provides a =helm-source-lacarte= for lacarte support. See [[https://github.com/emacs-helm/helm/blob/master/helm-misc.el][helm-misc.el]] for
+details.
+
+#+NAME: lacarte
+#+BEGIN_SRC emacs-lisp
+  (defun ome-lacarte-setup ()
+    (global-set-key (kbd "C-c M-x") 'lacarte-execute-command)
+    (global-set-key (kbd "C-c M-m") 'lacarte-execute-menu-command))
+
+  (ome-install 'lacarte)
+#+END_SRC
+
 * Sr-speedbar
   :PROPERTIES:
   :CUSTOM_ID: sr-speedbar
