@@ -15,6 +15,10 @@
 ;; know why.
 (setq debug-on-error t)
 
+;; believe me, you don't need menubar, toolbar nor scrollbar
+(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+  (when (fboundp mode) (funcall mode -1)))
+
 ;; load Org-mode from source when the ORG_HOME environment variable is set
 (setq org-home (getenv "ORG_HOME"))
 
@@ -28,15 +32,15 @@
 
 ;; load the ome from the `after-init-hook' so all packages are loaded
 (add-hook 'after-init-hook
- `(lambda ()
-    ;; remember this directory
-    (setq ome-dir
-          ,(file-name-directory (or load-file-name (buffer-file-name))))
-    ;; only load org-mode later if we didn't load it just now
-    ,(unless (and org-home
-                  (file-directory-p (expand-file-name "lisp" org-home)))
-       '(require 'org))
-    ;; load up the ome
-    (org-babel-load-file (expand-file-name "ome.org" ome-dir))))
+          `(lambda ()
+             ;; remember this directory
+             (setq ome-dir
+                   ,(file-name-directory (or load-file-name (buffer-file-name))))
+             ;; only load org-mode later if we didn't load it just now
+             ,(unless (and org-home
+                           (file-directory-p (expand-file-name "lisp" org-home)))
+                '(require 'org))
+             ;; load up the ome
+             (org-babel-load-file (expand-file-name "ome.org" ome-dir))))
 
 ;;; init.el ends here

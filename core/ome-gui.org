@@ -19,10 +19,6 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 * Basic GUI Settings
 #+NAME: gui-basics
 #+BEGIN_SRC emacs-lisp
-  ;; believe me, you don't need menubar, toolbar nor scrollbar
-  (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
-    (when (fboundp mode) (funcall mode -1)))
-
   ;; show column number and line number
   (dolist (mode '(column-number-mode line-number-mode))
     (when (fboundp mode) (funcall mode t)))
