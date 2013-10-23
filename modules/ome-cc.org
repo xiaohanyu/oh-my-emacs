@@ -79,8 +79,8 @@ example, you need to know what the difference between =setq= and
 
   (defun ome-c-mode-common-hook ()
     (add-to-list 'c-cleanup-list 'defun-close-semi)
-    (c-toggle-hungry-state)
-    (c-toggle-auto-newline))
+    ;; (c-toggle-auto-newline)
+    (c-toggle-hungry-state))
 
   ;; this will affect all modes derived from cc-mode, like
   ;; java-mode, php-mode, etc
