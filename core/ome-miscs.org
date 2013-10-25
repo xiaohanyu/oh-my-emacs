@@ -31,7 +31,6 @@ This file contains things that still don't find a good place to put, :-).
 | [[https://github.com/Fuco1/smartparens][smartparens]]        | Required    | The ulitimate paren management solution for Emacs. |
 | [[http://emacs-w3m.namazu.org/][emacs-w3m]]          | Recommended | Browsing HTML docs in Emacs.                       |
 | [[https://github.com/syohex/emacs-quickrun][quickrun]]           | Recommended | Just as its name said.                             |
-| [[http://www.emacswiki.org/emacs/LaCarte][lacarte]]            | Recommended | Access menubar in minibuffer command loop.         |
 
 * Enable some dangerous commands
 
@@ -293,6 +292,9 @@ some time to master these wonderful commands, which will make your life easier.
 #+BEGIN_SRC emacs-lisp
   (defun ome-create-newline-and-enter-sexp (&rest _ignored)
       "Open a new brace or bracket expression, with relevant newlines and indent. "
+      (previous-line)
+      (indent-according-to-mode)
+      (forward-line)
       (newline)
       (indent-according-to-mode)
       (forward-line -1)
