@@ -116,10 +116,32 @@ want most. Fortunately, a good guy ported [[https://github.com/nflath/hungry-del
 independent package.
 
 #+NAME: hungry-delete
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
   (defun ome-hungry-delete-setup ()
     (dolist (hook '(text-mode-hook prog-mode-hook comint-mode-hook))
       (add-hook hook 'turn-on-hungry-delete-mode)))
 
   (ome-install 'hungry-delete)
+#+END_SRC
+
+* Fill-Column-Indicator
+  :PROPERTIES:
+  :CUSTOM_ID: fill-column-indicator
+  :END:
+
+"Many modern editors and IDEs can graphically indicate the location of the fill
+column by drawing a thin line (in design parlance, a "rule") down the length of
+the editing window. Fill-column-indicator implements this facility in Emacs
+[[https://github.com/alpaker/Fill-Column-Indicator][Fill-Column-Indicator]]."
+
+This package still has some conflicts with other oh-my-emacs packages, so I
+put it in ome-experimental module instead of core.
+
+#+NAME: fill-column-indicator
+#+BEGIN_SRC emacs-lisp :tangle no
+  (defun ome-fill-column-indicator-setup ()
+    (add-hook 'text-mode-hook 'fci-mode)
+    (add-hook 'prog-mode-hook 'fci-mode))
+
+  (ome-install 'fill-column-indicator)
 #+END_SRC
