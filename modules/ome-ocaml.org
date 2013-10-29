@@ -1,0 +1,92 @@
+#+TITLE: Oh My Emacs CC
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: ocaml-prerequisites
+  :END:
+
+#+NAME: ocaml-prerequisites
+#+CAPTION: Prerequisites for ome-ocaml module
+|       | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|-------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://ocaml.org/][ocaml]] |         | ocaml              |           |        |          | Yes        |
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: ocaml-el-get-packages
+  :END:
+
+#+NAME: ocaml-el-get-packages
+#+CAPTION: El-get packages for ome-ocaml module
+|             | Status   | Description                                    |
+|-------------+----------+------------------------------------------------|
+| [[http://caml.inria.fr/svn/ocaml/trunk/emacs][caml-mode]]   | Required | OCaml code editing commands for Emacs         |
+| [[http://tuareg.forge.ocamlcore.org/][tuareg-mode]] | Required | A GOOD Emacs mode to edit Objective Caml code. |
+
+* Things you should know about OCaml
+I'm a newbie in OCaml, so I can't provide too much help about how to do OCaml
+programming effectively in Emacs. [[https://realworldocaml.org/beta3/en/html/installation.html][Real World Ocaml]] provide really detailed
+instructions about how to install necessary tools to develop with
+OCaml. There're also some good resources about OCaml:
+- http://batteries.forge.ocamlcore.org/
+- http://www.camlcity.org/
+- http://ocaml.org/
+- http://search.ocaml.jp/: OCaml API search
+- http://caml.inria.fr/index.en.html: The Caml language
+
+* OCaml-mode
+  :PROPERTIES:
+  :CUSTOM_ID: ocaml-mode
+  :END:
+
+Unlike python, there are not too many choices for OCaml in Emacs.
+
+#+NAME: ocaml-mode
+#+BEGIN_SRC emacs-lisp
+  ;; Keep an empty hook function for later customization.
+  (defun ome-caml-mode-setup ())
+
+  (when (executable-find "ocaml")
+    (ome-install 'caml-mode))
+#+END_SRC
+
+* Tuareg-mode
+  :PROPERTIES:
+  :CUSTOM_ID: tuareg
+  :END:
+
+You may wonder what's the relations between =caml-mode= and =tuareg-mode=? In
+fact, you can use =tuareg-mode= without =caml-mode=, but some basic functions
+depends on =caml-mode=, so we install both. See typerex's [[http://www.typerex.org/faq.html][FAQ]] for details.
+
+#+BEGIN_SRC emacs-lisp
+  (defun ome-tuareg-mode-setup ()
+    ;; The following settings comes from tuareg-mode's README
+    ;; use new SMIE engine
+    (setq tuareg-use-smie t)
+    ;; Indent `=' like a standard keyword.
+    (setq tuareg-lazy-= t)
+    ;; Indent [({ like standard keywords.
+    (setq tuareg-lazy-paren t)
+    ;; No indentation after `in' keywords.
+    (setq tuareg-in-indent 0)
+    ;; set ocaml library path
+    (setq tuareg-library-path "/usr/lib/ocaml")
+    (add-hook 'tuareg-mode-hook
+              (lambda ()
+                (define-key tuareg-mode-map (kbd "RET")
+                  'newline-and-indent))))
+
+  (when (executable-find "ocaml")
+    (ome-install 'tuareg-mode))
+#+END_SRC
+
+* Todos
+- Integrate [[https://github.com/def-lkb/merlin][merlin]] for auto-complete support.
+- Define a =C-c C-z= keybinding which switch to OCaml's REPL buffer, just like
+  SLIME/Geiser.
+- More investigation on [[http://www.typerex.org/][Typerex]].
+- Find a portable way to integrate [[https://github.com/diml/utop][utop]] to Emacs.

@@ -39,3 +39,6 @@ url
 
 # oh-my-emacs doc
 doc
+
+# abbrev
+abbrev_defs
