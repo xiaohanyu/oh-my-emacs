@@ -27,11 +27,11 @@ Note:
 
 #+NAME: clojure-el-get-packages
 #+CAPTION: El-get packages for ome-clojure module
-|                 | Status   | Description                                    |
-|-----------------+----------+------------------------------------------------|
-| [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]]    | Required | Major mode for Clojure.                        |
-| [[https://github.com/clojure-emacs/nrepl.el][nrepl.el]]        | Required | Nrepl to Clojure is what slime to Common Lisp. |
-| [[https://github.com/purcell/ac-nrepl.git][ac-nrepl]]        | Required | AC backend for nrepl.                          |
+|              | Status   | Description                               |
+|--------------+----------+-------------------------------------------|
+| [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] | Required | Major mode for Clojure.                   |
+| [[https://github.com/clojure-emacs/cider][CIDER]]        | Required | CIDER is a Clojure IDE and REPL for Emacs |
+| [[https://github.com/purcell/ac-nrepl.git][ac-nrepl]]     | Required | AC backend for nrepl.                     |
 
 * Clojure
   :PROPERTIES:
@@ -43,7 +43,7 @@ languages. Clojure extends the code-as-data system beyond parenthesized lists
 (s-expressions) to vectors and maps.
 
 Since Clojure is a Lisp dialect, it should work the SLIME way. Yeah, first
-comes [[https://github.com/technomancy/swank-clojure][swank-clojure]], then [[https://github.com/clojure-emacs/nrepl.el][nrepl.el]]. The only thing you need to install is
+comes [[https://github.com/technomancy/swank-clojure][swank-clojure]], then [[https://github.com/clojure-emacs/cider][CIDER]][1]. The only thing you need to install is
 [[http://leiningen.org/][leiningen]] 2.x. I recommend you to install it manually, since not all [[https://github.com/technomancy/leiningen/wiki/Packaging][package
 manager]] provides the latest version.
 
@@ -56,7 +56,7 @@ lein version
 
 Or you can see leiningen's [[https://github.com/technomancy/leiningen/wiki/Upgrading][wiki]] for upgrading details.
 
-Now, just open a clojure file, then =nrepl-jack-in=, and you can program
+Now, just open a clojure file, then =cider-jack-in=, and you can program
 Clojure the SLIME way. [[http://vimeo.com/22798433][Here]] is an awesome live demo to demonstrate the Clojure
 workflow.
 
@@ -66,9 +66,13 @@ It's really really awesome, ah?
 #+BEGIN_SRC emacs-lisp
   (ome-install 'clojure-mode)
 
-  (defun ome-nrepl-setup ()
-    (add-hook 'nrepl-interaction-mode-hook
-              'nrepl-turn-on-eldoc-mode)
+  (defun ome-cider-setup ()
+    (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+    (setq cider-repl-tab-command 'indent-for-tab-command)
+    (setq cider-repl-pop-to-buffer-on-connect nil)
+    (setq cider-popup-stacktraces nil)
+    (setq cider-repl-popup-stacktraces t)
+    (setq cider-auto-select-error-buffer t)
     (setq nrepl-hide-special-buffers t)
     (setq nrepl-buffer-name-separator "-")
     (setq nrepl-buffer-name-show-port t))
@@ -76,10 +80,10 @@ It's really really awesome, ah?
   (ome-install 'cider)
 
   (defun ome-ac-nrepl-setup ()
-    (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-    (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+    (add-hook 'cider-mode-hook 'ac-nrepl-setup)
+    (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
     (eval-after-load "auto-complete"
-      '(add-to-list 'ac-modes 'nrepl-mode)))
+      '(add-to-list 'ac-modes 'cider-repl-mode)))
 
   (ome-install 'ac-nrepl)
 #+END_SRC
@@ -87,3 +91,6 @@ It's really really awesome, ah?
 * Todos
 - The boot up speed of JVM is too slow, so we may need to refer to
   http://icylisper.github.io/jark/.
+
+* Footnotes
+[1] CIDER was formerly known as and renamed from =nrepl.el=.
