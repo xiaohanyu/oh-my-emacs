@@ -393,8 +393,10 @@ Files in oh-my-emacs =core= will be loaded by default:
 Files in oh-my-emacs =modules= is optional, you can load necessary one when
 you really need it.
 - [[file:ome-cc.org][ome-cc.org]]: main settings for =cc-mode=.
-- [[file:ome-lisp.org][ome-lisp.org]]: ah, settings for lisp dialects, including emacs lisp, common
-  lisp, scheme and clojure.
+- [[file:ome-emacs-lisp.org][ome-emacs-lisp.org]]: settings for emacs-lisp.
+- [[file:ome-common-lisp.org][ome-common-lisp.org]]: settings for Common Lisp, mainly [[http://common-lisp.net/project/slime/][SLIME]].
+- [[file:ome-clojure.org][ome-clojure.org]]: settings for Clojure.
+- [[file:ome-scheme.org][ome-scheme.org]]: settings for Scheme.
 - [[file:ome-python.org][ome-python.org]]: python settings, life is short, =elpy= is amazing.
 - [[file:ome-ruby.org][ome-ruby.org]]: Ruby support including =inf-ruby= and by =smartparens-ruby=.
 - [[file:ome-tex.org][ome-tex.org]]: AUCTeX and CDLaTeX for \TeX{} editing.
@@ -412,7 +414,10 @@ you really need it.
   (ome-load "core/ome-advanced.org")
   (ome-load "modules/ome-cc.org")
   (ome-load "modules/ome-java.org")
-  (ome-load "modules/ome-lisp.org")
+  (ome-load "modules/ome-emacs-lisp.org")
+  (ome-load "modules/ome-common-lisp.org")
+  (ome-load "modules/ome-clojure.org")
+  (ome-load "modules/ome-scheme.org")
   (ome-load "modules/ome-python.org")
   (ome-load "modules/ome-ruby.org")
   (ome-load "modules/ome-tex.org")

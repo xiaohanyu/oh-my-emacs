@@ -1,0 +1,152 @@
+#+TITLE: Oh My Emacs Lisps
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file contains some settings for [[* Common Lisp][Common Lisp]].
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: common-lisp-prerequisites
+  :END:
+
+#+NAME: common-lisp-prerequisites
+#+CAPTION: Prerequisites for ome-common-lisp module
+|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|------------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.sbcl.org/][SBCL]]       |         | sbcl               |           |        |          | Yes        |
+| [[http://ccl.clozure.com/][Clozure CL]] |         | [web]              |           |        |          | No         |
+| [[http://www.clisp.org/][CLISP]]      |         | clisp              |           |        |          | No         |
+
+Note:
+- [[http://www.sbcl.org/][SBCL]] or [[http://ccl.clozure.com/][Clozure CL]] or [[http://www.clisp.org/][CLISP]] as a Common Lisp implementation. I recommend
+  SBCL since it has good performance, and is easy to install via package
+  manager.
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: common-lisp-el-get-packages
+  :END:
+
+#+NAME: common-lisp-el-get-packages
+#+CAPTION: El-get packages for ome-common-lisp module
+|                 | Status   | Description                                    |
+|-----------------+----------+------------------------------------------------|
+| [[http://common-lisp.net/project/slime/][slime]]           | Required | One of the most amazing packages for Emacs.    |
+| [[https://github.com/purcell/ac-slime][ac-slime]]        | Required | AC backend for slime.                          |
+
+* Common Lisp
+  :PROPERTIES:
+  :CUSTOM_ID: common-lisp
+  :END:
+
+[[http://common-lisp.net/project/slime/][SLIME]] is the Superior Lisp Interaction Mode for Emacs, here're some [[http://www.cliki.net/SLIME%2520Features][features]]
+and [[http://www.cliki.net/SLIME%2520Tips][tips]]. Believe me, SLIME in Emacs is a subversive developing environment for
+Common Lisp, it is the ultimate solution for languages with a [[http://en.wikipedia.org/wiki/Read%25E2%2580%2593eval%25E2%2580%2593print_loop][REPL]]. SLIME is
+the bridge between an Editor(here, Emacs for example, vim users have a [[http://www.vim.org/scripts/script.php?script_id%3D2531][slimv]]
+which is a fork of SLIME to vim) and a running Common Lisp environment. It
+makes your workflow so smooth and enjoyable that you will miss it so much when
+working with other REPL languages such as Python/Ruby/JavaScript[1], etc.
+
+Some good resources about SLIME:
+- [[http://bc.tech.coop/blog/081209.html][Understanding SLIME (Using Emacs and Lisp Cooperatively)]], a really concise
+  explanation of SLIME's architecture, together with lots of valuable links,
+  from which you will understand why SLIME is so great and amazing.
+- [[http://lisp-book.org/contents/chslime.pdf][Chapter 18. SLIME]] from [[http://lisp-book.org/contents/chslime.pdf][Lisp Outside the Box]] provides a really detailed guide
+  to SLIME.
+- [[http://common-lisp.net/project/slime/doc/html/][SLIME User Manual]] provides expert information and is your lifelong friend.
+- For Chinese, [[http://www.feime.net/2013/%25E6%2596%25B0%25E5%25B9%25B4%25E7%25AC%25AC%25E4%25B8%2580%25E7%25AF%2587-%25E7%25BB%2599lisp%25E6%2596%25B0%25E6%2589%258B%25E4%25BB%258B%25E7%25BB%258D%25E4%25B8%258Bslime%25E8%25BF%2599%25E4%25B8%25AA%25E7%25A5%259E%25E5%2599%25A8/][Albertlee's Blog]] provides a detailed overview of SLIME.
+- [[http://ghostopera.org/blog/2012/06/24/the-newbie-guide-to-common-lisp/][The Newbie Guide to Getting Started on Common Lisp]] provides a concise and
+  helpful guide to start programming with Common Lisp.
+
+To use SLIME, you must install an [[http://www.cliki.net/common%2520lisp%2520implementation][Lisp Implementation]], just like if you want to do
+C programming, you must install a C compiler such as GCC. Here I recommend [[http://www.sbcl.org/][SBCL]]
+for you. You can get it by =sudo apt-get install sbcl= in Ubuntu/Mint/Debian.
+
+[[http://www.lispworks.com/][LispWorks]] provides a comprehensive documentation for Common Lisp called
+[[http://www.lispworks.com/documentation/HyperSpec/Front/][hyperspec]], which integrates quite well with SLIME through
+=slime-documentation-lookup=. You can get by =sudo apt-get install hyperspec=
+in Ubuntu/Mint/Debian. To use hyperspec in ubuntu/mint, you can: =sudo apt-get
+install hyperspec=, which also set proper =common-lisp-hyperspec-root= for
+you. On other Linux distributions, maybe you need to set it manually to tell
+SLIME where to find the hyperspec document.
+
+You can also get [[http://en.wikipedia.org/wiki/Common_Lisp_the_Language][CLTL]] by =sudo apt-get install cltl=, which is the defacto
+standard for Common Lisp before the ANSI standard.
+
+Oh-my-emacs also configure [[http://emacs-w3m.namazu.org/][emacs-w3m]] as the default documentation browser for
+SLIME.
+
+Oh-my-emacs integrates [[https://github.com/purcell/ac-slime][ac-slime]] for instant in-buffer completion, and should be
+self-adapted to your system, by which I mean, it will use an available lisp
+implementation by finding it using =executable-find= instead of specifying a
+fixed file path like =/usr/bin/sbcl=.
+
+Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
+
+#+NAME: slime
+#+BEGIN_SRC emacs-lisp
+  (defun ome-slime-setup ()
+    ;; Define multiple lisp backends
+    ;; see http://nklein.com/2010/05/getting-started-with-clojureemacsslime/
+    (defmacro defslime-start (name lisp-impl)
+      `(when (executable-find (symbol-name ,lisp-impl))
+         (defun ,name ()
+           (interactive)
+           (let ((slime-default-lisp ,lisp-impl))
+             (slime)))))
+
+    (setq slime-lisp-implementations
+          `((sbcl (,(executable-find "sbcl")) :coding-system utf-8-unix)
+            (ccl (,(executable-find "ccl")))
+            (ccl64 (,(executable-find "ccl64")))
+            (clisp (,(executable-find "clisp")))))
+
+    (defslime-start slime-sbcl 'sbcl)
+    (defslime-start slime-ccl 'ccl)
+    (defslime-start slime-ccl64 'ccl64)
+    (defslime-start slime-clisp 'clisp)
+
+    ;; If you use ubuntu/mint, then "sudo apt-get install hyperspec" will set
+    ;; this for you in a file like "/etc/emacs/site-start.d/60hyperspec.el"
+    ;; (setq common-lisp-hyperspec-root "/usr/share/doc/hyperspec/")
+
+    ;; Open SBCL rc file in lisp-mode
+    (add-to-list 'auto-mode-alist '("\\.sbclrc$" . lisp-mode))
+
+    (global-set-key (kbd "C-c s") 'slime-selector)
+    (setq slime-net-coding-system 'utf-8-unix)
+    (setq slime-complete-symbol*-fancy t)
+    (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+    (setq inferior-lisp-program
+          (or (executable-find "sbcl")
+              (executable-find "ccl")
+              (executable-find "ccl64")
+              (executable-find "clisp")))
+    (slime-setup '(slime-fancy
+                   slime-indentation
+                   slime-banner
+                   slime-highlight-edits)))
+
+  (ome-install 'slime)
+
+  (defun ome-ac-slime-setup ()
+    (add-hook 'slime-mode-hook
+              (lambda ()
+                (set-up-slime-ac t)))     ; use slime-fuzzy-complete-symbol
+    (add-hook 'slime-repl-mode-hook
+              (lambda ()
+                (set-up-slime-ac t)))
+    (eval-after-load "auto-complete"
+      '(add-to-list 'ac-modes 'slime-repl-mode)))
+
+  (ome-install 'ac-slime)
+#+END_SRC
+
+* Todos
+- Integrate [[http://www.foldr.org/~michaelw/emacs/redshank/][redshank]]?
+- Find a method to rebase the source tree of various CL implementations, which
+  is useful for =slime-edit-definition=.
+
+* Footnotes
+[1] [[https://github.com/swank-js/swank-js][swank-js]], [[http://common-lisp.net/~crhodes/swankr/][swankr]]

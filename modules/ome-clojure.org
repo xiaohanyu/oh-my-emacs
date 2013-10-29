@@ -1,0 +1,89 @@
+#+TITLE: Oh My Emacs Lisps
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file contains some settings for [[* Clojure][Clojure]] programming language.
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: clojure-prerequisites
+  :END:
+
+#+NAME: clojure-prerequisites
+#+CAPTION: Prerequisites for ome-clojure module
+|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|------------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://leiningen.org/][Leiningen]]  | [web]   | [web]              | [web]     | [web]  | [web]    | Yes        |
+
+Note:
+- [[http://leiningen.org/][Leiningen]] for Clojure. I recommend you install leiningen from the official
+  website to keep update with the lastest version.
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: clojure-el-get-packages
+  :END:
+
+#+NAME: clojure-el-get-packages
+#+CAPTION: El-get packages for ome-clojure module
+|                 | Status   | Description                                    |
+|-----------------+----------+------------------------------------------------|
+| [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]]    | Required | Major mode for Clojure.                        |
+| [[https://github.com/clojure-emacs/nrepl.el][nrepl.el]]        | Required | Nrepl to Clojure is what slime to Common Lisp. |
+| [[https://github.com/purcell/ac-nrepl.git][ac-nrepl]]        | Required | AC backend for nrepl.                          |
+
+* Clojure
+  :PROPERTIES:
+  :CUSTOM_ID: clojure
+  :END:
+
+[[http://www.clojure.org][Clojure]] is a modern Lisp on top of JVM, it is a member of the Lisp family of
+languages. Clojure extends the code-as-data system beyond parenthesized lists
+(s-expressions) to vectors and maps.
+
+Since Clojure is a Lisp dialect, it should work the SLIME way. Yeah, first
+comes [[https://github.com/technomancy/swank-clojure][swank-clojure]], then [[https://github.com/clojure-emacs/nrepl.el][nrepl.el]]. The only thing you need to install is
+[[http://leiningen.org/][leiningen]] 2.x. I recommend you to install it manually, since not all [[https://github.com/technomancy/leiningen/wiki/Packaging][package
+manager]] provides the latest version.
+
+The general way to install lastest stable leiningen is:
+#+BEGIN_SRC sh
+wget -O /tmp/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein
+sudo mv /tmp/lein /usr/bin/lein
+lein version
+#+END_SRC
+
+Or you can see leiningen's [[https://github.com/technomancy/leiningen/wiki/Upgrading][wiki]] for upgrading details.
+
+Now, just open a clojure file, then =nrepl-jack-in=, and you can program
+Clojure the SLIME way. [[http://vimeo.com/22798433][Here]] is an awesome live demo to demonstrate the Clojure
+workflow.
+
+It's really really awesome, ah?
+
+#+NAME: clojure
+#+BEGIN_SRC emacs-lisp
+  (ome-install 'clojure-mode)
+
+  (defun ome-nrepl-setup ()
+    (add-hook 'nrepl-interaction-mode-hook
+              'nrepl-turn-on-eldoc-mode)
+    (setq nrepl-hide-special-buffers t)
+    (setq nrepl-buffer-name-separator "-")
+    (setq nrepl-buffer-name-show-port t))
+
+  (ome-install 'cider)
+
+  (defun ome-ac-nrepl-setup ()
+    (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+    (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+    (eval-after-load "auto-complete"
+      '(add-to-list 'ac-modes 'nrepl-mode)))
+
+  (ome-install 'ac-nrepl)
+#+END_SRC
+
+* Todos
+- The boot up speed of JVM is too slow, so we may need to refer to
+  http://icylisper.github.io/jark/.
