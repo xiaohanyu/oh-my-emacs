@@ -18,16 +18,12 @@ This file contains some settings for =cc-mode=.
 | [[http://clang.llvm.org/][clang]]      |         | clang               |           |        |                 | Yes        |
 | [[http://www.freedesktop.org/wiki/Software/pkg-config/][pkg-config]] |         | pkg-config          |           |        |                 | Yes        |
 | [[http://www.cmake.org/][CMake]]      |         | cmake               |           |        |                 | No         |
-| [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]]    |         | doxygen             |           |        |                 | No         |
 | [[http://cscope.sourceforge.net/][Cscope]]     |         | cscope              |           |        |                 | No         |
 
 Note:
 - [[http://www.xmlsoft.org/][libxml2]], you need to =sudo apt-get install libxml2 libxml2-dev= in
   Ubuntu, and =brew install libxml2 libxslt= =brew link --force libxml2
   libxslt= in Mac with homebrew. There is required for el-get to build doxymacs.
-- [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]], even if you don't have doxygen installed, you can still use
-  doxymacs to insert doxygen-style comments. So I make this dependency
-  optional.
 
 * El-get packages
   :PROPERTIES:
@@ -40,7 +36,6 @@ Note:
 |---------------------+-------------+---------------------------------|
 | cc-mode             | Builtin     | Where all the magic starts.     |
 | [[http://www.itk.org/Wiki/CMake_Editors_Support][cmake-mode]]          | Recommended | Editing support for CMake.      |
-| [[http://doxymacs.sourceforge.net/][doxymacs]]            | Recommended | Literate comments for cc-mode.  |
 | [[https://github.com/vmfhrmfoaj/cscope-el.git][xcscope]]             | Recommended | Code indexing and browsing.     |
 | [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]] | Required    | Semantic completiong for C/C++. |
 
@@ -122,43 +117,6 @@ you have to.
 #+BEGIN_SRC emacs-lisp
   (when (executable-find "cmake")
     (ome-install 'cmake-mode))
-#+END_SRC
-
-* Documentation with Doxymacs
-  :PROPERTIES:
-  :CUSTOM_ID: doxymacs
-  :END:
-
-#+BEGIN_QUOTE
-Doxygen is the de facto standard tool for generating documentation from
-annotated C++ sources, but it also supports other popular programming languages
-such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and
-UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.
-
--- http://www.doxygen.org/
-#+END_QUOTE
-
-[[http://doxymacs.sourceforge.net/][Doxymacs]] brings the power of doxygen to Emacs, you can easily insert Doxygen
-style comments in emacs. The default keybindings are:
-- =C-c d ?= look up documentation for the symbol under the point.
-- =C-c d r= rescan your Doxygen tags file.
-- =C-c d f= insert a Doxygen comment for the next function.
-- =C-c d i= insert a Doxygen comment for the current file.
-- =C-c d ;= insert a Doxygen comment for a member variable on the current line
-  (like M-;).
-- =C-c d m= insert a blank multi-line Doxygen comment.
-- =C-c d s= insert a blank single-line Doxygen comment.
-- =C-c d @= insert grouping comments around the current region.
-
-If you like, you can even integrate Doxygen to CMake workflow, see [[http://majewsky.wordpress.com/2010/08/14/tip-of-the-day-cmake-and-doxygen/][here]].
-
-#+NAME: doxymacs
-#+BEGIN_SRC emacs-lisp
-  (defun ome-doxymacs-setup ()
-    (add-hook 'c-mode-common-hook 'doxymacs-mode)
-    (add-hook 'c-mode-common-hook 'doxymacs-font-lock))
-
-  (ome-install 'doxymacs)
 #+END_SRC
 
 * Indexing with Cscope

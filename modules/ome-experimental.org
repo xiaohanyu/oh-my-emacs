@@ -10,6 +10,22 @@ This file contains some experimental packages, which may be:
 
 Load necessary packages as you like.
 
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: experimental-prerequisites
+  :END:
+
+#+NAME: experimental-prerequisites
+#+CAPTION: Prerequisites for ome-experimental module
+|         | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]] |         | doxygen            |           |        |          | No         |
+
+Note:
+- [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]], even if you don't have doxygen installed, you can still use
+  doxymacs to insert doxygen-style comments. So I make this dependency
+  optional. However, so many Mac OS users have problems with this el-get
+  package, so I move
 
 * El-get packages
   :PROPERTIES:
@@ -24,6 +40,12 @@ Load necessary packages as you like.
 | [[http://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]]       | Experimental | Make [[http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html][Speedbar]] show in same frame.          |
 | [[https://github.com/aspiers/smooth-scrolling][smooth-scrolling]] | Recommended  | Emacs smooth scrolling package.            |
 | [[https://github.com/nflath/hungry-delete][hungry-delete]]    | Experimental | Enables hungry deletion in all modes.      |
+| [[http://doxymacs.sourceforge.net/][doxymacs]]         | Experimental | Literate comments for cc-mode.             |
+
+Note:
+- [[http://doxymacs.sourceforge.net/][doxymacs]]: There're many Mac OS users having problems building with this
+  package, so I have to move this package from ome-cc module to
+  ome-experimental module. See [[https://github.com/xiaohanyu/oh-my-emacs/issues/17][github issue]] for details.
 
 * Lacarte
   :PROPERTIES:
@@ -144,4 +166,41 @@ put it in ome-experimental module instead of core.
     (add-hook 'prog-mode-hook 'fci-mode))
 
   (ome-install 'fill-column-indicator)
+#+END_SRC
+
+* Documentation with Doxymacs in CC-mode
+  :PROPERTIES:
+  :CUSTOM_ID: doxymacs
+  :END:
+
+#+BEGIN_QUOTE
+Doxygen is the de facto standard tool for generating documentation from
+annotated C++ sources, but it also supports other popular programming languages
+such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and
+UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.
+
+-- http://www.doxygen.org/
+#+END_QUOTE
+
+[[http://doxymacs.sourceforge.net/][Doxymacs]] brings the power of doxygen to Emacs, you can easily insert Doxygen
+style comments in emacs. The default keybindings are:
+- =C-c d ?= look up documentation for the symbol under the point.
+- =C-c d r= rescan your Doxygen tags file.
+- =C-c d f= insert a Doxygen comment for the next function.
+- =C-c d i= insert a Doxygen comment for the current file.
+- =C-c d ;= insert a Doxygen comment for a member variable on the current line
+  (like M-;).
+- =C-c d m= insert a blank multi-line Doxygen comment.
+- =C-c d s= insert a blank single-line Doxygen comment.
+- =C-c d @= insert grouping comments around the current region.
+
+If you like, you can even integrate Doxygen to CMake workflow, see [[http://majewsky.wordpress.com/2010/08/14/tip-of-the-day-cmake-and-doxygen/][here]].
+
+#+NAME: doxymacs
+#+BEGIN_SRC emacs-lisp
+  (defun ome-doxymacs-setup ()
+    (add-hook 'c-mode-common-hook 'doxymacs-mode)
+    (add-hook 'c-mode-common-hook 'doxymacs-font-lock))
+
+  (ome-install 'doxymacs)
 #+END_SRC
