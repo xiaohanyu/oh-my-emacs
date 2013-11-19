@@ -18,7 +18,7 @@ Internet with Firefox/Chrome(not with [[http://emacs-w3m.namazu.org/][emacs-w3m]
 coding and writing.
 
 This project was born one day I want to reorganize my messy =.emacs.d=. I've
-tried all the famous =.emacs.d= projects(such as [[https://github.com/bbatsov/prelude][prelue]], [[https://github.com/technomancy/emacs-starter-kit][starter-kit]], etc) but
+tried all the famous =.emacs.d= projects(such as [[https://github.com/bbatsov/prelude][prelude]], [[https://github.com/technomancy/emacs-starter-kit][starter-kit]], etc) but
 none of them works the way I want it to.
 
 Then I found [[https://github.com/eschulte/emacs24-starter-kit][emacs24-starter-kit]], I was deeply attracted by its literate way
