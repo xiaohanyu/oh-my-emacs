@@ -61,6 +61,7 @@ the *Prerequisites* sections from oh-my-emacs modules. Basically, you need to
 install the following packages in you operating system, which is the mandatory
 prerequisites of [[https://github.com/xiaohanyu/oh-my-emacs/blob/master/ome.org][ome.org]]:
 - [[http://savannah.nongnu.org/projects/cvs][cvs]]
+- [[http://subversion.apache.org/][subversion]]
 - [[http://mercurial.selenic.com/][mercurial]]
 - [[http://git-scm.com/][git]]
 - [[http://www.gnu.org/software/make/][make]]

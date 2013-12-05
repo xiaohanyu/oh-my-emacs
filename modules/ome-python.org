@@ -10,11 +10,13 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: python-prerequisites
 #+CAPTION: Prerequisites for ome-python module
-|         | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|---------+---------+--------------------+-----------+--------+----------+------------|
-| [[http://www.python.org/][Python]]  |         | python             |           |        |          | Yes        |
-| [[http://www.pip-installer.org/en/latest/][pip]]     |         | python-pip         |           |        |          | Yes        |
-| [[http://ipython.org/][IPython]] |         | ipython            |           |        |          | No         |
+|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|------------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.python.org/][Python]]     |         | python             |           |        |          | Yes        |
+| [[http://www.pip-installer.org/en/latest/][pip]]        |         | python-pip         |           |        |          | Yes        |
+| [[http://ipython.org/][IPython]]    |         | ipython            |           |        |          | No         |
+| [[http://nose.readthedocs.org/en/latest/][nose]]       |         | [pip]              | [pip]     | [pip]  | [pip]    | No         |
+| [[http://www.virtualenv.org/en/latest/][virtualenv]] |         | [pip]              | [pip]     | [pip]  | [pip]    | No         |
 
 Notes:
 - [[http://www.python.org/][Python]], currently, I only tested Python 2.
@@ -114,6 +116,10 @@ instead. Please =C-h f elpy-enable RET= to get details.
 Note: currently, =virtualenv.el=, one of the dependencies of elpy, still has
 some [[https://github.com/jorgenschaefer/elpy/issues/144][problems]], the author of =elpy= is considering to replace =virtualenv.el=
 with his newly-written =pyvenv.el=, see [[https://github.com/jorgenschaefer/elpy/issues/149][here]] for details.
+
+Also, elpy integrates with [[http://nose.readthedocs.org/en/latest/][nosetests]], =C-c C-t= will run nose on your
+project. So you should =pip install nose= if you want to use nosetests with
+elpy.
 
 #+NAME: elpy
 #+BEGIN_SRC emacs-lisp
