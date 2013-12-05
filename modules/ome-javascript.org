@@ -3,10 +3,10 @@
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
-As with python, there're many options to do JavaScript programming in Emacs,
+As with python, there're many choices to do JavaScript programming in Emacs,
 however, IMHO, none of them are perfect, and easy to use. I've spent weeks of
 spare time to experience various emacs packages for JavaScript, and only
-figured out a not too bad solution based on [[https://github.com/thomblake/js3-mode][js3-mode]], [[http://js-comint-el.sourceforge.net/][js-comint]], and [[https://github.com/marijnh/tern][tern]].
+figured out a not too bad solution based on [[https://github.com/thomblake/js3-mode][js3-mode]], [[https://github.com/abicky/nodejs-repl.el][nodejs-repl]], and [[https://github.com/marijnh/tern][tern]].
 
 * Prerequisites
   :PROPERTIES:
@@ -18,6 +18,7 @@ figured out a not too bad solution based on [[https://github.com/thomblake/js3-m
 |        | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
 |--------+---------+--------------------+-----------+--------+----------+------------|
 | [[http://nodejs.org/][nodejs]] |         | nodejs             |           |        |          | Yes        |
+| [[http://ternjs.net/][tern]]   |         | [npm]              | [npm]     | [npm]  | [npm]    | Yes        |
 
 * El-get packages
   :PROPERTIES:
@@ -29,6 +30,7 @@ figured out a not too bad solution based on [[https://github.com/thomblake/js3-m
 |             | Status     | Description                                         |
 |-------------+------------+-----------------------------------------------------|
 | [[https://github.com/thomblake/js3-mode][js3-mode]]    | Required   | A chimeric fork of js2-mode and js-mode             |
+| [[https://github.com/marijnh/tern][tern]]        | Required   | A great JavaScript code analyzer                    |
 | [[https://github.com/mooz/js2-mode][js2-mode]]    | Deprecated | Parse JavaScript to AST using elisp                 |
 | [[https://github.com/swank-js/swank-js][swank-js]]    | Deprecated | Swank backend for Node.JS and in-browser JavaScript |
 | [[https://github.com/skeeto/skewer-mode][skewer-mode]] | Deprecated | Browser JavaScript REPL in Emacs.                   |
@@ -76,6 +78,58 @@ way to solve this.
     (add-to-list 'ac-modes 'js3-mode))
 
   (ome-install 'js3-mode)
+#+END_SRC
+
+* Tern
+  :PROPERTIES:
+  :CUSTOM_ID: tern
+  :END:
+
+Tern is a stand-alone code-analysis engine for JavaScript. It is written in
+JavaScript, and capable of running both on [[http://nodejs.org/][nodejs]] and in the browser.
+
+IMHO, tern is really an awesome project, various editors including Emacs
+provides tern support. The author of tern, [[http://marijnhaverbeke.nl/][Marijin Haverbeke]], is really a cool
+guy, an excellent JavaScript/Lisp hacker. He is also a tech writer, the author
+of "Eloquent JavaScript".
+
+Tern is really cool, besides the parser, it even has type inference for
+JavaScript. And it works both for browser and nodejs in an extensible way. For
+example, to get completion for both nodejs and jquery, just put a
+=.tern-project= file in your js project root directory, the content of this
+=.tern-project= file is self-explained, see tern's [[http://ternjs.net/doc/manual.html#configuration][manual]] for tech details.
+
+#+NAME: tern-project
+#+BEGIN_SRC javascript
+{
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "plugins": {
+    "node": {}
+  }
+}
+#+END_SRC
+
+It is quite easy to setup and configure tern, the only thing you need to do is
+=sudo npm install -g tern=. Enjoy the auto-completion support from tern and
+auto-complete for JavaScript programming in Emacs.
+
+#+NAME: tern
+#+BEGIN_SRC emacs-lisp
+  (defun ome-tern-setup ()
+    (when (featurep 'js2-mode)
+      (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
+    (when (featurep 'js3-mode)
+      (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
+    (setq tern-command (cons (executable-find "tern") '()))
+    (eval-after-load 'tern
+      '(progn
+         (require 'tern-auto-complete)
+         (tern-ac-setup))))
+
+  (ome-install 'tern)
 #+END_SRC
 
 * js2-mode
