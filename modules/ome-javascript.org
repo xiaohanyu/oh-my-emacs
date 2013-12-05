@@ -1,0 +1,202 @@
+#+TITLE: Oh My Emacs JavaScript
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+As with python, there're many options to do JavaScript programming in Emacs,
+however, IMHO, none of them are perfect, and easy to use. I've spent weeks of
+spare time to experience various emacs packages for JavaScript, and only
+figured out a not too bad solution based on [[https://github.com/thomblake/js3-mode][js3-mode]], [[http://js-comint-el.sourceforge.net/][js-comint]], and [[https://github.com/marijnh/tern][tern]].
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: javascript-prerequisites
+  :END:
+
+#+NAME: javascript-prerequisites
+#+CAPTION: Prerequisites for ome-javascript module
+|        | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|--------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://nodejs.org/][nodejs]] |         | nodejs             |           |        |          | Yes        |
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: javascript-el-get-packages
+  :END:
+
+#+NAME: javascript-el-get-packages
+#+CAPTION: El-get packages for ome-javascript module
+|             | Status     | Description                                         |
+|-------------+------------+-----------------------------------------------------|
+| [[https://github.com/thomblake/js3-mode][js3-mode]]    | Required   | A chimeric fork of js2-mode and js-mode             |
+| [[https://github.com/mooz/js2-mode][js2-mode]]    | Deprecated | Parse JavaScript to AST using elisp                 |
+| [[https://github.com/swank-js/swank-js][swank-js]]    | Deprecated | Swank backend for Node.JS and in-browser JavaScript |
+| [[https://github.com/skeeto/skewer-mode][skewer-mode]] | Deprecated | Browser JavaScript REPL in Emacs.                   |
+
+* js3-mode
+  :PROPERTIES:
+  :CUSTOM_ID: js3-mode
+  :END:
+
+As the author said, [[https://github.com/thomblake/js3-mode][js3-mode]] is a "A chimeric fork of js2-mode and
+js-mode". The main advantage of js3-mode over js2-mode, IMHO, is its
+indentation work as I expected. However, some third party packages depend on
+js2-mode, so this is a trade-off. I'm familiar with the internals of js2-mode,
+any discussion is welcomed if you prefer js2-mode over js3-mode.
+
+And another small issue is, js3-mode bind the =RET= key to =js3-enter-key=,
+which break smartparens's newline and indentation. I didn't figure out a good
+way to solve this.
+
+#+NAME: js3-mode
+#+BEGIN_SRC emacs-lisp
+  (defun ome-js3-mode-setup ()
+    (add-hook 'js3-mode-hook
+              (lambda ()
+                (setq js3-auto-indent-p t
+                      js3-curly-indent-offset 0
+                      js3-enter-indents-newline t
+                      js3-expr-indent-offset 2
+                      js3-indent-on-enter-key t
+                      js3-lazy-commas t
+                      js3-lazy-dots t
+                      js3-lazy-operators t
+                      js3-paren-indent-offset 2
+                      js3-square-indent-offset 4)))
+
+              ;; https://github.com/Fuco1/smartparens/issues/239
+              ;; (defadvice js3-enter-key (after fix-sp-state activate)
+              ;;   (setq sp-last-operation 'sp-self-insert))
+
+              ;; (sp-local-pair 'js3-mode
+              ;;                "{"
+              ;;                nil
+              ;;                :post-handlers
+              ;;                '((ome-create-newline-and-enter-sexp js3-enter-key))))
+    (add-to-list 'ac-modes 'js3-mode))
+
+  (ome-install 'js3-mode)
+#+END_SRC
+
+* js2-mode
+  :PROPERTIES:
+  :CUSTOM_ID: js2-mode
+  :END:
+
+[[https://github.com/mooz/js2-mode][js2-mode]] is really an awesome emacs package for JavaScript programming. It is
+originally written by [[http://steve-yegge.blogspot.com/][Steve Yegge]]. I said it is awesome since it build a
+JavaScript [[http://en.wikipedia.org/wiki/Abstract_syntax_tree][AST]] using emacs-lisp, thus there're even some third party "plugins"
+for js2-mode:
+- [[https://github.com/magnars/js2-refactor.el][js2-refactor]]: A JavaScript refactoring library for emacs.
+- [[https://github.com/ScottyB/ac-js2][ac-js2]]: Javascript auto-completion in Emacs using Js2-mode's parser and
+  Skewer-mode.
+
+The only thing I dislike about js2-mode is indentation. That's why I adopt
+[[https://github.com/thomblake/js3-modej][js3-mode]] for oh-my-emacs since js3-mode provides more friendly indentation
+settings and works as expected.
+
+#+NAME: js2-mode
+#+BEGIN_SRC emacs-lisp :tangle no
+  (defun ome-js2-mode-setup ()
+    (add-hook 'js2-mode-hook
+              (lambda ()
+                (setq js2-basic-offset 2)))
+    (setq js2-bounce-indent-p t))
+    ;; (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+    ;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+
+  (ome-install 'js2-mode)
+#+END_SRC
+
+* swank-js
+  :PROPERTIES:
+  :CUSTOM_ID: swank-js
+  :END:
+
+I really love the [[http://www.common-lisp.net/project/slime/][SLIME]] way, I hope that one day every programming language can
+work the SLIME way. I was really exciting when I first saw [[https://github.com/swank-js/swank-js][swank-js]]. It is
+really great and awesome if I can do JavaScript programming in SLIME way.
+
+Unfortunately, things do not always work as expected. There're some serious
+show-stop bugs, and it is under little development due to [[https://github.com/swank-js/swank-js/issues/52][lack of
+developers]]. Another problem of swank-js is installation since it depends on
+SLIME, which is not quite easy to setup and configure, either.
+
+However, I still keep my code here for reference, which records some of my
+initial setup of swank-js and maybe useful for you, or in future.
+
+To use swank-js, you must have [[http://nodejs.org/][nodejs]] installed, and then =sudo npm install -g
+swank-js=. If you have any problems, I recommend you to upgrade your nodejs to
+latest version and try again. And to make the following code work, you must
+setup and configure SLIME and js3-mode correctly.
+
+#+NAME: swank-js
+#+BEGIN_SRC emacs-lisp :tangle no
+  (defun ome-swank-js-setup ()
+    (require 'slime-js)
+    (add-hook 'js3-mode-hook
+              (lambda ()
+                (slime-js-minor-mode 1)))
+    (add-hook 'css-mode-hook
+              (lambda ()
+                (define-key css-mode-map (kbd "M-C-x") 'slime-js-refresh-css)
+                (define-key css-mode-map (kbd "C-c C-r") 'slime-js-embed-css))))
+
+  ;; Wow, swank-js has lots of dependencies.
+  (when (and (require 'slime nil 'noerror)
+             (require 'js3-mode nil 'noerror)
+             (executable-find "npm")
+             (executable-find "swank-js"))
+    (ome-install 'swank-js))
+
+  (eval-after-load 'auto-complete
+    '(progn
+       (add-to-list 'ac-modes 'js-mode)
+       (add-to-list 'ac-modes 'js2-mode)
+       (add-to-list 'ac-modes 'js3-mode)
+       (add-hook 'slime-mode-hook 'set-up-slime-ac)
+       (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
+
+  (eval-after-load 'slime
+    '(progn
+       (slime-setup '(slime-repl slime-js))))
+#+END_SRC
+
+* Skewer-mode
+  :PROPERTIES:
+  :CUSTOM_ID: skewer-mode
+  :END:
+
+What's wrong with swank-js?
+
+#+BEGIN_QUOTE
+Skewer provides nearly the same functionality as swank-js, a JavaScript
+back-end to SLIME. At a glance my extension seems redundant.
+
+The problem with swank-js is the complicated setup. It requires a cooperating
+Node.js server, a particular version of SLIME, and a lot of patience. I could
+never get it working, and if I did I wouldn’t want to have to do all that setup
+again on another computer. In contrast, Skewer is just another Emacs package,
+no special setup needed. Thanks to package.el installing and using it should be
+no more difficult than installing any other package.
+
+Most importantly, with Skewer I can capture the setup in my .emacs.d repository
+where it will automatically work across any operating system, so long as it has
+Emacs installed.
+
+-- The [[http://nullprogram.com/blog/2012/10/31/][author]] of skewer-mode
+#+END_QUOTE
+
+To tell the truth, I have installed skewer-mode but didn't dive into it since I
+want to work with nodejs, while skewer-mode [[https://github.com/skeeto/skewer-mode/issues/37][didn't support nodejs]] yet. The
+code is kept here just for reference.
+
+#+NAME: skewer-mode
+#+BEGIN_SRC emacs-lisp :tangle no
+  (defun ome-skewer-mode-setup ()
+    (add-hook 'js2-mode-hook 'skewer-mode)
+    (add-hook 'css-mode-hook 'skewer-css-mode)
+    (add-hook 'html-mode-hook 'skewer-html-mode))
+
+  (ome-install 'skewer-mode)
+#+END_SRC
