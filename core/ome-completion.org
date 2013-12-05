@@ -62,7 +62,7 @@ according to =ac-modes=, which in turn determines what major mode
 
     (dolist (ac-mode '(text-mode org-mode))
       (add-to-list 'ac-modes ac-mode))
-    (dolist (ac-mode-hook '(text-mode-hook org-mode-hook))
+    (dolist (ac-mode-hook '(text-mode-hook org-mode-hook prog-mode-hook))
       (add-hook ac-mode-hook
                 (lambda ()
                   (add-to-list 'ac-sources 'ac-source-files-in-current-dir)
