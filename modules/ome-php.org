@@ -1,0 +1,42 @@
+#+TITLE: Oh My Emacs PHP
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: php-prerequisites
+  :END:
+
+#+NAME: php-prerequisites
+#+CAPTION: Prerequisites for ome-php module
+|     | Windows | Ubuntu/Debian/Mint     | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|-----+---------+------------------------+-----------+--------+----------+------------|
+| [[http://php.net/][php]] |         | php5 php5-cli php-pear |           |        |          | No         |
+
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: php-el-get-packages
+  :END:
+
+#+NAME: php-el-get-packages
+#+CAPTION: El-get packages for ome-php module
+|          | Status   | Description         |
+|----------+----------+---------------------|
+| [[https://github.com/ejmr/php-mode][php-mode]] | Required | Major mode for php. |
+
+* php-mode
+  :PROPERTIES:
+  :CUSTOM_ID: php-mode
+  :END:
+
+I know little about php, and I found little resources about how to do PHP
+programming in Emacs, so any pull request will be appreciated.
+
+#+NAME: php-mode
+#+BEGIN_SRC emacs-lisp
+  (defun ome-php-mode-setup ())
+
+  (ome-install 'php-mode)
+#+END_SRC
