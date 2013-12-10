@@ -120,9 +120,9 @@ auto-complete for JavaScript programming in Emacs.
 #+NAME: tern
 #+BEGIN_SRC emacs-lisp
   (defun ome-tern-setup ()
-    (when (featurep 'js2-mode)
+    (when (el-get-package-installed-p 'js2-mode)
       (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
-    (when (featurep 'js3-mode)
+    (when (el-get-package-installed-p 'js3-mode)
       (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
     (setq tern-command (cons (executable-find "tern") '()))
     (eval-after-load 'tern
