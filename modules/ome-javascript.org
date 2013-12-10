@@ -64,7 +64,8 @@ way to solve this.
                       js3-lazy-dots t
                       js3-lazy-operators t
                       js3-paren-indent-offset 2
-                      js3-square-indent-offset 4)))
+                      js3-square-indent-offset 4)
+                (linum-mode 1)))
 
               ;; https://github.com/Fuco1/smartparens/issues/239
               ;; (defadvice js3-enter-key (after fix-sp-state activate)
