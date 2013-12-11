@@ -31,6 +31,7 @@ This file contains things that still don't find a good place to put, :-).
 | [[https://github.com/Fuco1/smartparens][smartparens]]        | Required    | The ulitimate paren management solution for Emacs. |
 | [[http://emacs-w3m.namazu.org/][emacs-w3m]]          | Recommended | Browsing HTML docs in Emacs.                       |
 | [[https://github.com/syohex/emacs-quickrun][quickrun]]           | Recommended | Just as its name said.                             |
+| [[http://www.eskimo.com/~seldon/diminish.el][diminish]]           | Recommended | Clean up mode line space.                          |
 
 * Enable some dangerous commands
 
@@ -526,6 +527,68 @@ way. Just run it, without thinking about too much other chores.
   (ome-install 'quickrun)
 #+END_SRC
 
+* Diminish
+  :PROPERTIES:
+  :CUSTOM_ID: diminish
+  :END:
+
+#+BEGIN_QUOTE
+"When we diminish a mode, we are saying we want it to continue doing its work
+for us, but we no longer want to be reminded of it. It becomes a night worker,
+like a janitor; it becomes an invisible man; it remains a component, perhaps an
+important one, sometimes an indispensable one, of the mechanism that maintains
+the day-people's world, but its place in their thoughts is diminished, usually
+to nothing. As we grow old we diminish more and more such thoughts, such
+people, usually to nothing."
+
+-- Will Mengarini in diminish.el
+#+END_QUOTE
+
+As oh-my-emacs becomes more and more powerful, the mode line becomes more and
+more congested. [[http://www.eskimo.com/~seldon/diminish.el][diminish.el]] provide us a way to clean up the mode line. BTW, I
+really like its documentation, just check out the source code and you'll get
+everything you need to know about this tiny but powerful mode. See [[http://whattheemacsd.com/init.el-04.html][here]] and
+[[http://emacs-fu.blogspot.com/2010/05/cleaning-up-mode-line.html][here]] for some more details.
+
+You can check the variable =minor-mode-alist= and diminish minor modes as you
+like.
+
+#+NAME: diminish
+#+BEGIN_SRC emacs-lisp
+  (defun ome-diminish-setup ()
+    ;; diminish some builtin mode
+    (eval-after-load "abbrev"
+      '(diminish 'abbrev-mode))
+
+    (eval-after-load 'simple
+      '(progn
+         ;; diminish auto-fill-mode
+         (diminish 'auto-fill-function)
+         (diminish 'global-visual-line-mode)
+         (diminish 'visual-line-mode)))
+
+    (eval-after-load "outline"
+      '(diminish 'outline-minor-mode))
+
+    (eval-after-load "eldoc"
+      '(diminish 'eldoc-mode))
+
+    ;; diminish third-party mode
+    (eval-after-load "elisp-slime-nav"
+      '(diminish 'elisp-slime-nav-mode))
+
+    (eval-after-load "helm"
+      '(diminish 'helm-mode))
+
+    (eval-after-load "projectile"
+      '(diminish 'projectile-mode "Prjl"))
+
+    (eval-after-load "undo-tree"
+      '(diminish 'undo-tree-mode)))
+
+  (ome-install 'diminish)
+#+END_SRC
+
 * Todo
 - Enable flyspell and ispell in text-mode.
 - Add a dictionary support, such as =sdcv=? Or a better translator support such
@@ -537,9 +600,6 @@ way. Just run it, without thinking about too much other chores.
 - Learn more about emacs mark and selection, why CapsLK turn on selection mode.
 - Integrate elnode, skewer-mode and emacs-request to emacs.
 - Write a proper major-mode for GAS assembly language.
-- Diminish package support?
-  - Description: An Emacs package that diminishes the amount of space taken on
-    the mode line by the names of minor modes.
 - Oh-my-emacs keybindings to =C--= conflicts with Emacs's =negative-argument=?
 - Try to get the total boot up time and try to reduce the whole boot up time.
 - Documentation about indentation settings:
