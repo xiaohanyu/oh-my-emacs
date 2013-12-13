@@ -104,6 +104,26 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
   (delete-selection-mode t)
 #+END_SRC
 
+* Mac OS X compatibilities
+  :PROPERTIES:
+  :CUSTOM_ID: mac
+  :END:
+
+There're multiple [[http://wikemacs.org/index.php/Installing_Emacs_on_OS_X][choices]] to install Emacs on Mac OS X. I prefer [[http://brew.sh/][Homebrew]], and
+got my Emacs with =brew install emacs --cocoa=. This version of emacs even has
+native [[http://batsov.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/][full screen support]].
+
+Another problem with emacs on Mac OX X is the keybindings to =Meta= and
+=Control=. Since most of the macbooks lack the right =Control= key, I prefer
+to bind Mac's =Command= and =Option= key to Emacs's =Meta= and =Control= key,
+respectively.
+
+#+BEGIN_SRC emacs-lisp
+  (when (eq system-type 'darwin)
+    (setq mac-command-modifier 'meta)
+    (setq mac-option-modifier 'control))
+#+END_SRC
+
 * Auto-fill Mode
   :PROPERTIES:
   :CUSTOM_ID: auto-fill
