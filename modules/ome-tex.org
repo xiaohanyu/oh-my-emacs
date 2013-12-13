@@ -12,12 +12,16 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 #+CAPTION: Prerequisites for ome-tex module
 |         | Windows | Ubuntu/Debian/Mint        | ArchLinux                | Fedora      | Mac OS X | Mandatory? |
 |---------+---------+---------------------------+--------------------------+-------------+----------+------------|
-| [[http://www.tug.org/texlive/][texlive]] |         | texlive-full latex-beamer | texlive-most texlive-cjk | texlive-all |          | Yes        |
+| [[http://www.tug.org/texlive/][texlive]] |         | texlive-full latex-beamer | texlive-most texlive-cjk | texlive-all | [[http://tug.org/mactex/][MacTeX]]   | Yes        |
 
 
 Note:
 - [[http://www.tug.org/texlive/][texlive]], the full texlive distribution is really huge, so install necessary
   parts as you need.
+- [[http://en.wikipedia.org/wiki/MacTeX][MacTeX]] is a redistribution of texlive, which includes Mac-specific utilities
+  and front-ends. It is also pre-configured to work out-of-the-box with Mac OS
+  X as it provides sensible defaults for configuration options that, in TeX
+  Live, are left up to the user to allow for its cross-platform compatibility.
 
 * El-get packages
   :PROPERTIES:
@@ -30,7 +34,6 @@ Note:
 |---------+----------+--------------------------|
 | [[http://www.gnu.org/software/auctex/][AUCTeX]]  | Required | You need it, believe me. |
 | [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/][CDLaTeX]] | Optional | Speedy \LaTeX{} typing.  |
-
 
 * AUCTeX
   :PROPERTIES:
@@ -50,6 +53,10 @@ I can give you some hint to install a \TeX{} system on Linux. If you are
   texlive-langcjk=
 - a Fedora user, install texlive by =sudo yum -S texlive-all=
 - a SuSE user, install texlive by =sudo zypper in texlive-xetex=
+
+For Mac OS X users, [[http://tug.org/mactex/][MacTeX]] is the best choice. You can install it directly from
+its website or via [[https://github.com/phinze/homebrew-cask][homebrew-cask]]. By default, MacTeX install all binary
+executables to =/usr/texbin/=, which is different from Linux.
 
 If you are not lucky enough, you should follow the official [[http://www.tug.org/texlive/][texlive]]
 instructions to install it.
@@ -165,9 +172,10 @@ have no idea why =evil-local-mode= is enabled by default when entering
     (setq reftex-plug-into-AUCTeX t)
     (setq-default TeX-engine 'xetex)      ; use xelatex by default
 
-    ;; Currently, only linux system are tested. Patches for Mac OS and Windows
-    ;; are always welcome.
+    ;; Mac OS X fallback to the "open" program as the default viewer for all
+    ;; types of files.
     (cond
+     ;; settings for Linux
      ((eq system-type 'gnu/linux)
       (cond
        ((executable-find "okular")
@@ -201,8 +209,12 @@ have no idea why =evil-local-mode= is enabled by default when entering
                 (when (featurep 'evil)
                   (turn-off-evil-mode)))))
 
-  (ome-install 'auctex)
-
+  (when (executable-find
+         (if (eq system-type 'darwin)
+             ;; MacTeX install all its executables to /usr/texbin directory
+             "/usr/texbin/pdflatex"
+           "pdflatex"))
+    (ome-install 'auctex))
 #+END_SRC
 
 * CDLaTeX
