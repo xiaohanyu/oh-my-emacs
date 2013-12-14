@@ -31,6 +31,8 @@ figured out a not too bad solution based on [[https://github.com/thomblake/js3-m
 |-------------+------------+-----------------------------------------------------|
 | [[https://github.com/thomblake/js3-mode][js3-mode]]    | Required   | A chimeric fork of js2-mode and js-mode             |
 | [[https://github.com/marijnh/tern][tern]]        | Required   | A great JavaScript code analyzer                    |
+| [[https://github.com/abicky/nodejs-repl.el][nodejs-repl]] | Required   | Run Node.js REPL and communicate the process        |
+| [[http://js-comint-el.sourceforge.net/][js-comint]]   | Deprecated | Run JavaScript in an inferior process window        |
 | [[https://github.com/mooz/js2-mode][js2-mode]]    | Deprecated | Parse JavaScript to AST using elisp                 |
 | [[https://github.com/swank-js/swank-js][swank-js]]    | Deprecated | Swank backend for Node.JS and in-browser JavaScript |
 | [[https://github.com/skeeto/skewer-mode][skewer-mode]] | Deprecated | Browser JavaScript REPL in Emacs.                   |
@@ -215,6 +217,57 @@ setup and configure SLIME and js3-mode correctly.
   (eval-after-load 'slime
     '(progn
        (slime-setup '(slime-repl slime-js))))
+#+END_SRC
+
+* nodejs-repl
+  :PROPERTIES:
+  :CUSTOM_ID: nodejs-repl
+  :END:
+
+There're multiple choices to get a JavaScript repl in Emacs. Unfortunately,
+none of them are perfect and work as expected. I myself prefers [[https://github.com/abicky/nodejs-repl.el][nodejs-repl]]
+over [[http://js-comint-el.sourceforge.net/][js-comint]] since it provides good support for TAB completion. However, it
+lacks some interactive commands, which need to be improved.
+
+#+NAME: nodejs-repl
+#+BEGIN_SRC emacs-lisp
+  (defun ome-nodejs-repl-setup ())
+
+  (ome-install 'nodejs-repl)
+#+END_SRC
+
+* js-comint
+  :PROPERTIES:
+  :CUSTOM_ID: js-comint
+  :END:
+
+[[http://js-comint-el.sourceforge.net/][js-comint.el]] is a comint mode for emacs which allows you to run a compatible
+javascript repl in Emacs, it is an alternative to [[https://github.com/abicky/nodejs-repl.el][nodejs-repl]]. Actually, Nodejs
+is not born when js-comint was first released.
+
+#+NAME: js-comint
+#+BEGIN_SRC emacs-lisp :tangle no
+  (defun ome-js-comint-setup ()
+    (setq inferior-js-program-command "node")
+    (add-hook 'js3-mode-hook
+              '(lambda ()
+                 (local-set-key (kbd "C-x C-e")
+                                'js-send-last-sexp)
+                 (local-set-key (kbd "C-M-x")
+                                'js-send-last-sexp-and-go)
+                 (local-set-key (kbd "C-c b")
+                                'js-send-buffer)
+                 (local-set-key (kbd "C-c C-b")
+                                'js-send-buffer-and-go)
+                 (local-set-key (kbd "C-c l")
+                                'js-load-file-and-go)))
+    (setenv "NODE_NO_READLINE" "1")
+    (setq inferior-js-mode-hook
+          (lambda ()
+            ;; We like nice colors
+            (ansi-color-for-comint-mode-on))))
+
+  (ome-install 'js-comint)
 #+END_SRC
 
 * Skewer-mode
