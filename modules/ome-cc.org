@@ -261,9 +261,6 @@ https://github.com/Rip-Rip/clang_complete/issues/42 for technical details.
 - Add special font-lock support for some Qt's "keywords" such as "signal" and
   "slot".
 - Auto-complete-clang:
-  - Completion with function signature still has some problems, see
-    https://github.com/brianjcj/auto-complete-clang/blob/master/screenshot/clang-3.png
-    for an ideal completion.
   - For huge C/C++ programs, auto-complete-clang maybe a little slow, maybe
     https://github.com/Golevka/emacs-clang-complete-async is a better
     solution.

@@ -117,7 +117,5 @@ Java Development in Emacs]] show you an illustrated guide.
   errors just like =c-mode= and =c++-mode=.
 - Provide a menubar to eclim thus users can get a quick overview of eclim
   features.
-- Seems =java-mode-hook= will run twice, so as other cc-mode's hook such as
-  =c-mode-hook=. Try to figure out.
 - Eclim would report warnings like =describe-mode: Symbol's function definition
   is void: eclim-project-mode= when you hit =C-h m= in auxiliary eclim modes.
