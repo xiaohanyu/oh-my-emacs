@@ -381,30 +381,35 @@ elisp code embedded in this file.
 * Load settings
 
 Files in oh-my-emacs =core= will be loaded by default:
-- [[file:ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
-- [[file:ome-basic.org][ome-basic.org]]: basic settings, such as tab, space, auto-fill-mode, flyspell,
-- [[file:ome-completion.org][ome-completion.org]]: main settings for completion support.
-- [[file:ome-gui.org][ome-gui.org]]: settings for color theme, font, modeline, scrollbar, etc.
+- [[file:core/ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
+- [[file:core/ome-basic.org][ome-basic.org]]: basic settings, such as tab, space, auto-fill-mode, flyspell,
+- [[file:core/ome-completion.org][ome-completion.org]]: main settings for completion support.
+- [[file:core/ome-gui.org][ome-gui.org]]: settings for color theme, font, modeline, scrollbar, etc.
   etc.
-- [[file:ome-keybindings.org][ome-keybindings.org]]: oh-my-emacs keybindings.
-- [[file:ome-miscs.org][ome-miscs.org]]: misc settings such as =magit=, =smartparens=, =projectile=,
+- [[file:core/ome-keybindings.org][ome-keybindings.org]]: oh-my-emacs keybindings.
+- [[file:core/ome-miscs.org][ome-miscs.org]]: misc settings such as =magit=, =smartparens=, =projectile=,
   etc.
-- [[file:ome-org.org][ome-org.org]]: some refinement for org-mode.
-- [[file:ome-writing.org][ome-writing.org]]: for writers, bloggers, only contains =markdown-mode= for
+- [[file:core/ome-org.org][ome-org.org]]: some refinement for org-mode.
+- [[file:core/ome-writing.org][ome-writing.org]]: for writers, bloggers, only contains =markdown-mode= for
   now.
-- [[file:ome-advanced.org][ome-advanced.org]]: contains =evil=, =ace-jump-mode=, =ack-and-a-half=, etc.
+- [[file:core/ome-advanced.org][ome-advanced.org]]: contains =evil=, =ace-jump-mode=, =ack-and-a-half=, etc.
 
 Files in oh-my-emacs =modules= is optional, you can load necessary one when
 you really need it.
-- [[file:ome-cc.org][ome-cc.org]]: main settings for =cc-mode=.
-- [[file:ome-emacs-lisp.org][ome-emacs-lisp.org]]: settings for emacs-lisp.
-- [[file:ome-common-lisp.org][ome-common-lisp.org]]: settings for Common Lisp, mainly [[http://common-lisp.net/project/slime/][SLIME]].
-- [[file:ome-clojure.org][ome-clojure.org]]: settings for Clojure.
-- [[file:ome-scheme.org][ome-scheme.org]]: settings for Scheme.
-- [[file:ome-python.org][ome-python.org]]: python settings, life is short, =elpy= is amazing.
-- [[file:ome-ruby.org][ome-ruby.org]]: Ruby support including =inf-ruby= and by =smartparens-ruby=.
-- [[file:ome-ocaml.org][ome-ocaml.org]]: minimal settings for OCaml.
-- [[file:ome-tex.org][ome-tex.org]]: AUCTeX and CDLaTeX for \TeX{} editing.
+- [[file:modules/ome-cc.org][ome-cc.org]]: main settings for =cc-mode=.
+- [[file:modules/ome-common-lisp.org][ome-common-lisp.org]]: settings for Common Lisp, mainly [[http://common-lisp.net/project/slime/][SLIME]].
+- [[file:modules/ome-clojure.org][ome-clojure.org]]: settings for Clojure.
+- [[file:modules/ome-emacs-lisp.org][ome-emacs-lisp.org]]: settings for emacs-lisp.
+- [[file:modules/ome-java.org][ome-java.org]]: settings for Java, using [[https://github.com/senny/emacs-eclim][emacs-eclim]].
+- [[file:modules/ome-javascript.org][ome-javascript.org]]: settings for JavaScript, not perfect now.
+- [[file:modules/ome-python.org][ome-python.org]]: python settings, life is short, =elpy= is amazing.
+- [[file:modules/ome-ruby.org][ome-ruby.org]]: Ruby support including =inf-ruby= and by =smartparens-ruby=.
+- [[file:modules/ome-scheme.org][ome-scheme.org]]: settings for Scheme.
+- [[file:modules/ome-ocaml.org][ome-ocaml.org]]: minimal settings for OCaml.
+- [[file:modules/ome-tex.org][ome-tex.org]]: AUCTeX and CDLaTeX for \TeX{} editing.
+- [[file:modules/ome-web.org][ome-web.org]]: settings for HTML/CSS web development.
+- [[file:modules/ome-experimental.org][ome-experimental.org]]: some experimental packages, such as sppedbar, minimap,
+  etc. Not stable yet now.
 
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
