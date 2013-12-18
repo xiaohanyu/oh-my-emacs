@@ -1,0 +1,87 @@
+#+TITLE: Contributing
+
+* Why
+
+Oh-my-emacs starts as a single guy's endeavor to reorganize his messy
+=.emacs.d=. Till now the original goal has been met. So why it is still
+continuing?
+
+Actually, the current goal of oh-my-emacs is to provide an awesome, out-of-box,
+literate =.emacs.d= for both newbies and nerds. However, the man who start this
+project is just a single guy who want but still didn't own a beautiful Mac
+yet. Though he is familiar with Ubuntu and ArchLinux, he knows little about
+other Linux distributions(such as Fedora, openSUSE, etc), and Mac. He knows
+something about C/C++/Java/Lisp/Python/Ruby/Scheme/Clojure/JavaScript, and
+nothing about Haskell/OCaml/Golang/Erlang, etc. So he need help to
+- make oh-my-emacs run on more platforms (though no plan for windows port)
+- make oh-my-emacs support as many programming languages, workflows as
+  possible.
+
+* How
+
+First, please do contribute! There are several ways to contribute:
+
+- introduce oh-my-emacs to your friends
+- submit bugs via github issues
+- send patches via github pull request
+  - Fix doc typo, grammer and syntax error, that should not be so hard
+  - Develop new packages for oh-my-emacs
+  - Develop new modules for oh-my-emacs, which may contans serveral emacs
+    packages (I'll be really appreciate for package and module contributor.)
+
+Possible ideas to improve oh-my-emacs:
+- Semantic completion, based on [[https://github.com/auto-complete/auto-complete][auto-complete]], which is one of the main
+  selling points of oh-my-emacs.
+- Support new languages, such as Haskell/OCaml/Golang/Erlang, etc.
+- Add [[https://travis-ci.org/][travis-ci]] support to this project. Currently, the stupid guy still
+  didn't figure out a good way to integrate travis-ci, he need your help.
+
+* Rules
+
+- Documentation is important, please do provide some documentation for
+  packages or modules.
+
+* Workflow
+** Codebase
+
+The basic code structure for a new el-get package is:
+
+#+BEGIN_SRC emacs-lisp
+  (defun ome-package-name-setup ()
+    ;; put elisp code here for package customization
+    ;; (setq package-name-variable t)
+    )
+
+  (ome-install 'package-name)
+#+END_SRC
+
+The function =ome-package-name-setup= provide some user customizations for
+package. =(ome-install 'package-name)= will tell oh-my-emacs that "I want this
+package installed with customization code in =ome-package-name-setup=
+function."
+
+** Git hints
+
+- You'd better not to work on =master= branch, please check out a new
+  topic/feature/bugfix branch of your own:
+
+#+BEGIN_SRC sh
+  git checkout -b feature/add-ome-package
+#+END_SRC
+
+- Please rebase your code if github reminds you some code conflict, which
+  means the base branch you checked out from is a little outdated and need to
+  be updated first.
+
+#+BEGIN_SRC sh
+  # checkout to your base branch
+  git checkout master
+  # pull from remote
+  git pull origin master
+  # checkout to your feature branch
+  git checkout feature/add-ome-package
+  # rebase
+  git rebase -i
+  # solve code conflicts
+  # git add; git commit
+#+END_SRC
