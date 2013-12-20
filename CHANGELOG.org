@@ -1,5 +1,66 @@
 #+TITLE: Oh My Emacs ChangeLog
 
+* v0.3
+
+** Refactoring
+   - split ome files to core and modules
+
+** core
+   - By default, use git shallow clone for el-get to save time and bandwidth.
+   - Enhance =ome-load= and =ome-install= function.
+   - =ome-package-list-to-org-table= function to get a list of installed
+     el-get packages in org-mode format.
+   - Improve compatibility for Mac OS X.
+
+** ome-completion module
+   - Enable filename completion in =text-mode=, =org-mode= and =prog-mode=.
+
+** ome-cc module
+   - Auto-complete support for C/C++ macros
+
+** ome-experimental module
+   - Put some unstable useful package in ome-experimental module, such as
+     - smooth-scrolling
+     - hungry-delete
+     - fill-column-indicator
+     - doxymacs(moved out from ome-cc module)
+
+** ome-java module
+   - Integrate =emacs-eclim= for Java development.
+
+** ome-lisp module
+   - split the all-in-one ome-lisp module to
+     - ome-emacs-lisp module
+     - ome-common-lisp module
+     - ome-clojure module
+     - ome-scheme module
+
+** ome-javascript module
+   - Experimental support for JavaScript development
+   - Enable the following package by default:
+     - js3-mode
+     - tern
+     - nodejs-repl
+   - Also contains some sample config code for:
+     - js-comint
+     - js2-mode
+     - swank-js
+     - skewer-mode
+
+** ome-ocaml module
+   - Minimal ocaml development support
+
+** Miscs
+   - Add =diminish=, cleanup mode line
+   - Add =po-mode= for i18n/l10n work
+   - Refine smartparens auto newline in cc-mode
+   - =linum-mode=
+     - Generally, only enable =linum-mode= in =text-mode= and =prog-mode=
+     - Enable =linum-mode= in some minor mode.
+   - Various doc updates
+     - add CONTRIBUTING guide
+     - lots of typo fix
+
 * v0.2
 ** Documentation
    - Add prerequisites matrix and el-get packages matrix.
@@ -9,12 +70,10 @@
    - add =evil-surround=
    - fix evil cursor color for better compatibility with Emacs color-theme
 
-
 ** Completion
    - Add completion matrix to show the current status of auto-complete support
      to various programming languages.
    - add =ac-geiser=, new auto-complete backend for geiser.
-
 
 ** Ruby
    - Basic ruby support
@@ -27,10 +86,8 @@
    - add =ace-jump-mode=
    - add =ack-and-a-half=
 
-
 ** Compatibility
    - Fix a $PATH problem in Mac OS, thanks @judevc.
-
 
 ** Miscs
    - add =lacarte=, the interactive menubar
@@ -89,7 +146,6 @@
     - Adopt geiser, which is similar with SLIME
     - Also provide a pseudo code snippet for swank-chicken if you like
 
-
 ** Miscs
 - Enable some dangerous commands such as =narrow-to-page=, =narrow-to-region=
 - Toggle on emacs server mode by default
@@ -103,7 +159,6 @@
 - Emacs-w3m for browsing html docs when you don't want to leave Emacs
 - Quickrun to run code snippets instantly
 
-
 ** Org-mode settings
 - Enable org-mode speed keys by default
 - Enable =org-src-fontify-natively=
@@ -111,11 +166,9 @@
   and rainbow-delimiters-mode
 - Enable cdlatex for org-mode
 
-
 ** Python
 - Adopt elpy, the one for all solution for Python in Emacs, together with a
   comprehensive documentation
-
 
 ** \TeX and \LaTeX
 - Use =xetex= as the default =TeX-engine= for better support for \TeX{} font
@@ -126,7 +179,6 @@
 - Favors [[http://okular.kde.org/][Okular]] and [[https://projects.gnome.org/evince/][Evince]] as the default viewer in Linux, and fallbacks to
   =xdg-open= if both Okular and Evince is unavailable.
 - =turn-on-cdlatex= with AUCTeX
-
 
 ** Writing
 - =markdown-mode= support
