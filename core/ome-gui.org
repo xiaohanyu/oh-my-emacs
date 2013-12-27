@@ -91,7 +91,7 @@ starting point.
      nil 'fullscreen
      (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
-  ;; (global-set-key (kbd "<f11>") 'toggle-fullscreen)
+  ;; (global-set-key (kbd "<f11>") 'ome-toggle-fullscreen)
 #+END_SRC
 
 * Solarized Color Theme
