@@ -197,13 +197,13 @@ code block, which may be a bug of =rainbow-delimiters-mode=.
 #+END_SRC
 * Org-CDLaTeX
   :PROPERTIES:
-  :CUSTOM_ID: org-latex
+  :CUSTOM_ID: org-cdlatex
   :END:
 
 If [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/][CDLaTeX]] is available, turn on it in org-mode. See "[[http://www.gnu.org/software/emacs/manual/html_node/org/CDLaTeX-mode.html][Using CDLaTeX to enter
 math]]" for details.
 
-#+NAME: org-latex
+#+NAME: org-cdlatex
 #+BEGIN_SRC emacs-lisp
   (when (el-get-package-is-installed 'cdlatex-mode)
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
