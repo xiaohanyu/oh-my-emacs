@@ -51,6 +51,9 @@ still in beta version, however, and will be sent to el-get when stable.
 
 #+NAME: geiser
 #+BEGIN_SRC emacs-lisp
+  (defun ome-geiser-setup ()
+    (setq geiser-default-implementation 'guile))
+
   (defun ome-ac-geiser-setup ()
     (add-hook 'geiser-mode-hook 'ac-geiser-setup)
     (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
