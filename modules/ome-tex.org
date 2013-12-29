@@ -10,10 +10,10 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: tex-prerequisites
 #+CAPTION: Prerequisites for ome-tex module
-|         | Windows | Ubuntu/Debian/Mint        | ArchLinux                | Fedora      | Mac OS X | Mandatory? |
-|---------+---------+---------------------------+--------------------------+-------------+----------+------------|
-| [[http://www.tug.org/texlive/][texlive]] |         | texlive-full latex-beamer | texlive-most texlive-cjk | texlive-all | [[http://tug.org/mactex/][MacTeX]]   | Yes        |
-
+|          | Windows | Ubuntu/Debian/Mint        | ArchLinux                | Fedora      | Mac OS X | Mandatory? |
+|----------+---------+---------------------------+--------------------------+-------------+----------+------------|
+| [[http://www.tug.org/texlive/][texlive]]  |         | texlive-full latex-beamer | texlive-most texlive-cjk | texlive-all | [[http://tug.org/mactex/][MacTeX]]   | Yes        |
+| [[http://pygments.org/][pygments]] |         | [pip]                     | [pip]                    | [pip]       | [pip]    | No         |
 
 Note:
 - [[http://www.tug.org/texlive/][texlive]], the full texlive distribution is really huge, so install necessary
@@ -119,19 +119,6 @@ is more configurable, allowing you to create your own errors
 - =C-c (= =reftex-label= to insert a label at point.
 - =C-c [= =reftex-citation= to insert a citations from BibTeX database.
 
-** Tips and Tricks
-[[http://tex.stackexchange.com/questions/52179/what-is-your-favorite-emacs-and-or-auctex-command-trick][Here]]'s some tips and tricks about AUCTeX.
-
-** Oh-my-emacs settings
-- Use =xetex= as the default =TeX-engine= for better support for \TeX{} font
-  selection and PDF export.
-- Enable =outline-minor-mode= and =flyspell-mode=.
-- Enable =TeX-interactive-mode=, =TeX-PDF-mode=, =TeX-fold-mode= and
-  =reftex-mode=.
-- Favors [[http://okular.kde.org/][Okular]] and [[https://projects.gnome.org/evince/][Evince]] as the default viewer in Linux, and fallbacks to
-  =xdg-open= if both Okular and Evince is unavailable. Since I don't have a
-  Windows or Mac OS X environment, patches are always welcome.
-
 ** Coordinations with other packages
 Oh-my-emacs adopts some other awesome packages such as =smartparens= and
 =evil=, which has some conflicts with AUCTeX. so there need some hack, which,
@@ -154,9 +141,15 @@ Another oh-my-emacs package, =evil=, shadowed some keybindings for AUCTeX's
 have no idea why =evil-local-mode= is enabled by default when entering
 =reftex-toc-mode=, so I have to =turn-off-evil-mode= explicitly.
 
-** Todo
-- Add =auto-complete= support,
-  https://github.com/monsanto/auto-complete-auctex.
+** Oh-my-emacs settings
+- Use =xetex= as the default =TeX-engine= for better support for \TeX{} font
+  selection and PDF export.
+- Enable =outline-minor-mode= and =flyspell-mode=.
+- Enable =TeX-interactive-mode=, =TeX-PDF-mode=, =TeX-fold-mode= and
+  =reftex-mode=.
+- Favors [[http://okular.kde.org/][Okular]] and [[https://projects.gnome.org/evince/][Evince]] as the default viewer in Linux, and fallbacks to
+  =xdg-open= if both Okular and Evince is unavailable. Since I don't have a
+  Windows or Mac OS X environment, patches are always welcome.
 
 #+NAME: auctex
 #+BEGIN_SRC emacs-lisp
@@ -216,6 +209,46 @@ have no idea why =evil-local-mode= is enabled by default when entering
            "pdflatex"))
     (ome-install 'auctex))
 #+END_SRC
+
+** Tips and Tricks
+[[http://tex.stackexchange.com/questions/52179/what-is-your-favorite-emacs-and-or-auctex-command-trick][Here]]'s some tips and tricks about AUCTeX.
+
+*** LaTeX shell escape
+
+\LaTeX supports an lesser known "shell-escape" feature. In a word, this mode
+can be used to incorporate dynamic content, or run external process during the
+compilation phase. Check this [[http://scrolls.mafgani.net/2011/03/latex-shell-escape/][post]] for details.
+
+Unfortunately, there no easy explicit way to customize command line options for
+various AUCTeX backend. So we need some tricks to get around this. Thanks
+[[http://stackoverflow.com/questions/3300497/using-minted-source-code-latex-package-with-emacs-auctex/][stackoverflow]] again, here's the code snippet for AUCTeX \LaTeX backend.
+
+#+BEGIN_SRC emacs-lisp
+  (defvar ome-LaTeX-shell-escape-mode nil
+    "Whether or not LaTeX shell escape mode is enabled.")
+
+  (defun ome-LaTeX-toggle-shell-escape ()
+    (interactive)
+    (if ome-LaTeX-shell-escape-mode
+        (progn
+          (setcdr (assoc "LaTeX" TeX-command-list)
+                  '("%`%l%(mode)%' %t"
+                    TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX"))
+          (setq ome-LaTeX-shell-escape-mode nil)
+          (message "LaTeX shell escape mode turned off."))
+      (progn
+        (setcdr (assoc "LaTeX" TeX-command-list)
+                '("%`%l%(mode) -shell-escape%' %t"
+                  TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")))
+      (setq ome-LaTeX-shell-escape-mode t)
+      (message "LaTeX shell escape mode turned on.")))
+
+  ;; (define-key org-mode-map (kbd "C-c C-x x") 'ome-LaTeX-toggle-shell-escape)
+#+END_SRC
+
+** Todo
+- Add =auto-complete= support,
+  https://github.com/monsanto/auto-complete-auctex.
 
 * CDLaTeX
   :PROPERTIES:
