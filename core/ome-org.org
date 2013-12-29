@@ -20,11 +20,52 @@ which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
 
 #+NAME: org-el-get-packages
 #+CAPTION: El-get packages for ome-org module
-|            | Status      | Description                      |
-|------------+-------------+----------------------------------|
-| [[http://www.emacswiki.org/emacs/Htmlize][htmlize]].el | Recommended | Export an buffer to html format. |
-| [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/][CDLaTeX]]    | Recommended | Speedy \LaTeX{} input.           |
+|            | Status      | Description                               |
+|------------+-------------+-------------------------------------------|
+| [[http://orgmode.org/][org-mode]]   | Required    | One of the killer Apps on Emacs platform. |
+| [[http://www.emacswiki.org/emacs/Htmlize][htmlize]].el | Recommended | Export an buffer to html format.          |
+| [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/][CDLaTeX]]    | Recommended | Speedy \LaTeX{} input.                    |
 
+* Org-mode upgrade
+  :PROPERTIES:
+  :CUSTOM_ID: org-mode-upgrade
+  :END:
+
+#+BEGIN_QUOTE
+Org 8.0 is the most disruptive major version of Org.
+
+-- http://orgmode.org/Changes_old.html
+#+END_QUOTE
+
+So why upgrade? Because it is there, it is the future of org-mode. Second, I
+want to export my org files to markdown format, some times.
+
+You can get the latest org-mode by =M-x el-get-install RET org-mode=
+directly. However, with oh-my-emacs, we need some tricks to make it work.
+
+Oh-my-emacs use =org-babel= from =org-mode= to provide a literate emacs
+configuration, so we need to =(require 'org)= just after oh-my-emacs
+starts(before loading =el-get=). By default, oh-my-emacs will load the builtin
+=org-mode= instead of the latest =org-mode= package from =el-get=. To get
+around this, I define two variables: =el-get-org-mode-dir= and
+=org-home=. Thus, if =(el-get-package-installed-p 'org-mode)=, oh-my-emacs will
+recognize =org-mode= from =$HOME/.emacs.d/el-get/org-mode=. You can also
+download tarball from http://orgmode.org, and then start your Emacs from
+command line like this: =ORG_HOME=/path/to/latest/org-mode/ emacs=. However,
+I do not recommend this way for long time daily use.
+
+One of the most exciting features of org-mode 8.x is the new export engine,
+check [[http://article.gmane.org/gmane.emacs.orgmode/65574][the mailing list]] for original announcing post. For other features, check
+[[http://orgmode.org/worg/org-8.0.html][org 8.0 upgrading doc]].
+
+#+NAME: org-mode-upgrade
+#+BEGIN_SRC emacs-lisp
+  (defun ome-org-mode-setup ()
+    ;; markdown export support
+    (require 'ox-md))
+
+  (ome-install 'org-mode)
+#+END_SRC
 
 * Keybindings
   :PROPERTIES:

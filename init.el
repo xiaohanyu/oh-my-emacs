@@ -19,8 +19,20 @@
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
-;; load Org-mode from source when the ORG_HOME environment variable is set
-(setq org-home (getenv "ORG_HOME"))
+(defvar el-get-org-mode-dir "~/.emacs.d/el-get/org-mode/"
+  "The directory for org-mode el-get package.
+
+You can get the latest org-mode by el-get. You need to restart your emacs and
+oh-my-emacs will recognize the newly installed org-mode package.")
+
+(defvar org-home
+  (or (getenv "ORG_HOME")
+      (if (file-directory-p el-get-org-mode-dir)
+          el-get-org-mode-dir))
+  "The directory of org-mode package.
+
+You can get the latest org-mode by el-get, or download the package from
+official org-mode website directly.")
 
 (when org-home
   (let ((org-lisp-dir (expand-file-name "lisp" org-home))

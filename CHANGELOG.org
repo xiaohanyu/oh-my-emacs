@@ -7,6 +7,7 @@
 
 ** core
    - By default, use git shallow clone for el-get to save time and bandwidth.
+   - Upgrade the builtin =org-mode= to latest 8.x branch.
    - Enhance =ome-load= and =ome-install= function.
    - =ome-package-list-to-org-table= function to get a list of installed
      el-get packages in org-mode format.
