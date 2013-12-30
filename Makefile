@@ -22,7 +22,7 @@ doc/index.html:
 	mkdir -p doc
 	$(BATCH) --batch -Q --eval '(org-babel-load-file "ome-publish.org")'
 	rm ome-publish.el
-	cp doc/ome.html doc/index.html
+	cp doc/README.html doc/index.html
 	echo "Documentation published to doc/"
 
 clean:

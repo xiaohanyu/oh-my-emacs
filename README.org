@@ -59,7 +59,7 @@ rid of GFW when possible to avoid many weird problems during first startup);
 second, *ensure that you have installed the necessary tools* pointed out by
 the *Prerequisites* sections from oh-my-emacs modules. Basically, you need to
 install the following packages in you operating system, which is the mandatory
-prerequisites of [[https://github.com/xiaohanyu/oh-my-emacs/blob/master/ome.org][ome.org]]:
+prerequisites of [[file:ome.org][ome.org]]:
 - [[http://savannah.nongnu.org/projects/cvs][cvs]]
 - [[http://subversion.apache.org/][subversion]]
 - [[http://mercurial.selenic.com/][mercurial]]

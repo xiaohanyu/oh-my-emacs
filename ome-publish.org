@@ -1,0 +1,40 @@
+#+TITLE: Oh My Emacs Publish
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+This file is used to publish the oh-my-emacs documentation to =.html=
+in the =doc/= directory.
+
+This code defines the =ome-project= which is used to publish
+the documentation for the oh-my-emacs to html.
+
+#+NAME: ome-publish
+#+BEGIN_SRC emacs-lisp :results silent
+  (unless (boundp 'org-publish-project-alist)
+    (setq org-publish-project-alist nil))
+
+  (let* ((this-dir (file-name-directory (or load-file-name buffer-file-name))))
+    ;; define the org-publish-project for the oh-my-emacs
+    (setq org-publish-project-alist
+          `(("oh-my-emacs"
+             :components ("ome-index" "ome-core" "ome-modules")
+             :base-extension "org")
+            ("ome-index"
+             :base-directory ,this-dir
+             :publishing-directory ,(expand-file-name "doc" this-dir)
+             :index-filename "ome.org"
+             :html-postamble nil)
+            ("ome-core"
+             :base-directory ,(expand-file-name "core" this-dir)
+             :publishing-directory ,(expand-file-name "doc/core" this-dir)
+             :index-filename "ome.org"
+             :html-postamble nil)
+            ("ome-modules"
+             :base-directory ,(expand-file-name "modules" this-dir)
+             :publishing-directory ,(expand-file-name "doc/modules" this-dir)
+             :index-filename "ome.org"
+             :html-postamble nil)))
+    ;; publish the oh-my-emacs
+    (org-publish-project "oh-my-emacs" 'force))
+#+END_SRC
