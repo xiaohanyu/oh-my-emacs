@@ -19,40 +19,41 @@
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
-(defvar el-get-org-mode-dir "~/.emacs.d/el-get/org-mode/"
-  "The directory for org-mode el-get package.
+;; Now install el-get at the very first
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-You can get the latest org-mode by el-get. You need to restart your emacs and
-oh-my-emacs will recognize the newly installed org-mode package.")
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
 
-(defvar org-home
-  (or (getenv "ORG_HOME")
-      (if (file-directory-p el-get-org-mode-dir)
-          el-get-org-mode-dir))
-  "The directory of org-mode package.
+;; enable git shallow clone to save time and bandwidth
+(setq el-get-git-shallow-clone t)
 
-You can get the latest org-mode by el-get, or download the package from
-official org-mode website directly.")
+;; Sometimes, we need to experiment with our own recipe, or override the
+;; default el-get recipe to get around bugs.
+(add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
 
-(when org-home
-  (let ((org-lisp-dir (expand-file-name "lisp" org-home))
-        (org-contrib-lisp-dir (expand-file-name "contrib/lisp" org-home)))
-    (when (file-directory-p org-lisp-dir)
-      (add-to-list 'load-path org-lisp-dir)
-      (add-to-list 'load-path org-contrib-lisp-dir)
-      (require 'org))))
+;; Oh-my-emacs adopt org-mode 8.x from v0.3, so org-mode should be the first
+;; package to be installed via el-get
+(defun ome-org-mode-setup ()
+  ;; markdown export support
+  (require 'ox-md))
 
-;; load the ome from the `after-init-hook' so all packages are loaded
-(add-hook 'after-init-hook
-          `(lambda ()
-             ;; remember this directory
-             (setq ome-dir
-                   ,(file-name-directory (or load-file-name (buffer-file-name))))
-             ;; only load org-mode later if we didn't load it just now
-             ,(unless (and org-home
-                           (file-directory-p (expand-file-name "lisp" org-home)))
-                '(require 'org))
-             ;; load up the ome
-             (org-babel-load-file (expand-file-name "ome.org" ome-dir))))
+(add-to-list 'el-get-sources
+             '(:name org-mode
+                     :after (progn
+                              (ome-org-mode-setup))))
+
+(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+
+(defvar ome-dir (file-name-directory (or load-file-name (buffer-file-name)))
+  "oh-my-emacs home directory.")
+
+;; load up the ome
+(org-babel-load-file (expand-file-name "ome.org" ome-dir))
 
 ;;; init.el ends here

@@ -38,33 +38,36 @@ Org 8.0 is the most disruptive major version of Org.
 #+END_QUOTE
 
 So why upgrade? Because it is there, it is the future of org-mode. Second, I
-want to export my org files to markdown format, some times.
+want to export my org files to markdown format, sometimes, and org-mode 8.x
+provide a new great export engine, which is one of the most exciting features
+of org-mode 8.x, check [[http://article.gmane.org/gmane.emacs.orgmode/65574][the mailing list]] for original announcing post. For other
+features, check [[http://orgmode.org/worg/org-8.0.html][org 8.0 upgrading doc]].
 
 You can get the latest org-mode by =M-x el-get-install RET org-mode=
 directly. However, with oh-my-emacs, we need some tricks to make it work.
 
 Oh-my-emacs use =org-babel= from =org-mode= to provide a literate emacs
 configuration, so we need to =(require 'org)= just after oh-my-emacs
-starts(before loading =el-get=). By default, oh-my-emacs will load the builtin
-=org-mode= instead of the latest =org-mode= package from =el-get=. To get
-around this, I define two variables: =el-get-org-mode-dir= and
-=org-home=. Thus, if =(el-get-package-installed-p 'org-mode)=, oh-my-emacs will
-recognize =org-mode= from =$HOME/.emacs.d/el-get/org-mode=. You can also
-download tarball from http://orgmode.org, and then start your Emacs from
-command line like this: =ORG_HOME=/path/to/latest/org-mode/ emacs=. However,
-I do not recommend this way for long time daily use.
-
-One of the most exciting features of org-mode 8.x is the new export engine,
-check [[http://article.gmane.org/gmane.emacs.orgmode/65574][the mailing list]] for original announcing post. For other features, check
-[[http://orgmode.org/worg/org-8.0.html][org 8.0 upgrading doc]].
+starts. However, by default, oh-my-emacs will load the builtin =org-mode=
+instead of the latest =org-mode= package from =el-get=. To replace the builtin
+=org-mode= with the latest =org-mode= from =el-get= when we boot oh-my-emacs
+even for the initial oh-my-emacs setup, we need to install =org-mode= just
+after =el-get= setup, that means, =org-mode= should be the first package to be
+installed via =el-get=, this can be done by putting the following code snippet
+to =$HOME/.emacs.d/init.el=:
 
 #+NAME: org-mode-upgrade
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
   (defun ome-org-mode-setup ()
     ;; markdown export support
     (require 'ox-md))
 
-  (ome-install 'org-mode)
+  (add-to-list 'el-get-sources
+               '(:name org-mode
+                       :after (progn
+                                (ome-org-mode-setup))))
+
+  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 #+END_SRC
 
 * Keybindings

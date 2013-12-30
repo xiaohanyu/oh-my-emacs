@@ -146,10 +146,11 @@ dotemacs project adopt the builtin =package.el=. You may wonder why, IMHO,
 el-get is the practical solution, at least for now. In a word, what el-get
 to emacs is what =apt-get= to debian/ubuntu.
 
-So the first thing oh-my-emacs do to your emacs is to install =el-get=:
+So the very first thing oh-my-emacs do to your emacs is to install =el-get=, this is
+done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
 
 #+NAME: ome-install-el-get
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
   (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
   (unless (require 'el-get nil 'noerror)
