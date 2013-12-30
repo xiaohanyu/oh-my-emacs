@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Oh My Emacs GUI"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -127,29 +120,54 @@ for the JavaScript code in this tag.
 <p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Basic GUI Settings</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-gui-el-get-packages" class="outline-2">
+<h2 id="gui-el-get-packages"><a name="sec-1" id="sec-1"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-gui-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-gui module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/sellout/emacs-color-theme-solarized.git">color-theme-solarized</a></td><td class="left">Required</td><td class="left">Adopt this as the default color-theme.</td></tr>
+<tr><td class="left"><a href="https://github.com/milkypostman/powerline">powerline</a></td><td class="left">Required</td><td class="left">Eye candy for Emacs mode line.</td></tr>
+<tr><td class="left"><a href="https://github.com/m2ym/yascroll-el">yascroll</a></td><td class="left">Required</td><td class="left">Eye candy for Emacs scroll bar.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Basic GUI Settings</h2>
+<div class="outline-text-2" id="text-2">
 
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">believe me, you don't need menubar, toolbar nor scrollbar</span>
-(<span class="org-keyword">dolist</span> (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
-  (<span class="org-keyword">when</span> (fboundp mode) (funcall mode -1)))
+<pre class="example">;; show column number and line number
+(dolist (mode '(column-number-mode line-number-mode))
+  (when (fboundp mode) (funcall mode t)))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">show column number and line number</span>
-(<span class="org-keyword">dolist</span> (mode '(column-number-mode line-number-mode global-linum-mode))
-  (<span class="org-keyword">when</span> (fboundp mode) (funcall mode t)))
+(dolist (mode-hook '(text-mode-hook prog-mode-hook))
+  (add-hook mode-hook
+            (lambda ()
+              (linum-mode 1))))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">make the fringe thinner (default is 8 in pixels)</span>
+;; make the fringe thinner (default is 8 in pixels)
 (fringe-mode 4)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">show parenthesis match</span>
+;; show parenthesis match
 (show-paren-mode 1)
 (setq show-paren-style 'expression)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Toggle line highlighting in all buffers</span>
+;; Toggle line highlighting in all buffers
 (global-hl-line-mode t)
 </pre>
 
@@ -159,7 +177,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-font" class="outline-2">
-<h2 id="font"><a name="sec-2" id="sec-2"></a>Choose Monaco as the Default English Font</h2>
+<h2 id="font"><a name="sec-3" id="sec-3"></a>Choose Monaco as the Default English Font</h2>
 <div class="outline-text-2" id="text-font">
 
 
@@ -183,11 +201,11 @@ self-adapting.
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">frame font</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Setting English Font</span>
-(<span class="org-keyword">if</span> (member <span class="org-string">"Monaco"</span> (font-family-list))
+<pre class="example">;; frame font
+;; Setting English Font
+(if (member "Monaco" (font-family-list))
     (set-face-attribute
-     'default nil <span class="org-builtin">:font</span> <span class="org-string">"Monaco 12"</span>))
+     'default nil :font "Monaco 12"))
 </pre>
 
 
@@ -196,7 +214,7 @@ self-adapting.
 </div>
 
 <div id="outline-container-fullscreen" class="outline-2">
-<h2 id="fullscreen"><a name="sec-3" id="sec-3"></a>Full screen support</h2>
+<h2 id="fullscreen"><a name="sec-4" id="sec-4"></a>Full screen support</h2>
 <div class="outline-text-2" id="text-fullscreen">
 
 
@@ -219,15 +237,15 @@ starting point.
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">http://www.emacswiki.org/emacs/FullScreen</span>
-(<span class="org-keyword">defun</span> <span class="org-function-name">ome-toggle-fullscreen</span> ()
-  <span class="org-doc">"Toggle full screen"</span>
+<pre class="example">;; http://www.emacswiki.org/emacs/FullScreen
+(defun ome-toggle-fullscreen ()
+  "Toggle full screen"
   (interactive)
   (set-frame-parameter
    nil 'fullscreen
-   (<span class="org-keyword">when</span> (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+   (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">(global-set-key (kbd "&lt;f11&gt;") 'toggle-fullscreen)</span>
+;; (global-set-key (kbd "&lt;f11&gt;") 'ome-toggle-fullscreen)
 </pre>
 
 
@@ -236,7 +254,7 @@ starting point.
 </div>
 
 <div id="outline-container-color-theme" class="outline-2">
-<h2 id="color-theme"><a name="sec-4" id="sec-4"></a>Solarized Color Theme</h2>
+<h2 id="color-theme"><a name="sec-5" id="sec-5"></a>Solarized Color Theme</h2>
 <div class="outline-text-2" id="text-color-theme">
 
 
@@ -247,10 +265,10 @@ oh-my-emacs.
 </p>
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> color-theme-solarized
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (load-theme 'solarized-dark t))))
+<pre class="example">(defun ome-color-theme-solarized-setup ()
+  (load-theme 'solarized-dark t))
+
+(ome-install 'color-theme-solarized)
 </pre>
 
 
@@ -259,7 +277,7 @@ oh-my-emacs.
 </div>
 
 <div id="outline-container-powerline" class="outline-2">
-<h2 id="powerline"><a name="sec-5" id="sec-5"></a>Powerline</h2>
+<h2 id="powerline"><a name="sec-6" id="sec-6"></a>Powerline</h2>
 <div class="outline-text-2" id="text-powerline">
 
 
@@ -270,10 +288,10 @@ inspired by <a href="https://github.com/Lokaltog/vim-powerline">vim-powerline</a
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> powerline
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (powerline-default-theme))))
+<pre class="example">(defun ome-powerline-setup ()
+  (powerline-default-theme))
+
+(ome-install 'powerline)
 </pre>
 
 </div>
@@ -281,7 +299,7 @@ inspired by <a href="https://github.com/Lokaltog/vim-powerline">vim-powerline</a
 </div>
 
 <div id="outline-container-yascroll" class="outline-2">
-<h2 id="yascroll"><a name="sec-6" id="sec-6"></a>Yascroll</h2>
+<h2 id="yascroll"><a name="sec-7" id="sec-7"></a>Yascroll</h2>
 <div class="outline-text-2" id="text-yascroll">
 
 
@@ -291,26 +309,26 @@ inspired by <a href="https://github.com/Lokaltog/vim-powerline">vim-powerline</a
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> yascroll
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (global-yascroll-bar-mode 1))))
+<pre class="example">(defun ome-yascroll-setup ()
+  (global-yascroll-bar-mode 1))
+
+(ome-install 'yascroll)
 </pre>
 
 </div>
 
 </div>
 
-<div id="outline-container-7" class="outline-2">
-<h2 id="sec-7">Todo</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8">Todo</h2>
+<div class="outline-text-2" id="text-8">
 
 
 </div>
 
-<div id="outline-container-7-1" class="outline-3">
-<h3 id="sec-7-1">Speedbar</h3>
-<div class="outline-text-3" id="text-7-1">
+<div id="outline-container-8-1" class="outline-3">
+<h3 id="sec-8-1">Speedbar</h3>
+<div class="outline-text-3" id="text-8-1">
 
 <ul>
 <li>Combine projectile and speedbar to provide a project navigation
@@ -323,9 +341,9 @@ inspired by <a href="https://github.com/Lokaltog/vim-powerline">vim-powerline</a
 
 </div>
 
-<div id="outline-container-7-2" class="outline-3">
-<h3 id="sec-7-2">Color-theme</h3>
-<div class="outline-text-3" id="text-7-2">
+<div id="outline-container-8-2" class="outline-3">
+<h3 id="sec-8-2">Color-theme</h3>
+<div class="outline-text-3" id="text-8-2">
 
 <ul>
 <li>More color-theme support
@@ -348,9 +366,9 @@ inspired by <a href="https://github.com/Lokaltog/vim-powerline">vim-powerline</a
 
 </div>
 
-<div id="outline-container-7-3" class="outline-3">
-<h3 id="sec-7-3">Scrollbar</h3>
-<div class="outline-text-3" id="text-7-3">
+<div id="outline-container-8-3" class="outline-3">
+<h3 id="sec-8-3">Scrollbar</h3>
+<div class="outline-text-3" id="text-8-3">
 
 <ul>
 <li>Smooth scrolling?
@@ -362,9 +380,9 @@ inspired by <a href="https://github.com/Lokaltog/vim-powerline">vim-powerline</a
 
 </div>
 
-<div id="outline-container-7-4" class="outline-3">
-<h3 id="sec-7-4">Minimap</h3>
-<div class="outline-text-3" id="text-7-4">
+<div id="outline-container-8-4" class="outline-3">
+<h3 id="sec-8-4">Minimap</h3>
+<div class="outline-text-3" id="text-8-4">
 
 <ul>
 <li>Currently, none of the minimap projects works the way I want it to.

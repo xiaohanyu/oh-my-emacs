@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs GUI</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs GUI"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs GUI</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains some experimental packages, which may be:
+</p><ul>
+<li>not stable enough
+</li>
+<li>usable, with some minor annoying problems
+</li>
+<li>young packages without long time testing and validating.
+</li>
+</ul>
+
+
+<p>
+Load necessary packages as you like.
+</p>
+
+<div id="outline-container-experimental-prerequisites" class="outline-2">
+<h2 id="experimental-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-experimental-prerequisites">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-experimental module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a></td><td class="left"></td><td class="left">doxygen</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">No</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Note:
+</p><ul>
+<li><a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a>, even if you don't have doxygen installed, you can still use
+  doxymacs to insert doxygen-style comments. So I make this dependency
+  optional. However, so many Mac OS users have problems with this el-get
+  package, so I move
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-experimental-el-get-packages" class="outline-2">
+<h2 id="experimental-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-experimental-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-experimental module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.emacswiki.org/emacs/LaCarte">lacarte</a></td><td class="left">Recommended</td><td class="left">Access menubar in minibuffer command loop.</td></tr>
+<tr><td class="left"><a href="http://www.emacswiki.org/emacs/SrSpeedbar">SrSpeedbar</a></td><td class="left">Experimental</td><td class="left">Make <a href="http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html">Speedbar</a> show in same frame.</td></tr>
+<tr><td class="left"><a href="https://github.com/aspiers/smooth-scrolling">smooth-scrolling</a></td><td class="left">Recommended</td><td class="left">Emacs smooth scrolling package.</td></tr>
+<tr><td class="left"><a href="https://github.com/nflath/hungry-delete">hungry-delete</a></td><td class="left">Experimental</td><td class="left">Enables hungry deletion in all modes.</td></tr>
+<tr><td class="left"><a href="http://doxymacs.sourceforge.net/">doxymacs</a></td><td class="left">Experimental</td><td class="left">Literate comments for cc-mode.</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Note:
+</p><ul>
+<li><a href="http://doxymacs.sourceforge.net/">doxymacs</a>: There're many Mac OS users having problems building with this
+  package, so I have to move this package from ome-cc module to
+  ome-experimental module. See <a href="https://github.com/xiaohanyu/oh-my-emacs/issues/17">github issue</a> for details.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-lacarte" class="outline-2">
+<h2 id="lacarte"><a name="sec-3" id="sec-3"></a>Lacarte</h2>
+<div class="outline-text-2" id="text-lacarte">
+
+
+<p>
+By default, oh-my-emacs disables <code>menu-bar-mode</code>. Of course you can turn it on
+by <code>M-x menu-bar-mode</code>, however, most of the time menubar in Emacs is useless.
+Unfortunately, there may be some times that we want to access the menubar just
+to find or execute oblivious command. For example, the prefix key of
+<code>outline-mode</code> is <code>C-c @</code>, which is quite hard to type, and I often forgot the
+normal keybindings of outline-minor-mode. The normal workflow for this case is
+divided into three steps:
+</p><ol>
+<li>turn on the menubar by <code>M-x menu-bar-mode</code>
+</li>
+<li>find/execute the command you want
+</li>
+<li>turn off the menubar again by <code>M-x menu-bar-mode</code>
+</li>
+</ol>
+
+
+<p>
+Ah, a little tedious, isn't it? Fortunately, with <a href="http://www.emacswiki.org/emacs/LaCarte">lacarte</a>, I can just <code>M-x lacarte-execute-menu-command</code>, and it will lead me to the right place. Helm
+also provides a <code>helm-source-lacarte</code> for lacarte support. See <a href="https://github.com/emacs-helm/helm/blob/master/helm-misc.el">helm-misc.el</a> for
+details.
+</p>
+
+
+
+<pre class="example">(defun ome-lacarte-setup ()
+  (global-set-key (kbd "C-c M-x") 'lacarte-execute-command)
+  (global-set-key (kbd "C-c M-m") 'lacarte-execute-menu-command))
+
+(ome-install 'lacarte)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-sr-speedbar" class="outline-2">
+<h2 id="sr-speedbar"><a name="sec-4" id="sec-4"></a>Sr-speedbar</h2>
+<div class="outline-text-2" id="text-sr-speedbar">
+
+
+<p>
+<a href="http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html">Speedbar</a> is a program for Emacs which provides a special frame for conveniently
+navigating in or operating on another frame. The original inpiration comes from
+the "explorer" feature often used in modern development environments.
+</p>
+<p>
+By default, speedbar will fork a new frame, which, IMHO, is a bad
+idea. <code>sr-speedbar</code> solves this problem, however, it brings some new problems:
+</p><ul>
+<li>By default, the value of <code>sr-speedbar-right-side</code> is <code>t</code>. And this windows
+  will be occupied by <code>helm</code> when you do things with <code>helm</code>, which is quite
+  boring. So I have to <code>(setq sr-speedbar-right-side nil)</code>.
+</li>
+<li>By default, the width of <code>sr-speedbar</code> window will change when you resize
+  the Emacs frame, so I have to adopt a code snippet from <a href="http://www.emacswiki.org/emacs/SrSpeedbar">emacswiki</a>.
+</li>
+<li>Even we <code>(setq window-size-fixed 'width)</code>, the width of <code>sr-speedbar</code> window
+  still changes in some rare cases. For example, when you delete "window-1" by
+  <code>delete-window</code> in the following layout, <code>sr-speedbar</code> will expand, while
+  "window-2" will keep its width unchanged.
+</li>
+</ul>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">sr-speedbar</td><td class="left">window-1</td><td class="left">window-2</td></tr>
+</tbody>
+</table>
+
+
+
+
+
+<pre class="example">(defadvice sr-speedbar-open (around ome-sr-speedbar-open disable)
+  ad-do-it
+  (with-current-buffer sr-speedbar-buffer-name
+    (setq window-size-fixed 'width)))
+
+(defun ome-sr-speedbar-setup ()
+  ;;keep speed bar window width after resizing
+  (ad-enable-advice 'sr-speedbar-open 'around 'ome-sr-speedbar-open)
+  (ad-activate 'sr-speedbar-open)
+  (setq sr-speedbar-skip-other-window-p t)
+  (setq sr-speedbar-right-side nil))
+
+(ome-install 'sr-speedbar)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-smooth-scrolling" class="outline-2">
+<h2 id="smooth-scrolling"><a name="sec-5" id="sec-5"></a>Smooth-scrolling</h2>
+<div class="outline-text-2" id="text-smooth-scrolling">
+
+
+<p>
+Make emacs scroll smoothly.
+</p>
+
+
+
+<pre class="example">(ome-install 'smooth-scrolling)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-hungry-delete" class="outline-2">
+<h2 id="hungry-delete"><a name="sec-6" id="sec-6"></a>Hungry-delete</h2>
+<div class="outline-text-2" id="text-hungry-delete">
+
+
+<p>
+CC-mode does have some good <a href="http://www.gnu.org/software/emacs/manual/html_node/ccmode/Minor-Modes.html">innovations</a>, among which hungry-delete is what I
+want most. Fortunately, a good guy ported <a href="https://github.com/nflath/hungry-delete">hungry-delete</a> from cc-mode to a
+independent package.
+</p>
+
+
+
+<pre class="example">(defun ome-hungry-delete-setup ()
+  (dolist (hook '(text-mode-hook prog-mode-hook comint-mode-hook))
+    (add-hook hook 'turn-on-hungry-delete-mode)))
+
+(ome-install 'hungry-delete)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-fill-column-indicator" class="outline-2">
+<h2 id="fill-column-indicator"><a name="sec-7" id="sec-7"></a>Fill-Column-Indicator</h2>
+<div class="outline-text-2" id="text-fill-column-indicator">
+
+
+<p>
+"Many modern editors and IDEs can graphically indicate the location of the fill
+column by drawing a thin line (in design parlance, a "rule") down the length of
+the editing window. Fill-column-indicator implements this facility in Emacs
+<a href="https://github.com/alpaker/Fill-Column-Indicator">Fill-Column-Indicator</a>."
+</p>
+<p>
+This package still has some conflicts with other oh-my-emacs packages, so I
+put it in ome-experimental module instead of core.
+</p>
+
+
+
+<pre class="example">(defun ome-fill-column-indicator-setup ()
+  (add-hook 'text-mode-hook 'fci-mode)
+  (add-hook 'prog-mode-hook 'fci-mode))
+
+(ome-install 'fill-column-indicator)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-doxymacs" class="outline-2">
+<h2 id="doxymacs"><a name="sec-8" id="sec-8"></a>Documentation with Doxymacs in CC-mode</h2>
+<div class="outline-text-2" id="text-doxymacs">
+
+
+<blockquote>
+
+<p>Doxygen is the de facto standard tool for generating documentation from
+annotated C++ sources, but it also supports other popular programming languages
+such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and
+UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.
+</p>
+<p>
+&ndash; <a href="http://www.doxygen.org/">http://www.doxygen.org/</a>
+</p>
+</blockquote>
+
+
+<p>
+<a href="http://doxymacs.sourceforge.net/">Doxymacs</a> brings the power of doxygen to Emacs, you can easily insert Doxygen
+style comments in emacs. The default keybindings are:
+</p><ul>
+<li><code>C-c d ?</code> look up documentation for the symbol under the point.
+</li>
+<li><code>C-c d r</code> rescan your Doxygen tags file.
+</li>
+<li><code>C-c d f</code> insert a Doxygen comment for the next function.
+</li>
+<li><code>C-c d i</code> insert a Doxygen comment for the current file.
+</li>
+<li><code>C-c d ;</code> insert a Doxygen comment for a member variable on the current line
+  (like M-;).
+</li>
+<li><code>C-c d m</code> insert a blank multi-line Doxygen comment.
+</li>
+<li><code>C-c d s</code> insert a blank single-line Doxygen comment.
+</li>
+<li><code>C-c d @</code> insert grouping comments around the current region.
+</li>
+</ul>
+
+
+<p>
+If you like, you can even integrate Doxygen to CMake workflow, see <a href="http://majewsky.wordpress.com/2010/08/14/tip-of-the-day-cmake-and-doxygen/">here</a>.
+</p>
+
+
+
+<pre class="example">(defun ome-doxymacs-setup ()
+  (add-hook 'c-mode-common-hook 'doxymacs-mode)
+  (add-hook 'c-mode-common-hook 'doxymacs-font-lock))
+
+(ome-install 'doxymacs)
+</pre>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

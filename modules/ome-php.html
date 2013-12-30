@@ -3,12 +3,12 @@
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Oh My Emacs JavaScript</title>
+<title>Oh My Emacs PHP</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Oh My Emacs JavaScript"/>
+<meta name="title" content="Oh My Emacs PHP"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -122,10 +115,87 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="content">
-<h1 class="title">Oh My Emacs JavaScript</h1>
+<h1 class="title">Oh My Emacs PHP</h1>
 
 <p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
-</p></div>
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#php-prerequisites">Prerequisites</a></li>
+<li><a href="#php-el-get-packages">El-get packages</a></li>
+<li><a href="#php-mode">php-mode</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-php-prerequisites" class="outline-2">
+<h2 id="php-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-php-prerequisites">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-php module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://php.net/">php</a></td><td class="left"></td><td class="left">php5 php5-cli php-pear</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">No</td></tr>
+</tbody>
+</table>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-php-el-get-packages" class="outline-2">
+<h2 id="php-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-php-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-php module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/ejmr/php-mode">php-mode</a></td><td class="left">Required</td><td class="left">Major mode for php.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-php-mode" class="outline-2">
+<h2 id="php-mode"><a name="sec-3" id="sec-3"></a>php-mode</h2>
+<div class="outline-text-2" id="text-php-mode">
+
+
+<p>
+I know little about php, and I found little resources about how to do PHP
+programming in Emacs, so any pull request will be appreciated.
+</p>
+
+
+
+<pre class="example">(defun ome-php-mode-setup ())
+
+(ome-install 'php-mode)
+</pre>
+
+</div>
+</div>
+</div>
 
 </body>
 </html>

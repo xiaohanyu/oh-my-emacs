@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Oh My Emacs Basic</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Oh My Emacs Basic"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -127,14 +120,48 @@ for the JavaScript code in this tag.
 <p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Prerequisites</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-basic-prerequisites" class="outline-2">
+<h2 id="basic-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-basic-prerequisites">
 
-<ul>
-<li><a href="http://aspell.net/">GNU Aspell</a> for spell checking.
-</li>
-</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-basic module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://aspell.net/">GNU Aspell</a></td><td class="left"></td><td class="left">aspell, aspell-en</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-basic-el-get-packages" class="outline-2">
+<h2 id="basic-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get Packages</h2>
+<div class="outline-text-2" id="text-basic-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>el-get packages for ome-basic module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">saveplace</td><td class="left">Builtin</td><td class="left">Save cursor place in opened files.</td></tr>
+<tr><td class="left">recentf</td><td class="left">Builtin</td><td class="left">Maintains a recent opened file list.</td></tr>
+<tr><td class="left">uniquify</td><td class="left">Builtin</td><td class="left">Better differentiate buffers with same file name.</td></tr>
+<tr><td class="left">auto-fill-mode</td><td class="left">Builtin</td><td class="left">We should still obey the 80-characters rule.</td></tr>
+<tr><td class="left"><a href="https://github.com/flycheck/flycheck">Flycheck</a></td><td class="left">Recommended</td><td class="left">aka "Flymake done right"</td></tr>
+</tbody>
+</table>
 
 
 </div>
@@ -142,68 +169,78 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-basic" class="outline-2">
-<h2 id="basic"><a name="sec-2" id="sec-2"></a>Some Basic Settings</h2>
+<h2 id="basic"><a name="sec-3" id="sec-3"></a>Some Basic Settings</h2>
 <div class="outline-text-2" id="text-basic">
 
 
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">set environment coding system</span>
-(set-language-environment <span class="org-string">"UTF-8"</span>)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">auto revert buffer globally</span>
+<pre class="example">;; fix the mac PATH variable
+(defun ome-set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when (eq system-type 'darwin)
+  (when window-system (ome-set-exec-path-from-shell-PATH)))
+
+;; set environment coding system
+(set-language-environment "UTF-8")
+;; auto revert buffer globally
 (global-auto-revert-mode t)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">set TAB and indention</span>
+;; set TAB and indention
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">y or n is suffice for a yes or no question</span>
+;; y or n is suffice for a yes or no question
 (fset 'yes-or-no-p 'y-or-n-p)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">always add new line to the end of a file</span>
+;; always add new line to the end of a file
 (setq require-final-newline t)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">add no new lines when "arrow-down key" at the end of a buffer</span>
+;; add no new lines when "arrow-down key" at the end of a buffer
 (setq next-line-add-newlines nil)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">prevent the annoying beep on errors</span>
+;; prevent the annoying beep on errors
 (setq ring-bell-function 'ignore)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">remove trailing whitespaces before save</span>
+;; remove trailing whitespaces before save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">enable to support navigate in camelCase words</span>
+;; enable to support navigate in camelCase words
 (global-subword-mode t)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">hide startup splash screen</span>
+;; hide startup splash screen
 (setq inhibit-startup-screen t)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">shell-mode settings</span>
-(setq explicit-shell-file-name <span class="org-string">"/bin/bash"</span>)
-(setq shell-file-name <span class="org-string">"/bin/bash"</span>)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">always insert at the bottom</span>
+;; shell-mode settings
+(unless (eq system-type 'windows-nt)
+  (setq explicit-shell-file-name "/bin/bash")
+  (setq shell-file-name "/bin/bash"))
+;; always insert at the bottom
 (setq comint-scroll-to-bottom-on-input t)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">no duplicates in command history</span>
+;; no duplicates in command history
 (setq comint-input-ignoredups t)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">what to run when i press enter on a line above the current prompt</span>
-(setq comint-get-old-input (<span class="org-keyword">lambda</span> () <span class="org-doc">""</span>))
-<span class="org-comment-delimiter">;; </span><span class="org-comment">max shell history size</span>
+;; what to run when i press enter on a line above the current prompt
+(setq comint-get-old-input (lambda () ""))
+;; max shell history size
 (setq comint-input-ring-size 1000)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">show all in emacs interactive output</span>
-(setenv <span class="org-string">"PAGER"</span> <span class="org-string">"cat"</span>)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">set lang to enable Chinese display in shell-mode</span>
-(setenv <span class="org-string">"LANG"</span> <span class="org-string">"en_US.UTF-8"</span>)
+;; show all in emacs interactive output
+(setenv "PAGER" "cat")
+;; set lang to enable Chinese display in shell-mode
+(setenv "LANG" "en_US.UTF-8")
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">set text-mode as the default major mode, instead of fundamental-mode</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">The first of the two lines in parentheses tells Emacs to turn on Text mode</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">when you find a file, unless that file should go into some other mode, such</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">as C mode.</span>
+;; set text-mode as the default major mode, instead of fundamental-mode
+;; The first of the two lines in parentheses tells Emacs to turn on Text mode
+;; when you find a file, unless that file should go into some other mode, such
+;; as C mode.
 (setq-default major-mode 'text-mode)
 
-<span class="org-comment-delimiter">;;; </span><span class="org-comment">ido-mode</span>
+;;; ido-mode
 (setq ido-enable-prefix nil)
 (setq ido-enable-case nil)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode t)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">use icomplete in minibuffer</span>
+;; use icomplete in minibuffer
 (icomplete-mode t)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">delete the selection with a keypress</span>
+;; delete the selection with a keypress
 (delete-selection-mode t)
 </pre>
 
@@ -212,8 +249,37 @@ for the JavaScript code in this tag.
 
 </div>
 
+<div id="outline-container-mac" class="outline-2">
+<h2 id="mac"><a name="sec-4" id="sec-4"></a>Mac OS X compatibilities</h2>
+<div class="outline-text-2" id="text-mac">
+
+
+<p>
+There're multiple <a href="http://wikemacs.org/index.php/Installing_Emacs_on_OS_X">choices</a> to install Emacs on Mac OS X. I prefer <a href="http://brew.sh/">Homebrew</a>, and
+got my Emacs with <code>brew install emacs --cocoa</code>. This version of emacs even has
+native <a href="http://batsov.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/">full screen support</a>.
+</p>
+<p>
+Another problem with emacs on Mac OX X is the keybindings to <code>Meta</code> and
+<code>Control</code>. Since most of the macbooks lack the right <code>Control</code> key, I prefer
+to bind Mac's <code>Command</code> and <code>Option</code> key to Emacs's <code>Meta</code> and <code>Control</code> key,
+respectively.
+</p>
+
+
+
+<pre class="example">(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'control))
+</pre>
+
+
+</div>
+
+</div>
+
 <div id="outline-container-auto-fill" class="outline-2">
-<h2 id="auto-fill"><a name="sec-3" id="sec-3"></a>Auto-fill Mode</h2>
+<h2 id="auto-fill"><a name="sec-5" id="sec-5"></a>Auto-fill Mode</h2>
 <div class="outline-text-2" id="text-auto-fill">
 
 
@@ -239,7 +305,7 @@ from them<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>. For ho
 
 
 
-<pre class="src src-emacs-lisp">(setq-default fill-column 79)
+<pre class="example">(setq-default fill-column 79)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'prog-mode-hook 'turn-on-auto-fill)
 </pre>
@@ -250,7 +316,7 @@ from them<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>. For ho
 </div>
 
 <div id="outline-container-saveplace" class="outline-2">
-<h2 id="saveplace"><a name="sec-4" id="sec-4"></a>Save Place in Opened Files</h2>
+<h2 id="saveplace"><a name="sec-6" id="sec-6"></a>Save Place in Opened Files</h2>
 <div class="outline-text-2" id="text-saveplace">
 
 
@@ -261,9 +327,9 @@ previously visited the same file. The following code comes from <a href="http://
 
 
 
-<pre class="src src-emacs-lisp">(setq-default save-place t)
-(setq save-place-file <span class="org-string">"~/.emacs.d/saved-places"</span>)
-(<span class="org-keyword">require</span> '<span class="org-constant">saveplace</span>)
+<pre class="example">(setq-default save-place t)
+(setq save-place-file (concat user-emacs-directory ".saved-places"))
+(require 'saveplace)
 </pre>
 
 
@@ -272,7 +338,7 @@ previously visited the same file. The following code comes from <a href="http://
 </div>
 
 <div id="outline-container-recentf" class="outline-2">
-<h2 id="recentf"><a name="sec-5" id="sec-5"></a>Recentf</h2>
+<h2 id="recentf"><a name="sec-7" id="sec-7"></a>Recentf</h2>
 <div class="outline-text-2" id="text-recentf">
 
 
@@ -289,24 +355,27 @@ The following code comes from <a href="http://www.masteringemacs.org/articles/20
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">recentf</span>)
+<pre class="example">(require 'recentf)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">get rid of `</span><span class="org-comment"><span class="org-constant">find-file-read-only</span></span><span class="org-comment">' and replace it with something</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">more useful.</span>
-(global-set-key (kbd <span class="org-string">"C-x C-r"</span>) 'ido-recentf-open)
+;; get rid of `find-file-read-only' and replace it with something
+;; more useful.
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">enable recent files mode.</span>
+;; save the .recentf file to .emacs.d/
+(setq recentf-save-file (concat user-emacs-directory ".recentf"))
+
+;; enable recent files mode.
 (recentf-mode t)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">50 files ought to be enough.</span>
+;; 50 files ought to be enough.
 (setq recentf-max-saved-items 50)
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">ido-recentf-open</span> ()
-  <span class="org-doc">"Use `</span><span class="org-doc"><span class="org-constant">ido-completing-read</span></span><span class="org-doc">' to \\[</span><span class="org-doc"><span class="org-constant">find-file</span></span><span class="org-doc">] a recent file"</span>
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
   (interactive)
-  (<span class="org-keyword">if</span> (find-file (ido-completing-read <span class="org-string">"Find recent file: "</span> recentf-list))
-      (message <span class="org-string">"Opening file..."</span>)
-    (message <span class="org-string">"Aborting"</span>)))
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
 </pre>
 
 
@@ -315,7 +384,7 @@ The following code comes from <a href="http://www.masteringemacs.org/articles/20
 </div>
 
 <div id="outline-container-uniquify" class="outline-2">
-<h2 id="uniquify"><a name="sec-6" id="sec-6"></a>Uniquify</h2>
+<h2 id="uniquify"><a name="sec-8" id="sec-8"></a>Uniquify</h2>
 <div class="outline-text-2" id="text-uniquify">
 
 
@@ -334,8 +403,8 @@ uniquify package. Or you can refer to <a href="http://trey-jackson.blogspot.com/
 
 
 
-<pre class="src src-emacs-lisp">(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-(<span class="org-keyword">require</span> '<span class="org-constant">uniquify</span>)
+<pre class="example">(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(require 'uniquify)
 </pre>
 
 
@@ -344,7 +413,7 @@ uniquify package. Or you can refer to <a href="http://trey-jackson.blogspot.com/
 </div>
 
 <div id="outline-container-flyspell" class="outline-2">
-<h2 id="flyspell"><a name="sec-7" id="sec-7"></a>Flyspell</h2>
+<h2 id="flyspell"><a name="sec-9" id="sec-9"></a>Flyspell</h2>
 <div class="outline-text-2" id="text-flyspell">
 
 
@@ -361,10 +430,62 @@ In order to use <code>flyspell</code>, you must install an external spell checke
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">use aspell instead of ispell</span>
-(setq ispell-program-name <span class="org-string">"aspell"</span>
-      ispell-extra-args '(<span class="org-string">"--sug-mode=ultra"</span>))
+<pre class="example">;; use aspell instead of ispell
+(setq ispell-program-name "aspell"
+      ispell-extra-args '("--sug-mode=ultra"))
 </pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-flycheck" class="outline-2">
+<h2 id="flycheck"><a name="sec-10" id="sec-10"></a>Flycheck</h2>
+<div class="outline-text-2" id="text-flycheck">
+
+
+<p>
+<a href="https://github.com/flycheck/flycheck">Flycheck</a> (aka “Flymake done right”) is a modern on-the-fly syntax checking
+extension for GNU Emacs 24.
+</p>
+
+
+
+<pre class="example">(defun ome-flycheck-setup ()
+  (eval-after-load 'flycheck
+    '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
+  (add-hook 'prog-mode-hook 'flycheck-mode))
+
+(ome-install 'flycheck)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-11" class="outline-2">
+<h2 id="sec-11">Todo</h2>
+<div class="outline-text-2" id="text-11">
+
+
+</div>
+
+<div id="outline-container-11-1" class="outline-3">
+<h3 id="sec-11-1">Flycheck</h3>
+<div class="outline-text-3" id="text-11-1">
+
+<ul>
+<li>Customizable prefix key, see <a href="https://github.com/flycheck/flycheck/issues/223">https://github.com/flycheck/flycheck/issues/223</a>.
+</li>
+<li>Checkers for Common Lisp.
+</li>
+<li>Test with big files for performance.
+</li>
+<li>More documentation and tutorial.
+</li>
+</ul>
 
 
 <div id="footnotes">
@@ -375,7 +496,7 @@ auto-fill in almost every programming and writing modes.
 </p>
 
 
-
+</div>
 </div>
 </div>
 

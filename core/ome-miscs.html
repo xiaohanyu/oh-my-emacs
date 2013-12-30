@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Oh My Emacs Miscs"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -130,31 +123,59 @@ for the JavaScript code in this tag.
 This file contains things that still don't find a good place to put, :-).
 </p>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Prerequisites</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-miscs-prerequisites" class="outline-2">
+<h2 id="miscs-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-miscs-prerequisites">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-miscs module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://w3m.sourceforge.net/">w3m</a></td><td class="left"></td><td class="left">w3m, w3m-img</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">No</td></tr>
+</tbody>
+</table>
 
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1">Optional</h3>
-<div class="outline-text-3" id="text-1-1">
+</div>
 
-<ul>
-<li><a href="http://w3m.sourceforge.net/">w3m</a> for <a href="http://emacs-w3m.namazu.org/">emacs-w3m</a>
-</li>
-</ul>
+<div id="outline-container-miscs-el-get-packages" class="outline-2">
+<h2 id="miscs-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-miscs-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-miscs module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/jlr/rainbow-delimiters">rainbow-delimiters</a></td><td class="left">Required</td><td class="left">Colorful parens.</td></tr>
+<tr><td class="left"><a href="http://magit.github.io/magit/">magit</a></td><td class="left">Required</td><td class="left">Git in Emacs.</td></tr>
+<tr><td class="left"><a href="https://github.com/bbatsov/projectile">projectile</a></td><td class="left">Required</td><td class="left">Project managment in Emacs.</td></tr>
+<tr><td class="left"><a href="https://github.com/Fuco1/smartparens">smartparens</a></td><td class="left">Required</td><td class="left">The ulitimate paren management solution for Emacs.</td></tr>
+<tr><td class="left"><a href="http://emacs-w3m.namazu.org/">emacs-w3m</a></td><td class="left">Recommended</td><td class="left">Browsing HTML docs in Emacs.</td></tr>
+<tr><td class="left"><a href="https://github.com/syohex/emacs-quickrun">quickrun</a></td><td class="left">Recommended</td><td class="left">Just as its name said.</td></tr>
+<tr><td class="left"><a href="http://www.eskimo.com/~seldon/diminish.el">diminish</a></td><td class="left">Recommended</td><td class="left">Clean up mode line space.</td></tr>
+</tbody>
+</table>
 
 
 </div>
-</div>
 
 </div>
 
-<div id="outline-container-2" class="outline-2">
-<h2 id="sec-2">Enable some dangerous commands</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Enable some dangerous commands</h2>
+<div class="outline-text-2" id="text-3">
 
 
 <p>
@@ -170,7 +191,7 @@ remove the dangerous tag here.
 
 
 
-<pre class="src src-emacs-lisp">(put 'narrow-to-page 'disabled nil)
+<pre class="example">(put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 </pre>
@@ -180,7 +201,7 @@ remove the dangerous tag here.
 </div>
 
 <div id="outline-container-emacs-server" class="outline-2">
-<h2 id="emacs-server"><a name="sec-3" id="sec-3"></a>Toggle server mode .</h2>
+<h2 id="emacs-server"><a name="sec-4" id="sec-4"></a>Toggle server mode .</h2>
 <div class="outline-text-2" id="text-emacs-server">
 
 
@@ -209,7 +230,7 @@ emacs if you use <code>(server-start)</code> while keeps emacs alive if you use
 
 
 
-<pre class="src src-emacs-lisp">(server-mode t)
+<pre class="example">(server-mode t)
 </pre>
 
 
@@ -218,14 +239,14 @@ emacs if you use <code>(server-start)</code> while keeps emacs alive if you use
 </div>
 
 <div id="outline-container-random-number" class="outline-2">
-<h2 id="random-number"><a name="sec-4" id="sec-4"></a>Random Number</h2>
+<h2 id="random-number"><a name="sec-5" id="sec-5"></a>Random Number</h2>
 <div class="outline-text-2" id="text-random-number">
 
 
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Seed the random-number generator</span>
+<pre class="example">;; Seed the random-number generator
 (random t)
 </pre>
 
@@ -235,7 +256,7 @@ emacs if you use <code>(server-start)</code> while keeps emacs alive if you use
 </div>
 
 <div id="outline-container-rainbow-delimiters" class="outline-2">
-<h2 id="rainbow-delimiters"><a name="sec-5" id="sec-5"></a>Rainbow Delimiters</h2>
+<h2 id="rainbow-delimiters"><a name="sec-6" id="sec-6"></a>Rainbow Delimiters</h2>
 <div class="outline-text-2" id="text-rainbow-delimiters">
 
 
@@ -249,10 +270,10 @@ given depth."
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> rainbow-delimiters
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (global-rainbow-delimiters-mode))))
+<pre class="example">(defun ome-rainbow-delimiters-setup ()
+  (global-rainbow-delimiters-mode))
+
+(ome-install 'rainbow-delimiters)
 </pre>
 
 
@@ -261,7 +282,7 @@ given depth."
 </div>
 
 <div id="outline-container-auto-compression-mode" class="outline-2">
-<h2 id="auto-compression-mode"><a name="sec-6" id="sec-6"></a>Transparently Open Compressed Files</h2>
+<h2 id="auto-compression-mode"><a name="sec-7" id="sec-7"></a>Transparently Open Compressed Files</h2>
 <div class="outline-text-2" id="text-auto-compression-mode">
 
 
@@ -272,7 +293,7 @@ are automatically uncompressed for reading, and compressed when writing."
 
 
 
-<pre class="src src-emacs-lisp">(auto-compression-mode t)
+<pre class="example">(auto-compression-mode t)
 </pre>
 
 
@@ -281,7 +302,7 @@ are automatically uncompressed for reading, and compressed when writing."
 </div>
 
 <div id="outline-container-auto-image-file-mode" class="outline-2">
-<h2 id="auto-image-file-mode"><a name="sec-7" id="sec-7"></a>Allowing Opening Images</h2>
+<h2 id="auto-image-file-mode"><a name="sec-8" id="sec-8"></a>Allowing Opening Images</h2>
 <div class="outline-text-2" id="text-auto-image-file-mode">
 
 
@@ -291,7 +312,7 @@ are automatically uncompressed for reading, and compressed when writing."
 
 
 
-<pre class="src src-emacs-lisp">(auto-image-file-mode t)
+<pre class="example">(auto-image-file-mode t)
 </pre>
 
 </div>
@@ -299,7 +320,7 @@ are automatically uncompressed for reading, and compressed when writing."
 </div>
 
 <div id="outline-container-outline" class="outline-2">
-<h2 id="outline"><a name="sec-8" id="sec-8"></a>Outline mode</h2>
+<h2 id="outline"><a name="sec-9" id="sec-9"></a>Outline mode</h2>
 <div class="outline-text-2" id="text-outline">
 
 
@@ -322,14 +343,14 @@ keybindings for <code>outline-minor-mode</code>.
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'prog-mode-hook
-          (<span class="org-keyword">lambda</span> ()
+<pre class="example">(add-hook 'prog-mode-hook
+          (lambda ()
             (outline-minor-mode t)))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">(add-hook 'outline-minor-mode-hook</span>
-<span class="org-comment-delimiter">;;           </span><span class="org-comment">(lambda ()</span>
-<span class="org-comment-delimiter">;;             </span><span class="org-comment">(local-set-key (kbd "C-c C-o")</span>
-<span class="org-comment-delimiter">;;                            </span><span class="org-comment">outline-mode-prefix-map)))</span>
+;; (add-hook 'outline-minor-mode-hook
+;;           (lambda ()
+;;             (local-set-key (kbd "C-c C-o")
+;;                            outline-mode-prefix-map)))
 
 </pre>
 
@@ -338,8 +359,39 @@ keybindings for <code>outline-minor-mode</code>.
 
 </div>
 
+<div id="outline-container-po-mode" class="outline-2">
+<h2 id="po-mode"><a name="sec-10" id="sec-10"></a>Po-mode</h2>
+<div class="outline-text-2" id="text-po-mode">
+
+
+<p>
+Emacs always bring you some surprises for you daily job. Some day I wanted to
+do some i18n/l10n work for a python project, and I found <a href="http://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html">PO-Mode</a>, which is
+really awesome. I even wanted to write a tiny tutorial for this great mode, but
+I just gave up. Since for any questions in <code>po-mode</code>, you can just type <code>?</code> or
+<code>h</code>, and you will get a brief and concise answer.
+</p>
+
+
+
+<pre class="example">(defun ome-po-mode-setup ()
+  (add-hook 'po-mode-hook
+            (lambda ()
+              (linum-mode 1)))
+  ;; disable evil-mode since some key binding conflicts
+  (when (featurep 'evil)
+    (add-hook 'po-mode-hook 'turn-off-evil-mode)))
+
+(ome-install 'po-mode)
+</pre>
+
+
+</div>
+
+</div>
+
 <div id="outline-container-magit" class="outline-2">
-<h2 id="magit"><a name="sec-9" id="sec-9"></a>Magit</h2>
+<h2 id="magit"><a name="sec-11" id="sec-11"></a>Magit</h2>
 <div class="outline-text-2" id="text-magit">
 
 
@@ -375,10 +427,8 @@ enjoyable. Of course there're other choices, but I prefer magit, view <a href="h
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">if</span> (executable-find <span class="org-string">"git"</span>)
-    (<span class="org-keyword">progn</span>
-      (add-to-list 'el-get-sources
-                   '(<span class="org-builtin">:name</span> magit))))
+<pre class="example">(if (executable-find "git")
+    (ome-install 'magit))
 </pre>
 
 
@@ -387,7 +437,7 @@ enjoyable. Of course there're other choices, but I prefer magit, view <a href="h
 </div>
 
 <div id="outline-container-visual-line-mode" class="outline-2">
-<h2 id="visual-line-mode"><a name="sec-10" id="sec-10"></a>Visual-line-mode</h2>
+<h2 id="visual-line-mode"><a name="sec-12" id="sec-12"></a>Visual-line-mode</h2>
 <div class="outline-text-2" id="text-visual-line-mode">
 
 
@@ -405,7 +455,7 @@ of the time. But we still turn on it globally to make it a fallback when
 
 
 
-<pre class="src src-emacs-lisp">(global-visual-line-mode t)
+<pre class="example">(global-visual-line-mode t)
 </pre>
 
 
@@ -414,7 +464,7 @@ of the time. But we still turn on it globally to make it a fallback when
 </div>
 
 <div id="outline-container-projectile" class="outline-2">
-<h2 id="projectile"><a name="sec-11" id="sec-11"></a>Projectile</h2>
+<h2 id="projectile"><a name="sec-13" id="sec-13"></a>Projectile</h2>
 <div class="outline-text-2" id="text-projectile">
 
 
@@ -449,12 +499,12 @@ just enjoy it!
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> projectile
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (projectile-global-mode)
-                              (setq projectile-enable-caching t)
-                              (global-set-key (kbd <span class="org-string">"C-x c h"</span>) 'helm-projectile))))
+<pre class="example">(defun ome-projectile-setup ()
+  (projectile-global-mode)
+  (setq projectile-enable-caching t)
+  (global-set-key (kbd "C-x c h") 'helm-projectile))
+
+(ome-install 'projectile)
 </pre>
 
 
@@ -463,14 +513,14 @@ just enjoy it!
 </div>
 
 <div id="outline-container-smartparens" class="outline-2">
-<h2 id="smartparens"><a name="sec-12" id="sec-12"></a>Smartparens</h2>
+<h2 id="smartparens"><a name="sec-14" id="sec-14"></a>Smartparens</h2>
 <div class="outline-text-2" id="text-smartparens">
 
 
 <blockquote>
 
 <p>Smartparens is modern minor mode for Emacs that <i>deals with parens pairs and tries to be smart about it</i>. It is a unification and enhancement effort to
-combine funcitonality of several existing packages in a single, common and
+combine functionality of several existing packages in a single, common and
 straightforward way (and most of all compatible). These packages include
 <a href="https://github.com/capitaomorte/autopair">autopair</a>, <a href="http://code.google.com/p/emacs-textmate/">textmate</a>, <a href="https://github.com/rejeep/wrap-region">wrap-region</a>, <a href="http://emacswiki.org/emacs/ParEdit">paredit</a> and others with similar
 philosophies. It also adds support for many more features. <a href="https://github.com/Fuco1/smartparens/wiki#wiki-what-is-this-package-about?">Here's</a> a highlight
@@ -484,7 +534,7 @@ For the complete picture of what is it about, visit the <a href="https://github.
 
 
 <p>
-Believe me, <a href="https://github.com/Fuco1/smartparens/wiki">smartparens</a> is the future, it is the ultimate solution for paren
+Believe me, <a href="https://github.com/Fuco1/smartparens">smartparens</a> is the future, it is the ultimate solution for paren
 pairs management in Emacs world. It is flexible, uniform and highly
 customizable. It is also bundled with a comprehensive documentation, besides
 the aforementioned wiki, you can also <code>M-x sp-cheat-sheet</code> to get live
@@ -500,115 +550,115 @@ smartparens has some conflicts with <code>evil</code>'s <code>ESC</code> key. If
 good suggestions, please tell me, thanks!
 </p>
 <p>
-I spent about one week's sparetime just learning this amazing
+I spent about one week's spare time just learning this amazing
 package. Smartparens is not as strict as paredit, for some people that kind of
 strictness seems annoying and weird at first. Paredit is <a href="http://emacsrocks.com/e14.html">powerful</a>, so
 smartparens import many features from paredit and provides a compatible, and
-more powerful, flexible version. For any serious Lispers, I recommand you spend
+more powerful, flexible version. For any serious Lispers, I recommend you spend
 some time to master these wonderful commands, which will make your life easier.
 </p>
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-create-newline-and-enter-sexp</span> (<span class="org-type">&amp;rest</span> _ignored)
-  <span class="org-doc">"Open a new brace or bracket expression, with relevant newlines and indent. "</span>
-  (newline)
-  (indent-according-to-mode)
-  (forward-line -1)
-  (indent-according-to-mode))
+<pre class="example">(defun ome-create-newline-and-enter-sexp (&amp;rest _ignored)
+    "Open a new brace or bracket expression, with relevant newlines and indent. "
+    (previous-line)
+    (indent-according-to-mode)
+    (forward-line)
+    (newline)
+    (indent-according-to-mode)
+    (forward-line -1)
+    (indent-according-to-mode))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">ome-sp-config</span> ()
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">global</span>
-  (<span class="org-keyword">require</span> '<span class="org-constant">smartparens-config</span>)
+(defun ome-smartparens-setup ()
+  ;; global
+  (require 'smartparens-config)
   (setq sp-autoskip-closing-pair 'always)
   (setq sp-navigate-close-if-unbalanced t)
   (smartparens-global-mode t)
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">highlights matching pairs</span>
+  ;; highlights matching pairs
   (show-smartparens-global-mode t)
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">keybinding management</span>
-  (define-key sp-keymap (kbd <span class="org-string">"M-s f"</span>) 'sp-forward-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s b"</span>) 'sp-backward-sexp)
+  ;; keybinding management
+  (define-key sp-keymap (kbd "M-s f") 'sp-forward-sexp)
+  (define-key sp-keymap (kbd "M-s b") 'sp-backward-sexp)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s d"</span>) 'sp-down-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s D"</span>) 'sp-backward-down-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s a"</span>) 'sp-beginning-of-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s e"</span>) 'sp-end-of-sexp)
+  (define-key sp-keymap (kbd "M-s d") 'sp-down-sexp)
+  (define-key sp-keymap (kbd "M-s D") 'sp-backward-down-sexp)
+  (define-key sp-keymap (kbd "M-s a") 'sp-beginning-of-sexp)
+  (define-key sp-keymap (kbd "M-s e") 'sp-end-of-sexp)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s u"</span>) 'sp-up-sexp)
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">(define-key emacs-lisp-mode-map (kbd ")") 'sp-up-sexp)</span>
-  (define-key sp-keymap (kbd <span class="org-string">"M-s U"</span>) 'sp-backward-up-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s t"</span>) 'sp-transpose-sexp)
+  (define-key sp-keymap (kbd "M-s u") 'sp-up-sexp)
+  ;; (define-key emacs-lisp-mode-map (kbd ")") 'sp-up-sexp)
+  (define-key sp-keymap (kbd "M-s U") 'sp-backward-up-sexp)
+  (define-key sp-keymap (kbd "M-s t") 'sp-transpose-sexp)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s n"</span>) 'sp-next-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s p"</span>) 'sp-previous-sexp)
+  (define-key sp-keymap (kbd "M-s n") 'sp-next-sexp)
+  (define-key sp-keymap (kbd "M-s p") 'sp-previous-sexp)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s k"</span>) 'sp-kill-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s w"</span>) 'sp-copy-sexp)
+  (define-key sp-keymap (kbd "M-s k") 'sp-kill-sexp)
+  (define-key sp-keymap (kbd "M-s w") 'sp-copy-sexp)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s s"</span>) 'sp-forward-slurp-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s r"</span>) 'sp-forward-barf-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s S"</span>) 'sp-backward-slurp-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s R"</span>) 'sp-backward-barf-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s F"</span>) 'sp-forward-symbol)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s B"</span>) 'sp-backward-symbol)
+  (define-key sp-keymap (kbd "M-s s") 'sp-forward-slurp-sexp)
+  (define-key sp-keymap (kbd "M-s r") 'sp-forward-barf-sexp)
+  (define-key sp-keymap (kbd "M-s S") 'sp-backward-slurp-sexp)
+  (define-key sp-keymap (kbd "M-s R") 'sp-backward-barf-sexp)
+  (define-key sp-keymap (kbd "M-s F") 'sp-forward-symbol)
+  (define-key sp-keymap (kbd "M-s B") 'sp-backward-symbol)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s ["</span>) 'sp-select-previous-thing)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s ]"</span>) 'sp-select-next-thing)
+  (define-key sp-keymap (kbd "M-s [") 'sp-select-previous-thing)
+  (define-key sp-keymap (kbd "M-s ]") 'sp-select-next-thing)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-i"</span>) 'sp-splice-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s &lt;delete&gt;"</span>) 'sp-splice-sexp-killing-forward)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s &lt;backspace&gt;"</span>) 'sp-splice-sexp-killing-backward)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-&lt;backspace&gt;"</span>) 'sp-splice-sexp-killing-around)
+  (define-key sp-keymap (kbd "M-s M-i") 'sp-splice-sexp)
+  (define-key sp-keymap (kbd "M-s &lt;delete&gt;") 'sp-splice-sexp-killing-forward)
+  (define-key sp-keymap (kbd "M-s &lt;backspace&gt;") 'sp-splice-sexp-killing-backward)
+  (define-key sp-keymap (kbd "M-s M-&lt;backspace&gt;") 'sp-splice-sexp-killing-around)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-d"</span>) 'sp-unwrap-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-b"</span>) 'sp-backward-unwrap-sexp)
+  (define-key sp-keymap (kbd "M-s M-d") 'sp-unwrap-sexp)
+  (define-key sp-keymap (kbd "M-s M-b") 'sp-backward-unwrap-sexp)
 
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-t"</span>) 'sp-prefix-tag-object)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-p"</span>) 'sp-prefix-pair-object)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-c"</span>) 'sp-convolute-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-a"</span>) 'sp-absorb-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-e"</span>) 'sp-emit-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-p"</span>) 'sp-add-to-previous-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-n"</span>) 'sp-add-to-next-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-j"</span>) 'sp-join-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-s"</span>) 'sp-split-sexp)
-  (define-key sp-keymap (kbd <span class="org-string">"M-s M-r"</span>) 'sp-raise-sexp)
+  (define-key sp-keymap (kbd "M-s M-t") 'sp-prefix-tag-object)
+  (define-key sp-keymap (kbd "M-s M-p") 'sp-prefix-pair-object)
+  (define-key sp-keymap (kbd "M-s M-c") 'sp-convolute-sexp)
+  (define-key sp-keymap (kbd "M-s M-a") 'sp-absorb-sexp)
+  (define-key sp-keymap (kbd "M-s M-e") 'sp-emit-sexp)
+  (define-key sp-keymap (kbd "M-s M-p") 'sp-add-to-previous-sexp)
+  (define-key sp-keymap (kbd "M-s M-n") 'sp-add-to-next-sexp)
+  (define-key sp-keymap (kbd "M-s M-j") 'sp-join-sexp)
+  (define-key sp-keymap (kbd "M-s M-s") 'sp-split-sexp)
+  (define-key sp-keymap (kbd "M-s M-r") 'sp-raise-sexp)
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">pair management</span>
-  (sp-local-pair 'minibuffer-inactive-mode <span class="org-string">"'"</span> nil <span class="org-builtin">:actions</span> nil)
+  ;; pair management
+  (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">markdown-mode</span>
+  ;; markdown-mode
   (sp-with-modes '(markdown-mode gfm-mode rst-mode)
-    (sp-local-pair <span class="org-string">"*"</span> <span class="org-string">"*"</span> <span class="org-builtin">:bind</span> <span class="org-string">"C-*"</span>)
-    (sp-local-tag <span class="org-string">"2"</span> <span class="org-string">"**"</span> <span class="org-string">"**"</span>)
-    (sp-local-tag <span class="org-string">"s"</span> <span class="org-string">"```scheme"</span> <span class="org-string">"```"</span>)
-    (sp-local-tag <span class="org-string">"&lt;"</span>  <span class="org-string">"&lt;_&gt;"</span> <span class="org-string">"&lt;/_&gt;"</span> <span class="org-builtin">:transform</span> 'sp-match-sgml-tags))
+    (sp-local-pair "*" "*" :bind "C-*")
+    (sp-local-tag "2" "**" "**")
+    (sp-local-tag "s" "```scheme" "```")
+    (sp-local-tag "&lt;"  "&lt;_&gt;" "&lt;/_&gt;" :transform 'sp-match-sgml-tags))
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">tex-mode latex-mode</span>
+  ;; tex-mode latex-mode
   (sp-with-modes '(tex-mode plain-tex-mode latex-mode)
-    (sp-local-tag <span class="org-string">"i"</span> <span class="org-string">"\"&lt;"</span> <span class="org-string">"\"&gt;"</span>))
+    (sp-local-tag "i" "\"&lt;" "\"&gt;"))
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">html-mode</span>
+  ;; html-mode
   (sp-with-modes '(html-mode sgml-mode)
-    (sp-local-pair <span class="org-string">"&lt;"</span> <span class="org-string">"&gt;"</span>))
+    (sp-local-pair "&lt;" "&gt;"))
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">lisp modes</span>
+  ;; lisp modes
   (sp-with-modes sp--lisp-modes
-    (sp-local-pair <span class="org-string">"("</span> nil <span class="org-builtin">:bind</span> <span class="org-string">"C-("</span>))
+    (sp-local-pair "(" nil :bind "C-("))
 
-  (<span class="org-keyword">dolist</span> (mode '(c-mode c++-mode java-mode))
+  (dolist (mode '(c-mode c++-mode java-mode js2-mode sh-mode))
     (sp-local-pair mode
-                   <span class="org-string">"{"</span>
+                   "{"
                    nil
-                   <span class="org-builtin">:post-handlers</span>
-                   '((ome-create-newline-and-enter-sexp <span class="org-string">"RET"</span>)))))
+                   :post-handlers
+                   '((ome-create-newline-and-enter-sexp "RET")))))
 
-(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> smartparens
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (ome-sp-config))))
+(ome-install 'smartparens)
 
 </pre>
 
@@ -618,7 +668,7 @@ some time to master these wonderful commands, which will make your life easier.
 </div>
 
 <div id="outline-container-emacs-w3m" class="outline-2">
-<h2 id="emacs-w3m"><a name="sec-13" id="sec-13"></a>Emacs-w3m</h2>
+<h2 id="emacs-w3m"><a name="sec-15" id="sec-15"></a>Emacs-w3m</h2>
 <div class="outline-text-2" id="text-emacs-w3m">
 
 
@@ -765,18 +815,14 @@ Some commonly used keybindings for <code>w3m-mode</code>:
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-emacs-w3m-setup</span> ()
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq w3m-default-display-inline-images t)</span>
-  (setq w3m-home-page <span class="org-string">"http://www.google.com/ncr"</span>)
+<pre class="example">(defun ome-emacs-w3m-setup ()
+  ;; (setq w3m-default-display-inline-images t)
+  (setq w3m-home-page "http://www.google.com/ncr")
   (setq browse-url-browser-function 'w3m-browse-url)
-  (global-set-key (kbd <span class="org-string">"C-x w"</span>) 'browse-url-at-point))
+  (global-set-key (kbd "C-x w") 'browse-url-at-point))
 
-(<span class="org-keyword">when</span> (executable-find <span class="org-string">"w3m"</span>)
-  (add-to-list 'el-get-sources
-               '(<span class="org-builtin">:name</span> emacs-w3m
-                       <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                                (ome-emacs-w3m-setup)))))
-
+(when (executable-find "w3m")
+  (ome-install 'emacs-w3m))
 </pre>
 
 
@@ -785,7 +831,7 @@ Some commonly used keybindings for <code>w3m-mode</code>:
 </div>
 
 <div id="outline-container-quickrun" class="outline-2">
-<h2 id="quickrun"><a name="sec-14" id="sec-14"></a>Quickrun</h2>
+<h2 id="quickrun"><a name="sec-16" id="sec-16"></a>Quickrun</h2>
 <div class="outline-text-2" id="text-quickrun">
 
 
@@ -796,8 +842,7 @@ way. Just run it, without thinking about too much other chores.
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> quickrun))
+<pre class="example">(ome-install 'quickrun)
 </pre>
 
 
@@ -805,24 +850,89 @@ way. Just run it, without thinking about too much other chores.
 
 </div>
 
-<div id="outline-container-15" class="outline-2">
-<h2 id="sec-15">Todo</h2>
-<div class="outline-text-2" id="text-15">
+<div id="outline-container-diminish" class="outline-2">
+<h2 id="diminish"><a name="sec-17" id="sec-17"></a>Diminish</h2>
+<div class="outline-text-2" id="text-diminish">
+
+
+<blockquote>
+
+<p>"When we diminish a mode, we are saying we want it to continue doing its work
+for us, but we no longer want to be reminded of it. It becomes a night worker,
+like a janitor; it becomes an invisible man; it remains a component, perhaps an
+important one, sometimes an indispensable one, of the mechanism that maintains
+the day-people's world, but its place in their thoughts is diminished, usually
+to nothing. As we grow old we diminish more and more such thoughts, such
+people, usually to nothing."
+</p>
+<p>
+&ndash; Will Mengarini in diminish.el
+</p>
+</blockquote>
+
+
+<p>
+As oh-my-emacs becomes more and more powerful, the mode line becomes more and
+more congested. <a href="http://www.eskimo.com/~seldon/diminish.el">diminish.el</a> provide us a way to clean up the mode line. BTW, I
+really like its documentation, just check out the source code and you'll get
+everything you need to know about this tiny but powerful mode. See <a href="http://whattheemacsd.com/init.el-04.html">here</a> and
+<a href="http://emacs-fu.blogspot.com/2010/05/cleaning-up-mode-line.html">here</a> for some more details.
+</p>
+<p>
+You can check the variable <code>minor-mode-alist</code> and diminish minor modes as you
+like.
+</p>
+
+
+
+<pre class="example">(defun ome-diminish-setup ()
+  ;; diminish some builtin mode
+  (eval-after-load "abbrev"
+    '(diminish 'abbrev-mode))
+
+  (eval-after-load 'simple
+    '(progn
+       ;; diminish auto-fill-mode
+       (diminish 'auto-fill-function)
+       (diminish 'global-visual-line-mode)
+       (diminish 'visual-line-mode)))
+
+  (eval-after-load "outline"
+    '(diminish 'outline-minor-mode))
+
+  (eval-after-load "eldoc"
+    '(diminish 'eldoc-mode))
+
+  ;; diminish third-party mode
+  (eval-after-load "elisp-slime-nav"
+    '(diminish 'elisp-slime-nav-mode))
+
+  (eval-after-load "helm"
+    '(diminish 'helm-mode))
+
+  (eval-after-load "projectile"
+    '(diminish 'projectile-mode "Prjl"))
+
+  (eval-after-load "undo-tree"
+    '(diminish 'undo-tree-mode)))
+
+(ome-install 'diminish)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-18" class="outline-2">
+<h2 id="sec-18">Todo</h2>
+<div class="outline-text-2" id="text-18">
 
 <ul>
 <li>Enable flyspell and ispell in text-mode.
 </li>
 <li>Add a dictionary support, such as <code>sdcv</code>? Or a better translator support such
   as <code>babel</code> or <code>gtranslate</code>?
-</li>
-<li>recentf
-<ul>
-<li>set recentf saved file, similar to saveplace.
-</li>
-<li>disable recentf prompting when quit emacs.
-</li>
-</ul>
-
 </li>
 <li>Set emacs auto-save temporary dir instead of .emacs.d
 </li>
@@ -837,14 +947,6 @@ way. Just run it, without thinking about too much other chores.
 </li>
 <li>Write a proper major-mode for GAS assembly language.
 </li>
-<li>Diminish package support?
-<ul>
-<li>Description: An Emacs package that diminishes the amount of space taken on
-    the mode line by the names of minor modes.
-</li>
-</ul>
-
-</li>
 <li>Oh-my-emacs keybindings to <code>C--</code> conflicts with Emacs's <code>negative-argument</code>?
 </li>
 <li>Try to get the total boot up time and try to reduce the whole boot up time.
@@ -856,7 +958,7 @@ way. Just run it, without thinking about too much other chores.
 </ul>
 
 </li>
-<li>Documentation about occur edit mode, which removes the need of externel
+<li>Documentation about occur edit mode, which removes the need of external
   packages such as iedit:
   <a href="http://batsov.com/articles/2011/08/19/a-peek-at-emacs24/">http://batsov.com/articles/2011/08/19/a-peek-at-emacs24/</a>
 </li>
@@ -884,12 +986,6 @@ way. Just run it, without thinking about too much other chores.
 </li>
 </ul>
 
-</li>
-<li>Split oh-my-emacs to different levels, such as core, contrib, etc. Add
-  dependency rules. For example, <code>auto-complete-clang</code> depends on
-  <code>auto-complete</code>, this is necessary if you need to load
-  <code>auto-complete-clang</code>. Oh-my-emacs should privide a way to load each module
-  easily, such as <code>(ome-load "ome-lisp.org" ["lisp", "emacslisp"])</code>.
 </li>
 <li>More investigation on registers and marks, for better and fast jump in same
   buffer?

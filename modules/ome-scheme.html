@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Scheme</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Scheme"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Scheme</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains some settings <a href="#sec-3">Scheme</a> programming language.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#scheme-prerequisites">Prerequisites</a></li>
+<li><a href="#scheme-el-get-packages">El-get packages</a></li>
+<li><a href="#scheme">Scheme</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-scheme-prerequisites" class="outline-2">
+<h2 id="scheme-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-scheme-prerequisites">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-scheme module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.gnu.org/software/guile/">Guile</a></td><td class="left"></td><td class="left">guile-2.0</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">Yes</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Note:
+</p><ul>
+<li><a href="http://www.gnu.org/software/guile/">Guile</a> or <a href="http://racket-lang.org/">Racket</a> as a Scheme implementation. Geiser requires Guile &gt;= 2.0.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-scheme-el-get-packages" class="outline-2">
+<h2 id="scheme-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-scheme-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-scheme module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.nongnu.org/geiser/">geiser</a></td><td class="left">Required</td><td class="left">Geiser to Scheme is what slime to Common Lisp.</td></tr>
+<tr><td class="left"><a href="https://github.com/xiaohanyu/ac-geiser">ac-geiser</a></td><td class="left">Required</td><td class="left">Auto-complete backend for geiser.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-scheme" class="outline-2">
+<h2 id="scheme"><a name="sec-3" id="sec-3"></a>Scheme</h2>
+<div class="outline-text-2" id="text-scheme">
+
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a> is my favourite programming language, it is small, elegant and
+powerful. Unfortunately, there're too many choices for scheme implementation,
+which makes it a headache when you want to do some real world job with scheme.
+</p>
+<p>
+Oh-my-emacs adopts <a href="http://www.nongnu.org/geiser/">geiser</a>, which provides a similar SLIME way to work with
+scheme. To install geiser, you need install <code>automake</code> and <code>autoconf</code>. And to
+run geiser, you need install at least one of the geiser supported scheme
+implementation, namely, <a href="http://www.gnu.org/software/guile/">guile</a> or <a href="http://racket-lang.org/">racket</a>.
+</p>
+<p>
+There's a new experimental <a href="https://github.com/xiaohanyu/ac-geiser">ac-geiser</a> project, written by me &mdash; yeah, it's me,
+I am the author, which provides a auto-complete backend for geiser. It is
+still in beta version, however, and will be sent to el-get when stable.
+</p>
+
+
+
+<pre class="example">(defun ome-geiser-setup ()
+  (setq geiser-default-implementation 'guile))
+
+(defun ome-ac-geiser-setup ()
+  (add-hook 'geiser-mode-hook 'ac-geiser-setup)
+  (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
+  (eval-after-load "auto-complete"
+    '(add-to-list 'ac-modes 'geiser-repl-mode)))
+
+(when (or (executable-find "guile") (executable-find "racket"))
+  (ome-install 'geiser)
+  (ome-install 'ac-geiser))
+
+;; (ome-install 'quack)
+</pre>
+
+
+<p>
+Actually, the official SLIME contrib has some swank backends for scheme
+implementations, you can try it if you like. There's a <a href="https://github.com/nickg/swank-chicken">swank-chicken</a> for
+<a href="http://www.call-cc.org/">chicken scheme</a>, but it only provides a small part of SLIME features. So it is
+disabled by default.
+</p>
+
+
+
+<pre class="example">(defun ome-swank-chicken-setup ()
+  (setq swank-chicken-path "~/.emacs.d/el-get/swank-chicken/swank-chicken.scm")
+  (add-hook 'scheme-mode-hook
+            (lambda ()
+              (slime-mode t))))
+
+(ome-install 'swank-chicken)
+</pre>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

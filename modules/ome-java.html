@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Java</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Java"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Java</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+
+<div id="outline-container-java-prerequisites" class="outline-2">
+<h2 id="java-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-java-prerequisites">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-java module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.eclipse.org/">eclipse</a></td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">Yes</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-java-el-get-packages" class="outline-2">
+<h2 id="java-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-java-el-get-packages">
+
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-java module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/senny/emacs-eclim">emacs-eclim</a></td><td class="left">Required</td><td class="left">The bridge between emacs and eclipse.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-eclim" class="outline-2">
+<h2 id="eclim"><a name="sec-3" id="sec-3"></a>Eclim</h2>
+<div class="outline-text-2" id="text-eclim">
+
+
+<blockquote>
+
+<p>Emacs was a really great idea in the seventies and one of the frightening
+things about Emacs today is if you skip the last 20 years it is much the same.
+</p>
+<p>
+&ndash; <a href="http://www.computerworld.com.au/article/207799/don_t_use_emacs_says_java_father/">Don't use Emacs, says Java's father</a>
+</p>
+</blockquote>
+
+
+<p>
+I must say that it is really a pain to do Java programming with Emacs,
+however, when I turn to a modern IDE(eclipse/netbeans), just as Java's father
+said, I would miss Emacs again. You want to know why? Refer to <a href="http://gnuvince.wordpress.com/2012/02/19/why-i-still-use-emacs/">Why I Still Use Emacs</a>.
+</p>
+<p>
+However, Eclipse, or some other java IDEs, do provide some fascinating features
+such as refactoring, 100% absolutely correct semantic completion, on-the-fly
+syntax checking, maven/ant integration, etc.
+</p>
+<p>
+Fortunately, there comes <a href="https://github.com/senny/emacs-eclim">emacs-eclim</a>, which brings the power of Eclipse to
+Emacs by utilizing <a href="http://eclim.org/">eclim</a>, ah, the best of both world.
+</p>
+<p>
+To install eclim, first you need to install Eclipse. You can install Eclipse
+through your OS package manager, or you can download a tarball directly from
+<a href="http://www.eclipse.org/downloads/">official eclipse website</a>. I recommend the later method since it is much more
+portable, and dumps all eclipse files to a single folder, say, <code>/opt/eclipse/</code>
+for example. And one extra advice, I recommend you install Eclipse version 3.x
+instead of 4.x since 4.x is not stable enough IMHO. My working environments
+include Eclipse 3.7 and eclim_1.7.18. I didn't have too much time to test
+other combinations, so if you encounter problems, don't hesitate to open a new
+issue in oh-my-emacs's github.
+</p>
+<p>
+Then you should download and install eclim, see <a href="http://eclim.org/install.html">eclim install guide</a> for
+details. I use the following command to do an automated install.
+</p>
+
+
+
+<pre class="example">java -Dvim.files=$HOME/.vim -Declipse.home=/opt/eclipse -jar eclim_1.7.18.jar install
+</pre>
+
+
+<p>
+Oh-my-emacs assumes that you install Eclipse to <code>/opt/eclipse/</code> directory, and
+set your Eclipse workspace to <code>$HOME/workspace</code>. So if your settings are
+different, don't forget to set <code>eclim-executable</code> and <code>eclimd-executable</code>
+properly. Finally, ensure that you can find <code>eclipse</code> in your shell's <code>$PATH</code>
+since oh-my-emacs relies on this way to determine the availability of Eclipse.
+</p>
+<p>
+Ok, that's enough, you want to know what eclim can provide for you? <a href="http://www.skybert.net/emacs/java/">Enterprise Java Development in Emacs</a> show you an illustrated guide.
+</p>
+
+
+
+<pre class="example">(defun ome-eclim-setup ()
+  ;; (add-to-list 'eclim-eclipse-dirs "/opt/eclipse")
+  (setq eclim-auto-save t
+        eclim-executable (or (executable-find "eclim") "/opt/eclipse/eclim")
+        eclimd-executable (or (executable-find "eclimd") "/opt/eclipse/eclimd")
+        eclimd-wait-for-process nil
+        eclimd-default-workspace "~/workspace/"
+        help-at-pt-display-when-idle t
+        help-at-pt-timer-delay 0.1)
+
+  ;; Call the help framework with the settings above &amp; activate
+  ;; eclim-mode
+  (help-at-pt-set-timer)
+
+  ;; keep consistent which other auto-complete backend.
+  (custom-set-faces
+   '(ac-emacs-eclim-candidate-face ((t (:inherit ac-candidate-face))))
+   '(ac-emacs-eclim-selection-face ((t (:inherit ac-selection-face)))))
+
+  ;; Hook eclim up with auto complete mode
+  (require 'ac-emacs-eclim-source)
+  ;; (ac-emacs-eclim-config)
+
+  (require 'eclimd)
+
+  (add-hook 'java-mode-hook
+            (lambda ()
+              (add-to-list 'ac-sources 'ac-source-emacs-eclim)
+              (eclim-mode t))))
+
+(when (executable-find "eclipse")
+  (ome-install 'eclim))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Todo</h2>
+<div class="outline-text-2" id="text-4">
+
+<ul>
+<li>Complitation support, use <code>M-n</code> and <code>M-p</code> to navigate the eclim warnings and
+  errors just like <code>c-mode</code> and <code>c++-mode</code>.
+</li>
+<li>Provide a menubar to eclim thus users can get a quick overview of eclim
+  features.
+</li>
+<li>Eclim would report warnings like <code>describe-mode: Symbol's function definition   is void: eclim-project-mode</code> when you hit <code>C-h m</code> in auxiliary eclim modes.
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

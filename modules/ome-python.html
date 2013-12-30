@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Oh My Emacs Python"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -127,22 +120,33 @@ for the JavaScript code in this tag.
 <p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Prerequisites</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-python-prerequisites" class="outline-2">
+<h2 id="python-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-python-prerequisites">
 
 
-</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-python module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.python.org/">Python</a></td><td class="left"></td><td class="left">python</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://www.pip-installer.org/en/latest/">pip</a></td><td class="left"></td><td class="left">python-pip</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://ipython.org/">IPython</a></td><td class="left"></td><td class="left">ipython</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">No</td></tr>
+<tr><td class="left"><a href="http://nose.readthedocs.org/en/latest/">nose</a></td><td class="left"></td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">No</td></tr>
+<tr><td class="left"><a href="http://www.virtualenv.org/en/latest/">virtualenv</a></td><td class="left"></td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">No</td></tr>
+</tbody>
+</table>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1">Mandatory</h3>
-<div class="outline-text-3" id="text-1-1">
 
-<ul>
+<p>
+Notes:
+</p><ul>
 <li><a href="http://www.python.org/">Python</a>, currently, I only tested Python 2.
 </li>
-<li><a href="https://github.com/jorgenschaefer/elpy">elpy</a>, you can install it using <a href="http://www.pip-installer.org/en/latest/">pip</a>.
-</li>
 </ul>
 
 
@@ -150,23 +154,30 @@ for the JavaScript code in this tag.
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2">Optional</h3>
-<div class="outline-text-3" id="text-1-2">
-
-<ul>
-<li><a href="http://ipython.org/">IPython</a>
-</li>
-</ul>
+<div id="outline-container-python-el-get-packages" class="outline-2">
+<h2 id="python-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-python-el-get-packages">
 
 
-</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-python module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/jorgenschaefer/elpy">elpy</a></td><td class="left">Required</td><td class="left">Elpy is the one for all Emacs python solution.</td></tr>
+</tbody>
+</table>
+
+
 </div>
 
 </div>
 
 <div id="outline-container-elpy" class="outline-2">
-<h2 id="elpy"><a name="sec-2" id="sec-2"></a>Elpy</h2>
+<h2 id="elpy"><a name="sec-3" id="sec-3"></a>Elpy</h2>
 <div class="outline-text-2" id="text-elpy">
 
 
@@ -230,7 +241,7 @@ Fortunately, there comes <a href="https://github.com/jorgenschaefer/elpy">elpy</
 </p>
 <p>
 Just like other big emacs packages, elpy has some external dependencies. But
-don't be afraid, beleive me, within minutes, you'll get an out-of-box Emacs
+don't be afraid, believe me, within minutes, you'll get an out-of-box Emacs
 Python "IDE". First, make sure you have <code>python</code> and <code>pip</code> installed, and then
 type <code>pip install elpy</code> with root priviledge<sup><a class="footref" name="fnr-.2" href="#fn-.2">2</a></sup>, then choose a completion
 backend, either <code>pip install rope</code> or <code>pip install jedi</code> <sup><a class="footref" name="fnr-.3" href="#fn-.3">3</a></sup>.
@@ -253,13 +264,17 @@ If you're lucky enough, you can fire up Emacs and start python work right now.
 <p>
 There're other annoying problems, one of them is the division between Python 2
 and Python 3. So you may need to replace <code>pip</code> with <code>pip2</code>, or <code>python</code> with
-<code>python2</code>, etc. Ah, differrent systems has different favors and naming rules.
+<code>python2</code>, etc. Ah, different systems has different favors and naming rules.
 </p>
 <p>
 The second thing is, elpy requires Emacs version &gt;= 24.3, since Emacs 24.3
 ships with a new <code>python.el</code> <sup><a class="footref" name="fnr-.4" href="#fn-.4">4</a></sup>, which, actually, is the aforementioned
 <a href="https://github.com/fgallina/python.el">fgallina</a>'s <code>python.el</code>. So you may need to upgrade your builin <code>python.el</code>, but
 don't worry, oh-my-emacs will handle this for you!
+</p>
+<p>
+Third, current elpy use <a href="http://www.gnu.org/software/emacs/manual/html_node/flymake/index.html">flymake</a> as its syntax checker, while oh-my-emacs favors
+<a href="https://github.com/flycheck/flycheck">flycheck</a>. Seems elpy has a <a href="https://github.com/jorgenschaefer/elpy/issues/137">plan</a> to support both flycheck and flymake.
 </p>
 <p>
 There's also a <a href="https://github.com/gabrielelanaro/emacs-for-python">emacs-for-python</a> project in github, which attracts more github
@@ -274,24 +289,42 @@ Thanks <a href="https://github.com/jorgenschaefer/elpy">elpy</a> again, for time
 on Python, on our life, instead of the details to make choices. Elpy is the
 ultimate out-of-box Emacs Python "IDE" solution.
 </p>
+<p>
+By default, <code>(elpy-enable)</code> will <a href="https://github.com/jorgenschaefer/elpy/blob/master/elpy.el#L343">modify</a> auto-complete's keymap, which would
+make auto-complete unoperative when you try to complete function arguments with
+<a href="https://github.com/brianjcj/auto-complete-clang/blob/master/screenshot/clang-3.png">auto-complete-clang</a> by utilize <code>yas-expand</code> from YASnippet. I've spent a whole
+day to trace this problem and finally find here. So I use <code>(elpy-enable t)</code>
+instead. Please <code>C-h f elpy-enable RET</code> to get details.
+</p>
+<p>
+Note: currently, <code>virtualenv.el</code>, one of the dependencies of elpy, still has
+some <a href="https://github.com/jorgenschaefer/elpy/issues/144">problems</a>, the author of <code>elpy</code> is considering to replace <code>virtualenv.el</code>
+with his newly-written <code>pyvenv.el</code>, see <a href="https://github.com/jorgenschaefer/elpy/issues/149">here</a> for details.
+</p>
+<p>
+Also, elpy integrates with <a href="http://nose.readthedocs.org/en/latest/">nosetests</a>, <code>C-c C-t</code> will run nose on your
+project. So you should <code>pip install nose</code> if you want to use nosetests with
+elpy.
+</p>
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-python-setup</span> ()
-  (elpy-enable)
-  (<span class="org-keyword">when</span> (executable-find <span class="org-string">"ipython"</span>)
+<pre class="example">(when (version&lt; emacs-version "24.3")
+  (ome-install 'python24))
+
+(defun ome-elpy-setup ()
+  (elpy-enable t)
+  (setq elpy-rpc-backend "jedi")
+  (when (executable-find "ipython")
     (elpy-use-ipython))
-  (define-key python-mode-map (kbd <span class="org-string">"RET"</span>)
+  (when (el-get-package-installed-p 'flycheck)
+    (setq elpy-default-minor-modes
+          (remove 'flymake-mode
+                  elpy-default-minor-modes)))
+  (define-key python-mode-map (kbd "RET")
     'newline-and-indent))
 
-(<span class="org-keyword">when</span> (version&lt; emacs-version <span class="org-string">"24.3"</span>)
-  (add-to-list 'el-get-sources
-               '(<span class="org-builtin">:name</span> python24)))
-
-(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> elpy
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (ome-python-setup))))
+(ome-install 'elpy)
 </pre>
 
 
@@ -299,9 +332,9 @@ ultimate out-of-box Emacs Python "IDE" solution.
 
 </div>
 
-<div id="outline-container-3" class="outline-2">
-<h2 id="sec-3">Todo</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Todo</h2>
+<div class="outline-text-2" id="text-4">
 
 <ul>
 <li>Add some django-mode support? Maybe

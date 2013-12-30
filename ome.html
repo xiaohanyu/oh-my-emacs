@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Oh My Emacs"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -141,11 +134,7 @@ brighter; it simply makes everything else vanish.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">Prerequisites</a>
-<ul>
-<li><a href="#sec-1-1">Mandatory</a></li>
-</ul>
-</li>
+<li><a href="#ome-prerequisites">Prerequisites</a></li>
 <li><a href="#introduction">Introduction</a>
 <ul>
 <li><a href="#learning">Learning Emacs</a></li>
@@ -168,50 +157,46 @@ brighter; it simply makes everything else vanish.
 </li>
 <li><a href="#sec-5">Todo</a>
 <ul>
-<li><a href="#sec-5-1">Boot up speed optimization</a></li>
-<li><a href="#sec-5-2">El-get</a></li>
-<li><a href="#sec-5-3">Writing Portable Emacs Lisp Configurations</a></li>
+<li><a href="#sec-5-1">Blueprint</a></li>
+<li><a href="#sec-5-2">Boot up speed optimization</a></li>
+<li><a href="#sec-5-3">El-get</a></li>
+<li><a href="#sec-5-4">Writing Portable Emacs Lisp Configurations</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Prerequisites</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-ome-prerequisites" class="outline-2">
+<h2 id="ome-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-ome-prerequisites">
 
 
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1">Mandatory</h3>
-<div class="outline-text-3" id="text-1-1">
-
-<p>The following software is really basic that almost every el-get package will
+<p>
+The following software is really basic that almost every el-get package will
 need one of them.
 </p>
-<ul>
-<li><a href="http://savannah.nongnu.org/projects/cvs">cvs</a>
-</li>
-<li><a href="http://mercurial.selenic.com/">mercurial</a>
-</li>
-<li><a href="http://git-scm.com/">git</a>
-</li>
-<li><a href="http://www.gnu.org/software/make/">make</a>
-</li>
-<li><a href="http://www.gnu.org/software/texinfo/">texinfo</a>
-</li>
-<li><a href="http://gcc.gnu.org/">gcc</a>
-</li>
-<li><a href="http://www.gnu.org/software/automake/">automake</a>
-</li>
-<li><a href="http://www.gnu.org/software/autoconf/">autoconf</a>
-</li>
-</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for all oh-my-emacs module.</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://savannah.nongnu.org/projects/cvs">cvs</a></td><td class="left"></td><td class="left">cvs</td><td class="left"></td><td class="left">cvs</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://subversion.apache.org/">subversion</a></td><td class="left"></td><td class="left">subversion</td><td class="left"></td><td class="left">subversion</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://mercurial.selenic.com/">mercurial</a></td><td class="left"></td><td class="left">mercurial</td><td class="left"></td><td class="left">mercurial</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://git-scm.com/">git</a></td><td class="left"></td><td class="left">git</td><td class="left"></td><td class="left">git</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://www.gnu.org/software/make/">make</a></td><td class="left"></td><td class="left">make</td><td class="left"></td><td class="left">make</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://www.gnu.org/software/texinfo/">texinfo</a></td><td class="left"></td><td class="left">texinfo</td><td class="left"></td><td class="left">texinfo</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://gcc.gnu.org/">gcc</a></td><td class="left"></td><td class="left">gcc</td><td class="left"></td><td class="left">gcc</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://www.gnu.org/software/automake/">automake</a></td><td class="left"></td><td class="left">automake</td><td class="left"></td><td class="left">automake</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://www.gnu.org/software/autoconf/">autoconf</a></td><td class="left"></td><td class="left">autoconf</td><td class="left"></td><td class="left">autoconf</td><td class="left"></td><td class="left">Yes</td></tr>
+</tbody>
+</table>
 
 
-</div>
 </div>
 
 </div>
@@ -254,7 +239,20 @@ The latest version is at <a href="https://github.com/xiaohanyu/oh-my-emacs">http
 <h3 id="learning"><a name="sec-2-1" id="sec-2-1"></a>Learning Emacs</h3>
 <div class="outline-text-3" id="text-learning">
 
-<p>This project won't teach you anything about how to use emacs or why use
+
+<blockquote>
+
+<p>People talk about getting used to a new editor, but over time, it is precisely
+the opposite that should happen &mdash; the editor should get used to us.
+</p>
+<p>
+&ndash; Vivek Haldar
+</p>
+</blockquote>
+
+
+<p>
+This project won't teach you anything about how to use emacs or why use
 emacs. However, I'll give you some useful resources if you're new to emacs.
 </p>
 <p>
@@ -286,11 +284,12 @@ various good web sites, such as
 </dd>
 <dt><a href="http://alexott.net/en/emacs/">Alexott's Blog</a></dt><dd>some really great articles about emacs
 </dd>
-<dt><a href="http://alexott.net/en/emacs/">emacser</a></dt><dd>an excellent and comprehensive emacs blog written by chinese
+<dt><a href="http://alexott.net/en/emacs/">emacser</a></dt><dd>an excellent and comprehensive emacs blog written by Chinese
              users.
 </dd>
+<dt><a href="http://whattheemacsd.com/">whattheemacsd</a></dt><dd>contains some really great tips.
+</dd>
 </dl>
-
 
 
 <p>
@@ -320,7 +319,7 @@ Wow, what a long journey, if you're tired, you can <a href="http://emacsrocks.co
 
 
 
-<pre class="src src-sh">git clone http://github.com/xiaohanyu/oh-my-emacs.git
+<pre class="example">git clone http://github.com/xiaohanyu/oh-my-emacs.git
 </pre>
 
 <ol>
@@ -374,27 +373,30 @@ manage to deliver on that promise? We'll see that in a bit&hellip;
 Ah, a long long quote, really vivid and visual description of the state of
 emacs package management system. <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a> adopt <a href="https://github.com/dimitri/el-get">el-get</a>, while other popular
 dotemacs project adopt the builtin <code>package.el</code>. You may wonder why, IMHO,
-<code>package.el</code> is far from ideal, althouth it is builtin with emacs, however,
+<code>package.el</code> is far from ideal, although it is builtin with emacs, however,
 el-get is the practical solution, at least for now. In a word, what el-get
 to emacs is what <code>apt-get</code> to debian/ubuntu.
 </p>
 <p>
-So the first thing oh-my-emacs do to your emacs is to install <code>el-get</code>:
+So the very first thing oh-my-emacs do to your emacs is to install <code>el-get</code>, this is
+done by putting the following code snippet in <code>$HOME/.emacs.d/init.el</code>.
 </p>
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"~/.emacs.d/el-get/el-get"</span>)
+<pre class="example">(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(<span class="org-keyword">unless</span> (<span class="org-keyword">require</span> '<span class="org-constant">el-get</span> nil 'noerror)
-  (<span class="org-keyword">with-current-buffer</span>
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
       (url-retrieve-synchronously
-       <span class="org-string">"https://raw.github.com/dimitri/el-get/master/el-get-install.el"</span>)
-    (<span class="org-keyword">let</span> (el-get-master-branch)
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
       (goto-char (point-max))
       (eval-print-last-sexp))))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">(el-get 'sync)</span>
+(add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
+
+;; (el-get 'sync)
 </pre>
 
 
@@ -421,9 +423,9 @@ appreciated.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (version&lt; emacs-version <span class="org-string">"24.3"</span>)
+<pre class="example">(when (version&lt; emacs-version "24.3")
   (el-get 'sync '(cl-lib))
-  (add-to-list 'load-path <span class="org-string">"~/.emacs.d/el-get/cl-lib"</span>))
+  (add-to-list 'load-path "~/.emacs.d/el-get/cl-lib"))
 </pre>
 
 
@@ -465,64 +467,112 @@ elisp code embedded in this file.
 
 
 
-<pre class="src src-emacs-lisp">(setq ome-packages nil)
+<pre class="example">(defvar ome-packages nil
+  "This package contains all packages loaded by oh-my-emacs.
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">ome-load</span> (file <span class="org-type">&amp;optional</span> header-or-tag)
-  <span class="org-doc">"Load configuration from other ome-*.org files.</span>
-<span class="org-doc">If the optional argument is the id of a subtree then only</span>
-<span class="org-doc">configuration from within that subtree will be loaded.  If it is</span>
-<span class="org-doc">not an id then it will be interpreted as a tag, and only subtrees</span>
-<span class="org-doc">marked with the given tag will be loaded.</span>
+Acutally, this variable is an alist, whose element is also a
+list. The car of the element is an oh-my-emacs module name, while
+the cdr of the element is a list of el-get packages loaded in particular
+oh-my-emacs module.")
 
-<span class="org-doc">For example, to load all of ome-lisp.org simply</span>
-<span class="org-doc">add (ome-load \"lisp\") to your configuration.</span>
+(defun ome-load (module &amp;rest header-or-tags)
+  "Load configuration from other ome-*.org files.
+If the optional argument is the id of a subtree then only
+configuration from within that subtree will be loaded.  If it is
+not an id then it will be interpreted as a tag, and only subtrees
+marked with the given tag will be loaded.
 
-<span class="org-doc">To load only the 'window-system' config from</span>
-<span class="org-doc">ome-misc-recommended.org add</span>
-<span class="org-doc"> (ome-load \"misc-recommended\" \"window-system\")</span>
-<span class="org-doc">to your configuration."</span>
-  (<span class="org-keyword">let</span> ((file (expand-file-name (<span class="org-keyword">if</span> (string-match <span class="org-string">"ome-.+\.org"</span> file)
-                                    file
-                                  (format <span class="org-string">"ome-%s.org"</span> file))
+For example, to load all of ome-lisp.org simply add (ome-load
+\"ome-lisp\") to your configuration.
+
+To load only the 'window-system' config from ome-miscs.org
+add (ome-load \"ome-miscs.org\" \"window-system\") to your
+configuration.
+
+The good news is, you can load multiple parts config from one
+single file by simply (ome-load \"ome-module.org\" \"part1\"
+\"part2\")."
+  (let ((module-name (file-name-base module))
+        (file (expand-file-name (if (string-match "ome-.+\.org" module)
+                                    module
+                                  (format "ome-%s.org" module))
                                 ome-dir)))
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">ensure el-get-sources is empty before loading "ome-.+\.org" files</span>
+    ;; ensure el-get-sources is empty before loading "ome-.+\.org" files
     (setq el-get-sources nil)
-    (org-babel-load-file
-     (<span class="org-keyword">if</span> header-or-tag
-         (<span class="org-keyword">let*</span> ((base (file-name-nondirectory file))
-                (dir  (file-name-directory file))
-                (partial-file (expand-file-name
-                               (concat <span class="org-string">"."</span> (file-name-sans-extension base)
-                                       <span class="org-string">".part."</span> header-or-tag <span class="org-string">".org"</span>)
-                               dir)))
-           (<span class="org-keyword">unless</span> (file-exists-p partial-file)
-             (<span class="org-keyword">with-temp-file</span> partial-file
-               (insert
-                (<span class="org-keyword">with-temp-buffer</span>
-                  (insert-file-contents file)
-                  (<span class="org-keyword">save-excursion</span>
-                    (<span class="org-keyword">condition-case</span> nil <span class="org-comment-delimiter">;; </span><span class="org-comment">collect as a header</span>
-                        (<span class="org-keyword">progn</span>
-                          (org-link-search (concat<span class="org-string">"#"</span>header-or-tag))
-                          (org-narrow-to-subtree)
-                          (buffer-string))
-                      (<span class="org-warning">error</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">collect all entries with as tags</span>
-                       (<span class="org-keyword">let</span> (body)
-                         (org-map-entries
-                          (<span class="org-keyword">lambda</span> ()
-                            (<span class="org-keyword">save-restriction</span>
-                              (org-narrow-to-subtree)
-                              (setq body (concat body <span class="org-string">"\n"</span> (buffer-string)))))
-                          header-or-tag)
-                         body))))))))
-           partial-file)
-       file))
-    (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
-    (mapcar (<span class="org-keyword">lambda</span> (el-get-package)
-              (add-to-list 'ome-packages
-                           (el-get-source-name el-get-package)))
-            el-get-sources)))
+    ;; enable git shallow clone to save time and bandwidth
+    (setq el-get-git-shallow-clone t)
 
+    (if header-or-tags
+        (dolist (header-or-tag header-or-tags)
+          (let* ((base (file-name-nondirectory file))
+                 (dir  (file-name-directory file))
+                 (partial-file (expand-file-name
+                                (concat "." (file-name-sans-extension base)
+                                        ".part." header-or-tag ".org")
+                                dir)))
+            (unless (file-exists-p partial-file)
+              (with-temp-file partial-file
+                (insert
+                 (with-temp-buffer
+                   (insert-file-contents file)
+                   (save-excursion
+                     (condition-case nil ;; collect as a header
+                         (progn
+                           (org-link-search (concat "#" header-or-tag))
+                           (org-narrow-to-subtree)
+                           (buffer-string))
+                       (error ;; collect all entries with as tags
+                        (let (body)
+                          (org-map-entries
+                           (lambda ()
+                             (save-restriction
+                               (org-narrow-to-subtree)
+                               (setq body (concat body "\n" (buffer-string)))))
+                           header-or-tag)
+                          body))))))))
+            (org-babel-load-file partial-file)))
+      (org-babel-load-file file))
+
+    (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+    (setq ome-module-packages nil)
+    (mapcar (lambda (el-get-package)
+              (add-to-list 'ome-module-packages
+                           (el-get-source-name el-get-package)))
+            el-get-sources)
+    (add-to-list 'ome-packages
+                 (cons module-name ome-module-packages))))
+
+
+</pre>
+
+
+<ul>
+<li>Functions for installing el-get packages
+</li>
+</ul>
+
+
+
+
+
+<pre class="example">(defun ome-install (el-get-package)
+  "Add EL-GET-PACKAGE to `el-get-sources'.
+
+This package will be installed when `ome-load'. Users can make
+his own customization by providing a \"ome-package-name-setup\"
+function."
+  (let ((ome-package-setup-func
+         (intern
+          (concat "ome-"
+                  (el-get-as-string el-get-package)
+                  "-setup"))))
+    (if (fboundp ome-package-setup-func)
+        (add-to-list 'el-get-sources
+                     `(:name ,el-get-package
+                             :after (progn
+                                      (,ome-package-setup-func))))
+      (add-to-list 'el-get-sources
+                   `(:name ,el-get-package)))))
 </pre>
 
 
@@ -535,58 +585,49 @@ elisp code embedded in this file.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-try-get-package-website</span> (package)
-  <span class="org-doc">"el-get's package recipe has multiple type, some contains</span>
-<span class="org-doc">a :website, some contains just a :url, while some github package</span>
-<span class="org-doc">just contains a :pkgname. This function try to get a proper</span>
-<span class="org-doc">website link for an el-get package."</span>
-  (<span class="org-keyword">let</span> ((package-def (el-get-package-def package)))
-    (or (plist-get package-def <span class="org-builtin">:website</span>)
-        (and (eq (plist-get package-def <span class="org-builtin">:type</span>) 'github)
-             (concat <span class="org-string">"https://github.com/"</span>
-                     (plist-get package-def <span class="org-builtin">:pkgname</span>)))
-        (plist-get package-def <span class="org-builtin">:url</span>))))
+<pre class="example">(defun ome-try-get-package-website (package)
+  "el-get's package recipe has multiple type, some contains
+a :website, some contains just a :url, while some github package
+just contains a :pkgname. This function try to get a proper
+website link for an el-get package."
+  (let ((package-def (el-get-package-def package)))
+    (or (plist-get package-def :website)
+        (and (eq (plist-get package-def :type) 'github)
+             (concat "https://github.com/"
+                     (plist-get package-def :pkgname)))
+        (plist-get package-def :url))))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">ome-package-list</span> (ome-packages)
-  <span class="org-doc">"Get a whole list of el-get packages installed by</span>
-<span class="org-doc">oh-my-emacs. Returns a list of (package-name, package-website,</span>
-<span class="org-doc">package-description)."</span>
-  (mapcar
-   (<span class="org-keyword">lambda</span> (package)
-     (<span class="org-keyword">let</span> ((package-def (el-get-package-def package)))
-       (list (ome-try-get-package-website package)
-             (el-get-package-name package)
-             <span class="org-comment-delimiter">;; </span><span class="org-comment">some package's description has multiple lines, so we need to</span>
-             <span class="org-comment-delimiter">;; </span><span class="org-comment">join them together for better auto-fill.</span>
-             (replace-regexp-in-string <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\n</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">\\ </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">+"</span> <span class="org-string">" "</span>
-                                       (plist-get package-def <span class="org-builtin">:description</span>)))))
-   (sort ome-packages #'string&lt;)))
+(defun ome-try-get-package-description (package)
+  "This function try to get a proper description for an el-get
+package from its recipe. Note that some package's description has
+multiple lines, so we need to join them together for better
+auto-fill."
+  (let ((package-def (el-get-package-def package)))
+    (replace-regexp-in-string "\\(\n\\|\\ \\)+" " "
+                              (plist-get package-def :description))))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">ome-package-list-in-org-format</span> (ome-packages)
-  <span class="org-doc">"A convenient function for constructing oh-my-emacs's</span>
-<span class="org-doc">README.org file."</span>
-  (mapcar
-   (<span class="org-keyword">lambda</span> (ome-package)
-     (format <span class="org-string">"[[%s][%s]]: %s"</span>
-             (nth 0 ome-package)
-             (nth 1 ome-package)
-             (nth 2 ome-package)))
-   (ome-package-list ome-packages)))
-
-(<span class="org-keyword">defun</span> <span class="org-function-name">ome-insert-package-list-in-org-mode</span> ()
-  <span class="org-doc">"Insert all packages info to current `</span><span class="org-doc"><span class="org-constant">org-mode</span></span><span class="org-doc">' files.</span>
-
-<span class="org-doc">This still has some problems with `</span><span class="org-doc"><span class="org-constant">org-mode</span></span><span class="org-doc">' and `</span><span class="org-doc"><span class="org-constant">auto-fill-mode</span></span><span class="org-doc">'."</span>
+(defun ome-package-list-to-org-table ()
   (interactive)
-  (insert
-   (<span class="org-keyword">with-temp-buffer</span>
-     (<span class="org-keyword">loop</span> for package
-           in (ome-package-list-in-org-format ome-packages)
-           do (insert <span class="org-string">"- "</span> package <span class="org-string">"\n\n"</span>))
-     (fill-region (point-min) (point-max))
-     (replace-string <span class="org-string">"-\n "</span> <span class="org-string">"-"</span> nil (point-min) (point-max))
-     (flush-lines <span class="org-string">"^$"</span> (point-min) (point-max))
-     (buffer-string))))
+  (setq ome-packages (sort ome-packages
+                           #'(lambda (x y) (string&lt; (car x) (car y)))))
+  (let ((org-table-line-template "|%s|[[%s][%s]]|%s|\n"))
+    (with-temp-buffer
+      (insert "| Module | Package | Description |\n")
+      (insert "|--------+---------+-------------|\n")
+      (insert "")
+      (dolist (module-packages ome-packages)
+        (setq package-index 0)
+        (dolist (package (cdr module-packages))
+          (insert (format org-table-line-template
+                          (if (= package-index 0)
+                              (car module-packages)
+                            "")
+                          (ome-try-get-package-website package)
+                          package
+                          (ome-try-get-package-description package)))
+          (incf package-index)))
+      (buffer-string))))
+
 </pre>
 
 
@@ -603,15 +644,15 @@ elisp code embedded in this file.
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> cl-lib))
+<pre class="example">(add-to-list 'el-get-sources
+             '(:name cl-lib))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">ome-start-or-switch-to</span> (function buffer-name)
-  <span class="org-doc">"Invoke FUNCTION if there is no buffer with BUFFER-NAME.</span>
-<span class="org-doc">  Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber</span>
-<span class="org-doc">  the current buffer."</span>
-  (<span class="org-keyword">if</span> (not (get-buffer buffer-name))
-      (<span class="org-keyword">progn</span>
+(defun ome-start-or-switch-to (function buffer-name)
+  "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
+  Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
+  the current buffer."
+  (if (not (get-buffer buffer-name))
+      (progn
         (split-window-sensibly (selected-window))
         (other-window 1)
         (funcall function))
@@ -630,37 +671,62 @@ elisp code embedded in this file.
 
 
 <p>
-Till now, Oh-my-emacs includes:
+Files in oh-my-emacs <code>core</code> will be loaded by default:
 </p><ul>
-<li><a href="ome-gui.html">ome-gui.org</a>: settings for color theme, font, modeline, scrollbar, etc.
+<li><a href="core/ome-auto-mode.html">ome-auto-mode.org</a>: small and convenient settings for some minor mode package.
 </li>
-<li><a href="ome-basic.html">ome-basic.org</a>: basic settings, such as tab, space, auto-fill-mode, flyspell,
+<li><a href="core/ome-basic.html">ome-basic.org</a>: basic settings, such as tab, space, auto-fill-mode, flyspell,
+</li>
+<li><a href="core/ome-completion.html">ome-completion.org</a>: main settings for completion support.
+</li>
+<li><a href="core/ome-gui.html">ome-gui.org</a>: settings for color theme, font, modeline, scrollbar, etc.
   etc.
 </li>
-<li><a href="ome-miscs.html">ome-miscs.org</a>: misc settings such as <code>magit</code>, <code>smartparens</code>, <code>projectile</code>,
+<li><a href="core/ome-keybindings.html">ome-keybindings.org</a>: oh-my-emacs keybindings.
+</li>
+<li><a href="core/ome-miscs.html">ome-miscs.org</a>: misc settings such as <code>magit</code>, <code>smartparens</code>, <code>projectile</code>,
   etc.
 </li>
-<li><a href="ome-completion.html">ome-completion.org</a>: main settings for completion support.
+<li><a href="core/ome-org.html">ome-org.org</a>: some refinement for org-mode.
 </li>
-<li><a href="ome-keybindings.html">ome-keybindings.org</a>: oh-my-emacs keybindings.
-</li>
-<li><a href="ome-org.html">ome-org.org</a>: some refinement for org-mode.
-</li>
-<li><a href="ome-advanced.html">ome-advanced.org</a>: only contains <code>evil</code>.
-</li>
-<li><a href="ome-writing.html">ome-writing.org</a>: for writers, bloggers, only contains <code>markdown-mode</code> for
+<li><a href="core/ome-writing.html">ome-writing.org</a>: for writers, bloggers, only contains <code>markdown-mode</code> for
   now.
 </li>
-<li><a href="ome-cc.html">ome-cc.org</a>: main settings for <code>cc-mode</code>.
+<li><a href="core/ome-advanced.html">ome-advanced.org</a>: contains <code>evil</code>, <code>ace-jump-mode</code>, <code>ack-and-a-half</code>, etc.
 </li>
-<li><a href="ome-lisp.html">ome-lisp.org</a>: ah, settings for lisp dialects, including emacs lisp, common
-  lisp, scheme and clojure.
+</ul>
+
+
+<p>
+Files in oh-my-emacs <code>modules</code> is optional, you can load necessary one when
+you really need it.
+</p><ul>
+<li><a href="modules/ome-cc.html">ome-cc.org</a>: main settings for <code>cc-mode</code>.
 </li>
-<li><a href="ome-python.html">ome-python.org</a>: python settings, life is short, <code>elpy</code> is amazing.
+<li><a href="modules/ome-common-lisp.html">ome-common-lisp.org</a>: settings for Common Lisp, mainly <a href="http://common-lisp.net/project/slime/">SLIME</a>.
 </li>
-<li><a href="ome-auto-mode.html">ome-auto-mode.org</a>: small and convenient settings for some minor mode package.
+<li><a href="modules/ome-clojure.html">ome-clojure.org</a>: settings for Clojure.
 </li>
-<li><a href="ome-tex.html">ome-tex.org</a>: AUCTeX and CDLaTeX for \TeX{} editing.
+<li><a href="modules/ome-emacs-lisp.html">ome-emacs-lisp.org</a>: settings for emacs-lisp.
+</li>
+<li><a href="modules/ome-java.html">ome-java.org</a>: settings for Java, using <a href="https://github.com/senny/emacs-eclim">emacs-eclim</a>.
+</li>
+<li><a href="modules/ome-javascript.html">ome-javascript.org</a>: settings for JavaScript, not perfect now.
+</li>
+<li><a href="modules/ome-python.html">ome-python.org</a>: python settings, life is short, <code>elpy</code> is amazing.
+</li>
+<li><a href="modules/ome-ruby.html">ome-ruby.org</a>: Ruby support including <code>inf-ruby</code> and by <code>smartparens-ruby</code>.
+</li>
+<li><a href="modules/ome-scheme.html">ome-scheme.org</a>: settings for Scheme.
+</li>
+<li><a href="modules/ome-ocaml.html">ome-ocaml.org</a>: minimal settings for OCaml.
+</li>
+<li><a href="modules/ome-tex.html">ome-tex.org</a>: AUCTeX and CDLaTeX for \TeX{} editing.
+</li>
+<li><a href="modules/ome-web.html">ome-web.org</a>: settings for HTML/CSS web development.
+</li>
+<li><a href="modules/ome-experimental.html">ome-experimental.org</a>: some experimental packages, such as sppedbar, minimap,
+  etc. Not stable yet now.
 </li>
 </ul>
 
@@ -668,19 +734,25 @@ Till now, Oh-my-emacs includes:
 
 
 
-<pre class="src src-emacs-lisp">(ome-load <span class="org-string">"ome-gui.org"</span>)
-(ome-load <span class="org-string">"ome-basic.org"</span>)
-(ome-load <span class="org-string">"ome-miscs.org"</span>)
-(ome-load <span class="org-string">"ome-completion.org"</span>)
-(ome-load <span class="org-string">"ome-keybindings.org"</span>)
-(ome-load <span class="org-string">"ome-org.org"</span>)
-(ome-load <span class="org-string">"ome-advanced.org"</span>)
-(ome-load <span class="org-string">"ome-writing.org"</span>)
-(ome-load <span class="org-string">"ome-cc.org"</span>)
-(ome-load <span class="org-string">"ome-lisp.org"</span>)
-(ome-load <span class="org-string">"ome-python.org"</span>)
-(ome-load <span class="org-string">"ome-auto-mode.org"</span>)
-(ome-load <span class="org-string">"ome-tex.org"</span>)
+<pre class="example">(ome-load "core/ome-auto-mode.org")
+(ome-load "core/ome-basic.org")
+(ome-load "core/ome-completion.org")
+(ome-load "core/ome-gui.org")
+(ome-load "core/ome-keybindings.org")
+(ome-load "core/ome-miscs.org")
+(ome-load "core/ome-org.org")
+(ome-load "core/ome-writing.org")
+(ome-load "core/ome-advanced.org")
+(ome-load "modules/ome-cc.org")
+(ome-load "modules/ome-java.org")
+(ome-load "modules/ome-emacs-lisp.org")
+(ome-load "modules/ome-common-lisp.org")
+(ome-load "modules/ome-clojure.org")
+(ome-load "modules/ome-scheme.org")
+(ome-load "modules/ome-python.org")
+(ome-load "modules/ome-ruby.org")
+(ome-load "modules/ome-ocaml.org")
+(ome-load "modules/ome-tex.org")
 </pre>
 
 
@@ -712,40 +784,40 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 </p>
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">flet</span> ((sk-load (base)
-         (<span class="org-keyword">let*</span> ((path          (expand-file-name base ome-dir))
-                (literate      (concat path <span class="org-string">".org"</span>))
-                (encrypted-org (concat path <span class="org-string">".org.gpg"</span>))
-                (plain         (concat path <span class="org-string">".el"</span>))
-                (encrypted-el  (concat path <span class="org-string">".el.gpg"</span>)))
-           (<span class="org-keyword">cond</span>
+<pre class="example">(flet ((sk-load (base)
+         (let* ((path          (expand-file-name base ome-dir))
+                (literate      (concat path ".org"))
+                (encrypted-org (concat path ".org.gpg"))
+                (plain         (concat path ".el"))
+                (encrypted-el  (concat path ".el.gpg")))
+           (cond
             ((file-exists-p encrypted-org) (org-babel-load-file encrypted-org))
             ((file-exists-p encrypted-el)  (load encrypted-el))
             ((file-exists-p literate)      (org-babel-load-file literate))
             ((file-exists-p plain)         (load plain)))))
        (remove-extension (name)
-         (string-match <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">.*?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">org</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.gpg</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">?$"</span> name)
+         (string-match "\\(.*?\\)\.\\(org\\(\\.el\\)?\\|el\\)\\(\\.gpg\\)?$" name)
          (match-string 1 name)))
-  (<span class="org-keyword">let</span> ((elisp-dir (expand-file-name <span class="org-string">"src"</span> ome-dir))
+  (let ((elisp-dir (expand-file-name "src" ome-dir))
         (user-dir (expand-file-name user-login-name ome-dir)))
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">add the src directory to the load path</span>
+    ;; add the src directory to the load path
     (add-to-list 'load-path elisp-dir)
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">load specific files</span>
-    (<span class="org-keyword">when</span> (file-exists-p elisp-dir)
-      (<span class="org-keyword">let</span> ((default-directory elisp-dir))
+    ;; load specific files
+    (when (file-exists-p elisp-dir)
+      (let ((default-directory elisp-dir))
         (normal-top-level-add-subdirs-to-load-path)))
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">load system-specific config</span>
+    ;; load system-specific config
     (sk-load system-name)
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">load user-specific config</span>
+    ;; load user-specific config
     (sk-load user-login-name)
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">load any files in the user's directory</span>
-    (<span class="org-keyword">when</span> (file-exists-p user-dir)
+    ;; load any files in the user's directory
+    (when (file-exists-p user-dir)
       (add-to-list 'load-path user-dir)
       (mapc #'sk-load
             (remove-duplicates
              (mapcar #'remove-extension
-                     (directory-files user-dir t <span class="org-string">".*\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">org</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.gpg</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">?$"</span>))
-             <span class="org-builtin">:test</span> #'string=)))))
+                     (directory-files user-dir t ".*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
+             :test #'string=)))))
 </pre>
 
 
@@ -760,10 +832,9 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 
 
 
-<pre class="src src-emacs-lisp">(setq custom-file (concat ome-dir <span class="org-string">"custom.el"</span>))
+<pre class="example">(setq custom-file (concat ome-dir "custom.el"))
 (load custom-file 'noerror)
 </pre>
-
 
 
 </div>
@@ -777,14 +848,34 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 <div class="outline-text-2" id="text-5">
 
 
+
 </div>
 
 <div id="outline-container-5-1" class="outline-3">
-<h3 id="sec-5-1">Boot up speed optimization</h3>
+<h3 id="sec-5-1">Blueprint</h3>
 <div class="outline-text-3" id="text-5-1">
 
 <ul>
-<li>Use <code>eval-after-load</code> when possible to inprove the boot up speed.
+<li>Add functions to rollback el-get. For example, users may have different
+  environments, which may result in a failure of one oh-my-emacs module A. Thus
+  users may want to remove all the packages installed by module A. So maybe I
+  need a function <code>(ome-unload "ome-module-A.org")</code>, which just remove all
+  oh-my-emacs by calling <code>el-get-remove</code>, and rollback the user's .emacs.d to
+  a previous workable state(hope).
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2">Boot up speed optimization</h3>
+<div class="outline-text-3" id="text-5-2">
+
+<ul>
+<li>Use <code>eval-after-load</code> when possible to improve the boot up speed.
 </li>
 <li><code>autoload</code> for lazy loading?
 </li>
@@ -795,9 +886,9 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 
 </div>
 
-<div id="outline-container-5-2" class="outline-3">
-<h3 id="sec-5-2">El-get</h3>
-<div class="outline-text-3" id="text-5-2">
+<div id="outline-container-5-3" class="outline-3">
+<h3 id="sec-5-3">El-get</h3>
+<div class="outline-text-3" id="text-5-3">
 
 <ul>
 <li>Documentation work about why choosing <code>el-get</code> over the builtin <code>package.el</code>
@@ -822,9 +913,9 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 
 </div>
 
-<div id="outline-container-5-3" class="outline-3">
-<h3 id="sec-5-3">Writing Portable Emacs Lisp Configurations</h3>
-<div class="outline-text-3" id="text-5-3">
+<div id="outline-container-5-4" class="outline-3">
+<h3 id="sec-5-4">Writing Portable Emacs Lisp Configurations</h3>
+<div class="outline-text-3" id="text-5-4">
 
 <ul>
 <li>Use <code>executable-find</code> to set path to external tools instead of by writing the
@@ -845,7 +936,7 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
   use <code>pkg-config</code> to get necessary header file paths for a particular lib,
   this is useful for settings with <code>auto-complete-clang</code>.
 </li>
-<li>Emacs cannot do all things, it do need some external tools to faciliate its
+<li>Emacs cannot do all things, it do need some external tools to facilitate its
   jobs. For example, <code>semantic</code> from <code>cedet</code> is a bad idea, it's bloated, slow
   and buggy. Consider using clang/jedi for completion. If there is a better
   external tools, do not hesitate, just use it. Do not reinvent the same wheel

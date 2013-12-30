@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs JavaScript</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Oh My Emacs JavaScript"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs JavaScript</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+As with python, there're many choices to do JavaScript programming in Emacs,
+however, IMHO, none of them are perfect, and easy to use. I've spent weeks of
+spare time to experience various emacs packages for JavaScript, and only
+figured out a not too bad solution based on <a href="https://github.com/thomblake/js3-mode">js3-mode</a>, <a href="https://github.com/abicky/nodejs-repl.el">nodejs-repl</a>, and <a href="https://github.com/marijnh/tern">tern</a>.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#javascript-prerequisites">Prerequisites</a></li>
+<li><a href="#javascript-el-get-packages">El-get packages</a></li>
+<li><a href="#js3-mode">js3-mode</a></li>
+<li><a href="#tern">Tern</a></li>
+<li><a href="#js2-mode">js2-mode</a></li>
+<li><a href="#swank-js">swank-js</a></li>
+<li><a href="#nodejs-repl">nodejs-repl</a></li>
+<li><a href="#js-comint">js-comint</a></li>
+<li><a href="#skewer-mode">Skewer-mode</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-javascript-prerequisites" class="outline-2">
+<h2 id="javascript-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-javascript-prerequisites">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-javascript module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://nodejs.org/">nodejs</a></td><td class="left"></td><td class="left">nodejs</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://ternjs.net/">tern</a></td><td class="left"></td><td class="left">[npm]</td><td class="left">[npm]</td><td class="left">[npm]</td><td class="left">[npm]</td><td class="left">Yes</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-javascript-el-get-packages" class="outline-2">
+<h2 id="javascript-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-javascript-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-javascript module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/thomblake/js3-mode">js3-mode</a></td><td class="left">Required</td><td class="left">A chimeric fork of js2-mode and js-mode</td></tr>
+<tr><td class="left"><a href="https://github.com/marijnh/tern">tern</a></td><td class="left">Required</td><td class="left">A great JavaScript code analyzer</td></tr>
+<tr><td class="left"><a href="https://github.com/abicky/nodejs-repl.el">nodejs-repl</a></td><td class="left">Required</td><td class="left">Run Node.js REPL and communicate the process</td></tr>
+<tr><td class="left"><a href="http://js-comint-el.sourceforge.net/">js-comint</a></td><td class="left">Deprecated</td><td class="left">Run JavaScript in an inferior process window</td></tr>
+<tr><td class="left"><a href="https://github.com/mooz/js2-mode">js2-mode</a></td><td class="left">Deprecated</td><td class="left">Parse JavaScript to AST using elisp</td></tr>
+<tr><td class="left"><a href="https://github.com/swank-js/swank-js">swank-js</a></td><td class="left">Deprecated</td><td class="left">Swank backend for Node.JS and in-browser JavaScript</td></tr>
+<tr><td class="left"><a href="https://github.com/skeeto/skewer-mode">skewer-mode</a></td><td class="left">Deprecated</td><td class="left">Browser JavaScript REPL in Emacs.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-js3-mode" class="outline-2">
+<h2 id="js3-mode"><a name="sec-3" id="sec-3"></a>js3-mode</h2>
+<div class="outline-text-2" id="text-js3-mode">
+
+
+<p>
+As the author said, <a href="https://github.com/thomblake/js3-mode">js3-mode</a> is a "A chimeric fork of js2-mode and
+js-mode". The main advantage of js3-mode over js2-mode, IMHO, is its
+indentation work as I expected. However, some third party packages depend on
+js2-mode, so this is a trade-off. I'm familiar with the internals of js2-mode,
+any discussion is welcomed if you prefer js2-mode over js3-mode.
+</p>
+<p>
+And another small issue is, js3-mode bind the <code>RET</code> key to <code>js3-enter-key</code>,
+which break smartparens's newline and indentation. I didn't figure out a good
+way to solve this.
+</p>
+
+
+
+<pre class="example">(defun ome-js3-mode-setup ()
+  (add-hook 'js3-mode-hook
+            (lambda ()
+              (setq js3-auto-indent-p t
+                    js3-curly-indent-offset 0
+                    js3-enter-indents-newline t
+                    js3-expr-indent-offset 2
+                    js3-indent-on-enter-key t
+                    js3-lazy-commas t
+                    js3-lazy-dots t
+                    js3-lazy-operators t
+                    js3-paren-indent-offset 2
+                    js3-square-indent-offset 4)
+              (linum-mode 1)))
+
+            ;; https://github.com/Fuco1/smartparens/issues/239
+            ;; (defadvice js3-enter-key (after fix-sp-state activate)
+            ;;   (setq sp-last-operation 'sp-self-insert))
+
+            ;; (sp-local-pair 'js3-mode
+            ;;                "{"
+            ;;                nil
+            ;;                :post-handlers
+            ;;                '((ome-create-newline-and-enter-sexp js3-enter-key))))
+  (add-to-list 'ac-modes 'js3-mode))
+
+(ome-install 'js3-mode)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-tern" class="outline-2">
+<h2 id="tern"><a name="sec-4" id="sec-4"></a>Tern</h2>
+<div class="outline-text-2" id="text-tern">
+
+
+<p>
+Tern is a stand-alone code-analysis engine for JavaScript. It is written in
+JavaScript, and capable of running both on <a href="http://nodejs.org/">nodejs</a> and in the browser.
+</p>
+<p>
+IMHO, tern is really an awesome project, various editors including Emacs
+provides tern support. The author of tern, <a href="http://marijnhaverbeke.nl/">Marijin Haverbeke</a>, is really a cool
+guy, an excellent JavaScript/Lisp hacker. He is also a tech writer, the author
+of "Eloquent JavaScript".
+</p>
+<p>
+Tern is really cool, besides the parser, it even has type inference for
+JavaScript. And it works both for browser and nodejs in an extensible way. For
+example, to get completion for both nodejs and jquery, just put a
+<code>.tern-project</code> file in your js project root directory, the content of this
+<code>.tern-project</code> file is self-explained, see tern's <a href="http://ternjs.net/doc/manual.html#configuration">manual</a> for tech details.
+</p>
+
+
+
+<pre class="example">{
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "plugins": {
+    "node": {}
+  }
+}
+</pre>
+
+
+<p>
+It is quite easy to setup and configure tern, the only thing you need to do is
+<code>sudo npm install -g tern</code>. Enjoy the auto-completion support from tern and
+auto-complete for JavaScript programming in Emacs.
+</p>
+
+
+
+<pre class="example">(defun ome-tern-setup ()
+  (when (el-get-package-installed-p 'js2-mode)
+    (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
+  (when (el-get-package-installed-p 'js3-mode)
+    (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
+  (setq tern-command (cons (executable-find "tern") '()))
+  (eval-after-load 'tern
+    '(progn
+       (require 'tern-auto-complete)
+       (tern-ac-setup))))
+
+(ome-install 'tern)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-js2-mode" class="outline-2">
+<h2 id="js2-mode"><a name="sec-5" id="sec-5"></a>js2-mode</h2>
+<div class="outline-text-2" id="text-js2-mode">
+
+
+<p>
+<a href="https://github.com/mooz/js2-mode">js2-mode</a> is really an awesome emacs package for JavaScript programming. It is
+originally written by <a href="http://steve-yegge.blogspot.com/">Steve Yegge</a>. I said it is awesome since it build a
+JavaScript <a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a> using emacs-lisp, thus there're even some third party "plugins"
+for js2-mode:
+</p><ul>
+<li><a href="https://github.com/magnars/js2-refactor.el">js2-refactor</a>: A JavaScript refactoring library for emacs.
+</li>
+<li><a href="https://github.com/ScottyB/ac-js2">ac-js2</a>: Javascript auto-completion in Emacs using Js2-mode's parser and
+  Skewer-mode.
+</li>
+</ul>
+
+
+<p>
+The only thing I dislike about js2-mode is indentation. That's why I adopt
+<a href="https://github.com/thomblake/js3-modej">js3-mode</a> for oh-my-emacs since js3-mode provides more friendly indentation
+settings and works as expected.
+</p>
+
+
+
+<pre class="example">(defun ome-js2-mode-setup ()
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (setq js2-basic-offset 2)))
+  (setq js2-bounce-indent-p t))
+  ;; (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+
+(ome-install 'js2-mode)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-swank-js" class="outline-2">
+<h2 id="swank-js"><a name="sec-6" id="sec-6"></a>swank-js</h2>
+<div class="outline-text-2" id="text-swank-js">
+
+
+<p>
+I really love the <a href="http://www.common-lisp.net/project/slime/">SLIME</a> way, I hope that one day every programming language can
+work the SLIME way. I was really exciting when I first saw <a href="https://github.com/swank-js/swank-js">swank-js</a>. It is
+really great and awesome if I can do JavaScript programming in SLIME way.
+</p>
+<p>
+Unfortunately, things do not always work as expected. There're some serious
+show-stop bugs, and it is under little development due to <a href="https://github.com/swank-js/swank-js/issues/52">lack of developers</a>. Another problem of swank-js is installation since it depends on
+SLIME, which is not quite easy to setup and configure, either.
+</p>
+<p>
+However, I still keep my code here for reference, which records some of my
+initial setup of swank-js and maybe useful for you, or in future.
+</p>
+<p>
+To use swank-js, you must have <a href="http://nodejs.org/">nodejs</a> installed, and then <code>sudo npm install -g swank-js</code>. If you have any problems, I recommend you to upgrade your nodejs to
+latest version and try again. And to make the following code work, you must
+setup and configure SLIME and js3-mode correctly.
+</p>
+
+
+
+<pre class="example">(defun ome-swank-js-setup ()
+  (require 'slime-js)
+  (add-hook 'js3-mode-hook
+            (lambda ()
+              (slime-js-minor-mode 1)))
+  (add-hook 'css-mode-hook
+            (lambda ()
+              (define-key css-mode-map (kbd "M-C-x") 'slime-js-refresh-css)
+              (define-key css-mode-map (kbd "C-c C-r") 'slime-js-embed-css))))
+
+;; Wow, swank-js has lots of dependencies.
+(when (and (require 'slime nil 'noerror)
+           (require 'js3-mode nil 'noerror)
+           (executable-find "npm")
+           (executable-find "swank-js"))
+  (ome-install 'swank-js))
+
+(eval-after-load 'auto-complete
+  '(progn
+     (add-to-list 'ac-modes 'js-mode)
+     (add-to-list 'ac-modes 'js2-mode)
+     (add-to-list 'ac-modes 'js3-mode)
+     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
+
+(eval-after-load 'slime
+  '(progn
+     (slime-setup '(slime-repl slime-js))))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-nodejs-repl" class="outline-2">
+<h2 id="nodejs-repl"><a name="sec-7" id="sec-7"></a>nodejs-repl</h2>
+<div class="outline-text-2" id="text-nodejs-repl">
+
+
+<p>
+There're multiple choices to get a JavaScript repl in Emacs. Unfortunately,
+none of them are perfect and work as expected. I myself prefers <a href="https://github.com/abicky/nodejs-repl.el">nodejs-repl</a>
+over <a href="http://js-comint-el.sourceforge.net/">js-comint</a> since it provides good support for TAB completion. However, it
+lacks some interactive commands, which need to be improved.
+</p>
+
+
+
+<pre class="example">(defun ome-nodejs-repl-setup ())
+
+(ome-install 'nodejs-repl)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-js-comint" class="outline-2">
+<h2 id="js-comint"><a name="sec-8" id="sec-8"></a>js-comint</h2>
+<div class="outline-text-2" id="text-js-comint">
+
+
+<p>
+<a href="http://js-comint-el.sourceforge.net/">js-comint.el</a> is a comint mode for emacs which allows you to run a compatible
+javascript repl in Emacs, it is an alternative to <a href="https://github.com/abicky/nodejs-repl.el">nodejs-repl</a>. Actually, Nodejs
+is not born when js-comint was first released.
+</p>
+
+
+
+<pre class="example">(defun ome-js-comint-setup ()
+  (setq inferior-js-program-command "node")
+  (add-hook 'js3-mode-hook
+            '(lambda ()
+               (local-set-key (kbd "C-x C-e")
+                              'js-send-last-sexp)
+               (local-set-key (kbd "C-M-x")
+                              'js-send-last-sexp-and-go)
+               (local-set-key (kbd "C-c b")
+                              'js-send-buffer)
+               (local-set-key (kbd "C-c C-b")
+                              'js-send-buffer-and-go)
+               (local-set-key (kbd "C-c l")
+                              'js-load-file-and-go)))
+  (setenv "NODE_NO_READLINE" "1")
+  (setq inferior-js-mode-hook
+        (lambda ()
+          ;; We like nice colors
+          (ansi-color-for-comint-mode-on))))
+
+(ome-install 'js-comint)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-skewer-mode" class="outline-2">
+<h2 id="skewer-mode"><a name="sec-9" id="sec-9"></a>Skewer-mode</h2>
+<div class="outline-text-2" id="text-skewer-mode">
+
+
+<p>
+What's wrong with swank-js?
+</p>
+<blockquote>
+
+<p>Skewer provides nearly the same functionality as swank-js, a JavaScript
+back-end to SLIME. At a glance my extension seems redundant.
+</p>
+<p>
+The problem with swank-js is the complicated setup. It requires a cooperating
+Node.js server, a particular version of SLIME, and a lot of patience. I could
+never get it working, and if I did I wouldn’t want to have to do all that setup
+again on another computer. In contrast, Skewer is just another Emacs package,
+no special setup needed. Thanks to package.el installing and using it should be
+no more difficult than installing any other package.
+</p>
+<p>
+Most importantly, with Skewer I can capture the setup in my .emacs.d repository
+where it will automatically work across any operating system, so long as it has
+Emacs installed.
+</p>
+<p>
+&ndash; The <a href="http://nullprogram.com/blog/2012/10/31/">author</a> of skewer-mode
+</p>
+</blockquote>
+
+
+<p>
+To tell the truth, I have installed skewer-mode but didn't dive into it since I
+want to work with nodejs, while skewer-mode <a href="https://github.com/skeeto/skewer-mode/issues/37">didn't support nodejs</a> yet. The
+code is kept here just for reference.
+</p>
+
+
+
+<pre class="example">(defun ome-skewer-mode-setup ()
+  (add-hook 'js2-mode-hook 'skewer-mode)
+  (add-hook 'css-mode-hook 'skewer-css-mode)
+  (add-hook 'html-mode-hook 'skewer-html-mode))
+
+(ome-install 'skewer-mode)
+</pre>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

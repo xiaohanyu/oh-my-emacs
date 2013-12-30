@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Clojure</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Clojure"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Clojure</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains some settings for <a href="#sec-3">Clojure</a> programming language.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#clojure-prerequisites">Prerequisites</a></li>
+<li><a href="#clojure-el-get-packages">El-get packages</a></li>
+<li><a href="#clojure">Clojure</a></li>
+<li><a href="#sec-4">Todos</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-clojure-prerequisites" class="outline-2">
+<h2 id="clojure-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-clojure-prerequisites">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-clojure module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://leiningen.org/">Leiningen</a></td><td class="left">[web]</td><td class="left">[web]</td><td class="left">[web]</td><td class="left">[web]</td><td class="left">[web]</td><td class="left">Yes</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Note:
+</p><ul>
+<li><a href="http://leiningen.org/">Leiningen</a> for Clojure. I recommend you install leiningen from the official
+  website to keep update with the lastest version.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-clojure-el-get-packages" class="outline-2">
+<h2 id="clojure-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-clojure-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-clojure module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/clojure-emacs/clojure-mode">clojure-mode</a></td><td class="left">Required</td><td class="left">Major mode for Clojure.</td></tr>
+<tr><td class="left"><a href="https://github.com/clojure-emacs/cider">CIDER</a></td><td class="left">Required</td><td class="left">CIDER is a Clojure IDE and REPL for Emacs</td></tr>
+<tr><td class="left"><a href="https://github.com/purcell/ac-nrepl.git">ac-nrepl</a></td><td class="left">Required</td><td class="left">AC backend for nrepl.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-clojure" class="outline-2">
+<h2 id="clojure"><a name="sec-3" id="sec-3"></a>Clojure</h2>
+<div class="outline-text-2" id="text-clojure">
+
+
+<p>
+<a href="http://www.clojure.org">Clojure</a> is a modern Lisp on top of JVM, it is a member of the Lisp family of
+languages. Clojure extends the code-as-data system beyond parenthesized lists
+(s-expressions) to vectors and maps.
+</p>
+<p>
+Since Clojure is a Lisp dialect, it should work the SLIME way. Yeah, first
+comes <a href="https://github.com/technomancy/swank-clojure">swank-clojure</a>, then <a href="https://github.com/clojure-emacs/cider">CIDER</a><sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>. The only thing you need to install is
+<a href="http://leiningen.org/">leiningen</a> 2.x. I recommend you to install it manually, since not all <a href="https://github.com/technomancy/leiningen/wiki/Packaging">package manager</a> provides the latest version.
+</p>
+<p>
+The general way to install lastest stable leiningen is:
+</p>
+
+
+<pre class="example">wget -O /tmp/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein
+sudo mv /tmp/lein /usr/bin/lein
+lein version
+</pre>
+
+
+<p>
+Or you can see leiningen's <a href="https://github.com/technomancy/leiningen/wiki/Upgrading">wiki</a> for upgrading details.
+</p>
+<p>
+Now, just open a clojure file, then <code>cider-jack-in</code>, and you can program
+Clojure the SLIME way. <a href="http://vimeo.com/22798433">Here</a> is an awesome live demo to demonstrate the Clojure
+workflow.
+</p>
+<p>
+It's really really awesome, ah?
+</p>
+
+
+
+<pre class="example">(ome-install 'clojure-mode)
+
+(defun ome-cider-setup ()
+  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+  (setq cider-repl-tab-command 'indent-for-tab-command)
+  (setq cider-repl-pop-to-buffer-on-connect nil)
+  (setq cider-popup-stacktraces nil)
+  (setq cider-repl-popup-stacktraces t)
+  (setq cider-auto-select-error-buffer t)
+  (setq nrepl-hide-special-buffers t)
+  (setq nrepl-buffer-name-separator "-")
+  (setq nrepl-buffer-name-show-port t))
+
+(ome-install 'cider)
+
+(defun ome-ac-nrepl-setup ()
+  (add-hook 'cider-mode-hook 'ac-nrepl-setup)
+  (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
+  (eval-after-load "auto-complete"
+    '(add-to-list 'ac-modes 'cider-repl-mode)))
+
+(ome-install 'ac-nrepl)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Todos</h2>
+<div class="outline-text-2" id="text-4">
+
+<ul>
+<li>The boot up speed of JVM is too slow, so we may need to refer to
+  <a href="http://icylisper.github.io/jark/">http://icylisper.github.io/jark/</a>.
+</li>
+</ul>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> CIDER was formerly known as and renamed from <code>nrepl.el</code>.
+</p>
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

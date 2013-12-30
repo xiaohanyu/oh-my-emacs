@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Oh My Emacs Completion"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -127,9 +120,33 @@ for the JavaScript code in this tag.
 <p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Hippie expand</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-completion-el-get-packages" class="outline-2">
+<h2 id="completion-el-get-packages"><a name="sec-1" id="sec-1"></a>El-get Packages</h2>
+<div class="outline-text-2" id="text-completion-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-completion module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://cx4a.org/software/auto-complete/">auto-complete</a></td><td class="left">Required</td><td class="left">I really like it.</td></tr>
+<tr><td class="left"><a href="https://github.com/emacs-helm/helm">helm</a></td><td class="left">Required</td><td class="left">Completion everywhere, highly recommended.</td></tr>
+<tr><td class="left"><a href="https://github.com/capitaomorte/yasnippet">YASnippet</a></td><td class="left">Required</td><td class="left">Quick snippet template insertion.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Hippie expand</h2>
+<div class="outline-text-2" id="text-2">
 
 <p><code>M-x hippie-expand</code> is a single command providing a variety of completions and
 expansions. The following code segment comes from <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a>.
@@ -137,7 +154,7 @@ expansions. The following code segment comes from <a href="https://github.com/bb
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">hippie expand is dabbrev expand on steroids</span>
+<pre class="example">;; hippie expand is dabbrev expand on steroids
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev
                                          try-expand-dabbrev-all-buffers
                                          try-expand-dabbrev-from-kill
@@ -156,7 +173,7 @@ expansions. The following code segment comes from <a href="https://github.com/bb
 </div>
 
 <div id="outline-container-auto-complete" class="outline-2">
-<h2 id="auto-complete"><a name="sec-2" id="sec-2"></a>Auto complete</h2>
+<h2 id="auto-complete"><a name="sec-3" id="sec-3"></a>Auto complete</h2>
 <div class="outline-text-2" id="text-auto-complete">
 
 
@@ -171,14 +188,29 @@ Actually, there're multiple completion packages for Emacs, say Emacs builtin
 <a href="http://www.emacswiki.org/emacs/ProgrammableCompletion">pcomplete</a> for completion mainly for <code>comint-mode</code>, such as <a href="http://www.masteringemacs.org/articles/2012/01/16/pcomplete-context-sensitive-completion-emacs/">completion in Eshell</a>, <code>ido-mode</code> for completion in minibuffers. Say auto-complete, there's
 also a <a href="http://stackoverflow.com/questions/4704748/emacs-completion-autocomplete-or-company">competitive</a> <a href="http://company-mode.github.io/">company-mode</a>.
 </p>
+<p>
+By default, function <code>global-auto-complete-mode</code> will toggle on auto-complete
+according to <code>ac-modes</code>, which in turn determines what major mode
+<code>auto-complete-mode</code> can run on. Oh-my-emacs add <code>org-mode</code> and <code>text-mode</code> to
+<code>ac-modes</code>.
+</p>
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> auto-complete
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (<span class="org-keyword">require</span> '<span class="org-constant">auto-complete-config</span>)
-                              (ac-config-default))))
+<pre class="example">(defun ome-auto-complete-setup ()
+  (require 'auto-complete-config)
+
+  (dolist (ac-mode '(text-mode org-mode))
+    (add-to-list 'ac-modes ac-mode))
+  (dolist (ac-mode-hook '(text-mode-hook org-mode-hook prog-mode-hook))
+    (add-hook ac-mode-hook
+              (lambda ()
+                (add-to-list 'ac-sources 'ac-source-files-in-current-dir)
+                (add-to-list 'ac-sources 'ac-source-filename))))
+
+  (ac-config-default))
+
+(ome-install 'auto-complete)
 </pre>
 
 
@@ -186,7 +218,7 @@ also a <a href="http://stackoverflow.com/questions/4704748/emacs-completion-auto
 </div>
 
 <div id="outline-container-ac-source-pcomplete" class="outline-3">
-<h3 id="ac-source-pcomplete"><a name="sec-2-1" id="sec-2-1"></a>Integrate pcomplete with Auto-complete</h3>
+<h3 id="ac-source-pcomplete"><a name="sec-3-1" id="sec-3-1"></a>Integrate pcomplete with Auto-complete</h3>
 <div class="outline-text-3" id="text-ac-source-pcomplete">
 
 
@@ -194,7 +226,7 @@ also a <a href="http://stackoverflow.com/questions/4704748/emacs-completion-auto
 You may wonder why oh-my-emacs choose auto-complete? In a word, auto-complete
 is flexible which provides a plugin mechanism through which you can define your
 own <code>ac-source</code>, thus you get unlimited possibilities to complete in various
-programming langagues, major modes, etc.
+programming languages, major modes, etc.
 </p>
 <p>
 The following code comes from <a href="http://www.emacswiki.org/emacs/EshellCompletion">EmacsWiki</a>, which defines a <code>ac-source-pcomplete</code>
@@ -203,57 +235,87 @@ that integrates pcomplete as a completion backend to auto-complete.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ac-pcomplete</span> ()
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">eshell uses `</span><span class="org-comment"><span class="org-constant">insert-and-inherit</span></span><span class="org-comment">' to insert a \t if no completion</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">can be found, but this must not happen as auto-complete source</span>
-  (<span class="org-keyword">flet</span> ((insert-and-inherit (<span class="org-type">&amp;rest</span> args)))
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">this code is stolen from `</span><span class="org-comment"><span class="org-constant">pcomplete</span></span><span class="org-comment">' in pcomplete.el</span>
-    (<span class="org-keyword">let*</span> (tramp-mode <span class="org-comment-delimiter">;; </span><span class="org-comment">do not automatically complete remote stuff</span>
+<pre class="example">(defun ac-pcomplete ()
+  ;; eshell uses `insert-and-inherit' to insert a \t if no completion
+  ;; can be found, but this must not happen as auto-complete source
+  (flet ((insert-and-inherit (&amp;rest args)))
+    ;; this code is stolen from `pcomplete' in pcomplete.el
+    (let* (tramp-mode ;; do not automatically complete remote stuff
            (pcomplete-stub)
-           (pcomplete-show-list t) <span class="org-comment-delimiter">;; </span><span class="org-comment">inhibit patterns like * being deleted</span>
+           (pcomplete-show-list t) ;; inhibit patterns like * being deleted
            pcomplete-seen pcomplete-norm-func
            pcomplete-args pcomplete-last pcomplete-index
            (pcomplete-autolist pcomplete-autolist)
            (pcomplete-suffix-list pcomplete-suffix-list)
            (candidates (pcomplete-completions))
            (beg (pcomplete-begin))
-           <span class="org-comment-delimiter">;; </span><span class="org-comment">note, buffer text and completion argument may be</span>
-           <span class="org-comment-delimiter">;; </span><span class="org-comment">different because the buffer text may bet transformed</span>
-           <span class="org-comment-delimiter">;; </span><span class="org-comment">before being completed (e.g. variables like $HOME may be</span>
-           <span class="org-comment-delimiter">;; </span><span class="org-comment">expanded)</span>
+           ;; note, buffer text and completion argument may be
+           ;; different because the buffer text may bet transformed
+           ;; before being completed (e.g. variables like $HOME may be
+           ;; expanded)
            (buftext (buffer-substring beg (point)))
            (arg (nth pcomplete-index pcomplete-args)))
-      <span class="org-comment-delimiter">;; </span><span class="org-comment">we auto-complete only if the stub is non-empty and matches</span>
-      <span class="org-comment-delimiter">;; </span><span class="org-comment">the end of the buffer text</span>
-      (<span class="org-keyword">when</span> (and (not (zerop (length pcomplete-stub)))
-                 (or (string= pcomplete-stub <span class="org-comment-delimiter">; </span><span class="org-comment">Emacs 23</span>
+      ;; we auto-complete only if the stub is non-empty and matches
+      ;; the end of the buffer text
+      (when (and (not (zerop (length pcomplete-stub)))
+                 (or (string= pcomplete-stub ; Emacs 23
                               (substring buftext
                                          (max 0
                                               (- (length buftext)
                                                  (length pcomplete-stub)))))
-                     (string= pcomplete-stub <span class="org-comment-delimiter">; </span><span class="org-comment">Emacs 24</span>
+                     (string= pcomplete-stub ; Emacs 24
                               (substring arg
                                          (max 0
                                               (- (length arg)
                                                  (length pcomplete-stub)))))))
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">Collect all possible completions for the stub. Note that</span>
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">`candidates` may be a function, that's why we use</span>
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">`all-completions`.</span>
-        (<span class="org-keyword">let*</span> ((cnds (all-completions pcomplete-stub candidates))
+        ;; Collect all possible completions for the stub. Note that
+        ;; `candidates` may be a function, that's why we use
+        ;; `all-completions`.
+        (let* ((cnds (all-completions pcomplete-stub candidates))
                (bnds (completion-boundaries pcomplete-stub
                                             candidates
                                             nil
-                                            <span class="org-string">""</span>))
+                                            ""))
                (skip (- (length pcomplete-stub) (car bnds))))
-          <span class="org-comment-delimiter">;; </span><span class="org-comment">We replace the stub at the beginning of each candidate by</span>
-          <span class="org-comment-delimiter">;; </span><span class="org-comment">the real buffer content.</span>
-          (mapcar #'(<span class="org-keyword">lambda</span> (cand) (concat buftext (substring cand skip)))
+          ;; We replace the stub at the beginning of each candidate by
+          ;; the real buffer content.
+          (mapcar #'(lambda (cand) (concat buftext (substring cand skip)))
                   cnds))))))
 
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">ac-source-pcomplete</span>
+(defvar ac-source-pcomplete
   '((candidates . ac-pcomplete)))
 </pre>
 
+
+</div>
+
+</div>
+
+<div id="outline-container-auto-complete-usability-matrix" class="outline-3">
+<h3 id="auto-complete-usability-matrix"><a name="sec-3-2" id="sec-3-2"></a>Auto-complete usability matrix</h3>
+<div class="outline-text-3" id="text-auto-complete-usability-matrix">
+
+
+<p>
+Semantic completion based on <a href="http://cx4a.org/software/auto-complete/">auto-complete</a> is one of the major goals of
+oh-my-emacs. The following matrix show the current status of oh-my-emacs
+semantic completion.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="right">AC Usability</th><th scope="col" class="left">AC Backend</th><th scope="col" class="left">Detail</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">C/C++</td><td class="right">80%</td><td class="left"><a href="https://github.com/brianjcj/auto-complete-clang">auto-complete-clang</a></td><td class="left">Issue with function argument list.</td></tr>
+<tr><td class="left">Python</td><td class="right">100%</td><td class="left"><a href="https://github.com/jorgenschaefer/elpy">elpy</a></td><td class="left">elpy is amazing.</td></tr>
+<tr><td class="left">Emacs Lisp</td><td class="right">100%</td><td class="left">Builtin</td><td class="left">You kown that.</td></tr>
+<tr><td class="left">Common Lisp</td><td class="right">100%</td><td class="left"><a href="https://github.com/purcell/ac-slime">ac-slime</a></td><td class="left">SLIME is amazing, too.</td></tr>
+<tr><td class="left">Scheme</td><td class="right">80%</td><td class="left"><a href="https://github.com/xiaohanyu/ac-geiser">ac-geiser</a></td><td class="left">Yeah, I'm the author of ac-geiser.</td></tr>
+<tr><td class="left">Clojure</td><td class="right">100%</td><td class="left"><a href="https://github.com/clojure-emacs/ac-nrepl">ac-nrepl</a></td><td class="left">It even completes Java!</td></tr>
+</tbody>
+</table>
 
 
 </div>
@@ -262,7 +324,7 @@ that integrates pcomplete as a completion backend to auto-complete.
 </div>
 
 <div id="outline-container-helm" class="outline-2">
-<h2 id="helm"><a name="sec-3" id="sec-3"></a>Helm</h2>
+<h2 id="helm"><a name="sec-4" id="sec-4"></a>Helm</h2>
 <div class="outline-text-2" id="text-helm">
 
 
@@ -356,16 +418,16 @@ fallback. But I do suggest you to take some time to be familiar with helm.
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> helm
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (<span class="org-keyword">require</span> '<span class="org-constant">helm-config</span>)
-                              (setq helm-input-idle-delay 0.2)
-                              (helm-mode t)
-                              (global-set-key (kbd <span class="org-string">"C-x c g"</span>) 'helm-do-grep)
-                              (global-set-key (kbd <span class="org-string">"C-x c o"</span>) 'helm-occur)
-                              (global-set-key (kbd <span class="org-string">"M-x"</span>) 'helm-M-x)
-                              (global-set-key (kbd <span class="org-string">"C-x C-f"</span>) 'helm-find-files))))
+<pre class="example">(defun ome-helm-setup ()
+  (require 'helm-config)
+  (setq helm-input-idle-delay 0.2)
+  (helm-mode t)
+  (global-set-key (kbd "C-x c g") 'helm-do-grep)
+  (global-set-key (kbd "C-x c o") 'helm-occur)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files))
+
+(ome-install 'helm)
 
 </pre>
 
@@ -374,7 +436,7 @@ fallback. But I do suggest you to take some time to be familiar with helm.
 </div>
 
 <div id="outline-container-yasnippet" class="outline-2">
-<h2 id="yasnippet"><a name="sec-4" id="sec-4"></a>Yasnippet</h2>
+<h2 id="yasnippet"><a name="sec-5" id="sec-5"></a>Yasnippet</h2>
 <div class="outline-text-2" id="text-yasnippet">
 
 
@@ -404,39 +466,39 @@ TODO:
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'popup
-  '(<span class="org-keyword">progn</span>
-     (define-key popup-menu-keymap (kbd <span class="org-string">"M-n"</span>) 'popup-next)
-     (define-key popup-menu-keymap (kbd <span class="org-string">"TAB"</span>) 'popup-next)
-     (define-key popup-menu-keymap (kbd <span class="org-string">"&lt;tab&gt;"</span>) 'popup-next)
-     (define-key popup-menu-keymap (kbd <span class="org-string">"&lt;backtab&gt;"</span>) 'popup-previous)
-     (define-key popup-menu-keymap (kbd <span class="org-string">"M-p"</span>) 'popup-previous)))
+<pre class="example">(eval-after-load 'popup
+  '(progn
+     (define-key popup-menu-keymap (kbd "M-n") 'popup-next)
+     (define-key popup-menu-keymap (kbd "TAB") 'popup-next)
+     (define-key popup-menu-keymap (kbd "&lt;tab&gt;") 'popup-next)
+     (define-key popup-menu-keymap (kbd "&lt;backtab&gt;") 'popup-previous)
+     (define-key popup-menu-keymap (kbd "M-p") 'popup-previous)))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">yas-popup-isearch-prompt</span> (prompt choices <span class="org-type">&amp;optional</span> display-fn)
-  (<span class="org-keyword">when</span> (<span class="org-keyword">featurep</span> '<span class="org-constant">popup</span>)
+(defun yas-popup-isearch-prompt (prompt choices &amp;optional display-fn)
+  (when (featurep 'popup)
     (popup-menu*
      (mapcar
-      (<span class="org-keyword">lambda</span> (choice)
+      (lambda (choice)
         (popup-make-item
          (or (and display-fn (funcall display-fn choice))
              choice)
-         <span class="org-builtin">:value</span> choice))
+         :value choice))
       choices)
-     <span class="org-builtin">:prompt</span> prompt
-     <span class="org-comment-delimiter">;; </span><span class="org-comment">start isearch mode immediately</span>
-     <span class="org-builtin">:isearch</span> t)))
+     :prompt prompt
+     ;; start isearch mode immediately
+     :isearch t)))
 
-(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> yasnippet
-                     <span class="org-builtin">:depends</span> (popup)
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (setq yas-prompt-functions
-                                    '(yas-popup-isearch-prompt
-                                      yas-no-prompt))
-                              (yas-reload-all)
-                              (add-hook 'prog-mode-hook
-                                        '(<span class="org-keyword">lambda</span> ()
-                                           (yas-minor-mode))))))
+(defun ome-yasnippet-setup ()
+  (setq yas-prompt-functions
+        '(yas-popup-isearch-prompt
+          yas-no-prompt))
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook
+            '(lambda ()
+               (yas-minor-mode))))
+
+(ome-install 'popup)
+(ome-install 'yasnippet)
 </pre>
 
 
@@ -444,17 +506,17 @@ TODO:
 
 </div>
 
-<div id="outline-container-5" class="outline-2">
-<h2 id="sec-5">Todo</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">Todo</h2>
+<div class="outline-text-2" id="text-6">
 
 
 
 </div>
 
-<div id="outline-container-5-1" class="outline-3">
-<h3 id="sec-5-1">Helm</h3>
-<div class="outline-text-3" id="text-5-1">
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1">Helm</h3>
+<div class="outline-text-3" id="text-6-1">
 
 <p>Ah, various ideas to enhance helm:
 </p><ul>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Contributing</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Contributing"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Contributing</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Why</a></li>
+<li><a href="#sec-2">2 How</a></li>
+<li><a href="#sec-3">3 Rules</a></li>
+<li><a href="#sec-4">4 Workflow</a>
+<ul>
+<li><a href="#sec-4-1">4.1 Codebase</a></li>
+<li><a href="#sec-4-2">4.2 Git hints</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Why</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Oh-my-emacs starts as a single guy's endeavor to reorganize his messy
+<code>.emacs.d</code>. Till now the original goal has been met. So why it is still
+continuing?
+</p>
+<p>
+Actually, the current goal of oh-my-emacs is to provide an awesome, out-of-box,
+literate <code>.emacs.d</code> for both newbies and nerds. However, the man who start this
+project is just a single guy who want but still didn't own a beautiful Mac
+yet. Though he is familiar with Ubuntu and ArchLinux, he knows little about
+other Linux distributions(such as Fedora, openSUSE, etc), and Mac. He knows
+something about C/C++/Java/Lisp/Python/Ruby/Scheme/Clojure/JavaScript, and
+nothing about Haskell/OCaml/Golang/Erlang, etc. So he need help to
+</p><ul>
+<li>make oh-my-emacs run on more platforms (though no plan for windows port)
+</li>
+<li>make oh-my-emacs support as many programming languages, workflows as
+  possible.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> How</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+First, please do contribute! There are several ways to contribute:
+</p>
+<ul>
+<li>introduce oh-my-emacs to your friends
+</li>
+<li>submit bugs via github issues
+</li>
+<li>send patches via github pull request
+<ul>
+<li>Fix doc typo, grammer and syntax error, that should not be so hard
+</li>
+<li>Develop new packages for oh-my-emacs
+</li>
+<li>Develop new modules for oh-my-emacs, which may contans serveral emacs
+    packages (I'll be really appreciate for package and module contributor.)
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+Possible ideas to improve oh-my-emacs:
+</p><ul>
+<li>Semantic completion, based on <a href="https://github.com/auto-complete/auto-complete">auto-complete</a>, which is one of the main
+  selling points of oh-my-emacs.
+</li>
+<li>Support new languages, such as Haskell/OCaml/Golang/Erlang, etc.
+</li>
+<li>Add <a href="https://travis-ci.org/">travis-ci</a> support to this project. Currently, the stupid guy still
+  didn't figure out a good way to integrate travis-ci, he need your help.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Rules</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<ul>
+<li>Documentation is important, please do provide some documentation for
+  packages or modules.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Workflow</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Codebase</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+<p>
+The basic code structure for a new el-get package is:
+</p>
+
+
+
+<pre class="example">(defun ome-package-name-setup ()
+  ;; put elisp code here for package customization
+  ;; (setq package-name-variable t)
+  )
+
+(ome-install 'package-name)
+</pre>
+
+
+<p>
+The function <code>ome-package-name-setup</code> provide some user customizations for
+package. <code>(ome-install 'package-name)</code> will tell oh-my-emacs that "I want this
+package installed with customization code in <code>ome-package-name-setup</code>
+function."
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Git hints</h3>
+<div class="outline-text-3" id="text-4-2">
+
+
+<ul>
+<li>You'd better not to work on <code>master</code> branch, please check out a new
+  topic/feature/bugfix branch of your own:
+</li>
+</ul>
+
+
+
+
+
+<pre class="example">git checkout -b feature/add-ome-package
+</pre>
+
+
+<ul>
+<li>Please rebase your code if github reminds you some code conflict, which
+  means the base branch you checked out from is a little outdated and need to
+  be updated first.
+</li>
+</ul>
+
+
+
+
+
+<pre class="example"># checkout to your base branch
+git checkout master
+# pull from remote
+git pull origin master
+# checkout to your feature branch
+git checkout feature/add-ome-package
+# rebase
+git rebase -i
+# solve code conflicts
+# git add; git commit
+</pre>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

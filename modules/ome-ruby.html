@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Ruby</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Ruby"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Ruby</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#ruby-prerequisites">Prerequisites</a></li>
+<li><a href="#ruby-el-get-packages">El-get packages</a></li>
+<li><a href="#ruby-mode">Ruby-mode</a></li>
+<li><a href="#inf-ruby">Inf-ruby</a></li>
+<li><a href="#smartparens-ruby">Smartparens-ruby</a></li>
+<li><a href="#sec-6">Todo</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-ruby-prerequisites" class="outline-2">
+<h2 id="ruby-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-ruby-prerequisites">
+
+
+<p>
+This is a experimental prerequisites matrix. Somebody said we can convert this
+type of matrix into a runnable script, however, I think it requires too much
+work. Maybe <a href="http://www.ansibleworks.com/">ansible</a> script is a good choice.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-ruby module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">ruby</td><td class="left"></td><td class="left">ruby</td><td class="left">ruby</td><td class="left">ruby</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left">pry</td><td class="left"></td><td class="left">[gem]</td><td class="left">[gem]</td><td class="left">[gem]</td><td class="left">[gem]</td><td class="left">No</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-ruby-el-get-packages" class="outline-2">
+<h2 id="ruby-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-ruby-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-ruby module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/qoobaa/ruby-electric">ruby-electric</a></td><td class="left">Deprecated</td><td class="left"><a href="https://github.com/Fuco1/smartparens">smartparens</a> is amazing.</td></tr>
+<tr><td class="left"><a href="https://github.com/adolfosousa/ruby-block.el">ruby-block</a></td><td class="left">Deprecated</td><td class="left"><a href="https://github.com/Fuco1/smartparens">smartparens</a> is amazing.</td></tr>
+<tr><td class="left"><a href="https://github.com/rejeep/ruby-end">ruby-end</a></td><td class="left">Deprecated</td><td class="left"><a href="https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby.el">smartparens-ruby</a> is amazing, too.</td></tr>
+<tr><td class="left"><a href="http://rubygems.org/gems/rcodetools">rcodetools</a></td><td class="left">Deprecated</td><td class="left">Long time no update.</td></tr>
+<tr><td class="left"><a href="http://www.cx4a.org/pub/auto-complete-ruby.el">auto-complete-ruby</a></td><td class="left">Deprecated</td><td class="left">Depends on <a href="http://rubygems.org/gems/rcodetools">rcodetools</a>.</td></tr>
+<tr><td class="left"><a href="https://github.com/nonsequitur/inf-ruby">inf-ruby</a></td><td class="left">Required</td><td class="left">Ruby <a href="http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a> in Emacs.</td></tr>
+<tr><td class="left"><a href="https://github.com/Fuco1/smartparens">smartparens</a></td><td class="left">Required</td><td class="left">Smartparens is amazing.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-ruby-mode" class="outline-2">
+<h2 id="ruby-mode"><a name="sec-3" id="sec-3"></a>Ruby-mode</h2>
+<div class="outline-text-2" id="text-ruby-mode">
+
+
+<p>
+The builtin <code>ruby-mode</code> in Emacs is quite simple, it just provides some simple
+functions for font-locking, indentation and code navigation.
+</p>
+
+
+
+<pre class="example">(defun ome-ruby-mode-setup ()
+  ;; Ah, this huge auto-mode-alist list comes from emacs prelude
+  (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode)))
+
+(ome-ruby-mode-setup)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-inf-ruby" class="outline-2">
+<h2 id="inf-ruby"><a name="sec-4" id="sec-4"></a>Inf-ruby</h2>
+<div class="outline-text-2" id="text-inf-ruby">
+
+
+<p>
+I have a dream that one day the builtin <code>ruby-mode</code> and <a href="https://github.com/nonsequitur/inf-ruby">inf-ruby</a> will merge
+together to form a new, more powerful <code>ruby-mode</code>, just like the builtin
+<code>python-mode</code>.
+</p>
+<p>
+Fortunately, inf-ruby support multiple ruby implementations in a simple
+way. Oh-my-emacs will use <a href="http://pryrepl.org/">pry</a> if available.
+</p>
+<p>
+There still lacks a good auto-complete support, however, I think it shouldn't
+be too hard to add auto-complete support by leveraging <code>inf-ruby-complete</code>
+provided by <code>inf-ruby</code>.
+</p>
+<p>
+Oh-my-emacs also bind <code>C-c C-z</code> to <code>run-ruby</code>, instead of the original
+<code>ruby-switch-to-inf</code> to make the workflow smoother when you just want to
+evaluate ruby code snippets.
+</p>
+
+
+
+<pre class="example">(defun ome-inf-ruby-setup ()
+  (require 'inf-ruby)
+  (define-key inf-ruby-minor-mode-map (kbd "C-c C-z") 'run-ruby)
+  (when (executable-find "pry")
+    (add-to-list 'inf-ruby-implementations '("pry" . "pry"))
+    (setq inf-ruby-default-implementation "pry")))
+
+(ome-install 'inf-ruby)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-smartparens-ruby" class="outline-2">
+<h2 id="smartparens-ruby"><a name="sec-5" id="sec-5"></a>Smartparens-ruby</h2>
+<div class="outline-text-2" id="text-smartparens-ruby">
+
+
+<p>
+<a href="https://github.com/Fuco1/smartparens">smartparens</a> is amazing, which deprecates <a href="https://github.com/qoobaa/ruby-electric">ruby-electric</a>. In fact, it is so
+amazing that one single <a href="https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby">smartparens-ruby</a> deprecates other two el-get packages:
+<a href="https://github.com/adolfosousa/ruby-block.el">ruby-block</a> and <a href="https://github.com/rejeep/ruby-end">ruby-end</a>. Just enjoy it! Thanks <a href="https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby">Matus Goljer</a> again for this
+amazing, elegant package.
+</p>
+
+
+
+<pre class="example">(when (require 'smartparens nil 'noerror)
+  (require 'smartparens-ruby))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">Todo</h2>
+<div class="outline-text-2" id="text-6">
+
+<ul>
+<li>Auto-complete support, maybe <a href="https://github.com/dgutov/robe">robe</a> is a good choice.
+</li>
+<li>Ah, rails support, lots of works, so, as it always said, any help will be
+  appreciated.
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

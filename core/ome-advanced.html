@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Advanced</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Advanced"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Advanced</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains some advanced features or packages which could make emacs
+look unlike emacs. So ensure you have some basic knowledge and experience
+before loading this file.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#advanced-prerequisites">Prerequisites</a></li>
+<li><a href="#advanced-el-get-packages">El-get packages</a></li>
+<li><a href="#evil">Evil</a></li>
+<li><a href="#evil-leader">Evil-leader</a></li>
+<li><a href="#evil-surround">Evil-surround</a></li>
+<li><a href="#expand-region">Expand-region</a></li>
+<li><a href="#ace-jump-mode">Ace-jump-mode</a></li>
+<li><a href="#ack-and-a-ha">Ack-and-a-half</a></li>
+<li><a href="#sec-9">Todo</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-advanced-prerequisites" class="outline-2">
+<h2 id="advanced-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-advanced-prerequisites">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-advanced module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.tug.org/texlive/">texlive</a></td><td class="left"></td><td class="left">texlive-full latex-beamer</td><td class="left">texlive-most texlive-langcjk</td><td class="left">texlive-all</td><td class="left"></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://beyondgrep.com/">ack-grep</a></td><td class="left">ack</td><td class="left">ack-grep</td><td class="left">ack</td><td class="left">ack</td><td class="left">ack</td><td class="left">No</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Notes:
+</p><ul>
+<li><a href="http://www.tug.org/texlive/">texlive</a> is required by evil, since evil need <code>texi2pdf</code> to <code>make   info</code>. However, I don't think it is a good idea to install the huge texlive
+  just to build evil, so I've made a <a href="http://gitorious.org/evil/evil/merge_requests/50">patch</a> for it.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-advanced-el-get-packages" class="outline-2">
+<h2 id="advanced-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-advanced-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages matrix for ome-advanced module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://gitorious.org/evil">evil</a></td><td class="left">Required</td><td class="left">Finally, the Emacs OS get a good editor.</td></tr>
+<tr><td class="left"><a href="https://github.com/cofi/evil-leader">evil-leader</a></td><td class="left">Required</td><td class="left">&lt;leader&gt; key for evil.</td></tr>
+<tr><td class="left"><a href="https://github.com/timcharper/evil-surround">evil-surround</a></td><td class="left">Recommended</td><td class="left">Surround.vim for evil.</td></tr>
+<tr><td class="left"><a href="https://github.com/magnars/expand-region.el">expand-region.el</a></td><td class="left">Recommended</td><td class="left">Expand and select.</td></tr>
+<tr><td class="left"><a href="#git-gitorious.org-vimpulse-vimpulse.git">vimpulse</a></td><td class="left">Deprecated</td><td class="left">Use evil instead.</td></tr>
+<tr><td class="left"><a href="http://www.gnu.org/software/emacs/manual/html_node/viper/">viper</a></td><td class="left">Deprecated</td><td class="left">Use evil instead.</td></tr>
+<tr><td class="left"><a href="https://github.com/jhelwig/ack-and-a-half">ack-and-a-half</a></td><td class="left">Recommended</td><td class="left">Yet another emacs front-end to ack.</td></tr>
+<tr><td class="left"><a href="https://github.com/winterTTr/ace-jump-mode">ace-jump-mode</a></td><td class="left">Recommended</td><td class="left">A quick cursor location minor mode for emacs.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-evil" class="outline-2">
+<h2 id="evil"><a name="sec-3" id="sec-3"></a>Evil</h2>
+<div class="outline-text-2" id="text-evil">
+
+
+<blockquote>
+
+<p>As a poke at Emacs' creeping featurism, vi advocates have been known to
+describe Emacs as "a great operating system, lacking only a decent editor".
+</p>
+<p>
+&ndash; <a href="http://en.wikipedia.org/wiki/Editor_war">Editor war</a>
+</p>
+</blockquote>
+
+
+<p>
+I must say that emacs is a great platform, but lacks a quick and effective
+editor like vi, fortunately, there comes <a href="http://gitorious.org/evil">evil</a>.
+</p>
+<p>
+"Evil is an extensible vi layer for Emacs. It emulates the main features of
+Vim, and provides facilities for writing custom extensions." IMHO, evil is a
+great successor to <a href="http://www.emacswiki.org/emacs/Vimpulse">Vimpulse</a>, <a href="http://www.emacswiki.org/emacs/VimMode">vim-mode</a> and <a href="http://www.emacswiki.org/emacs/ViperMode">ViperMode</a>.
+</p>
+<p>
+By default, oh-my-emacs <code>turn-on-evil-mode</code> on <code>text-mode</code> and <code>prog-mode</code>,
+since emacs has only three <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html">basic major modes</a>, you'll get evil enabled in almost
+all modes which focus on editing, by editing I mean, modes such as <code>c-mode</code>,
+<code>js-mode</code> would <code>turn-on-evil-mode</code>, however, modes such as <code>dired</code>, <code>info</code>
+would not <code>turn-on-evil-mode</code> by default. And since <code>Info-mode</code> didn't has a
+parent mode, so we need to <code>turn-off-evil-mode</code> manually.
+</p>
+<p>
+If you need to turn off evil temporarily for a single buffer, use
+<code>M-x evil-local-mode</code> instead of <code>M-x evil-mode</code>, since the latter will turn
+off evil-mode globally, which means, evil-mode will be turned off for the whole
+Emacs session.
+</p>
+
+
+
+<pre class="example">(defun ome-evil-setup ()
+  (setq evil-auto-indent t)
+  (setq evil-regexp-search t)
+  (setq evil-want-C-i-jump t)
+  (add-hook 'text-mode-hook 'turn-on-evil-mode)
+  (add-hook 'prog-mode-hook 'turn-on-evil-mode)
+  (add-hook 'comint-mode-hook 'turn-on-evil-mode)
+  (add-hook 'Info-mode-hook 'turn-off-evil-mode))
+
+(ome-install 'evil)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-evil-leader" class="outline-2">
+<h2 id="evil-leader"><a name="sec-4" id="sec-4"></a>Evil-leader</h2>
+<div class="outline-text-2" id="text-evil-leader">
+
+
+<p>
+The keyboard is a real and heavily occupied estate in both Emacs and
+Vim. Specially, just about every key is already bound to a command in normal
+state Vim. Fortunately, Vim provides an easy way to define additional mappings
+on these keys. It's called a <a href="http://usevim.com/2012/07/20/vim101-leader/">mapleader</a>.
+</p>
+<p>
+Evil leader just provides the <code>&lt;leader&gt;</code> feature from Vim to evil, which
+provides an easy way to bind keys under a variable prefix key. The default
+binding of <code>&lt;leader&gt;</code> is <code>\</code>, which is not easy to reach, so oh-my-emacs bind
+it to <code>&lt;SPC&gt;</code>, you don't use <code>&lt;SPC&gt;</code> to move right, ha?  Some other people
+prefer to bind the <code>&lt;leader&gt;</code> key to comma =,=, but =,= already has a
+binding(<code>evil-repeat-find-char-revers</code> in evil normal state).
+</p>
+<p>
+BTW, oh-my-emacs will use <code>helm</code> in evil-leader if available. So now you can do
+<code>helm-find-files</code> simply by <code>&lt;SPC&gt; e</code>, for example. Enjoy it.
+</p>
+
+
+
+<pre class="example">(defun ome-evil-leader-setup ()
+  (evil-leader/set-leader "&lt;SPC&gt;")
+  (if (featurep 'helm)
+      (evil-leader/set-key
+        "e" 'helm-find-files
+        "b" 'helm-buffers-list)
+    (evil-leader/set-key
+      "e" 'find-file
+      "b" 'switch-to-buffer))
+  (if (featurep 'expand-region)
+      (progn
+        (setq expand-region-contract-fast-key "z")
+        (evil-leader/set-key "xx" 'er/expand-region)))
+  (evil-leader/set-key
+    "k" 'kill-buffer)
+  (global-evil-leader-mode))
+
+(ome-install 'evil-leader)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-evil-surround" class="outline-2">
+<h2 id="evil-surround"><a name="sec-5" id="sec-5"></a>Evil-surround</h2>
+<div class="outline-text-2" id="text-evil-surround">
+
+
+<p>
+As I said, <code>smartparens</code> is the ultimate pair management solution for
+Emacs. So why <a href="https://github.com/timcharper/evil-surround">evil-surround</a>?
+</p>
+<p>
+<a href="https://github.com/timcharper/evil-surround">evil-surround</a> is a port of <a href="https://github.com/tpope/vim-surround">vim-surround</a> to evil. I think you can treat
+<code>evil-surround</code> as a complement of <code>smartparens</code> in pair changing, deleting
+and adding, while <code>smartparens</code> is good at pair inserting and operating.
+</p>
+<p>
+IMHO, no editors can compete with Vim in pure text editing speed<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>. So I
+think <code>evil-surround</code> is still worth a try. <a href="http://www.catonmat.net/blog/vim-plugins-surround-vim/">Here</a> is an excellent and concise
+tutorial for <code>vim-surround</code>. Note that there may be some minor differences
+between <code>evil-surround</code> and <code>vim-surround</code>. However, for daily use, they're
+almost the same.
+</p>
+
+
+
+<pre class="example">(ome-install 'evil-surround)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-expand-region" class="outline-2">
+<h2 id="expand-region"><a name="sec-6" id="sec-6"></a>Expand-region</h2>
+<div class="outline-text-2" id="text-expand-region">
+
+
+<p>
+Often we need to select text. We select since we want to limit our operation to
+a small region. For a long time, people select text by <code>C-@</code> and then manually
+moving the point with <code>C-f</code>, <code>M-f</code> or something similar.
+</p>
+<p>
+However, most of the time, we want to select text by semantic unit, such as
+sentences, paragraphs, s-exps, code blocks, instead of just select character by
+character, or word by word. So there comes <a href="https://github.com/magnars/expand-region.el">expand-region.el</a>, created by
+<a href="https://github.com/magnars/expand-region.el">magnars</a>, the author of <a href="http://emacsrocks.com/">emacsrocks</a>.
+</p>
+<p>
+As its name, <code>expand-region</code> can expand/contract the selected region by
+ semantic units. Just keep pressing the key until it selects what you
+want. Here's a live <a href="http://emacsrocks.com/e09.html">demo</a> of expand-region from emacsrocks.
+</p>
+<p>
+Again, oh-my-emacs defines two extra lazy keys with the help of <code>evil-leader</code>,
+thus, in normal-state evil, you can trigger <code>(er/expand-region)</code> by <code>&lt;Leader&gt; xx</code>, and then expand/contract the region by hitting <code>x</code> or <code>z</code>.
+</p>
+<p>
+If you are in <code>evil-insert-state</code>, you can trigger <code>(er/expand-region)</code> by
+<code>C-=</code>. Ah, in this case, <code>smartparens</code> is your good friend. You can select the
+region, then QUOTE the region with <code>smartparens</code> pairs. Sounds amazing, ha?
+Just try it and you will love it.
+</p>
+
+
+
+<pre class="example">(defun ome-expand-region-setup ()
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
+(ome-install 'expand-region)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-ace-jump-mode" class="outline-2">
+<h2 id="ace-jump-mode"><a name="sec-7" id="sec-7"></a>Ace-jump-mode</h2>
+<div class="outline-text-2" id="text-ace-jump-mode">
+
+
+<p>
+<a href="https://github.com/winterTTr/ace-jump-mode">ace-jump-mode</a> is a minor mode for Emacs, enabling fast/direct cursor movement
+in current view. "You can move your cursor to ANY position (across window and
+frame) in emacs by using only 3 times key press."
+</p>
+<p>
+To tell the truth, I still don't why it it called "ace-jump". Seems <a href="https://github.com/johnlindquist/AceJump">AceJump</a>
+first appears as an <a href="http://www.jetbrains.com/idea/">Intellij</a> <a href="http://plugins.jetbrains.com/plugin/7086?pr=phpStorm">plugin</a>. <a href="http://www.vim.org/scripts/script.php?script_id=3526">EasyMotion</a> provides a similar feature to
+Vim.
+</p>
+<p>
+Oh-my-emacs adopt <a href="https://github.com/cofi/evil-leader">evil-leader</a> and bind serveral keys to ace-jump-mode commands:
+</p><ul>
+<li><code>&lt;Leader&gt; c</code>: <code>ace-jump-char-mode</code>
+</li>
+<li><code>&lt;Leader&gt; w</code>: <code>ace-jump-word-mode</code>
+</li>
+<li><code>&lt;Leader&gt; l</code>: <code>ace-jump-line-mode</code>
+</li>
+</ul>
+
+
+<p>
+By default, <code>&lt;Leader&gt;</code> is <code>&lt;SPC&gt;</code>, so you can use <code>&lt;SPC&gt; c</code> to activate
+<code>ace-jump-char-mode</code>, and move you cursor quickly and directly. Enjoy it.
+</p>
+
+
+
+<pre class="example">(defun ome-ace-jump-mode-setup ()
+  (when (and (featurep 'evil) (featurep 'evil-leader))
+    (evil-leader/set-key
+      "c" 'ace-jump-char-mode
+      "w" 'ace-jump-word-mode
+      "l" 'ace-jump-line-mode)))
+
+(ome-install 'ace-jump-mode)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-ack-and-a-ha" class="outline-2">
+<h2 id="ack-and-a-ha"><a name="sec-8" id="sec-8"></a>Ack-and-a-half</h2>
+<div class="outline-text-2" id="text-ack-and-a-ha">
+
+
+<p>
+As we all know, Emacs is a good text editor. However, in some cases, we may
+spend most of our time to text reading instead of editing. As an advanced Emacs
+user, you may know <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Grep-Searching.html">grep-find</a>, and you may also know that you can jump to the
+next matching item by <code>M-g n</code>, oh, that's cool, really. But you still need to
+specify what type of file to search. You don't want to touch binary files with
+Emacs, ha? And, certainly you do want to ignore some hidden files such as files
+and directories used by various version control system. So there comes <a href="http://beyondgrep.com/">ack</a>,
+which works as expected.
+</p>
+<p>
+With the help of <a href="https://github.com/jhelwig/ack-and-a-half">ack-and-a-half</a>, just go to the right place, then <code>M-x ack</code>,
+you'll get all you need. Enjoy it.
+</p>
+
+
+
+<pre class="example">(when (or (executable-find "ack") (executable-find "ack-grep"))
+  (ome-install 'ack-and-a-half))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9">Todo</h2>
+<div class="outline-text-2" id="text-9">
+
+
+</div>
+
+<div id="outline-container-9-1" class="outline-4">
+<h4 id="sec-9-1">Evil mode</h4>
+<div class="outline-text-4" id="text-9-1">
+
+<ul>
+<li>I only enable <code>evil-local-mode</code> for <code>text-mode</code> and <code>prog-mode</code>, but I don't
+  know why <code>evil-local-mode</code> is enabled for <code>magit-log-mode</code> by default and
+  shadowed a lot of <code>magit</code> keybindings?
+</li>
+<li>Evil has some conflicts with smartparens due to cursor position. I should
+  temporarily disable <code>evil-local-mode</code> when I do operations like
+  <code>sp-up-sexp</code>. Maybe I can get this by <code>post-command-hook</code> or smartparens's
+  <code>post-command-handler</code>? Or just use <code>defadvice</code>?
+</li>
+</ul>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> See <a href="http://vimgolf.com/">vimgolf</a> for funny things.
+</p>
+
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs ChangeLog</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs ChangeLog"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs ChangeLog</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 v0.3</a>
+<ul>
+<li><a href="#sec-1-1">1.1 Refactoring</a></li>
+<li><a href="#sec-1-2">1.2 core</a></li>
+<li><a href="#sec-1-3">1.3 ome-completion module</a></li>
+<li><a href="#sec-1-4">1.4 ome-cc module</a></li>
+<li><a href="#sec-1-5">1.5 ome-experimental module</a></li>
+<li><a href="#sec-1-6">1.6 ome-java module</a></li>
+<li><a href="#sec-1-7">1.7 ome-lisp module</a></li>
+<li><a href="#sec-1-8">1.8 ome-javascript module</a></li>
+<li><a href="#sec-1-9">1.9 ome-ocaml module</a></li>
+<li><a href="#sec-1-10">1.10 ome-web module</a></li>
+<li><a href="#sec-1-11">1.11 Miscs</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 v0.2</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Documentation</a></li>
+<li><a href="#sec-2-2">2.2 Evil</a></li>
+<li><a href="#sec-2-3">2.3 Completion</a></li>
+<li><a href="#sec-2-4">2.4 Ruby</a></li>
+<li><a href="#sec-2-5">2.5 ome-advanced module</a></li>
+<li><a href="#sec-2-6">2.6 Compatibility</a></li>
+<li><a href="#sec-2-7">2.7 Miscs</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 V0.1</a>
+<ul>
+<li><a href="#sec-3-1">3.1 Basic settings</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1 Basic stuff</a></li>
+<li><a href="#sec-3-1-2">3.1.2 GUI</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2 cc-mode</a></li>
+<li><a href="#sec-3-3">3.3 Completion everywhere</a></li>
+<li><a href="#sec-3-4">3.4 Lisp</a>
+<ul>
+<li><a href="#sec-3-4-1">3.4.1 Emacs Lisp</a></li>
+<li><a href="#sec-3-4-2">3.4.2 Common Lisp</a></li>
+<li><a href="#sec-3-4-3">3.4.3 Clojure</a></li>
+<li><a href="#sec-3-4-4">3.4.4 Scheme</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-5">3.5 Miscs</a></li>
+<li><a href="#sec-3-6">3.6 Org-mode settings</a></li>
+<li><a href="#sec-3-7">3.7 Python</a></li>
+<li><a href="#sec-3-8">3.8 \TeX and \LaTeX</a></li>
+<li><a href="#sec-3-9">3.9 Writing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> v0.3</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Refactoring</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li>split ome files to core and modules
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> core</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ul>
+<li>By default, use git shallow clone for el-get to save time and bandwidth.
+</li>
+<li>Upgrade the builtin <code>org-mode</code> to latest 8.x branch.
+</li>
+<li>Enhance <code>ome-load</code> and <code>ome-install</code> function.
+</li>
+<li><code>ome-package-list-to-org-table</code> function to get a list of installed
+     el-get packages in org-mode format.
+</li>
+<li>Improve compatibility for Mac OS X.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> ome-completion module</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li>Enable filename completion in <code>text-mode</code>, <code>org-mode</code> and <code>prog-mode</code>.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> ome-cc module</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<ul>
+<li>Auto-complete support for C/C++ macros
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> ome-experimental module</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<ul>
+<li>Put some unstable useful package in ome-experimental module, such as
+<ul>
+<li>smooth-scrolling
+</li>
+<li>hungry-delete
+</li>
+<li>fill-column-indicator
+</li>
+<li>doxymacs(moved out from ome-cc module)
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> ome-java module</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<ul>
+<li>Integrate <code>emacs-eclim</code> for Java development.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> ome-lisp module</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<ul>
+<li>split the all-in-one ome-lisp module to
+<ul>
+<li>ome-emacs-lisp module
+</li>
+<li>ome-common-lisp module
+</li>
+<li>ome-clojure module
+</li>
+<li>ome-scheme module
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> ome-javascript module</h3>
+<div class="outline-text-3" id="text-1-8">
+
+<ul>
+<li>Experimental support for JavaScript development
+</li>
+<li>Enable the following package by default:
+<ul>
+<li>js3-mode
+</li>
+<li>tern
+</li>
+<li>nodejs-repl
+</li>
+</ul>
+
+</li>
+<li>Also contains some sample config code for:
+<ul>
+<li>js-comint
+</li>
+<li>js2-mode
+</li>
+<li>swank-js
+</li>
+<li>skewer-mode
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> ome-ocaml module</h3>
+<div class="outline-text-3" id="text-1-9">
+
+<ul>
+<li>Minimal ocaml development support
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> ome-web module</h3>
+<div class="outline-text-3" id="text-1-10">
+
+<ul>
+<li>Integrate <code>web-mode</code>.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Miscs</h3>
+<div class="outline-text-3" id="text-1-11">
+
+<ul>
+<li>Add <code>diminish</code>, cleanup mode line
+</li>
+<li>Add <code>po-mode</code> for i18n/l10n work
+</li>
+<li>Refine smartparens auto newline in cc-mode
+</li>
+<li><code>linum-mode</code>
+<ul>
+<li>Generally, only enable <code>linum-mode</code> in <code>text-mode</code> and <code>prog-mode</code>
+</li>
+<li>Enable <code>linum-mode</code> in some minor mode.
+</li>
+</ul>
+
+</li>
+<li>Various doc updates
+<ul>
+<li>add CONTRIBUTING guide
+</li>
+<li>lots of typo fix
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> v0.2</h2>
+<div class="outline-text-2" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Documentation</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<ul>
+<li>Add prerequisites matrix and el-get packages matrix.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Evil</h3>
+<div class="outline-text-3" id="text-2-2">
+
+<ul>
+<li>add <code>evil-leader</code>
+</li>
+<li>add <code>evil-surround</code>
+</li>
+<li>fix evil cursor color for better compatibility with Emacs color-theme
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Completion</h3>
+<div class="outline-text-3" id="text-2-3">
+
+<ul>
+<li>Add completion matrix to show the current status of auto-complete support
+     to various programming languages.
+</li>
+<li>add <code>ac-geiser</code>, new auto-complete backend for geiser.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Ruby</h3>
+<div class="outline-text-3" id="text-2-4">
+
+<ul>
+<li>Basic ruby support
+<ul>
+<li><code>inf-ruby</code>
+</li>
+<li><code>smartparens-ruby</code>
+</li>
+<li>auto-mode-alist for ruby
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> ome-advanced module</h3>
+<div class="outline-text-3" id="text-2-5">
+
+<ul>
+<li>add <code>expand-region.el</code>
+</li>
+<li>add <code>ace-jump-mode</code>
+</li>
+<li>add <code>ack-and-a-half</code>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Compatibility</h3>
+<div class="outline-text-3" id="text-2-6">
+
+<ul>
+<li>Fix a $PATH problem in Mac OS, thanks @judevc.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-7" class="outline-3">
+<h3 id="sec-2-7"><span class="section-number-3">2.7</span> Miscs</h3>
+<div class="outline-text-3" id="text-2-7">
+
+<ul>
+<li>add <code>lacarte</code>, the interactive menubar
+</li>
+<li>Basic flycheck support.
+</li>
+<li>lots of typo fix.
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> V0.1</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Basic settings</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+</div>
+
+<div id="outline-container-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Basic stuff</h4>
+<div class="outline-text-4" id="text-3-1-1">
+
+<ul>
+<li>set <code>tab-width</code> to 4
+</li>
+<li><code>uniquify</code> buffers with same name
+</li>
+<li><code>saveplace</code> and <code>recentf</code>
+</li>
+<li><code>turn-on-auto-fill</code> for <code>text-mode</code> and <code>prog-mode</code>
+</li>
+<li><code>global-auto-revert-mode</code> for monitoring file changes
+</li>
+<li><code>global-subword-mode</code> for better code navigation
+</li>
+<li><code>delete-trailing-whitespace</code> before save.
+</li>
+<li>other convenient settings such as <code>yes-or-no-p</code> prompt, bell rings, etc.
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> GUI</h4>
+<div class="outline-text-4" id="text-3-1-2">
+
+<ul>
+<li><code>powerline</code>
+</li>
+<li><code>yascroll</code> for a tiny scrollbar
+</li>
+<li>use "Monaco" font if available
+</li>
+<li>disable menu-bar by default
+</li>
+<li>adopt solarized color-theme
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> cc-mode</h3>
+<div class="outline-text-3" id="text-3-2">
+
+<ul>
+<li>Adopt <code>c-context-line-break</code> for <code>(kbd "RET")</code>
+</li>
+<li>Toggle on hungry-delete and auto-newline
+</li>
+<li>Open ".h" file in <code>c++-mode</code> by default
+</li>
+<li>CMake file editing support
+</li>
+<li>Doxymacs support
+</li>
+<li>Cscope for code indexing
+</li>
+<li>Completion with <code>auto-complete-clang</code>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Completion everywhere</h3>
+<div class="outline-text-3" id="text-3-3">
+
+<ul>
+<li><code>M-/</code> for <code>hippie-expand</code>
+</li>
+<li>Enable <code>auto-complete</code> by default, together with an ac support for <code>pcomplete</code>
+</li>
+<li>Use the ubiquitous helm for minibuffer, files/buffer switch completion
+  support
+</li>
+<li>Yasnippet for template insertion
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Lisp</h3>
+<div class="outline-text-3" id="text-3-4">
+
+
+</div>
+
+<div id="outline-container-3-4-1" class="outline-4">
+<h4 id="sec-3-4-1"><span class="section-number-4">3.4.1</span> Emacs Lisp</h4>
+<div class="outline-text-4" id="text-3-4-1">
+
+<ul>
+<li><code>turn-on-eldoc-mode</code> by default
+</li>
+<li>auto-complete in ielm and eshell
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-4-2" class="outline-4">
+<h4 id="sec-3-4-2"><span class="section-number-4">3.4.2</span> Common Lisp</h4>
+<div class="outline-text-4" id="text-3-4-2">
+
+<ul>
+<li>Adopt SLIME with a fancy default settings
+</li>
+<li>ac-slime provide auto-complete backend
+</li>
+<li>Out-of-box support for sbcl/ccl/clisp
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-4-3" class="outline-4">
+<h4 id="sec-3-4-3"><span class="section-number-4">3.4.3</span> Clojure</h4>
+<div class="outline-text-4" id="text-3-4-3">
+
+<ul>
+<li>Adopt nrepl, which is similar with SLIME
+</li>
+<li>ac-nrepl provide auto-complete backend
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-4-4" class="outline-4">
+<h4 id="sec-3-4-4"><span class="section-number-4">3.4.4</span> Scheme</h4>
+<div class="outline-text-4" id="text-3-4-4">
+
+<ul>
+<li>Adopt geiser, which is similar with SLIME
+</li>
+<li>Also provide a pseudo code snippet for swank-chicken if you like
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Miscs</h3>
+<div class="outline-text-3" id="text-3-5">
+
+<ul>
+<li>Enable some dangerous commands such as <code>narrow-to-page</code>, <code>narrow-to-region</code>
+</li>
+<li>Toggle on emacs server mode by default
+</li>
+<li>Adopt <code>rainbow-delimiters-mode</code> for colorful parens
+</li>
+<li>Open image and compressed files transparently
+</li>
+<li>Enable <code>outline-minor-mode</code> for <code>prog-mode</code>
+</li>
+<li>Adopt <code>magit</code> for git integration
+</li>
+<li><code>global-visual-line-mode t</code>
+</li>
+<li>Projectile for simple project management
+</li>
+<li>Smartparens as the ultimate solution for pair management in Emacs
+</li>
+<li>Emacs-w3m for browsing html docs when you don't want to leave Emacs
+</li>
+<li>Quickrun to run code snippets instantly
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Org-mode settings</h3>
+<div class="outline-text-3" id="text-3-6">
+
+<ul>
+<li>Enable org-mode speed keys by default
+</li>
+<li>Enable <code>org-src-fontify-natively</code>
+</li>
+<li>Integrate with <code>htmlize</code> for html export, solves a conflict between htmlize
+  and rainbow-delimiters-mode
+</li>
+<li>Enable cdlatex for org-mode
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Python</h3>
+<div class="outline-text-3" id="text-3-7">
+
+<ul>
+<li>Adopt elpy, the one for all solution for Python in Emacs, together with a
+  comprehensive documentation
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-8" class="outline-3">
+<h3 id="sec-3-8"><span class="section-number-3">3.8</span> \TeX and \LaTeX</h3>
+<div class="outline-text-3" id="text-3-8">
+
+<ul>
+<li>Use <code>xetex</code> as the default <code>TeX-engine</code> for better support for \TeX{} font
+  selection and PDF export.
+</li>
+<li>Enable <code>outline-minor-mode</code> and <code>flyspell-mode</code>.
+</li>
+<li>Enable <code>TeX-interactive-mode</code>, <code>TeX-PDF-mode</code>, <code>TeX-fold-mode</code> and
+  <code>reftex-mode</code>.
+</li>
+<li>Favors <a href="http://okular.kde.org/">Okular</a> and <a href="https://projects.gnome.org/evince/">Evince</a> as the default viewer in Linux, and fallbacks to
+  <code>xdg-open</code> if both Okular and Evince is unavailable.
+</li>
+<li><code>turn-on-cdlatex</code> with AUCTeX
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-9" class="outline-3">
+<h3 id="sec-3-9"><span class="section-number-3">3.9</span> Writing</h3>
+<div class="outline-text-3" id="text-3-9">
+
+<ul>
+<li><code>markdown-mode</code> support
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

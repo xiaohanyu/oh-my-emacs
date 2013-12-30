@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Oh My Emacs Publish"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -137,42 +130,32 @@ the documentation for the oh-my-emacs to html.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">unless</span> (boundp 'org-publish-project-alist)
+<pre class="example">(unless (boundp 'org-publish-project-alist)
   (setq org-publish-project-alist nil))
 
-(<span class="org-keyword">let*</span> ((this-dir (file-name-directory (or load-file-name buffer-file-name)))
-       (org-export-htmlize-output-type 'css))
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">define the org-publish-project for the oh-my-emacs</span>
-  (add-to-list 'load-path
-               (file-name-directory
-                (car (split-string
-                      (shell-command-to-string
-                       <span class="org-string">"find -L $HOME/.emacs.d -name htmlize.el"</span>)))))
-  (<span class="org-keyword">require</span> '<span class="org-constant">htmlize</span>)
-  (org-export-htmlize-generate-css)
-  (add-to-list
-   'org-publish-project-alist
-   `(<span class="org-string">"ome-documentation"</span>
-     <span class="org-builtin">:base-directory</span> ,this-dir
-     <span class="org-builtin">:base-extension</span> <span class="org-string">"org"</span>
-     <span class="org-builtin">:style</span> <span class="org-string">"&lt;link rel=\"stylesheet\" href=\"emacs.css\" type=\"text/css\"/&gt;</span>
-<span class="org-string">  &lt;style type=\"text/css\"&gt;</span>
-<span class="org-string">    pre{background:#232323; color:#E6E1DC;}</span>
-<span class="org-string">    code{font-size:10pt; color:#353535;}</span>
-<span class="org-string">    .outline-text-2{margin-left: 1em;}</span>
-<span class="org-string">    .outline-text-3{margin-left: 2em;}</span>
-<span class="org-string">    .outline-text-3{margin-left: 3em;}</span>
-<span class="org-string">  &lt;/style&gt;"</span>
-     <span class="org-builtin">:publishing-directory</span> ,(expand-file-name <span class="org-string">"doc"</span> this-dir)
-     <span class="org-builtin">:index-filename</span> <span class="org-string">"ome.org"</span>
-     <span class="org-builtin">:htmlized-source</span> t
-     <span class="org-builtin">:html-postamble</span> nil))
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">publish the oh-my-emacs</span>
-  (org-publish-project <span class="org-string">"ome-documentation"</span> 'force)
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">copy ome.html to index.html</span>
-  (copy-file (expand-file-name <span class="org-string">"ome.html"</span> (expand-file-name <span class="org-string">"doc"</span> this-dir))
-             (expand-file-name <span class="org-string">"index.html"</span> (expand-file-name <span class="org-string">"doc"</span> this-dir)) t))
-
+(let* ((this-dir (file-name-directory (or load-file-name buffer-file-name))))
+  ;; define the org-publish-project for the oh-my-emacs
+  (setq org-publish-project-alist
+        `(("oh-my-emacs"
+           :components ("ome-index" "ome-core" "ome-modules")
+           :base-extension "org")
+          ("ome-index"
+           :base-directory ,this-dir
+           :publishing-directory ,(expand-file-name "doc" this-dir)
+           :index-filename "ome.org"
+           :html-postamble nil)
+          ("ome-core"
+           :base-directory ,(expand-file-name "core" this-dir)
+           :publishing-directory ,(expand-file-name "doc/core" this-dir)
+           :index-filename "ome.org"
+           :html-postamble nil)
+          ("ome-modules"
+           :base-directory ,(expand-file-name "modules" this-dir)
+           :publishing-directory ,(expand-file-name "doc/modules" this-dir)
+           :index-filename "ome.org"
+           :html-postamble nil)))
+  ;; publish the oh-my-emacs
+  (org-publish-project "oh-my-emacs" 'force))
 </pre>
 
 </div>

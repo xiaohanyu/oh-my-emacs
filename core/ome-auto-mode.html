@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Oh My Emacs Auto-mode"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -145,7 +138,7 @@ scripts, so we just set SCons build file work with python-mode.
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'auto-mode-alist '(<span class="org-string">"SConstruct"</span> . python-mode))
+<pre class="example">(add-to-list 'auto-mode-alist '("SConstruct" . python-mode))
 </pre>
 
 
@@ -166,8 +159,11 @@ DSL, so the emacs builtin <code>ruby-mode</code> is not proper for editing puppe
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> puppet-mode))
+<pre class="example">(defun ome-puppet-mode-setup ()
+  (when (featurep 'evil)
+    (add-hook 'puppet-mode-hook 'turn-on-evil-mode)))
+
+(ome-install 'puppet-mode)
 </pre>
 
 
@@ -201,9 +197,8 @@ fingertips.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (executable-find <span class="org-string">"pacman"</span>)
-  (add-to-list 'el-get-sources
-               '(<span class="org-builtin">:name</span> pkgbuild-mode)))
+<pre class="example">(when (executable-find "pacman")
+  (ome-install 'pkgbuild-mode))
 </pre>
 
 
@@ -231,11 +226,11 @@ please tell me.
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> wikipedia-mode
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (add-to-list 'auto-mode-alist
-                                           '(<span class="org-string">"\\.wiki\\'"</span> . wikipedia-mode)))))
+<pre class="example">(defun ome-wikipedia-mode-setup ()
+  (add-to-list 'auto-mode-alist
+               '("\\.wiki\\'" . wikipedia-mode)))
+
+(ome-install 'wikipedia-mode)
 </pre>
 
 </div>
@@ -256,8 +251,12 @@ solve this by adopting <code>el-get</code>. Thanks <code>el-get</code> again!
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> yaml-mode))
+<pre class="example">(defun ome-yaml-mode-setup ()
+  (add-hook 'yaml-mode-hook
+            (lambda ()
+              (linum-mode 1))))
+
+(ome-install 'yaml-mode)
 </pre>
 
 </div>

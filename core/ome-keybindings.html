@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Oh My Emacs Keybindings"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -137,7 +130,7 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-M-h"</span>) 'backward-kill-word)
+<pre class="example">(global-set-key (kbd "C-M-h") 'backward-kill-word)
 </pre>
 
 
@@ -152,7 +145,7 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x \\"</span>) 'align-regexp)
+<pre class="example">(global-set-key (kbd "C-x \\") 'align-regexp)
 </pre>
 
 
@@ -167,7 +160,7 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-/"</span>) 'hippie-expand)
+<pre class="example">(global-set-key (kbd "M-/") 'hippie-expand)
 </pre>
 
 
@@ -182,8 +175,8 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(define-key global-map (kbd <span class="org-string">"C-="</span>) 'text-scale-increase)
-(define-key global-map (kbd <span class="org-string">"C--"</span>) 'text-scale-decrease)
+<pre class="example">(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
 </pre>
 
 
@@ -198,10 +191,10 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-s"</span>) 'isearch-forward-regexp)
-(global-set-key (kbd <span class="org-string">"C-r"</span>) 'isearch-backward-regexp)
-(global-set-key (kbd <span class="org-string">"C-M-s"</span>) 'isearch-forward)
-(global-set-key (kbd <span class="org-string">"C-M-r"</span>) 'isearch-backward)
+<pre class="example">(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
 </pre>
 
 
@@ -216,12 +209,12 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x M-f"</span>) 'ido-find-file-other-window)
-(global-set-key (kbd <span class="org-string">"C-x C-p"</span>) 'find-file-at-point)
-(global-set-key (kbd <span class="org-string">"C-c y"</span>) 'bury-buffer)
-(global-set-key (kbd <span class="org-string">"C-c r"</span>) 'revert-buffer)
-(global-set-key (kbd <span class="org-string">"M-`"</span>) 'file-cache-minibuffer-complete)
-(global-set-key (kbd <span class="org-string">"C-x C-b"</span>) 'ibuffer)
+<pre class="example">(global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
+(global-set-key (kbd "C-x C-p") 'find-file-at-point)
+(global-set-key (kbd "C-c y") 'bury-buffer)
+(global-set-key (kbd "C-c r") 'revert-buffer)
+(global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 </pre>
 
 
@@ -236,9 +229,9 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(windmove-default-keybindings) <span class="org-comment-delimiter">;; </span><span class="org-comment">Shift+direction</span>
-(global-set-key (kbd <span class="org-string">"C-x O"</span>) (<span class="org-keyword">lambda</span> () (interactive) (other-window -1))) <span class="org-comment-delimiter">;; </span><span class="org-comment">back one</span>
-(global-set-key (kbd <span class="org-string">"C-x C-o"</span>) (<span class="org-keyword">lambda</span> () (interactive) (other-window 2))) <span class="org-comment-delimiter">;; </span><span class="org-comment">forward two</span>
+<pre class="example">(windmove-default-keybindings) ;; Shift+direction
+(global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;; back one
+(global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; forward two
 </pre>
 
 
@@ -253,7 +246,7 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x ^"</span>) 'join-line)
+<pre class="example">(global-set-key (kbd "C-x ^") 'join-line)
 </pre>
 
 
@@ -268,7 +261,7 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x C-m"</span>) 'execute-extended-command)
+<pre class="example">(global-set-key (kbd "C-x C-m") 'execute-extended-command)
 </pre>
 
 
@@ -283,7 +276,7 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-h a"</span>) 'apropos)
+<pre class="example">(global-set-key (kbd "C-h a") 'apropos)
 </pre>
 
 
@@ -299,7 +292,7 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 </p>
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c o"</span>) 'occur)
+<pre class="example">(global-set-key (kbd "C-c o") 'occur)
 </pre>
 
 
@@ -315,7 +308,7 @@ Key bindings for oh-my-emacs, mainly imported from <a href="https://github.com/e
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"RET"</span>) 'reindent-then-newline-and-indent)
+<pre class="example">(global-set-key (kbd "RET") 'reindent-then-newline-and-indent)
 </pre>
 
 </div>

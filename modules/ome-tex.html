@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Oh My Emacs TeX"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-13T22:22+0800"/>
-<meta name="author" content="Xiao Hanyu"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -59,14 +59,7 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-  <style type="text/css">
-    pre{background:#232323; color:#E6E1DC;}
-    code{font-size:10pt; color:#353535;}
-    .outline-text-2{margin-left: 1em;}
-    .outline-text-3{margin-left: 2em;}
-    .outline-text-3{margin-left: 3em;}
-  </style>
+</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -131,59 +124,92 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">Prerequisites</a>
-<ul>
-<li><a href="#sec-1-1">Mandatory</a></li>
-</ul>
-</li>
+<li><a href="#tex-prerequisites">Prerequisites</a></li>
+<li><a href="#tex-el-get-packages">El-get packages</a></li>
 <li><a href="#auctex">AUCTeX</a>
 <ul>
-<li><a href="#sec-2-1">Prerequisites and Installation</a></li>
-<li><a href="#sec-2-2">Keybindings</a></li>
-<li><a href="#sec-2-3">Checking</a></li>
-<li><a href="#sec-2-4">Reftex</a></li>
-<li><a href="#sec-2-5">Tips and Tricks</a></li>
-<li><a href="#sec-2-6">Oh-my-emacs settings</a></li>
-<li><a href="#sec-2-7">Coordinations with other packages</a></li>
-<li><a href="#sec-2-8">Todo</a></li>
+<li><a href="#sec-3-1">Prerequisites and Installation</a></li>
+<li><a href="#sec-3-2">Keybindings</a></li>
+<li><a href="#sec-3-3">Checking</a></li>
+<li><a href="#sec-3-4">Reftex</a></li>
+<li><a href="#sec-3-5">Coordinations with other packages</a></li>
+<li><a href="#sec-3-6">Oh-my-emacs settings</a></li>
+<li><a href="#sec-3-7">Tips and Tricks</a></li>
+<li><a href="#sec-3-8">Todo</a></li>
 </ul>
 </li>
 <li><a href="#cdlatex">CDLaTeX</a></li>
-<li><a href="#sec-4">Todo</a>
+<li><a href="#sec-5">Todo</a>
 <ul>
-<li><a href="#sec-4-1">AUCTeX</a></li>
+<li><a href="#sec-5-1">AUCTeX</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Prerequisites</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-tex-prerequisites" class="outline-2">
+<h2 id="tex-prerequisites"><a name="sec-1" id="sec-1"></a>Prerequisites</h2>
+<div class="outline-text-2" id="text-tex-prerequisites">
 
 
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>Prerequisites for ome-tex module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Windows</th><th scope="col" class="left">Ubuntu/Debian/Mint</th><th scope="col" class="left">ArchLinux</th><th scope="col" class="left">Fedora</th><th scope="col" class="left">Mac OS X</th><th scope="col" class="left">Mandatory?</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.tug.org/texlive/">texlive</a></td><td class="left"></td><td class="left">texlive-full latex-beamer</td><td class="left">texlive-most texlive-cjk</td><td class="left">texlive-all</td><td class="left"><a href="http://tug.org/mactex/">MacTeX</a></td><td class="left">Yes</td></tr>
+<tr><td class="left"><a href="http://pygments.org/">pygments</a></td><td class="left"></td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">[pip]</td><td class="left">No</td></tr>
+</tbody>
+</table>
 
-</div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1">Mandatory</h3>
-<div class="outline-text-3" id="text-1-1">
-
-<ul>
+<p>
+Note:
+</p><ul>
 <li><a href="http://www.tug.org/texlive/">texlive</a>, the full texlive distribution is really huge, so install necessary
   parts as you need.
 </li>
+<li><a href="http://en.wikipedia.org/wiki/MacTeX">MacTeX</a> is a redistribution of texlive, which includes Mac-specific utilities
+  and front-ends. It is also pre-configured to work out-of-the-box with Mac OS
+  X as it provides sensible defaults for configuration options that, in TeX
+  Live, are left up to the user to allow for its cross-platform compatibility.
+</li>
 </ul>
 
 
 </div>
+
+</div>
+
+<div id="outline-container-tex-el-get-packages" class="outline-2">
+<h2 id="tex-el-get-packages"><a name="sec-2" id="sec-2"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-tex-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-tex module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="http://www.gnu.org/software/auctex/">AUCTeX</a></td><td class="left">Required</td><td class="left">You need it, believe me.</td></tr>
+<tr><td class="left"><a href="http://staff.science.uva.nl/~dominik/Tools/cdlatex/">CDLaTeX</a></td><td class="left">Optional</td><td class="left">Speedy \LaTeX{} typing.</td></tr>
+</tbody>
+</table>
+
+
 </div>
 
 </div>
 
 <div id="outline-container-auctex" class="outline-2">
-<h2 id="auctex"><a name="sec-2" id="sec-2"></a>AUCTeX</h2>
+<h2 id="auctex"><a name="sec-3" id="sec-3"></a>AUCTeX</h2>
 <div class="outline-text-2" id="text-auctex">
 
 
@@ -194,9 +220,9 @@ Emacs/XEmacs.
 
 </div>
 
-<div id="outline-container-2-1" class="outline-3">
-<h3 id="sec-2-1">Prerequisites and Installation</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1">Prerequisites and Installation</h3>
+<div class="outline-text-3" id="text-3-1">
 
 <p>\TeX{} is a long history legend in computer typesetting. To configure a
 working \TeX{} environment is far beyond the scope of this project. However,
@@ -214,13 +240,18 @@ I can give you some hint to install a \TeX{} system on Linux. If you are
 
 
 <p>
+For Mac OS X users, <a href="http://tug.org/mactex/">MacTeX</a> is the best choice. You can install it directly from
+its website or via <a href="https://github.com/phinze/homebrew-cask">homebrew-cask</a>. By default, MacTeX install all binary
+executables to <code>/usr/texbin/</code>, which is different from Linux.
+</p>
+<p>
 If you are not lucky enough, you should follow the official <a href="http://www.tug.org/texlive/">texlive</a>
 instructions to install it.
 </p>
 <p>
 There're other annoying problems if you're a <a href="http://en.wikipedia.org/wiki/CJK_characters">CJK</a> user, such as fonts and
-package configurion in \TeX{} documents, but this is further beyond the scope
-of this project. So refer to necessary <a href="https://tug.org/">TUG</a>s, or BBS for help. For chinese user,
+package configuration in \TeX{} documents, but this is further beyond the scope
+of this project. So refer to necessary <a href="https://tug.org/">TUG</a>s, or BBS for help. For Chinese user,
 <a href="http://www.ctex.org/">CTEX</a> is a good place to start your journey. <a href="http://zzg34b.w3.c361.com/">LaTeX编辑部</a> also provides lots of
 useful resources written in Chinese.
 </p>
@@ -245,9 +276,9 @@ before you fall in love with \TeX{} world.
 
 </div>
 
-<div id="outline-container-2-2" class="outline-3">
-<h3 id="sec-2-2">Keybindings</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2">Keybindings</h3>
+<div class="outline-text-3" id="text-3-2">
 
 <p>AUCTeX is really flexible and customizable, it also provides a rich set of
 menubar entries. Here's a list of most commonly used keybindings in AUCTeX:
@@ -311,9 +342,9 @@ menubar entries. Here's a list of most commonly used keybindings in AUCTeX:
 
 </div>
 
-<div id="outline-container-2-3" class="outline-3">
-<h3 id="sec-2-3">Checking</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3">Checking</h3>
+<div class="outline-text-3" id="text-3-3">
 
 <p><a href="http://www.ctan.org/tex-archive/support/lacheck/">lacheck</a> and <a href="http://baruch.ev-en.org/proj/chktex/">chktex</a> is the lint tool for \TeX{}, you can install them in Ubuntu
 by <code>sudo apt-get install lacheck chktex</code>. AUCTeX has direct support for
@@ -328,9 +359,9 @@ is more configurable, allowing you to create your own errors
 
 </div>
 
-<div id="outline-container-2-4" class="outline-3">
-<h3 id="sec-2-4">Reftex</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-3-4" class="outline-3">
+<h3 id="sec-3-4">Reftex</h3>
+<div class="outline-text-3" id="text-3-4">
 
 <ul>
 <li><code>C-c =</code> <code>reftex-toc</code> will show a table of contents of the document.
@@ -346,43 +377,9 @@ is more configurable, allowing you to create your own errors
 
 </div>
 
-<div id="outline-container-2-5" class="outline-3">
-<h3 id="sec-2-5">Tips and Tricks</h3>
-<div class="outline-text-3" id="text-2-5">
-
-<p><a href="http://tex.stackexchange.com/questions/52179/what-is-your-favorite-emacs-and-or-auctex-command-trick">Here</a>'s some tips and tricks about AUCTeX.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-2-6" class="outline-3">
-<h3 id="sec-2-6">Oh-my-emacs settings</h3>
-<div class="outline-text-3" id="text-2-6">
-
-<ul>
-<li>Use <code>xetex</code> as the default <code>TeX-engine</code> for better support for \TeX{} font
-  selection and PDF export.
-</li>
-<li>Enable <code>outline-minor-mode</code> and <code>flyspell-mode</code>.
-</li>
-<li>Enable <code>TeX-interactive-mode</code>, <code>TeX-PDF-mode</code>, <code>TeX-fold-mode</code> and
-  <code>reftex-mode</code>.
-</li>
-<li>Favors <a href="http://okular.kde.org/">Okular</a> and <a href="https://projects.gnome.org/evince/">Evince</a> as the default viewer in Linux, and fallbacks to
-  <code>xdg-open</code> if both Okular and Evince is unavailable. Since I don't have a
-  Windows or Mac OS X environment, patches are always welcome.
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-2-7" class="outline-3">
-<h3 id="sec-2-7">Coordinations with other packages</h3>
-<div class="outline-text-3" id="text-2-7">
+<div id="outline-container-3-5" class="outline-3">
+<h3 id="sec-3-5">Coordinations with other packages</h3>
+<div class="outline-text-3" id="text-3-5">
 
 <p>Oh-my-emacs adopts some other awesome packages such as <code>smartparens</code> and
 <code>evil</code>, which has some conflicts with AUCTeX. so there need some hack, which,
@@ -393,7 +390,7 @@ is always the main topic with Emacs.
 ensure <code>smartparens</code> is available before we <code>require 'smartparens-latex</code>.
 </p>
 <p>
-<code>smartparens</code> still has some weired problems for inserting "$" in \TeX{}, which
+<code>smartparens</code> still has some weird problems for inserting "$" in \TeX{}, which
 is a weird problem. In fact, both AUCTeX and <code>smartparens</code> provides some pair
 management functions, which may be overlapping. AUCTeX provide a
 <code>TeX-electric-math</code>, while <code>smartparens</code> was born for pair management. Worse,
@@ -412,13 +409,22 @@ have no idea why <code>evil-local-mode</code> is enabled by default when enterin
 
 </div>
 
-<div id="outline-container-2-8" class="outline-3">
-<h3 id="sec-2-8">Todo</h3>
-<div class="outline-text-3" id="text-2-8">
+<div id="outline-container-3-6" class="outline-3">
+<h3 id="sec-3-6">Oh-my-emacs settings</h3>
+<div class="outline-text-3" id="text-3-6">
 
 <ul>
-<li>Add <code>auto-complete</code> support,
-  <a href="https://github.com/monsanto/auto-complete-auctex">https://github.com/monsanto/auto-complete-auctex</a>.
+<li>Use <code>xetex</code> as the default <code>TeX-engine</code> for better support for \TeX{} font
+  selection and PDF export.
+</li>
+<li>Enable <code>outline-minor-mode</code> and <code>flyspell-mode</code>.
+</li>
+<li>Enable <code>TeX-interactive-mode</code>, <code>TeX-PDF-mode</code>, <code>TeX-fold-mode</code> and
+  <code>reftex-mode</code>.
+</li>
+<li>Favors <a href="http://okular.kde.org/">Okular</a> and <a href="https://projects.gnome.org/evince/">Evince</a> as the default viewer in Linux, and fallbacks to
+  <code>xdg-open</code> if both Okular and Evince is unavailable. Since I don't have a
+  Windows or Mac OS X environment, patches are always welcome.
 </li>
 </ul>
 
@@ -426,38 +432,39 @@ have no idea why <code>evil-local-mode</code> is enabled by default when enterin
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-auctex-setup</span> ()
-  (<span class="org-keyword">when</span> (<span class="org-keyword">require</span> '<span class="org-constant">smartparens</span> nil 'noerror)
-    (<span class="org-keyword">require</span> '<span class="org-constant">smartparens-latex</span>))
-  (setq TeX-auto-save t)                <span class="org-comment-delimiter">; </span><span class="org-comment">Automatically save style information</span>
-                                        <span class="org-comment-delimiter">; </span><span class="org-comment">when saving the buffer</span>
-  (setq TeX-parse-self t)               <span class="org-comment-delimiter">; </span><span class="org-comment">Parse file after loading it if no</span>
-                                        <span class="org-comment-delimiter">; </span><span class="org-comment">style hook is found for it.</span>
+<pre class="example">(defun ome-auctex-setup ()
+  (when (require 'smartparens nil 'noerror)
+    (require 'smartparens-latex))
+  (setq TeX-auto-save t)                ; Automatically save style information
+                                        ; when saving the buffer
+  (setq TeX-parse-self t)               ; Parse file after loading it if no
+                                        ; style hook is found for it.
   (setq LaTeX-syntactic-comment t)
-  (setq TeX-auto-untabify t)            <span class="org-comment-delimiter">; </span><span class="org-comment">remove all tabs before saving</span>
+  (setq TeX-auto-untabify t)            ; remove all tabs before saving
   (setq reftex-plug-into-AUCTeX t)
-  (setq-default TeX-engine 'xetex)      <span class="org-comment-delimiter">; </span><span class="org-comment">use xelatex by default</span>
+  (setq-default TeX-engine 'xetex)      ; use xelatex by default
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Currently, only linux system are tested. Patches for Mac OS and Windows</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">are always welcome.</span>
-  (<span class="org-keyword">cond</span>
+  ;; Mac OS X fallback to the "open" program as the default viewer for all
+  ;; types of files.
+  (cond
+   ;; settings for Linux
    ((eq system-type 'gnu/linux)
-    (<span class="org-keyword">cond</span>
-     ((executable-find <span class="org-string">"okular"</span>)
+    (cond
+     ((executable-find "okular")
       (setq TeX-view-program-selection
-            '((output-pdf <span class="org-string">"Okular"</span>)
-              (output-dvi <span class="org-string">"Okular"</span>))))
-     ((executable-find <span class="org-string">"evince"</span>)
+            '((output-pdf "Okular")
+              (output-dvi "Okular"))))
+     ((executable-find "evince")
       (setq TeX-view-program-selection
-            '((output-pdf <span class="org-string">"Evince"</span>)
-              (output-dvi <span class="org-string">"Evince"</span>))))
+            '((output-pdf "Evince")
+              (output-dvi "Evince"))))
      (t
       (setq TeX-view-program-selection
-            '((output-pdf <span class="org-string">"xdg-open"</span>)
-              (output-dvi <span class="org-string">"xdg-open"</span>)))))))
+            '((output-pdf "xdg-open")
+              (output-dvi "xdg-open")))))))
 
   (add-hook 'TeX-mode-hook
-            (<span class="org-keyword">lambda</span> ()
+            (lambda ()
               (outline-minor-mode t)
               (flyspell-mode t)
               (TeX-interactive-mode t)
@@ -465,20 +472,75 @@ have no idea why <code>evil-local-mode</code> is enabled by default when enterin
               (TeX-fold-mode t)))
 
   (add-hook 'LaTeX-mode-hook
-            (<span class="org-keyword">lambda</span> ()
+            (lambda ()
               (LaTeX-math-mode t)
               (reftex-mode t)))
 
   (add-hook 'reftex-toc-mode-hook
-            (<span class="org-keyword">lambda</span> ()
-              (<span class="org-keyword">when</span> (<span class="org-keyword">featurep</span> '<span class="org-constant">evil</span>)
+            (lambda ()
+              (when (featurep 'evil)
                 (turn-off-evil-mode)))))
 
-(add-to-list 'el-get-sources
-             '(<span class="org-builtin">:name</span> auctex
-                     <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                              (ome-auctex-setup))))
+(when (executable-find
+       (if (eq system-type 'darwin)
+           ;; MacTeX install all its executables to /usr/texbin directory
+           "/usr/texbin/pdflatex"
+         "pdflatex"))
+  (ome-install 'auctex))
+</pre>
 
+
+</div>
+
+</div>
+
+<div id="outline-container-3-7" class="outline-3">
+<h3 id="sec-3-7">Tips and Tricks</h3>
+<div class="outline-text-3" id="text-3-7">
+
+<p><a href="http://tex.stackexchange.com/questions/52179/what-is-your-favorite-emacs-and-or-auctex-command-trick">Here</a>'s some tips and tricks about AUCTeX.
+</p>
+
+</div>
+
+<div id="outline-container-3-7-1" class="outline-4">
+<h4 id="sec-3-7-1">LaTeX shell escape</h4>
+<div class="outline-text-4" id="text-3-7-1">
+
+
+<p>
+\LaTeX{} supports an lesser known "shell-escape" feature. In a word, this mode
+can be used to incorporate dynamic content, or run external process during the
+compilation phase. Check this <a href="http://scrolls.mafgani.net/2011/03/latex-shell-escape/">post</a> for details.
+</p>
+<p>
+Unfortunately, there no easy explicit way to customize command line options for
+various AUCTeX backend. So we need some tricks to get around this. Thanks
+<a href="http://stackoverflow.com/questions/3300497/using-minted-source-code-latex-package-with-emacs-auctex/">stackoverflow</a> again, here's the code snippet for AUCTeX \LaTeX{} backend.
+</p>
+
+
+
+<pre class="example">(defvar ome-LaTeX-shell-escape-mode nil
+  "Whether or not LaTeX shell escape mode is enabled.")
+
+(defun ome-LaTeX-toggle-shell-escape ()
+  (interactive)
+  (if ome-LaTeX-shell-escape-mode
+      (progn
+        (setcdr (assoc "LaTeX" TeX-command-list)
+                '("%`%l%(mode)%' %t"
+                  TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX"))
+        (setq ome-LaTeX-shell-escape-mode nil)
+        (message "LaTeX shell escape mode turned off."))
+    (progn
+      (setcdr (assoc "LaTeX" TeX-command-list)
+              '("%`%l%(mode) -shell-escape%' %t"
+                TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")))
+    (setq ome-LaTeX-shell-escape-mode t)
+    (message "LaTeX shell escape mode turned on.")))
+
+;; (define-key org-mode-map (kbd "C-c C-x x") 'ome-LaTeX-toggle-shell-escape)
 </pre>
 
 
@@ -487,8 +549,24 @@ have no idea why <code>evil-local-mode</code> is enabled by default when enterin
 
 </div>
 
+<div id="outline-container-3-8" class="outline-3">
+<h3 id="sec-3-8">Todo</h3>
+<div class="outline-text-3" id="text-3-8">
+
+<ul>
+<li>Add <code>auto-complete</code> support,
+  <a href="https://github.com/monsanto/auto-complete-auctex">https://github.com/monsanto/auto-complete-auctex</a>.
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
 <div id="outline-container-cdlatex" class="outline-2">
-<h2 id="cdlatex"><a name="sec-3" id="sec-3"></a>CDLaTeX</h2>
+<h2 id="cdlatex"><a name="sec-4" id="sec-4"></a>CDLaTeX</h2>
 <div class="outline-text-2" id="text-cdlatex">
 
 
@@ -497,7 +575,7 @@ have no idea why <code>evil-local-mode</code> is enabled by default when enterin
 <p>CDLaTeX - more LaTeX functionality for Emacs and XEmacs
 </p>
 <p>
-CDTeX is a minor mode which re-implements many features also found in the
+CDLaTeX is a minor mode which re-implements many features also found in the
 AUCTeX LaTeX mode. The reason for this is mainly historical - much of it was
 written before I knew about AUCTeX. So check this out if you would like to try
 a different implementation.  Here are some of the differences: Environment
@@ -523,15 +601,12 @@ work with Emacs builtin <code>tex-mode</code> anymore.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">ome-cdlatex-setup</span> ()
+<pre class="example">(defun ome-cdlatex-mode-setup ()
   (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
   (add-hook 'latex-mode-hook 'turn-on-cdlatex))
 
-(<span class="org-keyword">when</span> (el-get-package-is-installed 'auctex)
-  (add-to-list 'el-get-sources
-               '(<span class="org-builtin">:name</span> cdlatex-mode
-                       <span class="org-builtin">:after</span> (<span class="org-keyword">progn</span>
-                                (ome-cdlatex-setup)))))
+(when (el-get-package-is-installed 'auctex)
+  (ome-install 'cdlatex-mode))
 
 </pre>
 
@@ -540,17 +615,17 @@ work with Emacs builtin <code>tex-mode</code> anymore.
 
 </div>
 
-<div id="outline-container-4" class="outline-2">
-<h2 id="sec-4">Todo</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Todo</h2>
+<div class="outline-text-2" id="text-5">
 
 
 
 </div>
 
-<div id="outline-container-4-1" class="outline-3">
-<h3 id="sec-4-1">AUCTeX</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1">AUCTeX</h3>
+<div class="outline-text-3" id="text-5-1">
 
 <ul>
 <li>Add auto-complete support for auctex. see

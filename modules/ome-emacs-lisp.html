@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Oh My Emacs Lisp</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Oh My Emacs Lisp"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-30T17:03+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Oh My Emacs Lisp</h1>
+
+<p>This is part of the <a href="https://github.com/xiaohanyu/oh-my-emacs">oh-my-emacs</a>.
+</p>
+<p>
+This file contains some settings <a href="#sec-3">Emacs Lisp</a> programming.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#emacs-lisp-el-get-packages">El-get packages</a></li>
+<li><a href="#basic-lisp">Basics</a></li>
+<li><a href="#emacs-lisp">Emacs Lisp</a>
+<ul>
+<li><a href="#ielm">IELM</a></li>
+<li><a href="#eshell">Eshell</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Todos</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-emacs-lisp-el-get-packages" class="outline-2">
+<h2 id="emacs-lisp-el-get-packages"><a name="sec-1" id="sec-1"></a>El-get packages</h2>
+<div class="outline-text-2" id="text-emacs-lisp-el-get-packages">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption>El-get packages for ome-emacs-lisp module</caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Status</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="https://github.com/purcell/elisp-slime-nav">elisp-slime-nav</a></td><td class="left">Required</td><td class="left">Shortcuts for browsing elisp code.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-basic-lisp" class="outline-2">
+<h2 id="basic-lisp"><a name="sec-2" id="sec-2"></a>Basics</h2>
+<div class="outline-text-2" id="text-basic-lisp">
+
+
+<p>
+This section contains some basic settings which is common to all lisp modes.
+</p>
+
+
+
+<pre class="example">(defvar ome-lisp-modes '(emacs-lisp-mode
+                         inferior-emacs-lisp-mode
+                         lisp-interaction-mode
+                         scheme-mode
+                         lisp-mode
+                         eshell-mode
+                         slime-repl-mode
+                         nrepl-mode
+                         clojure-mode
+                         common-lisp-mode)
+  "List of Lisp modes.")
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-emacs-lisp" class="outline-2">
+<h2 id="emacs-lisp"><a name="sec-3" id="sec-3"></a>Emacs Lisp</h2>
+<div class="outline-text-2" id="text-emacs-lisp">
+
+
+<p>
+Emacs is really a great "IDE" for developing Elisp programs. This section
+contains some goodies for elisp development.
+</p>
+<p>
+<a href="https://github.com/purcell/elisp-slime-nav">elisp-slime-nav</a> provide some slime-like shortcuts to find function/variable
+definitions, which is useful when you want to know the details, as you know,
+there's no secret with source code. But the default shortcuts for
+<code>elisp-slime-nav-find-elisp-thing-at-point</code> has conflicts with <code>evil-mode</code>,
+which is enabled by default by oh-my-emacs, I still didn't figure out a good
+way to solve this, so any help will be appreciated.
+</p>
+
+
+
+<pre class="example">(defun ome-remove-elc-on-save ()
+  "If you're saving an elisp file, likely the .elc is no longer valid."
+  (make-local-variable 'after-save-hook)
+  (add-hook 'after-save-hook
+            (lambda ()
+              (if (file-exists-p (concat buffer-file-name "c"))
+                  (delete-file (concat buffer-file-name "c"))))))
+
+(add-hook 'emacs-lisp-mode-hook 'ome-remove-elc-on-save)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+
+(defun ome-elisp-slime-nav-setup ()
+  ;; (defun ome-elisp-slime-nav-keybindings-in-evil ()
+  ;;   (if (and (boundp 'evil-mode) evil-mode)
+  ;;       (progn (define-key elisp-slime-nav-mode-map (kbd "C-c C-d .")
+  ;;                'elisp-slime-nav-find-elisp-thing-at-point)
+  ;;              (define-key elisp-slime-nav-mode-map (kbd "C-c C-d ,")
+  ;;                'pop-tag-mark))))
+  (dolist (hook '(emacs-lisp-mode-hook
+                  lisp-interaction-mode-hook
+                  ielm-mode-hook
+                  eshell-mode-hook))
+    (add-hook hook 'turn-on-elisp-slime-nav-mode)))
+    ;; (add-hook hook 'ome-elisp-slime-nav-keybindings-in-evil)))
+
+(ome-install 'elisp-slime-nav)
+</pre>
+
+
+
+</div>
+
+<div id="outline-container-ielm" class="outline-3">
+<h3 id="ielm"><a name="sec-3-1" id="sec-3-1"></a>IELM</h3>
+<div class="outline-text-3" id="text-ielm">
+
+
+<p>
+<a href="http://www.emacswiki.org/emacs/InferiorEmacsLispMode">IELM</a> is an alternative to Lisp Interactive mode, you can treat IELM as <a href="http://emacs-fu.blogspot.com/2011/03/ielm-repl-for-emacs.html">a REPL for emacs</a>. Though convenient, IELM lacks some import features to be a real
+REPL, such as <code>python-shell-send-defun</code> in Emacs 24.3 builtin python mode.
+</p>
+
+
+
+<pre class="example">(defun ome-visit-ielm ()
+  "Switch to default `ielm' buffer.
+Start `ielm' if it's not already running."
+  (interactive)
+  (ome-start-or-switch-to 'ielm "*ielm*"))
+
+(define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ome-visit-ielm)
+(add-to-list 'ac-modes 'inferior-emacs-lisp-mode)
+(add-hook 'ielm-mode-hook 'ac-emacs-lisp-mode-setup)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-eshell" class="outline-3">
+<h3 id="eshell"><a name="sec-3-2" id="sec-3-2"></a>Eshell</h3>
+<div class="outline-text-3" id="text-eshell">
+
+
+<p>
+I think you can treat <a href="http://www.gnu.org/software/emacs/manual/html_mono/eshell.html">Eshell</a> as a combination of traditional Unix shell and
+IELM. Eshell is a command shell written in Emacs Lisp, which means it's as
+portable as Emacs itself. In fact, Eshell replicates most of the features and
+commands from GNU CoreUtils and the Bourne-like shells, thus Eshell will
+function identically on any environment Emacs itself runs on.
+</p>
+<p>
+To your surprise, Eshell does not inherit from <code>comint-mode</code>, which means that
+hooks and routines for <code>comint-mode</code> won't work for Eshell. For more details
+about how to mastering eshell, see <a href="http://www.masteringemacs.org/articles/2010/12/13/complete-guide-mastering-eshell/">MASTERING ESHELL</a>.
+</p>
+
+
+
+<pre class="example">(add-hook 'eshell-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-pcomplete)))
+
+(add-to-list 'ac-modes 'eshell-mode)
+(add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'eshell-mode-hook 'ac-emacs-lisp-mode-setup)
+</pre>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Todos</h2>
+<div class="outline-text-2" id="text-4">
+
+<ul>
+<li>What is overlay?
+</li>
+<li>What is syntax?
+</li>
+<li>Learn more knowledge about emacs key-maps, and what's the difference between
+  <code>global-set-key</code> and <code>remap</code>.
+</li>
+<li>Learn more knowledge about emacs syntax-table, functions like
+  <code>modify-syntax-entry</code>, etc.
+</li>
+<li>What <code>enable-recursive-minibuffers</code> means to us?
+</li>
+<li>How to do asynchronous programming in emacs lisp?
+</li>
+<li>Make <code>ielm</code> as a real elisp <code>REPL</code>?
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
