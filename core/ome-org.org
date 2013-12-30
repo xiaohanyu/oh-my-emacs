@@ -195,6 +195,38 @@ code block, which may be a bug of =rainbow-delimiters-mode=.
 
   (ome-install 'htmlize)
 #+END_SRC
+
+* Org-LaTeX
+  :PROPERTIES:
+  :CUSTOM_ID: org-latex
+  :END:
+
+Syntax highlighting is really cool when export org-mode files to other
+formats. We get syntax highlighting for html by [[http://www.emacswiki.org/emacs/Htmlize][htmlize.el]], so what about
+\LaTeX{}?
+
+Actually, org-mode has builtin support for syntax highlighting in \LaTeX{},
+check the builtin documentation via =C-h v org-latex-listings RET=. Check post
+[[http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html][1]] and [[http://praveen.kumar.in/2012/03/10/org-mode-latex-and-minted-syntax-highlighting/][2]] for technical details.
+
+#+NAME: org-latex
+#+BEGIN_SRC emacs-lisp
+  ;; code snippet comes from
+  ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
+  ;; Include the latex-exporter
+  (require 'ox-latex)
+  ;; Add minted to the defaults packages to include when exporting.
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  ;; Tell the latex export to use the minted package for source
+  ;; code coloration.
+  (setq org-latex-listings 'minted)
+  ;; Let the exporter use the -shell-escape option to let latex
+  ;; execute external programs.
+  ;; This obviously and can be dangerous to activate!
+  (setq org-latex-pdf-process
+        '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+#+END_SRC
+
 * Org-CDLaTeX
   :PROPERTIES:
   :CUSTOM_ID: org-cdlatex
