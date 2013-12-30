@@ -168,7 +168,7 @@ file using the `org-babel-lob-ingest' function.
 while respecting display properties such as colors, fonts, underlining,
 invisibility, etc.
 
-Org-mode can utilize =htmlize= when =org-export-as-html= for source code syntax
+Org-mode can utilize =htmlize= when =org-html-export-as-html= for source code syntax
 highlighting if =htmlize= is available.
 
 However, there's a minor problem with oh-my-emacs's default settings of

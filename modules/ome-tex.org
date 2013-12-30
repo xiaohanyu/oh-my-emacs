@@ -215,13 +215,13 @@ have no idea why =evil-local-mode= is enabled by default when entering
 
 *** LaTeX shell escape
 
-\LaTeX supports an lesser known "shell-escape" feature. In a word, this mode
+\LaTeX{} supports an lesser known "shell-escape" feature. In a word, this mode
 can be used to incorporate dynamic content, or run external process during the
 compilation phase. Check this [[http://scrolls.mafgani.net/2011/03/latex-shell-escape/][post]] for details.
 
 Unfortunately, there no easy explicit way to customize command line options for
 various AUCTeX backend. So we need some tricks to get around this. Thanks
-[[http://stackoverflow.com/questions/3300497/using-minted-source-code-latex-package-with-emacs-auctex/][stackoverflow]] again, here's the code snippet for AUCTeX \LaTeX backend.
+[[http://stackoverflow.com/questions/3300497/using-minted-source-code-latex-package-with-emacs-auctex/][stackoverflow]] again, here's the code snippet for AUCTeX \LaTeX{} backend.
 
 #+BEGIN_SRC emacs-lisp
   (defvar ome-LaTeX-shell-escape-mode nil

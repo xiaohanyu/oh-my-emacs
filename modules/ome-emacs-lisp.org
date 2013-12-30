@@ -1,4 +1,4 @@
-#+TITLE: Oh My Emacs Lisps
+#+TITLE: Oh My Emacs Lisp
 #+OPTIONS: toc:2 num:nil ^:nil
 
 This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
