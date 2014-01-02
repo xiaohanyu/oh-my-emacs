@@ -85,11 +85,6 @@ Note that oh-my-emacs enabled [[http://gitorious.org/evil/pages/Home][evil]] by 
 =M-x evil-mode=, however, I do recommend you enable it and try to adapt, ah,
 finally the Emacs OS get a good editor, evil.
 
-OS X users may have problems with evil installation, such as
-https://github.com/xiaohanyu/oh-my-emacs/issues/2. To skip this, you can first
-=M-x el-get-remove evil= and then comment out code like =(load
-"ome-advanced.org")= from =ome.org=.
-
 ** Helm
 You may miss the old =M-x= when you first start with oh-my-emacs, me too,
 before I fall in love with [[https://github.com/emacs-helm/helm][helm]]. I highly recommend you to adapt with the helm
