@@ -45,6 +45,10 @@ scheme. To install geiser, you need install =automake= and =autoconf=. And to
 run geiser, you need install at least one of the geiser supported scheme
 implementation, namely, [[http://www.gnu.org/software/guile/][guile]] or [[http://racket-lang.org/][racket]].
 
+Geiser also provide flexible methods for user customization, check its [[http://geiser.nongnu.org/geiser_3.html#Customization-and-tips][manual]]
+for details. For guile, I just =(setq geiser-guile-load-init-file-p t)= to make
+it load =$HOME/.guile= when start.
+
 There's a new experimental [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]] project, written by me --- yeah, it's me,
 I am the author, which provides a auto-complete backend for geiser. It is
 still in beta version, however, and will be sent to el-get when stable.
@@ -52,7 +56,8 @@ still in beta version, however, and will be sent to el-get when stable.
 #+NAME: geiser
 #+BEGIN_SRC emacs-lisp
   (defun ome-geiser-setup ()
-    (setq geiser-default-implementation 'guile))
+    (setq geiser-default-implementation 'guile)
+    (setq geiser-guile-load-init-file-p t))
 
   (defun ome-ac-geiser-setup ()
     (add-hook 'geiser-mode-hook 'ac-geiser-setup)
