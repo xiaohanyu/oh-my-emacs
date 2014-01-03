@@ -564,7 +564,9 @@ like.
       '(progn
          ;; diminish auto-fill-mode
          (diminish 'auto-fill-function)
-         (diminish 'global-visual-line-mode)
+         ;; https://github.com/xiaohanyu/oh-my-emacs/issues/36
+         (when (string< emacs-version "24.3.50")
+           (diminish 'global-visual-line-mode))
          (diminish 'visual-line-mode)))
 
     (eval-after-load "outline"
