@@ -29,4 +29,88 @@ over huge IDEs, there're several reasons:
   want to create some tiny test file.
 
 Enough, now it's the time to see what Emacs provides for you to do basic web
-development.
+development. This ome module focus on html/css editing, for JavaScript things,
+refer to [[file:ome-javascript.org][ome-javascript.org]] module.
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: web-prerequisites
+  :END:
+
+#+NAME: web-prerequisites
+#+CAPTION: Prerequisites for ome-web module
+|   | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---+---------+--------------------+-----------+--------+----------+------------|
+|   |         |                    |           |        |          |            |
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: web-el-get-packages
+  :END:
+
+#+NAME: web-el-get-packages
+#+CAPTION: El-get packages for ome-web module
+|             | Status   | Description                                    |
+|-------------+----------+------------------------------------------------|
+| [[http://web-mode.org/][web-mode.el]] | Required | An emacs major mode for editing html templates |
+
+* Web-mode
+  :PROPERTIES:
+  :CUSTOM_ID: web-mode
+  :END:
+
+The most awful part of web page editing(or programming, if you like) is, one
+single web page often contains multiple types of code snippets. For example,
+you can put CSS/JavaScript/PHP in just one single page, which make it difficult
+for an editor to work properly, such as proper indentation, syntax
+highlighting, etc.
+
+The modern web development is ruled by the [[http://en.wikipedia.org/wiki/Model%25E2%2580%2593view%25E2%2580%2593controller][MVC]] pattern, in which the various
+[[http://en.wikipedia.org/wiki/Web_template_system][web template system]] is an important component. Just like normal html page, you
+can mix together HTML, CSS, JavaScript and a special web template language
+together as you like. You may wonder, is it possible for Emacs, an editor, to
+edit all different code snippets without switching between different modes?
+
+The answer is yes, web have [[http://web-mode.org/][web-mode]], a really genius emacs package. You can
+even edit normal html page using web-mode.
+
+There're still a minor problem, different web projects often has different
+coding styles, such as indentation spaces. So it is not possible for us to set
+various web-mode options in our =.emacs= and expect that it will works for all
+web projects. The answer lies in the [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][Emacs Manual]].
+
+#+NAME: web-mode
+#+BEGIN_SRC emacs-lisp
+  (defun ome-web-mode-setup ()
+    (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+    (defun ome-web-mode-hook ()
+      ;; indentation
+      ;; HTML offset indentation
+      (setq web-mode-markup-indent-offset 2)
+      ;; CSS offset indentation
+      (setq web-mode-code-indent-offset 2)
+      ;; Script offset indentation (for JavaScript, Java, PHP, etc.)
+      (setq web-mode-css-indent-offset 2)
+      ;; HTML content indentation
+      (setq web-mode-indent-style 2)
+
+      ;; padding
+      ;; For <style> parts
+      (setq web-mode-style-padding 1)
+      ;; For <script> parts
+      (setq web-mode-script-padding 1)
+      ;; For multi-line blocks
+      (setq web-mode-block-padding 0))
+
+    (add-hook 'web-mode-hook 'ome-web-mode-hook))
+
+  (ome-install 'web-mode)
+#+END_SRC
