@@ -50,9 +50,10 @@ refer to [[file:ome-javascript.org][ome-javascript.org]] module.
 
 #+NAME: web-el-get-packages
 #+CAPTION: El-get packages for ome-web module
-|             | Status   | Description                                    |
-|-------------+----------+------------------------------------------------|
-| [[http://web-mode.org/][web-mode.el]] | Required | An emacs major mode for editing html templates |
+|              | Status   | Description                                    |
+|--------------+----------+------------------------------------------------|
+| [[http://web-mode.org/][web-mode.el]]  | Required | An emacs major mode for editing html templates |
+| [[http://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode]] | Required | Colorize color names in buffers                |
 
 * Web-mode
   :PROPERTIES:
@@ -113,4 +114,20 @@ web projects. The answer lies in the [[http://www.gnu.org/software/emacs/manual/
     (add-hook 'web-mode-hook 'ome-web-mode-hook))
 
   (ome-install 'web-mode)
+#+END_SRC
+
+* rainbow-mode
+  :PROPERTIES:
+  :CUSTOM_ID: rainbow-mode
+  :END:
+
+Colors is one of the main actors in CSS game. [[http://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode]] makes your life a
+little [[http://blog.gabrielsaldana.org/easy-css-editing-with-emacs/][easier]] by making css colors more visible.
+
+#+NAME: rainbow-mode
+#+BEGIN_SRC emacs-lisp
+  (defun ome-rainbow-mode-setup ()
+    (add-hook 'css-mode-hook 'rainbow-mode))
+
+  (ome-install 'rainbow-mode)
 #+END_SRC
