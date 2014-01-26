@@ -433,6 +433,7 @@ you really need it.
   (ome-load "modules/ome-ruby.org")
   (ome-load "modules/ome-ocaml.org")
   (ome-load "modules/ome-tex.org")
+  (ome-load "modules/ome-web.org")
 #+END_SRC
 
 ** Load User/System Specific Files

@@ -39,9 +39,9 @@ refer to [[file:ome-javascript.org][ome-javascript.org]] module.
 
 #+NAME: web-prerequisites
 #+CAPTION: Prerequisites for ome-web module
-|   | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|---+---------+--------------------+-----------+--------+----------+------------|
-|   |         |                    |           |        |          |            |
+|      | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|------+---------+--------------------+-----------+--------+----------+------------|
+| less | [npm]   | [npm]              | [npm]     | [npm]  | [npm]    | No         |
 
 * El-get packages
   :PROPERTIES:
@@ -50,10 +50,12 @@ refer to [[file:ome-javascript.org][ome-javascript.org]] module.
 
 #+NAME: web-el-get-packages
 #+CAPTION: El-get packages for ome-web module
-|              | Status   | Description                                    |
-|--------------+----------+------------------------------------------------|
-| [[http://web-mode.org/][web-mode.el]]  | Required | An emacs major mode for editing html templates |
-| [[http://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode]] | Required | Colorize color names in buffers                |
+|               | Status   | Description                                    |
+|---------------+----------+------------------------------------------------|
+| [[http://web-mode.org/][web-mode.el]]   | Required | An emacs major mode for editing html templates |
+| [[http://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode]]  | Required | Colorize color names in buffers                |
+| [[https://github.com/purcell/less-css-mode][less-css-mode]] | Optional | Emacs mode for LESS CSS (lesscss.org)          |
+
 
 * Web-mode
   :PROPERTIES:
@@ -116,6 +118,24 @@ web projects. The answer lies in the [[http://www.gnu.org/software/emacs/manual/
   (ome-install 'web-mode)
 #+END_SRC
 
+* Less-css-mode
+  :PROPERTIES:
+  :CUSTOM_ID: less-css-mode
+  :END:
+
+Writing plain CSS is quite boring sometimes since CSS didn't support basic
+programming techniques such as variables. Thus some nerds create some
+programming languages which extend CSS with programming language features, and
+"compiles" to css when it is necessary. [[http://www.lesscss.org/][LESS]] is one of them.
+
+#+NAME: less-css-mode
+#+BEGIN_SRC emacs-lisp
+  (defun ome-less-css-mode-setup ()
+    (setq less-css-compile-at-save t))
+
+  (when (executable-find "lessc")
+    (ome-install 'less-css-mode))
+#+END_SRC
 * rainbow-mode
   :PROPERTIES:
   :CUSTOM_ID: rainbow-mode
