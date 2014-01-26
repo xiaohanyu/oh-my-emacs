@@ -141,6 +141,13 @@ elpy.
   (ome-install 'elpy)
 #+END_SRC
 
+Some python web frameworks often provide a =*.wsgi= file to application
+initialization, which is just a plain python file.
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.wsgi\\'" . python-mode))
+#+END_SRC
+
 * Todo
 - Add some django-mode support? Maybe
   https://github.com/fgallina/python-django.el is a good candidate.
