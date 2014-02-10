@@ -14,10 +14,11 @@ work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
 
 #+NAME: ruby-prerequisites-matrix
 #+CAPTION: Prerequisites for ome-ruby module
-|      | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|------+---------+--------------------+-----------+--------+----------+------------|
-| ruby |         | ruby               | ruby      | ruby   |          | Yes        |
-| pry  |         | [gem]              | [gem]     | [gem]  | [gem]    | No         |
+|       | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|-------+---------+--------------------+-----------+--------+----------+------------|
+| ruby  |         | ruby               | ruby      | ruby   |          | Yes        |
+| [[https://github.com/sstephenson/rbenv][rbenv]] |         | [web]              | [web]     | [web]  | homebrew | Yes        |
+| pry   |         | [gem]              | [gem]     | [gem]  | [gem]    | No         |
 
 * El-get packages
   :PROPERTIES:
@@ -35,6 +36,7 @@ work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
 | [[http://www.cx4a.org/pub/auto-complete-ruby.el][auto-complete-ruby]] | Deprecated | Depends on [[http://rubygems.org/gems/rcodetools][rcodetools]].            |
 | [[https://github.com/nonsequitur/inf-ruby][inf-ruby]]           | Required   | Ruby [[http://en.wikipedia.org/wiki/Read%25E2%2580%2593eval%25E2%2580%2593print_loop][REPL]] in Emacs.               |
 | [[https://github.com/Fuco1/smartparens][smartparens]]        | Required   | Smartparens is amazing.           |
+| [[https://github.com/senny/rbenv.el][rbenv.el]]           | Required   | Emacs integration for [[https://github.com/sstephenson/rbenv][rbenv]].      |
 
 * Ruby-mode
   :PROPERTIES:
@@ -109,6 +111,31 @@ amazing, elegant package.
 #+BEGIN_SRC emacs-lisp
   (when (require 'smartparens nil 'noerror)
     (require 'smartparens-ruby))
+#+END_SRC
+
+* Rbenv
+  :PROPERTIES:
+  :CUSTOM_ID: rbenv
+  :END:
+
+Ruby is an actively evolving language. Things often happen when you need to
+support multiple versions of ruby with your code base. So you need tools to
+install, and switch between multiple versions of ruby. [[http://rvm.io/][RVM]] is one of the most
+famous ruby version manager tools, however, IMHO, it's just too bloated. I
+prefer [[https://github.com/sstephenson/rbenv][rbenv]] for now. Of course there're other [[https://github.com/postmodern/chruby#alternatives][choices]], but rbenv has [[https://github.com/senny/rbenv.el][emacs
+support]], and various [[https://github.com/sstephenson/rbenv/wiki/Plugins][plugins]], which will make your life much more easier.
+
+[[https://github.com/sstephenson/ruby-build][ruby-build]] is one of the most important plugins of rbenv, actually, you can
+consider it as a sister project of rbenv. Just as its name, it helps to install
+ruby. Please do read its [[https://github.com/sstephenson/ruby-build/wiki][wiki]] to ensure your have necessary packages installed
+before you do your ruby-build.
+
+#+NAME: rbenv
+#+BEGIN_SRC emacs-lisp
+  (defun ome-rbenv-setup ())
+
+  (when (file-exists-p "~/.rbenv/version")
+    (ome-install 'rbenv))
 #+END_SRC
 
 * Todo
