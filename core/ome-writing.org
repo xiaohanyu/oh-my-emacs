@@ -5,6 +5,17 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 This file contains some packages for document writing.
 
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: ome-writing-prerequisites
+  :END:
+
+#+NAME: ome-writing-prerequisites
+#+CAPTION: Prerequisites for ome-writing module
+|          | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|----------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://daringfireball.net/projects/markdown/][markdown]] |         | markdown           |           |        |          | No         |
+
 * El-get packages
   :PROPERTIES:
   :CUSTOM_ID: writing-el-get-packages
@@ -21,12 +32,21 @@ This file contains some packages for document writing.
   :PROPERTIES:
   :CUSTOM_ID: markdown
   :END:
+
 [[http://en.wikipedia.org/wiki/Markdown][Markdown]] is a lightweight markup language, which is very popular as a doc
 writing format in many popular open source projects.
 
 [[https://github.com/thierryvolpiatto/markdown-pp][markdown-pp]] is a preprocessor for Markdown files to generate a table of
 contents and other documentation needs, so I add "mdpp" file to
 markdown-mode's auto-mode-alist.
+
+[[http://jblevins.org/projects/markdown-mode/][markdown-mode]] also support html export. Under the hood, it adopts the original
+[[file://home/xiao/downloads/Markdown_1.0.1.zip][markdown]] perl script to do the heavy job. So you need to install it before
+=markdown-export=.
+
+The author of [[http://jblevins.org/projects/markdown-mode/][markdown-mode]], [[http://jblevins.org/][Jason Blevins]], is an assistant professor of
+economics at the ohio state university, who maintains a lot of open source
+[[http://jblevins.org/projects/][softwares]], which is amazing.
 
 #+NAME: markdown
 #+BEGIN_SRC emacs-lisp
