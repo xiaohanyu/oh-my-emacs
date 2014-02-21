@@ -130,9 +130,15 @@ consider it as a sister project of rbenv. Just as its name, it helps to install
 ruby. Please do read its [[https://github.com/sstephenson/ruby-build/wiki][wiki]] to ensure your have necessary packages installed
 before you do your ruby-build.
 
+By default, rbenv will designate the global ruby version via
+=~/.rbenv/version=, so if =(file-exists-p "~/.rbenv/version")=, we know that
+the user has installed and configured rbenv successfully, then we can install
+emacs rbenv support. By default, oh-my-emacs enables =global-rbenv-mode=.
+
 #+NAME: rbenv
 #+BEGIN_SRC emacs-lisp
-  (defun ome-rbenv-setup ())
+  (defun ome-rbenv-setup ()
+    (global-rbenv-mode t))
 
   (when (file-exists-p "~/.rbenv/version")
     (ome-install 'rbenv))
