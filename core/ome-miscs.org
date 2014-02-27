@@ -406,7 +406,7 @@ some time to master these wonderful commands, which will make your life easier.
     (sp-with-modes sp--lisp-modes
       (sp-local-pair "(" nil :bind "C-("))
 
-    (dolist (mode '(c-mode c++-mode java-mode js2-mode sh-mode))
+    (dolist (mode '(c-mode c++-mode java-mode js2-mode sh-mode css-mode))
       (sp-local-pair mode
                      "{"
                      nil

@@ -57,6 +57,23 @@ refer to [[file:ome-javascript.org][ome-javascript.org]] module.
 | [[https://github.com/purcell/less-css-mode][less-css-mode]] | Optional | Emacs mode for LESS CSS (lesscss.org)          |
 
 
+* Basic css settings
+  :PROPERTIES:
+  :CUSTOM_ID: basic-css
+  :END:
+
+The builtin =css-mode= is derived from =fundamental-mode=, so we need an extra
+hook to enable =linum-mode= in =css-mode=.
+
+#+NAME: basic-css
+#+BEGIN_SRC emacs-lisp
+  (setq css-indent-offset 2)
+
+  (add-hook 'css-mode-hook
+            (lambda ()
+              (linum-mode 1)))
+#+END_SRC
+
 * Web-mode
   :PROPERTIES:
   :CUSTOM_ID: web-mode
