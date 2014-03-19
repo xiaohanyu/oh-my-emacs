@@ -70,9 +70,9 @@ and I hope you enjoy it.
 #+NAME: auto-complete
 #+BEGIN_SRC emacs-lisp
   (defun ome-auto-complete-setup ()
-    (require 'pos-tip)
     (require 'auto-complete-config)
 
+    (define-key ac-mode-map (kbd "M-/") 'ac-fuzzy-complete)
     (dolist (ac-mode '(text-mode org-mode))
       (add-to-list 'ac-modes ac-mode))
     (dolist (ac-mode-hook '(text-mode-hook org-mode-hook prog-mode-hook))
@@ -83,6 +83,9 @@ and I hope you enjoy it.
                   (add-to-list 'ac-sources 'ac-source-filename))))
 
     (ac-config-default))
+
+  (defun ome-pos-tip-setup ()
+    (require 'pos-tip))
 
   (ome-install 'pos-tip)
   (ome-install 'auto-complete)
