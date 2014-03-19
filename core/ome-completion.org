@@ -10,11 +10,12 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: completion-el-get-packages
 #+CAPTION: El-get packages for ome-completion module
-|               | Status   | Description                                |
-|---------------+----------+--------------------------------------------|
-| [[http://cx4a.org/software/auto-complete/][auto-complete]] | Required | I really like it.                          |
-| [[https://github.com/emacs-helm/helm][helm]]          | Required | Completion everywhere, highly recommended. |
-| [[https://github.com/capitaomorte/yasnippet][YASnippet]]     | Required | Quick snippet template insertion.          |
+|               | Status   | Description                                 |
+|---------------+----------+---------------------------------------------|
+| [[http://cx4a.org/software/auto-complete/][auto-complete]] | Required | I really like it.                           |
+| [[https://github.com/emacs-helm/helm][helm]]          | Required | Completion everywhere, highly recommended.  |
+| [[https://github.com/capitaomorte/yasnippet][YASnippet]]     | Required | Quick snippet template insertion.           |
+| [[http://www.emacswiki.org/emacs/PosTip][pos-tip]]       | Required | For better auto-complete popup tips window. |
 
 * Hippie expand
 =M-x hippie-expand= is a single command providing a variety of completions and
@@ -55,9 +56,21 @@ according to =ac-modes=, which in turn determines what major mode
 =auto-complete-mode= can run on. Oh-my-emacs add =org-mode= and =text-mode= to
 =ac-modes=.
 
+By default, =auto-complete= will use =popup.el= library to display completion
+list, while =popup.el= itself can show some tooltip to display annotations of
+the menu items when available. However, sometimes the layout of the tooltip
+looks bad when you use the builtin =popup.el= windows. Fortunately, =pos-tip=
+provide a better way to display tooltips in a specified location, and it can be
+used by other frontend program like =popup.el=. Auto-complete has a builtin
+variable =ac-quick-help-prefer-pos-tip=, which defaults to =t=, that means when
+we have =pos-tip= library installed, we will have a better tooltip window. I
+tried and it works like a charm. So I made it a default package in oh-my-emacs,
+and I hope you enjoy it.
+
 #+NAME: auto-complete
 #+BEGIN_SRC emacs-lisp
   (defun ome-auto-complete-setup ()
+    (require 'pos-tip)
     (require 'auto-complete-config)
 
     (dolist (ac-mode '(text-mode org-mode))
@@ -65,11 +78,13 @@ according to =ac-modes=, which in turn determines what major mode
     (dolist (ac-mode-hook '(text-mode-hook org-mode-hook prog-mode-hook))
       (add-hook ac-mode-hook
                 (lambda ()
+                  (setq ac-fuzzy-enable t)
                   (add-to-list 'ac-sources 'ac-source-files-in-current-dir)
                   (add-to-list 'ac-sources 'ac-source-filename))))
 
     (ac-config-default))
 
+  (ome-install 'pos-tip)
   (ome-install 'auto-complete)
 #+END_SRC
 
