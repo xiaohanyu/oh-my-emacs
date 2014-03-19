@@ -303,10 +303,7 @@ TODO:
     (setq yas-prompt-functions
           '(yas-popup-isearch-prompt
             yas-no-prompt))
-    (yas-reload-all)
-    (add-hook 'prog-mode-hook
-              '(lambda ()
-                 (yas-minor-mode))))
+    (yas-global-mode))
 
   (ome-install 'popup)
   (ome-install 'yasnippet)
