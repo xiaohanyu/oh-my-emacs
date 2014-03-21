@@ -60,6 +60,7 @@ second, *ensure that you have installed the necessary tools* pointed out by
 the *Prerequisites* sections from oh-my-emacs modules. Basically, you need to
 install the following packages in you operating system, which is the mandatory
 prerequisites of [[file:ome.org][ome.org]]:
+- [[https://www.gnu.org/software/emacs/][emacs 24.3+]]
 - [[http://savannah.nongnu.org/projects/cvs][cvs]]
 - [[http://subversion.apache.org/][subversion]]
 - [[http://mercurial.selenic.com/][mercurial]]

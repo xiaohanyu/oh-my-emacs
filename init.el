@@ -37,6 +37,14 @@
 ;; default el-get recipe to get around bugs.
 (add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
 
+;; Some workaround for emacs version < 24.0, thanks Silthanis@github.
+(if (< emacs-major-version 24)
+    (defun file-name-base (&optional filename)
+      "Return the base name of the FILENAME: no directory, no extension.
+FILENAME defaults to `buffer-file-name'."
+      (file-name-sans-extension
+       (file-name-nondirectory (or filename (buffer-file-name))))))
+
 ;; Oh-my-emacs adopt org-mode 8.x from v0.3, so org-mode should be the first
 ;; package to be installed via el-get
 (defun ome-org-mode-setup ()
