@@ -153,8 +153,7 @@ I made it a default for oh-my-emacs.
 #+NAME: linum-relative
 #+BEGIN_SRC emacs-lisp
   (defun ome-linum-relative-setup ()
-    (require 'linum-relative)
-    (linum-relative-toggle))
+    (require 'linum-relative))
 
   (ome-install 'linum-relative)
 #+END_SRC
