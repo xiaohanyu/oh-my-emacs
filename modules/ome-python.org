@@ -127,7 +127,7 @@ elpy.
     (ome-install 'python24))
 
   (defun ome-elpy-setup ()
-    (elpy-enable t)
+    (elpy-enable)
     (setq elpy-rpc-backend "jedi")
     (when (executable-find "ipython")
       (elpy-use-ipython))
@@ -136,7 +136,9 @@ elpy.
             (remove 'flymake-mode
                     elpy-default-minor-modes)))
     (define-key python-mode-map (kbd "RET")
-      'newline-and-indent))
+      'newline-and-indent)
+    (add-hook 'python-mode-hook
+              (lambda () (set (make-local-variable 'comment-inline-offset) 2))))
 
   (ome-install 'elpy)
 #+END_SRC
