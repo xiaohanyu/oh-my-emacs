@@ -14,10 +14,11 @@ before loading this file.
 
 #+NAME: advanced-prerequisites
 #+CAPTION: Prerequisites for ome-advanced module
-|          | Windows | Ubuntu/Debian/Mint        | ArchLinux                    | Fedora      | Mac OS X | Mandatory? |
-|----------+---------+---------------------------+------------------------------+-------------+----------+------------|
-| [[http://www.tug.org/texlive/][texlive]]  |         | texlive-full latex-beamer | texlive-most texlive-langcjk | texlive-all |          | Yes        |
-| [[http://beyondgrep.com/][ack-grep]] | ack     | ack-grep                  | ack                          | ack         | ack      | No         |
+|          | Windows | Ubuntu/Debian/Mint        | ArchLinux                    | Fedora              | Mac OS X            | Mandatory? |
+|----------+---------+---------------------------+------------------------------+---------------------+---------------------+------------|
+| [[http://www.tug.org/texlive/][texlive]]  |         | texlive-full latex-beamer | texlive-most texlive-langcjk | texlive-all         |                     | Yes        |
+| [[http://beyondgrep.com/][ack-grep]] | ack     | ack-grep                  | ack                          | ack                 | ack                 | No         |
+| [[https://github.com/ggreer/the_silver_searcher][ag]]       |         | the_silver_searcher       | the_silver_searcher          | the_silver_searcher | the_silver_searcher | No         |
 
 Notes:
 - [[http://www.tug.org/texlive/][texlive]] is required by evil, since evil need =texi2pdf= to =make
@@ -241,6 +242,24 @@ you'll get all you need. Enjoy it.
 #+BEGIN_SRC emacs-lisp
   (when (or (executable-find "ack") (executable-find "ack-grep"))
     (ome-install 'ack-and-a-half))
+#+END_SRC
+
+* ag
+  :PROPERTIES:
+  :CUSTOM_ID: ag
+  :END:
+
+ag, [[https://github.com/ggreer/the_silver_searcher][the silver searcher]], a code searching tool similar to [[http://beyondgrep.com/][ack]] but much more
+faster. It searches code abot 3-5x faster than ack, and "The command name is
+33% shorter than ack, and all keys are on the home row!". I've used it for
+serveral months and it's amazing.
+
+[[https://github.com/bbatsov/projectile][Projectile]] has builtin support for ag(=projectile-ag=) via =C-c p A=.
+
+#+NAME: ag
+#+BEGIN_SRC emacs-lisp
+  (when (executable-find "ag")
+    (ome-install 'ag))
 #+END_SRC
 
 * Todo
