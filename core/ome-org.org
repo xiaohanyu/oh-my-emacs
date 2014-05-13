@@ -133,6 +133,18 @@ although it is not added by default as a security precaution.
   (setq org-confirm-babel-evaluate nil)
 #+END_SRC
 
+Use =C-c '= to edit the current code block. This brings up a language
+major-mode edit buffer containing the body of the code block. Manually saving
+this buffer with =<C-x C-s>= will write the contents back to the Org
+buffer. You can also set =org-edit-src-auto-save-idle-delay= to save the base
+buffer after some idle delay, or org-edit-src-turn-on-auto-save to auto-save
+this buffer into a separate file using auto-save-mode. Use =C-c '= again to
+exit.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-edit-src-auto-save-idle-delay 5)
+#+END_SRC
+
 * Code block fontification
   :PROPERTIES:
   :CUSTOM_ID: code-block-fontification
