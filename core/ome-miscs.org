@@ -332,6 +332,9 @@ some time to master these wonderful commands, which will make your life easier.
     (setq sp-navigate-close-if-unbalanced t)
     (smartparens-global-mode t)
 
+    (if (member major-mode sp--lisp-modes)
+        (turn-on-smartparens-strict-mode))
+
     ;; highlights matching pairs
     (show-smartparens-global-mode t)
 
