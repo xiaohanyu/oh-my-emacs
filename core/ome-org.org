@@ -234,16 +234,24 @@ still use org-mode 7.x, you may need to [[http://orgmode.org/worg/org-tutorials/
   ;; Include the latex-exporter
   ;; check whether org-mode 8.x is available
   (when (require 'ox-latex nil 'noerror)
-    ;; Add minted to the defaults packages to include when exporting.
-    (add-to-list 'org-latex-packages-alist '("" "minted"))
-    ;; Tell the latex export to use the minted package for source
-    ;; code coloration.
-    (setq org-latex-listings 'minted)
-    ;; Let the exporter use the -shell-escape option to let latex
-    ;; execute external programs.
-    ;; This obviously and can be dangerous to activate!
-    (setq org-latex-pdf-process
-          '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+    ;; You need to install pygments to use minted
+    (when (executable-find "pygmentize")
+      ;; Add minted to the defaults packages to include when exporting.
+      (add-to-list 'org-latex-packages-alist '("" "minted"))
+      ;; Tell the latex export to use the minted package for source
+      ;; code coloration.
+      (setq org-latex-listings 'minted)
+      ;; Let the exporter use the -shell-escape option to let latex
+      ;; execute external programs.
+      ;; This obviously and can be dangerous to activate!
+      (setq org-latex-minted-options
+            '(("mathescape" "true")
+              ("linenos" "true")
+              ("numbersep" "5pt")
+              ("frame" "lines")
+              ("framesep" "2mm")))
+      (setq org-latex-pdf-process
+            '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
 #+END_SRC
 
 * Org-CDLaTeX
