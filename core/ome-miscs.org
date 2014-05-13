@@ -626,5 +626,5 @@ like.
   buffer?
 - Add realtime dictionary support for emacs.
 
-* Footnotes
+
 [1] See [[http://git-scm.com/book/en/Git-Internals][Git Internals]] to technical details.

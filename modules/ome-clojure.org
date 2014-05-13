@@ -92,5 +92,5 @@ It's really really awesome, ah?
 - The boot up speed of JVM is too slow, so we may need to refer to
   http://icylisper.github.io/jark/.
 
-* Footnotes
+
 [1] CIDER was formerly known as and renamed from =nrepl.el=.

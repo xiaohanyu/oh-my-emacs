@@ -56,7 +56,6 @@ refer to [[file:ome-javascript.org][ome-javascript.org]] module.
 | [[http://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode]]  | Required | Colorize color names in buffers                |
 | [[https://github.com/purcell/less-css-mode][less-css-mode]] | Optional | Emacs mode for LESS CSS (lesscss.org)          |
 
-
 * Basic css settings
   :PROPERTIES:
   :CUSTOM_ID: basic-css

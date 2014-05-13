@@ -272,5 +272,5 @@ serveral months and it's amazing.
   =sp-up-sexp=. Maybe I can get this by =post-command-hook= or smartparens's
   =post-command-handler=? Or just use =defadvice=?
 
-* Footnotes
+
 [1] See [[http://vimgolf.com/][vimgolf]] for funny things.

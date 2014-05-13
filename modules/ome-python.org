@@ -158,7 +158,7 @@ initialization, which is just a plain python file.
   https://github.com/monsanto/readline-complete.el is the ultimate solution
   for REPL languages.
 
-* Footnotes
+
 [1] See [[http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/][here]], [[http://caisah.info/emacs-for-python/][here]], [[http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/][here]], [[http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/][here]], and [[http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/][here]].
 [2] =pip install pkg= with root can make =pkg= accessible in newly created
 virtualenvs.

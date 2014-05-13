@@ -27,7 +27,6 @@ This file contains some packages for document writing.
 |---------------+----------+------------------------------------------------------|
 | [[http://jblevins.org/projects/markdown-mode/][markdown-mode]] | Required | Markdown is so popular that this package is required |
 
-
 * Markdown
   :PROPERTIES:
   :CUSTOM_ID: markdown

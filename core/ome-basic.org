@@ -272,6 +272,6 @@ extension for GNU Emacs 24.
 - Test with big files for performance.
 - More documentation and tutorial.
 
-* Footnotes
+
 [1] Actually, emacs has only three [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html][basic major modes]], so we actually enable
 auto-fill in almost every programming and writing modes.

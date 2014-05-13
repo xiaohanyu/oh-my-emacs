@@ -148,5 +148,5 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
 - Find a method to rebase the source tree of various CL implementations, which
   is useful for =slime-edit-definition=.
 
-* Footnotes
+
 [1] [[https://github.com/swank-js/swank-js][swank-js]], [[http://common-lisp.net/~crhodes/swankr/][swankr]]

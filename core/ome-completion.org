@@ -326,5 +326,5 @@ Ah, various ideas to enhance helm:
 - For helm-projectile, add full path to file list to differentiate same file
   name files.
 
-* Footnotes
+
 [1] http://iany.me/2012/03/use-popup-isearch-for-yasnippet-prompt/
