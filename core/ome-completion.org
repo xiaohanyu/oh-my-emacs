@@ -246,6 +246,13 @@ fallback. But I do suggest you to take some time to be familiar with helm.
     (require 'helm-config)
     (setq helm-input-idle-delay 0.2)
     (helm-mode t)
+    (setq helm-locate-command
+          (case system-type
+            ('gnu/linux "locate -i -r %s")
+            ('berkeley-unix "locate -i %s")
+            ('windows-nt "es %s")
+            ('darwin "mdfind -name %s %s")
+            (t "locate %s")))
     (global-set-key (kbd "C-x c g") 'helm-do-grep)
     (global-set-key (kbd "C-x c o") 'helm-occur)
     (global-set-key (kbd "M-x") 'helm-M-x)
