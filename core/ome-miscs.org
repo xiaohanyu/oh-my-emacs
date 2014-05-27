@@ -316,14 +316,14 @@ some time to master these wonderful commands, which will make your life easier.
 #+NAME: smartparens
 #+BEGIN_SRC emacs-lisp
   (defun ome-create-newline-and-enter-sexp (&rest _ignored)
-      "Open a new brace or bracket expression, with relevant newlines and indent. "
-      (previous-line)
-      (indent-according-to-mode)
-      (forward-line)
-      (newline)
-      (indent-according-to-mode)
-      (forward-line -1)
-      (indent-according-to-mode))
+    "Open a new brace or bracket expression, with relevant newlines and indent. "
+    (previous-line)
+    (indent-according-to-mode)
+    (forward-line)
+    (newline)
+    (indent-according-to-mode)
+    (forward-line -1)
+    (indent-according-to-mode))
 
   (defun ome-smartparens-setup ()
     ;; global
@@ -332,8 +332,17 @@ some time to master these wonderful commands, which will make your life easier.
     (setq sp-navigate-close-if-unbalanced t)
     (smartparens-global-mode t)
 
-    (if (member major-mode sp--lisp-modes)
-        (turn-on-smartparens-strict-mode))
+    ;; turn on smartparens-strict-mode on all lisp-like mode
+    (dolist (sp--lisp-mode-hook
+             (mapcar (lambda (x)
+                       (intern (concat (symbol-name x) "-hook")))
+                     sp--lisp-modes))
+      (add-hook sp--lisp-mode-hook
+                'smartparens-strict-mode)
+      ;; inferior-emacs-lisp-mode-hook is an alias of ielm-mode-hook
+      ;; and it will be overrided when you first start ielm
+      (add-hook 'ielm-mode-hook
+                'smartparens-strict-mode))
 
     ;; highlights matching pairs
     (show-smartparens-global-mode t)
