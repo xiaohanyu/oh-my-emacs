@@ -152,18 +152,19 @@ dotemacs project adopt the builtin =package.el=. You may wonder why, IMHO,
 el-get is the practical solution, at least for now. In a word, what el-get
 to emacs is what =apt-get= to debian/ubuntu.
 
-So the very first thing oh-my-emacs do to your emacs is to install =el-get=, this is
-done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
+So the very first thing oh-my-emacs do to your emacs is to install =el-get=,
+this is done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
 
 #+NAME: ome-install-el-get
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
   (unless (require 'el-get nil 'noerror)
     (with-current-buffer
         (url-retrieve-synchronously
          "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-      (let (el-get-master-branch)
+      (let (el-get-master-branch
+            el-get-install-skip-emacswiki-recipes)
         (goto-char (point-max))
         (eval-print-last-sexp))))
 
@@ -171,6 +172,11 @@ done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
 
   ;; (el-get 'sync)
 #+END_SRC
+
+Note that by default, el-get support multiple method to install emacs packages
+from various sources, such as elpa, emacswiki, etc. However, IMHO, most of the
+emacswiki packages have a poor quality and documentation. So I disable it by
+default.
 
 And in the following journey, you may find the great power =el-get= provides
 for you -- which makes it possible to store just dotemacs configuration, no
