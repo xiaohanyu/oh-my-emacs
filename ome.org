@@ -156,7 +156,7 @@ So the very first thing oh-my-emacs do to your emacs is to install =el-get=,
 this is done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
 
 #+NAME: ome-install-el-get
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
   (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
   (unless (require 'el-get nil 'noerror)
@@ -164,9 +164,16 @@ this is done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
         (url-retrieve-synchronously
          "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
       (let (el-get-master-branch
+            ;; do not build recipes from emacswiki due to poor quality and
+            ;; documentation
             el-get-install-skip-emacswiki-recipes)
         (goto-char (point-max))
-        (eval-print-last-sexp))))
+        (eval-print-last-sexp)))
+    ;; build melpa packages for el-get
+    (el-get-install 'package)
+    (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                             ("melpa" . "http://melpa.milkbox.net/packages/")))
+    (el-get-elpa-build-local-recipes))
 
   (add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
 
@@ -177,6 +184,23 @@ Note that by default, el-get support multiple method to install emacs packages
 from various sources, such as elpa, emacswiki, etc. However, IMHO, most of the
 emacswiki packages have a poor quality and documentation. So I disable it by
 default.
+
+By default, el-get bundles with about 1000 packages. Combined with elpa,
+there're about 3000 packages. However, many of them are outdated, unmaintained,
+lack of documentation. For elpa package archive, there are multiple choices,
+namely the official GNU [[http://elpa.gnu.org/][elpa]], [[http://marmalade-repo.org/][marmalade]] and [[http://melpa.milkbox.net/][melpa]], etc. [[http://elpa.gnu.org/][elpa]] is just too stable
+which update just too little, and packages in [[http://marmalade-repo.org/][marmalade]] is a little outdated
+since it requires authors of packages to upload their package each time a
+new version is released. [[http://melpa.milkbox.net/][melpa]], similar to el-get, however, it builds packages
+directly from package's source repository. To tell the truth, melpa is really
+quite a good alternative to el-get. Compared to el-get, there's no need to
+install =git=, =cvs=, =svn=, etc. You have =package.el=, then you can use
+melpa. However, if you want better integration between your emacs packages with
+your system, just use el-get. For technical details, check [[https://github.com/milkypostman/melpa/issues/742][here]].
+
+Oh-my-emacs adopt el-get, while enabled only the official elpa and melpa repo
+for =package.el=, it also =(el-get-elpa-build-local-recipes)= when el-get is
+first installed, so you can install melpa package directly via el-get.
 
 And in the following journey, you may find the great power =el-get= provides
 for you -- which makes it possible to store just dotemacs configuration, no
