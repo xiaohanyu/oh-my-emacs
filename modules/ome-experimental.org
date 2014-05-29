@@ -31,16 +31,17 @@ Note:
   :PROPERTIES:
   :CUSTOM_ID: experimental-el-get-packages
   :END:
+
 #+NAME: experimental-el-get-packages
 #+CAPTION: El-get packages for ome-experimental module
-
-|                  | Status       | Description                                |
-|------------------+--------------+--------------------------------------------|
-| [[http://www.emacswiki.org/emacs/LaCarte][lacarte]]          | Recommended  | Access menubar in minibuffer command loop. |
-| [[http://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]]       | Experimental | Make [[http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html][Speedbar]] show in same frame.          |
-| [[https://github.com/aspiers/smooth-scrolling][smooth-scrolling]] | Recommended  | Emacs smooth scrolling package.            |
-| [[https://github.com/nflath/hungry-delete][hungry-delete]]    | Experimental | Enables hungry deletion in all modes.      |
-| [[http://doxymacs.sourceforge.net/][doxymacs]]         | Experimental | Literate comments for cc-mode.             |
+|                  | Status       | Description                                           |
+|------------------+--------------+-------------------------------------------------------|
+| [[http://www.emacswiki.org/emacs/LaCarte][lacarte]]          | Recommended  | Access menubar in minibuffer command loop.            |
+| [[http://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]]       | Experimental | Make [[http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html][Speedbar]] show in same frame.                     |
+| [[https://github.com/aspiers/smooth-scrolling][smooth-scrolling]] | Recommended  | Emacs smooth scrolling package.                       |
+| [[https://github.com/nflath/hungry-delete][hungry-delete]]    | Experimental | Enables hungry deletion in all modes.                 |
+| [[http://doxymacs.sourceforge.net/][doxymacs]]         | Experimental | Literate comments for cc-mode.                        |
+| [[https://github.com/zk-phi/sublimity][sublimity]]        | Experimental | Bring sublime's smooth-scrolling and minimap to emacs |
 
 Note:
 - [[http://doxymacs.sourceforge.net/][doxymacs]]: There're many Mac OS users having problems building with this
@@ -116,6 +117,7 @@ idea. =sr-speedbar= solves this problem, however, it brings some new problems:
 
 (ome-install 'sr-speedbar)
 #+END_SRC
+
 * Smooth-scrolling
   :PROPERTIES:
   :CUSTOM_ID: smooth-scrolling
@@ -203,4 +205,29 @@ If you like, you can even integrate Doxygen to CMake workflow, see [[http://maje
   (add-hook 'c-mode-common-hook 'doxymacs-font-lock))
 
 (ome-install 'doxymacs)
+#+END_SRC
+
+* Sublimity
+  :PROPERTIES:
+  :CUSTOM_ID: sublimity
+  :END:
+
+As a long-history editor, emacs lacks some "modern" features established by
+other "modern" editors, among which [[http://www.sublimetext.com/][sublime]] is one of the most famous and
+popular. To tell the truth, the minimap and smooth-scrolling looks really
+charming and attractive. There're various attempts trying to bring these
+features to emacs, such as [[http://www.emacswiki.org/emacs/MiniMap][minimap.el]], but none of them work perfectly.
+
+[[https://github.com/zk-phi/sublimity][sublimity]] is just another attemp, it's not perfect, however, IMHO, it's better
+than others.
+
+After installing sublimity, type =M-x sublimity-mode= to enable it.
+
+#+NAME: sublimity
+#+BEGIN_SRC emacs-lisp
+  (defun ome-sublimity-setup ()
+    (require 'sublimity-scroll)
+    (require 'sublimity-map))
+
+  (ome-install 'sublimity)
 #+END_SRC
