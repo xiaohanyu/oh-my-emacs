@@ -252,7 +252,7 @@ Ispell]]. The following code snippets comes from [[https://github.com/bbatsov/pr
   :CUSTOM_ID: flycheck
   :END:
 
-[[https://github.com/flycheck/flycheck][Flycheck]] (aka “Flymake done right”) is a modern on-the-fly syntax checking
+[[https://github.com/flycheck/flycheck][Flycheck]] (aka "Flymake done right") is a modern on-the-fly syntax checking
 extension for GNU Emacs 24.
 
 #+NAME: flycheck
@@ -262,7 +262,16 @@ extension for GNU Emacs 24.
     '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
   (add-hook 'prog-mode-hook 'flycheck-mode))
 
+(defun ome-flycheck-pos-tip-setup ()
+  (eval-after-load 'flycheck
+    '(progn
+       (require 'flycheck-pos-tip)
+       (setq flycheck-display-errors-function
+             #'flycheck-pos-tip-error-messages)
+       (setq flycheck-pos-tip-timeout 10))))
+
 (ome-install 'flycheck)
+(ome-install 'flycheck-pos-tip)
 #+END_SRC
 
 * Todo
