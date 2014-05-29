@@ -109,28 +109,39 @@ BTW, oh-my-emacs will use [[https://github.com/emacs-helm/helm][helm]] in evil-l
 user of [[https://github.com/emacs-helm/helm][helm]], I personally bind lots of keys with evil-leader just for [[https://github.com/emacs-helm/helm][helm]]. So
 now you can do =helm-ind-files= simply by =<SPC> e=, for example. Enjoy it.
 
+I also bind some keys to [[https://github.com/syohex/emacs-git-gutter][git-gutter.el]], so you can just stage your commits when
+editing your document at your fingertips.
+
 #+NAME: evil-leader
 #+BEGIN_SRC emacs-lisp
   (defun ome-evil-leader-setup ()
     (evil-leader/set-leader "<SPC>")
-    (if (featurep 'helm)
-        (evil-leader/set-key
-          "f" 'helm-for-files
-          "l" 'helm-locate
-          "c" 'helm-colors
-          "y" 'helm-show-kill-ring
-          "t" 'helm-top
-          "m" 'helm-man-woman
-          "j" 'helm-M-x
-          "e" 'helm-find-files
-          "b" 'helm-buffers-list)
+    (unless (featurep 'helm)
       (evil-leader/set-key
         "e" 'find-file
         "b" 'switch-to-buffer))
-    (if (require 'expand-region nil 'noerror)
-        (progn
-          (setq expand-region-contract-fast-key "z")
-          (evil-leader/set-key "xx" 'er/expand-region)))
+    (eval-after-load "helm"
+      (evil-leader/set-key
+        "f" 'helm-for-files
+        "l" 'helm-locate
+        "c" 'helm-colors
+        "y" 'helm-show-kill-ring
+        "t" 'helm-top
+        "m" 'helm-man-woman
+        "j" 'helm-M-x
+        "e" 'helm-find-files
+        "b" 'helm-buffers-list))
+    (eval-after-load "expand-region"
+      (progn
+        (setq expand-region-contract-fast-key "z")
+        (evil-leader/set-key "xx" 'er/expand-region)))
+    (eval-after-load "magit"
+      (evil-leader/set-key "g" 'magit-status))
+    (eval-after-load "git-gutter-mode"
+      (evil-leader/set-key
+        "s" 'git-gutter:stage-hunk
+        "n" 'git-gutter:next-hunk
+        "p" 'git-gutter:previous-hunk))
     (evil-leader/set-key
       "k" 'kill-buffer)
     (global-evil-leader-mode))
