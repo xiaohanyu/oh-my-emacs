@@ -32,6 +32,7 @@ This file contains things that still don't find a good place to put, :-).
 | [[http://emacs-w3m.namazu.org/][emacs-w3m]]          | Recommended | Browsing HTML docs in Emacs.                       |
 | [[https://github.com/syohex/emacs-quickrun][quickrun]]           | Recommended | Just as its name said.                             |
 | [[http://www.eskimo.com/~seldon/diminish.el][diminish]]           | Recommended | Clean up mode line space.                          |
+| [[https://github.com/syohex/emacs-git-gutter-fringe][git-gutter-fringe]]  | Recommended | Fringe version of [[https://github.com/syohex/emacs-git-gutter][git-gutter.el]]                    |
 
 * Enable some dangerous commands
 
@@ -225,6 +226,58 @@ check the magit [[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]] for
 
   (if (executable-find "git")
       (ome-install 'magit))
+#+END_SRC
+
+* git-gutter-fringe
+  :PROPERTIES:
+  :CUSTOM_ID: git-gutter-fringe
+  :END:
+
+[[https://github.com/syohex/emacs-git-gutter][git-gutter.el]] is a port of [[https://github.com/jisaacks/GitGutter][GitGutter]] which is a plugin of Sublime Text. It
+shows an icon in the gutter area indicating whether a line has been inserted,
+modified or deleted.
+
+The original [[https://github.com/syohex/emacs-git-gutter][git-gutter.el]] didn't work with linum-mode, so the author created a
+fringe version, called [[https://github.com/syohex/emacs-git-gutter-fringe][git-gutter-fringe.el]] which works with linux-mode. For
+detailed differences, check [[https://github.com/syohex/emacs-git-gutter][git-gutter.el]]'s [[https://github.com/syohex/emacs-git-gutter#git-gutterel-vs-git-gutter-fringeel][document]].
+
+[[https://github.com/syohex/emacs-git-gutter][git-gutter.el]] provides the following commands:
+- =git-gutter:next-hunk=
+- =git-gutter:previous-hunk=
+- =git-gutter:popup-hunk=, alias =git-gutter:popup-diff=
+- =git-gutter:stage-hunk=
+- =git-gutter:revert-hunk=
+- =git-gutter:clear=
+- =git-gutter:toggle=
+
+#+NAME: git-gutter-fringe
+#+BEGIN_SRC emacs-lisp
+  (defun ome-git-gutter-fringe-setup ()
+    (dolist (mode-hook '(text-mode-hook prog-mode-hook))
+      (add-hook mode-hook
+                (lambda ()
+                  ;; set fringe width to better display
+                  (setq left-fringe-width 10)
+                  (setq right-fringe-width 10))))
+
+    ;; some keybindings
+    (global-set-key (kbd "C-x v g") 'git-gutter:toggle)
+    (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
+    ;; Jump to next/previous hunk
+    (global-set-key (kbd "C-x v p") 'git-gutter:previous-hunk)
+    (global-set-key (kbd "C-x v n") 'git-gutter:next-hunk)
+    ;; Stage current hunk
+    (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
+    ;; Revert current hunk
+    (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+
+    ;; improve performance
+    ;; (setq git-gutter:update-hooks '(after-save-hook after-revert-hook))
+
+    (require 'git-gutter-fringe)
+    (global-git-gutter-mode))
+
+  (ome-install 'git-gutter-fringe)
 #+END_SRC
 
 * Visual-line-mode
@@ -609,7 +662,10 @@ like.
       '(diminish 'projectile-mode "Prjl"))
 
     (eval-after-load "undo-tree"
-      '(diminish 'undo-tree-mode)))
+      '(diminish 'undo-tree-mode))
+
+    (eval-after-load "git-gutter-fringe"
+      '(diminish 'git-gutter-mode)))
 
   (ome-install 'diminish)
 #+END_SRC
