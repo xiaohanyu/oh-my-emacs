@@ -210,8 +210,19 @@ VCS user interface written on top of it[1]".
 enjoyable. Of course there're other choices, but I prefer magit, view [[http://alexott.net/en/writings/emacs-vcs/EmacsGit.html][Alexott's
 Blog]] for technical details.
 
+There're a huge collection of magit commands which I can't remember at all,
+check the magit [[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]] for details. The entry point to magit is
+=magit-status=, by default, ome bind "C-x g" to this command.
+
 #+NAME: magit
 #+BEGIN_SRC emacs-lisp
+  (defun ome-magit-setup ()
+    ;; magit-status is the entry point
+    (global-set-key (kbd "C-x g") 'magit-status)
+    (add-hook 'git-rebase-mode-hook
+              (lambda ()
+                (evil-local-mode -1))))
+
   (if (executable-find "git")
       (ome-install 'magit))
 #+END_SRC
