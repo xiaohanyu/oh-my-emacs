@@ -105,8 +105,9 @@ it to =<SPC>=, you don't use =<SPC>= to move right, ha?  Some other people
 prefer to bind the =<leader>= key to comma =,=, but =,= already has a
 binding(=evil-repeat-find-char-revers= in evil normal state).
 
-BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
-=helm-find-files= simply by =<SPC> e=, for example. Enjoy it.
+BTW, oh-my-emacs will use [[https://github.com/emacs-helm/helm][helm]] in evil-leader if available. Since I'm a heavy
+user of [[https://github.com/emacs-helm/helm][helm]], I personally bind lots of keys with evil-leader just for [[https://github.com/emacs-helm/helm][helm]]. So
+now you can do =helm-ind-files= simply by =<SPC> e=, for example. Enjoy it.
 
 #+NAME: evil-leader
 #+BEGIN_SRC emacs-lisp
@@ -114,12 +115,19 @@ BTW, oh-my-emacs will use =helm= in evil-leader if available. So now you can do
     (evil-leader/set-leader "<SPC>")
     (if (featurep 'helm)
         (evil-leader/set-key
+          "f" 'helm-for-files
+          "l" 'helm-locate
+          "c" 'helm-colors
+          "y" 'helm-show-kill-ring
+          "t" 'helm-top
+          "m" 'helm-man-woman
+          "j" 'helm-M-x
           "e" 'helm-find-files
           "b" 'helm-buffers-list)
       (evil-leader/set-key
         "e" 'find-file
         "b" 'switch-to-buffer))
-    (if (featurep 'expand-region)
+    (if (require 'expand-region nil 'noerror)
         (progn
           (setq expand-region-contract-fast-key "z")
           (evil-leader/set-key "xx" 'er/expand-region)))
