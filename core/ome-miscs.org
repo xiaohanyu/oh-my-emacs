@@ -259,7 +259,7 @@ detailed differences, check [[https://github.com/syohex/emacs-git-gutter][git-gu
               (lambda ()
                 ;; set fringe width to better display
                 (setq left-fringe-width 10)
-                (setq right-fringe-width 10))))
+                (setq right-fringe-width 4))))
 
   ;; some keybindings
   (global-set-key (kbd "C-x v g") 'git-gutter:toggle)
