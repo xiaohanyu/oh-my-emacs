@@ -55,21 +55,21 @@ still in beta version, however, and will be sent to el-get when stable.
 
 #+NAME: geiser
 #+BEGIN_SRC emacs-lisp
-  (defun ome-geiser-setup ()
-    (setq geiser-default-implementation 'guile)
-    (setq geiser-guile-load-init-file-p t))
+(defun ome-geiser-setup ()
+  (setq geiser-default-implementation 'guile)
+  (setq geiser-guile-load-init-file-p t))
 
-  (defun ome-ac-geiser-setup ()
-    (add-hook 'geiser-mode-hook 'ac-geiser-setup)
-    (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
-    (eval-after-load "auto-complete"
-      '(add-to-list 'ac-modes 'geiser-repl-mode)))
+(defun ome-ac-geiser-setup ()
+  (add-hook 'geiser-mode-hook 'ac-geiser-setup)
+  (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
+  (eval-after-load "auto-complete"
+    '(add-to-list 'ac-modes 'geiser-repl-mode)))
 
-  (when (or (executable-find "guile") (executable-find "racket"))
-    (ome-install 'geiser)
-    (ome-install 'ac-geiser))
+(when (or (executable-find "guile") (executable-find "racket"))
+  (ome-install 'geiser)
+  (ome-install 'ac-geiser))
 
-  ;; (ome-install 'quack)
+;; (ome-install 'quack)
 #+END_SRC
 
 Actually, the official SLIME contrib has some swank backends for scheme
@@ -79,11 +79,11 @@ disabled by default.
 
 #+NAME: chicken
 #+BEGIN_SRC emacs-lisp :tangle no
-  (defun ome-swank-chicken-setup ()
-    (setq swank-chicken-path "~/.emacs.d/el-get/swank-chicken/swank-chicken.scm")
-    (add-hook 'scheme-mode-hook
-              (lambda ()
-                (slime-mode t))))
+(defun ome-swank-chicken-setup ()
+  (setq swank-chicken-path "~/.emacs.d/el-get/swank-chicken/swank-chicken.scm")
+  (add-hook 'scheme-mode-hook
+            (lambda ()
+              (slime-mode t))))
 
-  (ome-install 'swank-chicken)
+(ome-install 'swank-chicken)
 #+END_SRC

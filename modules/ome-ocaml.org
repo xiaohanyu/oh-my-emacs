@@ -46,11 +46,11 @@ Unlike python, there are not too many choices for OCaml in Emacs.
 
 #+NAME: ocaml-mode
 #+BEGIN_SRC emacs-lisp
-  ;; Keep an empty hook function for later customization.
-  (defun ome-caml-mode-setup ())
+;; Keep an empty hook function for later customization.
+(defun ome-caml-mode-setup ())
 
-  (when (executable-find "ocaml")
-    (ome-install 'caml-mode))
+(when (executable-find "ocaml")
+  (ome-install 'caml-mode))
 #+END_SRC
 
 * Tuareg-mode
@@ -63,25 +63,25 @@ fact, you can use =tuareg-mode= without =caml-mode=, but some basic functions
 depends on =caml-mode=, so we install both. See typerex's [[http://www.typerex.org/faq.html][FAQ]] for details.
 
 #+BEGIN_SRC emacs-lisp
-  (defun ome-tuareg-mode-setup ()
-    ;; The following settings comes from tuareg-mode's README
-    ;; use new SMIE engine
-    (setq tuareg-use-smie t)
-    ;; Indent `=' like a standard keyword.
-    (setq tuareg-lazy-= t)
-    ;; Indent [({ like standard keywords.
-    (setq tuareg-lazy-paren t)
-    ;; No indentation after `in' keywords.
-    (setq tuareg-in-indent 0)
-    ;; set ocaml library path
-    (setq tuareg-library-path "/usr/lib/ocaml")
-    (add-hook 'tuareg-mode-hook
-              (lambda ()
-                (define-key tuareg-mode-map (kbd "RET")
-                  'newline-and-indent))))
+(defun ome-tuareg-mode-setup ()
+  ;; The following settings comes from tuareg-mode's README
+  ;; use new SMIE engine
+  (setq tuareg-use-smie t)
+  ;; Indent `=' like a standard keyword.
+  (setq tuareg-lazy-= t)
+  ;; Indent [({ like standard keywords.
+  (setq tuareg-lazy-paren t)
+  ;; No indentation after `in' keywords.
+  (setq tuareg-in-indent 0)
+  ;; set ocaml library path
+  (setq tuareg-library-path "/usr/lib/ocaml")
+  (add-hook 'tuareg-mode-hook
+            (lambda ()
+              (define-key tuareg-mode-map (kbd "RET")
+                'newline-and-indent))))
 
-  (when (executable-find "ocaml")
-    (ome-install 'tuareg-mode))
+(when (executable-find "ocaml")
+  (ome-install 'tuareg-mode))
 #+END_SRC
 
 * Todos

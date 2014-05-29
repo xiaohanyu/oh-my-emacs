@@ -70,11 +70,11 @@ details.
 
 #+NAME: lacarte
 #+BEGIN_SRC emacs-lisp
-  (defun ome-lacarte-setup ()
-    (global-set-key (kbd "C-c M-x") 'lacarte-execute-command)
-    (global-set-key (kbd "C-c M-m") 'lacarte-execute-menu-command))
+(defun ome-lacarte-setup ()
+  (global-set-key (kbd "C-c M-x") 'lacarte-execute-command)
+  (global-set-key (kbd "C-c M-m") 'lacarte-execute-menu-command))
 
-  (ome-install 'lacarte)
+(ome-install 'lacarte)
 #+END_SRC
 
 * Sr-speedbar
@@ -102,19 +102,19 @@ idea. =sr-speedbar= solves this problem, however, it brings some new problems:
 
 #+NAME: sr-speedbar
 #+BEGIN_SRC emacs-lisp
-  (defadvice sr-speedbar-open (around ome-sr-speedbar-open disable)
-    ad-do-it
-    (with-current-buffer sr-speedbar-buffer-name
-      (setq window-size-fixed 'width)))
+(defadvice sr-speedbar-open (around ome-sr-speedbar-open disable)
+  ad-do-it
+  (with-current-buffer sr-speedbar-buffer-name
+    (setq window-size-fixed 'width)))
 
-  (defun ome-sr-speedbar-setup ()
-    ;;keep speed bar window width after resizing
-    (ad-enable-advice 'sr-speedbar-open 'around 'ome-sr-speedbar-open)
-    (ad-activate 'sr-speedbar-open)
-    (setq sr-speedbar-skip-other-window-p t)
-    (setq sr-speedbar-right-side nil))
+(defun ome-sr-speedbar-setup ()
+  ;;keep speed bar window width after resizing
+  (ad-enable-advice 'sr-speedbar-open 'around 'ome-sr-speedbar-open)
+  (ad-activate 'sr-speedbar-open)
+  (setq sr-speedbar-skip-other-window-p t)
+  (setq sr-speedbar-right-side nil))
 
-  (ome-install 'sr-speedbar)
+(ome-install 'sr-speedbar)
 #+END_SRC
 * Smooth-scrolling
   :PROPERTIES:
@@ -125,7 +125,7 @@ Make emacs scroll smoothly.
 
 #+NAME: smooth-scrolling
 #+BEGIN_SRC emacs-lisp
-  (ome-install 'smooth-scrolling)
+(ome-install 'smooth-scrolling)
 #+END_SRC
 
 * Hungry-delete
@@ -139,11 +139,11 @@ independent package.
 
 #+NAME: hungry-delete
 #+BEGIN_SRC emacs-lisp
-  (defun ome-hungry-delete-setup ()
-    (dolist (hook '(text-mode-hook prog-mode-hook comint-mode-hook))
-      (add-hook hook 'turn-on-hungry-delete-mode)))
+(defun ome-hungry-delete-setup ()
+  (dolist (hook '(text-mode-hook prog-mode-hook comint-mode-hook))
+    (add-hook hook 'turn-on-hungry-delete-mode)))
 
-  (ome-install 'hungry-delete)
+(ome-install 'hungry-delete)
 #+END_SRC
 
 * Fill-Column-Indicator
@@ -161,11 +161,11 @@ put it in ome-experimental module instead of core.
 
 #+NAME: fill-column-indicator
 #+BEGIN_SRC emacs-lisp :tangle no
-  (defun ome-fill-column-indicator-setup ()
-    (add-hook 'text-mode-hook 'fci-mode)
-    (add-hook 'prog-mode-hook 'fci-mode))
+(defun ome-fill-column-indicator-setup ()
+  (add-hook 'text-mode-hook 'fci-mode)
+  (add-hook 'prog-mode-hook 'fci-mode))
 
-  (ome-install 'fill-column-indicator)
+(ome-install 'fill-column-indicator)
 #+END_SRC
 
 * Documentation with Doxymacs in CC-mode
@@ -198,9 +198,9 @@ If you like, you can even integrate Doxygen to CMake workflow, see [[http://maje
 
 #+NAME: doxymacs
 #+BEGIN_SRC emacs-lisp
-  (defun ome-doxymacs-setup ()
-    (add-hook 'c-mode-common-hook 'doxymacs-mode)
-    (add-hook 'c-mode-common-hook 'doxymacs-font-lock))
+(defun ome-doxymacs-setup ()
+  (add-hook 'c-mode-common-hook 'doxymacs-mode)
+  (add-hook 'c-mode-common-hook 'doxymacs-font-lock))
 
-  (ome-install 'doxymacs)
+(ome-install 'doxymacs)
 #+END_SRC

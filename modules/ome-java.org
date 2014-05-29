@@ -64,7 +64,7 @@ Then you should download and install eclim, see [[http://eclim.org/install.html]
 details. I use the following command to do an automated install.
 
 #+BEGIN_SRC sh
-  java -Dvim.files=$HOME/.vim -Declipse.home=/opt/eclipse -jar eclim_1.7.18.jar install
+java -Dvim.files=$HOME/.vim -Declipse.home=/opt/eclipse -jar eclim_1.7.18.jar install
 #+END_SRC
 
 Oh-my-emacs assumes that you install Eclipse to =/opt/eclipse/= directory, and
@@ -78,38 +78,38 @@ Java Development in Emacs]] show you an illustrated guide.
 
 #+NAME: eclim
 #+BEGIN_SRC emacs-lisp
-  (defun ome-eclim-setup ()
-    ;; (add-to-list 'eclim-eclipse-dirs "/opt/eclipse")
-    (setq eclim-auto-save t
-          eclim-executable (or (executable-find "eclim") "/opt/eclipse/eclim")
-          eclimd-executable (or (executable-find "eclimd") "/opt/eclipse/eclimd")
-          eclimd-wait-for-process nil
-          eclimd-default-workspace "~/workspace/"
-          help-at-pt-display-when-idle t
-          help-at-pt-timer-delay 0.1)
+(defun ome-eclim-setup ()
+  ;; (add-to-list 'eclim-eclipse-dirs "/opt/eclipse")
+  (setq eclim-auto-save t
+        eclim-executable (or (executable-find "eclim") "/opt/eclipse/eclim")
+        eclimd-executable (or (executable-find "eclimd") "/opt/eclipse/eclimd")
+        eclimd-wait-for-process nil
+        eclimd-default-workspace "~/workspace/"
+        help-at-pt-display-when-idle t
+        help-at-pt-timer-delay 0.1)
 
-    ;; Call the help framework with the settings above & activate
-    ;; eclim-mode
-    (help-at-pt-set-timer)
+  ;; Call the help framework with the settings above & activate
+  ;; eclim-mode
+  (help-at-pt-set-timer)
 
-    ;; keep consistent which other auto-complete backend.
-    (custom-set-faces
-     '(ac-emacs-eclim-candidate-face ((t (:inherit ac-candidate-face))))
-     '(ac-emacs-eclim-selection-face ((t (:inherit ac-selection-face)))))
+  ;; keep consistent which other auto-complete backend.
+  (custom-set-faces
+   '(ac-emacs-eclim-candidate-face ((t (:inherit ac-candidate-face))))
+   '(ac-emacs-eclim-selection-face ((t (:inherit ac-selection-face)))))
 
-    ;; Hook eclim up with auto complete mode
-    (require 'ac-emacs-eclim-source)
-    ;; (ac-emacs-eclim-config)
+  ;; Hook eclim up with auto complete mode
+  (require 'ac-emacs-eclim-source)
+  ;; (ac-emacs-eclim-config)
 
-    (require 'eclimd)
+  (require 'eclimd)
 
-    (add-hook 'java-mode-hook
-              (lambda ()
-                (add-to-list 'ac-sources 'ac-source-emacs-eclim)
-                (eclim-mode t))))
+  (add-hook 'java-mode-hook
+            (lambda ()
+              (add-to-list 'ac-sources 'ac-source-emacs-eclim)
+              (eclim-mode t))))
 
-  (when (executable-find "eclipse")
-    (ome-install 'eclim))
+(when (executable-find "eclipse")
+  (ome-install 'eclim))
 #+END_SRC
 
 * Todo

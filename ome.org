@@ -114,7 +114,7 @@ Wow, what a long journey, if you're tired, you can [[http://emacsrocks.com/][roc
 2. Checkout a version of the oh-my-emacs using git -- if you're new to
    git, checkout this [[http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html][git-tutorial]].
 #+BEGIN_SRC sh
-  git clone http://github.com/xiaohanyu/oh-my-emacs.git
+git clone http://github.com/xiaohanyu/oh-my-emacs.git
 #+END_SRC
 3. Move the resulting directory to =~/.emacs.d= [1]
 4. Launch Emacs!
@@ -157,27 +157,27 @@ this is done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
 
 #+NAME: ome-install-el-get
 #+BEGIN_SRC emacs-lisp :tangle no
-  (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-  (unless (require 'el-get nil 'noerror)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-      (let (el-get-master-branch
-            ;; do not build recipes from emacswiki due to poor quality and
-            ;; documentation
-            el-get-install-skip-emacswiki-recipes)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
-    ;; build melpa packages for el-get
-    (el-get-install 'package)
-    (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                             ("melpa" . "http://melpa.milkbox.net/packages/")))
-    (el-get-elpa-build-local-recipes))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch
+          ;; do not build recipes from emacswiki due to poor quality and
+          ;; documentation
+          el-get-install-skip-emacswiki-recipes)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  ;; build melpa packages for el-get
+  (el-get-install 'package)
+  (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                           ("melpa" . "http://melpa.milkbox.net/packages/")))
+  (el-get-elpa-build-local-recipes))
 
-  (add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
+(add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
 
-  ;; (el-get 'sync)
+;; (el-get 'sync)
 #+END_SRC
 
 Note that by default, el-get support multiple method to install emacs packages
@@ -218,9 +218,9 @@ appreciated.
 
 #+NAME: cl-lib
 #+BEGIN_SRC emacs-lisp
-  (when (version< emacs-version "24.3")
-    (el-get 'sync '(cl-lib))
-    (add-to-list 'load-path "~/.emacs.d/el-get/cl-lib"))
+(when (version< emacs-version "24.3")
+  (el-get 'sync '(cl-lib))
+  (add-to-list 'load-path "~/.emacs.d/el-get/cl-lib"))
 #+END_SRC
 
 ** Structure
@@ -241,80 +241,80 @@ elisp code embedded in this file.
 
 #+NAME: ome-load
 #+BEGIN_SRC emacs-lisp
-  (defvar ome-packages nil
-    "This package contains all packages loaded by oh-my-emacs.
+(defvar ome-packages nil
+  "This package contains all packages loaded by oh-my-emacs.
 
-  Acutally, this variable is an alist, whose element is also a
-  list. The car of the element is an oh-my-emacs module name, while
-  the cdr of the element is a list of el-get packages loaded in particular
-  oh-my-emacs module.")
+Acutally, this variable is an alist, whose element is also a
+list. The car of the element is an oh-my-emacs module name, while
+the cdr of the element is a list of el-get packages loaded in particular
+oh-my-emacs module.")
 
-  (defun ome-load (module &rest header-or-tags)
-    "Load configuration from other ome-*.org files.
-  If the optional argument is the id of a subtree then only
-  configuration from within that subtree will be loaded.  If it is
-  not an id then it will be interpreted as a tag, and only subtrees
-  marked with the given tag will be loaded.
+(defun ome-load (module &rest header-or-tags)
+  "Load configuration from other ome-*.org files.
+If the optional argument is the id of a subtree then only
+configuration from within that subtree will be loaded.  If it is
+not an id then it will be interpreted as a tag, and only subtrees
+marked with the given tag will be loaded.
 
-  For example, to load all of ome-lisp.org simply add (ome-load
-  \"ome-lisp\") to your configuration.
+For example, to load all of ome-lisp.org simply add (ome-load
+\"ome-lisp\") to your configuration.
 
-  To load only the 'window-system' config from ome-miscs.org
-  add (ome-load \"ome-miscs.org\" \"window-system\") to your
-  configuration.
+To load only the 'window-system' config from ome-miscs.org
+add (ome-load \"ome-miscs.org\" \"window-system\") to your
+configuration.
 
-  The good news is, you can load multiple parts config from one
-  single file by simply (ome-load \"ome-module.org\" \"part1\"
-  \"part2\")."
-    (let ((module-name (file-name-base module))
-          (file (expand-file-name (if (string-match "ome-.+\.org" module)
-                                      module
-                                    (format "ome-%s.org" module))
-                                  ome-dir)))
-      ;; ensure el-get-sources is empty before loading "ome-.+\.org" files
-      (setq el-get-sources nil)
-      ;; enable git shallow clone to save time and bandwidth
-      (setq el-get-git-shallow-clone t)
+The good news is, you can load multiple parts config from one
+single file by simply (ome-load \"ome-module.org\" \"part1\"
+\"part2\")."
+  (let ((module-name (file-name-base module))
+        (file (expand-file-name (if (string-match "ome-.+\.org" module)
+                                    module
+                                  (format "ome-%s.org" module))
+                                ome-dir)))
+    ;; ensure el-get-sources is empty before loading "ome-.+\.org" files
+    (setq el-get-sources nil)
+    ;; enable git shallow clone to save time and bandwidth
+    (setq el-get-git-shallow-clone t)
 
-      (if header-or-tags
-          (dolist (header-or-tag header-or-tags)
-            (let* ((base (file-name-nondirectory file))
-                   (dir  (file-name-directory file))
-                   (partial-file (expand-file-name
-                                  (concat "." (file-name-sans-extension base)
-                                          ".part." header-or-tag ".org")
-                                  dir)))
-              (unless (file-exists-p partial-file)
-                (with-temp-file partial-file
-                  (insert
-                   (with-temp-buffer
-                     (insert-file-contents file)
-                     (save-excursion
-                       (condition-case nil ;; collect as a header
-                           (progn
-                             (org-link-search (concat "#" header-or-tag))
-                             (org-narrow-to-subtree)
-                             (buffer-string))
-                         (error ;; collect all entries with as tags
-                          (let (body)
-                            (org-map-entries
-                             (lambda ()
-                               (save-restriction
-                                 (org-narrow-to-subtree)
-                                 (setq body (concat body "\n" (buffer-string)))))
-                             header-or-tag)
-                            body))))))))
-              (org-babel-load-file partial-file)))
-        (org-babel-load-file file))
+    (if header-or-tags
+        (dolist (header-or-tag header-or-tags)
+          (let* ((base (file-name-nondirectory file))
+                 (dir  (file-name-directory file))
+                 (partial-file (expand-file-name
+                                (concat "." (file-name-sans-extension base)
+                                        ".part." header-or-tag ".org")
+                                dir)))
+            (unless (file-exists-p partial-file)
+              (with-temp-file partial-file
+                (insert
+                 (with-temp-buffer
+                   (insert-file-contents file)
+                   (save-excursion
+                     (condition-case nil ;; collect as a header
+                         (progn
+                           (org-link-search (concat "#" header-or-tag))
+                           (org-narrow-to-subtree)
+                           (buffer-string))
+                       (error ;; collect all entries with as tags
+                        (let (body)
+                          (org-map-entries
+                           (lambda ()
+                             (save-restriction
+                               (org-narrow-to-subtree)
+                               (setq body (concat body "\n" (buffer-string)))))
+                           header-or-tag)
+                          body))))))))
+            (org-babel-load-file partial-file)))
+      (org-babel-load-file file))
 
-      (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
-      (setq ome-module-packages nil)
-      (mapcar (lambda (el-get-package)
-                (add-to-list 'ome-module-packages
-                             (el-get-source-name el-get-package)))
-              el-get-sources)
-      (add-to-list 'ome-packages
-                   (cons module-name ome-module-packages))))
+    (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+    (setq ome-module-packages nil)
+    (mapcar (lambda (el-get-package)
+              (add-to-list 'ome-module-packages
+                           (el-get-source-name el-get-package)))
+            el-get-sources)
+    (add-to-list 'ome-packages
+                 (cons module-name ome-module-packages))))
 
 
 #+END_SRC
@@ -323,72 +323,72 @@ elisp code embedded in this file.
 
 #+NAME: ome-install
 #+BEGIN_SRC emacs-lisp
-  (defun ome-install (el-get-package)
-    "Add EL-GET-PACKAGE to `el-get-sources'.
+(defun ome-install (el-get-package)
+  "Add EL-GET-PACKAGE to `el-get-sources'.
 
-  This package will be installed when `ome-load'. Users can make
-  his own customization by providing a \"ome-package-name-setup\"
-  function."
-    (let ((ome-package-setup-func
-           (intern
-            (concat "ome-"
-                    (el-get-as-string el-get-package)
-                    "-setup"))))
-      (if (fboundp ome-package-setup-func)
-          (add-to-list 'el-get-sources
-                       `(:name ,el-get-package
-                               :after (progn
-                                        (,ome-package-setup-func))))
+This package will be installed when `ome-load'. Users can make
+his own customization by providing a \"ome-package-name-setup\"
+function."
+  (let ((ome-package-setup-func
+         (intern
+          (concat "ome-"
+                  (el-get-as-string el-get-package)
+                  "-setup"))))
+    (if (fboundp ome-package-setup-func)
         (add-to-list 'el-get-sources
-                     `(:name ,el-get-package)))))
+                     `(:name ,el-get-package
+                             :after (progn
+                                      (,ome-package-setup-func))))
+      (add-to-list 'el-get-sources
+                   `(:name ,el-get-package)))))
 #+END_SRC
 
 - Functions for getting information about el-get packages installed by
   oh-my-emacs.
 #+NAME: ome-packages
 #+BEGIN_SRC emacs-lisp
-  (defun ome-try-get-package-website (package)
-    "el-get's package recipe has multiple type, some contains
-  a :website, some contains just a :url, while some github package
-  just contains a :pkgname. This function try to get a proper
-  website link for an el-get package."
-    (let ((package-def (el-get-package-def package)))
-      (or (plist-get package-def :website)
-          (and (eq (plist-get package-def :type) 'github)
-               (concat "https://github.com/"
-                       (plist-get package-def :pkgname)))
-          (plist-get package-def :url))))
+(defun ome-try-get-package-website (package)
+  "el-get's package recipe has multiple type, some contains
+a :website, some contains just a :url, while some github package
+just contains a :pkgname. This function try to get a proper
+website link for an el-get package."
+  (let ((package-def (el-get-package-def package)))
+    (or (plist-get package-def :website)
+        (and (eq (plist-get package-def :type) 'github)
+             (concat "https://github.com/"
+                     (plist-get package-def :pkgname)))
+        (plist-get package-def :url))))
 
-  (defun ome-try-get-package-description (package)
-    "This function try to get a proper description for an el-get
-  package from its recipe. Note that some package's description has
-  multiple lines, so we need to join them together for better
-  auto-fill."
-    (let ((package-def (el-get-package-def package)))
-      (replace-regexp-in-string "\\(\n\\|\\ \\)+" " "
-                                (plist-get package-def :description))))
+(defun ome-try-get-package-description (package)
+  "This function try to get a proper description for an el-get
+package from its recipe. Note that some package's description has
+multiple lines, so we need to join them together for better
+auto-fill."
+  (let ((package-def (el-get-package-def package)))
+    (replace-regexp-in-string "\\(\n\\|\\ \\)+" " "
+                              (plist-get package-def :description))))
 
-  (defun ome-package-list-to-org-table ()
-    (interactive)
-    (setq ome-packages (sort ome-packages
-                             #'(lambda (x y) (string< (car x) (car y)))))
-    (let ((org-table-line-template "|%s|[[%s][%s]]|%s|\n"))
-      (with-temp-buffer
-        (insert "| Module | Package | Description |\n")
-        (insert "|--------+---------+-------------|\n")
-        (insert "")
-        (dolist (module-packages ome-packages)
-          (setq package-index 0)
-          (dolist (package (cdr module-packages))
-            (insert (format org-table-line-template
-                            (if (= package-index 0)
-                                (car module-packages)
-                              "")
-                            (ome-try-get-package-website package)
-                            package
-                            (ome-try-get-package-description package)))
-            (incf package-index)))
-        (buffer-string))))
+(defun ome-package-list-to-org-table ()
+  (interactive)
+  (setq ome-packages (sort ome-packages
+                           #'(lambda (x y) (string< (car x) (car y)))))
+  (let ((org-table-line-template "|%s|[[%s][%s]]|%s|\n"))
+    (with-temp-buffer
+      (insert "| Module | Package | Description |\n")
+      (insert "|--------+---------+-------------|\n")
+      (insert "")
+      (dolist (module-packages ome-packages)
+        (setq package-index 0)
+        (dolist (package (cdr module-packages))
+          (insert (format org-table-line-template
+                          (if (= package-index 0)
+                              (car module-packages)
+                            "")
+                          (ome-try-get-package-website package)
+                          package
+                          (ome-try-get-package-description package)))
+          (incf package-index)))
+      (buffer-string))))
 
 #+END_SRC
 
@@ -400,19 +400,19 @@ elisp code embedded in this file.
 
 #+NAME: core
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'el-get-sources
-               '(:name cl-lib))
+(add-to-list 'el-get-sources
+             '(:name cl-lib))
 
-  (defun ome-start-or-switch-to (function buffer-name)
-    "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
-    Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
-    the current buffer."
-    (if (not (get-buffer buffer-name))
-        (progn
-          (split-window-sensibly (selected-window))
-          (other-window 1)
-          (funcall function))
-      (switch-to-buffer-other-window buffer-name)))
+(defun ome-start-or-switch-to (function buffer-name)
+  "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
+  Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
+  the current buffer."
+  (if (not (get-buffer buffer-name))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (funcall function))
+    (switch-to-buffer-other-window buffer-name)))
 #+END_SRC
 
 * Load settings
@@ -450,26 +450,26 @@ you really need it.
 
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
-  (ome-load "core/ome-auto-mode.org")
-  (ome-load "core/ome-basic.org")
-  (ome-load "core/ome-completion.org")
-  (ome-load "core/ome-gui.org")
-  (ome-load "core/ome-keybindings.org")
-  (ome-load "core/ome-miscs.org")
-  (ome-load "core/ome-org.org")
-  (ome-load "core/ome-writing.org")
-  (ome-load "core/ome-advanced.org")
-  (ome-load "modules/ome-cc.org")
-  (ome-load "modules/ome-java.org")
-  (ome-load "modules/ome-emacs-lisp.org")
-  (ome-load "modules/ome-common-lisp.org")
-  (ome-load "modules/ome-clojure.org")
-  (ome-load "modules/ome-scheme.org")
-  (ome-load "modules/ome-python.org")
-  (ome-load "modules/ome-ruby.org")
-  (ome-load "modules/ome-ocaml.org")
-  (ome-load "modules/ome-tex.org")
-  (ome-load "modules/ome-web.org")
+(ome-load "core/ome-auto-mode.org")
+(ome-load "core/ome-basic.org")
+(ome-load "core/ome-completion.org")
+(ome-load "core/ome-gui.org")
+(ome-load "core/ome-keybindings.org")
+(ome-load "core/ome-miscs.org")
+(ome-load "core/ome-org.org")
+(ome-load "core/ome-writing.org")
+(ome-load "core/ome-advanced.org")
+(ome-load "modules/ome-cc.org")
+(ome-load "modules/ome-java.org")
+(ome-load "modules/ome-emacs-lisp.org")
+(ome-load "modules/ome-common-lisp.org")
+(ome-load "modules/ome-clojure.org")
+(ome-load "modules/ome-scheme.org")
+(ome-load "modules/ome-python.org")
+(ome-load "modules/ome-ruby.org")
+(ome-load "modules/ome-ocaml.org")
+(ome-load "modules/ome-tex.org")
+(ome-load "modules/ome-web.org")
 #+END_SRC
 
 ** Load User/System Specific Files
@@ -485,47 +485,47 @@ development versions of a project, or if a project is not in elpa.
 After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
 #+NAME: ome-load-files
 #+BEGIN_SRC emacs-lisp
-  (flet ((sk-load (base)
-           (let* ((path          (expand-file-name base ome-dir))
-                  (literate      (concat path ".org"))
-                  (encrypted-org (concat path ".org.gpg"))
-                  (plain         (concat path ".el"))
-                  (encrypted-el  (concat path ".el.gpg")))
-             (cond
-              ((file-exists-p encrypted-org) (org-babel-load-file encrypted-org))
-              ((file-exists-p encrypted-el)  (load encrypted-el))
-              ((file-exists-p literate)      (org-babel-load-file literate))
-              ((file-exists-p plain)         (load plain)))))
-         (remove-extension (name)
-           (string-match "\\(.*?\\)\.\\(org\\(\\.el\\)?\\|el\\)\\(\\.gpg\\)?$" name)
-           (match-string 1 name)))
-    (let ((elisp-dir (expand-file-name "src" ome-dir))
-          (user-dir (expand-file-name user-login-name ome-dir)))
-      ;; add the src directory to the load path
-      (add-to-list 'load-path elisp-dir)
-      ;; load specific files
-      (when (file-exists-p elisp-dir)
-        (let ((default-directory elisp-dir))
-          (normal-top-level-add-subdirs-to-load-path)))
-      ;; load system-specific config
-      (sk-load system-name)
-      ;; load user-specific config
-      (sk-load user-login-name)
-      ;; load any files in the user's directory
-      (when (file-exists-p user-dir)
-        (add-to-list 'load-path user-dir)
-        (mapc #'sk-load
-              (remove-duplicates
-               (mapcar #'remove-extension
-                       (directory-files user-dir t ".*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
-               :test #'string=)))))
+(flet ((sk-load (base)
+         (let* ((path          (expand-file-name base ome-dir))
+                (literate      (concat path ".org"))
+                (encrypted-org (concat path ".org.gpg"))
+                (plain         (concat path ".el"))
+                (encrypted-el  (concat path ".el.gpg")))
+           (cond
+            ((file-exists-p encrypted-org) (org-babel-load-file encrypted-org))
+            ((file-exists-p encrypted-el)  (load encrypted-el))
+            ((file-exists-p literate)      (org-babel-load-file literate))
+            ((file-exists-p plain)         (load plain)))))
+       (remove-extension (name)
+         (string-match "\\(.*?\\)\.\\(org\\(\\.el\\)?\\|el\\)\\(\\.gpg\\)?$" name)
+         (match-string 1 name)))
+  (let ((elisp-dir (expand-file-name "src" ome-dir))
+        (user-dir (expand-file-name user-login-name ome-dir)))
+    ;; add the src directory to the load path
+    (add-to-list 'load-path elisp-dir)
+    ;; load specific files
+    (when (file-exists-p elisp-dir)
+      (let ((default-directory elisp-dir))
+        (normal-top-level-add-subdirs-to-load-path)))
+    ;; load system-specific config
+    (sk-load system-name)
+    ;; load user-specific config
+    (sk-load user-login-name)
+    ;; load any files in the user's directory
+    (when (file-exists-p user-dir)
+      (add-to-list 'load-path user-dir)
+      (mapc #'sk-load
+            (remove-duplicates
+             (mapcar #'remove-extension
+                     (directory-files user-dir t ".*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
+             :test #'string=)))))
 #+END_SRC
 
 *** Settings from M-x customize
 #+NAME: m-x-customize-customizations
 #+BEGIN_SRC emacs-lisp
-  (setq custom-file (concat ome-dir "custom.el"))
-  (load custom-file 'noerror)
+(setq custom-file (concat ome-dir "custom.el"))
+(load custom-file 'noerror)
 #+END_SRC
 
 * Todo
@@ -576,6 +576,6 @@ After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
   in emacs lisp, all you need to do is integrate that tool to emacs with an emacs
   interface.
 
-* Footnotes
+
 [1] If you already have a directory at =~/.emacs.d= move it out of the way and
 put this there instead. Or you can make a symbolic link.

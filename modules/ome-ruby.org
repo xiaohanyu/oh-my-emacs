@@ -48,21 +48,21 @@ functions for font-locking, indentation and code navigation.
 
 #+NAME: ruby-mode
 #+BEGIN_SRC emacs-lisp
-  (defun ome-ruby-mode-setup ()
-    ;; Ah, this huge auto-mode-alist list comes from emacs prelude
-    (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode)))
+(defun ome-ruby-mode-setup ()
+  ;; Ah, this huge auto-mode-alist list comes from emacs prelude
+  (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
+  (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode)))
 
-  (ome-ruby-mode-setup)
+(ome-ruby-mode-setup)
 #+END_SRC
 
 * Inf-ruby
@@ -87,14 +87,14 @@ evaluate ruby code snippets.
 
 #+NAME: inf-ruby
 #+BEGIN_SRC emacs-lisp
-  (defun ome-inf-ruby-setup ()
-    (require 'inf-ruby)
-    (define-key inf-ruby-minor-mode-map (kbd "C-c C-z") 'run-ruby)
-    (when (executable-find "pry")
-      (add-to-list 'inf-ruby-implementations '("pry" . "pry"))
-      (setq inf-ruby-default-implementation "pry")))
+(defun ome-inf-ruby-setup ()
+  (require 'inf-ruby)
+  (define-key inf-ruby-minor-mode-map (kbd "C-c C-z") 'run-ruby)
+  (when (executable-find "pry")
+    (add-to-list 'inf-ruby-implementations '("pry" . "pry"))
+    (setq inf-ruby-default-implementation "pry")))
 
-  (ome-install 'inf-ruby)
+(ome-install 'inf-ruby)
 #+END_SRC
 
 * Smartparens-ruby
@@ -109,8 +109,8 @@ amazing, elegant package.
 
 #+NAME: smartparens-ruby
 #+BEGIN_SRC emacs-lisp
-  (when (require 'smartparens nil 'noerror)
-    (require 'smartparens-ruby))
+(when (require 'smartparens nil 'noerror)
+  (require 'smartparens-ruby))
 #+END_SRC
 
 * Rbenv
@@ -137,11 +137,11 @@ emacs rbenv support. By default, oh-my-emacs enables =global-rbenv-mode=.
 
 #+NAME: rbenv
 #+BEGIN_SRC emacs-lisp
-  (defun ome-rbenv-setup ()
-    (global-rbenv-mode t))
+(defun ome-rbenv-setup ()
+  (global-rbenv-mode t))
 
-  (when (file-exists-p "~/.rbenv/version")
-    (ome-install 'rbenv))
+(when (file-exists-p "~/.rbenv/version")
+  (ome-install 'rbenv))
 #+END_SRC
 
 * Todo

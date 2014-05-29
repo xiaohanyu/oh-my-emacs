@@ -25,17 +25,17 @@ This section contains some basic settings which is common to all lisp modes.
 
 #+NAME: basic-lisp
 #+BEGIN_SRC emacs-lisp
-  (defvar ome-lisp-modes '(emacs-lisp-mode
-                           inferior-emacs-lisp-mode
-                           lisp-interaction-mode
-                           scheme-mode
-                           lisp-mode
-                           eshell-mode
-                           slime-repl-mode
-                           nrepl-mode
-                           clojure-mode
-                           common-lisp-mode)
-    "List of Lisp modes.")
+(defvar ome-lisp-modes '(emacs-lisp-mode
+                         inferior-emacs-lisp-mode
+                         lisp-interaction-mode
+                         scheme-mode
+                         lisp-mode
+                         eshell-mode
+                         slime-repl-mode
+                         nrepl-mode
+                         clojure-mode
+                         common-lisp-mode)
+  "List of Lisp modes.")
 #+END_SRC
 
 * Emacs Lisp
@@ -55,33 +55,33 @@ way to solve this, so any help will be appreciated.
 
 #+NAME: emacs-lisp
 #+BEGIN_SRC emacs-lisp
-  (defun ome-remove-elc-on-save ()
-    "If you're saving an elisp file, likely the .elc is no longer valid."
-    (make-local-variable 'after-save-hook)
-    (add-hook 'after-save-hook
-              (lambda ()
-                (if (file-exists-p (concat buffer-file-name "c"))
-                    (delete-file (concat buffer-file-name "c"))))))
+(defun ome-remove-elc-on-save ()
+  "If you're saving an elisp file, likely the .elc is no longer valid."
+  (make-local-variable 'after-save-hook)
+  (add-hook 'after-save-hook
+            (lambda ()
+              (if (file-exists-p (concat buffer-file-name "c"))
+                  (delete-file (concat buffer-file-name "c"))))))
 
-  (add-hook 'emacs-lisp-mode-hook 'ome-remove-elc-on-save)
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-  (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook 'ome-remove-elc-on-save)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 
-  (defun ome-elisp-slime-nav-setup ()
-    ;; (defun ome-elisp-slime-nav-keybindings-in-evil ()
-    ;;   (if (and (boundp 'evil-mode) evil-mode)
-    ;;       (progn (define-key elisp-slime-nav-mode-map (kbd "C-c C-d .")
-    ;;                'elisp-slime-nav-find-elisp-thing-at-point)
-    ;;              (define-key elisp-slime-nav-mode-map (kbd "C-c C-d ,")
-    ;;                'pop-tag-mark))))
-    (dolist (hook '(emacs-lisp-mode-hook
-                    lisp-interaction-mode-hook
-                    ielm-mode-hook
-                    eshell-mode-hook))
-      (add-hook hook 'turn-on-elisp-slime-nav-mode)))
-      ;; (add-hook hook 'ome-elisp-slime-nav-keybindings-in-evil)))
+(defun ome-elisp-slime-nav-setup ()
+  ;; (defun ome-elisp-slime-nav-keybindings-in-evil ()
+  ;;   (if (and (boundp 'evil-mode) evil-mode)
+  ;;       (progn (define-key elisp-slime-nav-mode-map (kbd "C-c C-d .")
+  ;;                'elisp-slime-nav-find-elisp-thing-at-point)
+  ;;              (define-key elisp-slime-nav-mode-map (kbd "C-c C-d ,")
+  ;;                'pop-tag-mark))))
+  (dolist (hook '(emacs-lisp-mode-hook
+                  lisp-interaction-mode-hook
+                  ielm-mode-hook
+                  eshell-mode-hook))
+    (add-hook hook 'turn-on-elisp-slime-nav-mode)))
+    ;; (add-hook hook 'ome-elisp-slime-nav-keybindings-in-evil)))
 
-  (ome-install 'elisp-slime-nav)
+(ome-install 'elisp-slime-nav)
 #+END_SRC
 
 ** IELM
@@ -95,16 +95,16 @@ REPL, such as =python-shell-send-defun= in Emacs 24.3 builtin python mode.
 
 #+NAME: emacs-lisp
 #+BEGIN_SRC emacs-lisp
-  (defun ome-visit-ielm ()
-    "Switch to default `ielm' buffer.
-  Start `ielm' if it's not already running."
-    (interactive)
-    (ome-start-or-switch-to 'ielm "*ielm*"))
+(defun ome-visit-ielm ()
+  "Switch to default `ielm' buffer.
+Start `ielm' if it's not already running."
+  (interactive)
+  (ome-start-or-switch-to 'ielm "*ielm*"))
 
-  (define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ome-visit-ielm)
-  (add-to-list 'ac-modes 'inferior-emacs-lisp-mode)
-  (add-hook 'ielm-mode-hook 'ac-emacs-lisp-mode-setup)
-  (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+(define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ome-visit-ielm)
+(add-to-list 'ac-modes 'inferior-emacs-lisp-mode)
+(add-hook 'ielm-mode-hook 'ac-emacs-lisp-mode-setup)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 #+END_SRC
 
 ** Eshell
@@ -124,14 +124,15 @@ about how to mastering eshell, see [[http://www.masteringemacs.org/articles/2010
 
 #+NAME: eshell
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'eshell-mode-hook
-            (lambda ()
-              (add-to-list 'ac-sources 'ac-source-pcomplete)))
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-pcomplete)))
 
-  (add-to-list 'ac-modes 'eshell-mode)
-  (add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
-  (add-hook 'eshell-mode-hook 'ac-emacs-lisp-mode-setup)
+(add-to-list 'ac-modes 'eshell-mode)
+(add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'eshell-mode-hook 'ac-emacs-lisp-mode-setup)
 #+END_SRC
+
 * Todos
 - What is overlay?
 - What is syntax?

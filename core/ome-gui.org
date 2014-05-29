@@ -20,24 +20,24 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 * Basic GUI Settings
 #+NAME: gui-basics
 #+BEGIN_SRC emacs-lisp
-  ;; show column number and line number
-  (dolist (mode '(column-number-mode line-number-mode))
-    (when (fboundp mode) (funcall mode t)))
+;; show column number and line number
+(dolist (mode '(column-number-mode line-number-mode))
+  (when (fboundp mode) (funcall mode t)))
 
-  (dolist (mode-hook '(text-mode-hook prog-mode-hook))
-    (add-hook mode-hook
-              (lambda ()
-                (linum-mode 1))))
+(dolist (mode-hook '(text-mode-hook prog-mode-hook))
+  (add-hook mode-hook
+            (lambda ()
+              (linum-mode 1))))
 
-  ;; make the fringe thinner (default is 8 in pixels)
-  (fringe-mode 4)
+;; make the fringe thinner (default is 8 in pixels)
+(fringe-mode 4)
 
-  ;; show parenthesis match
-  (show-paren-mode 1)
-  (setq show-paren-style 'expression)
+;; show parenthesis match
+(show-paren-mode 1)
+(setq show-paren-style 'expression)
 
-  ;; Toggle line highlighting in all buffers
-  (global-hl-line-mode t)
+;; Toggle line highlighting in all buffers
+(global-hl-line-mode t)
 #+END_SRC
 
 * Choose Monaco as the Default English Font
@@ -62,11 +62,11 @@ self-adapting.
 
 #+NAME: font
 #+BEGIN_SRC emacs-lisp
-  ;; frame font
-  ;; Setting English Font
-  (if (member "Monaco" (font-family-list))
-      (set-face-attribute
-       'default nil :font "Monaco 12"))
+;; frame font
+;; Setting English Font
+(if (member "Monaco" (font-family-list))
+    (set-face-attribute
+     'default nil :font "Monaco 12"))
 #+END_SRC
 
 * Full screen support
@@ -84,15 +84,15 @@ Of course you can overrides this convention as you like, oh-my-emacs is just a
 starting point.
 
 #+BEGIN_SRC emacs-lisp
-  ;; http://www.emacswiki.org/emacs/FullScreen
-  (defun ome-toggle-fullscreen ()
-    "Toggle full screen"
-    (interactive)
-    (set-frame-parameter
-     nil 'fullscreen
-     (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+;; http://www.emacswiki.org/emacs/FullScreen
+(defun ome-toggle-fullscreen ()
+  "Toggle full screen"
+  (interactive)
+  (set-frame-parameter
+   nil 'fullscreen
+   (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
-  ;; (global-set-key (kbd "<f11>") 'ome-toggle-fullscreen)
+;; (global-set-key (kbd "<f11>") 'ome-toggle-fullscreen)
 #+END_SRC
 
 * Solarized Color Theme
@@ -103,12 +103,13 @@ starting point.
 [[http://ethanschoonover.com/solarized][Solarized]] is my favourite color theme. it is available for multiple
 applications, not only for emacs. I'll set this as the default theme for
 oh-my-emacs.
+
 #+NAME: color-theme
 #+BEGIN_SRC emacs-lisp
-  (defun ome-color-theme-solarized-setup ()
-    (load-theme 'solarized-dark t))
+(defun ome-color-theme-solarized-setup ()
+  (load-theme 'solarized-dark t))
 
-  (ome-install 'color-theme-solarized)
+(ome-install 'color-theme-solarized)
 #+END_SRC
 
 * Powerline
@@ -121,11 +122,12 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
 
 #+NAME: powerline
 #+BEGIN_SRC emacs-lisp
-  (defun ome-powerline-setup ()
-    (powerline-default-theme))
+(defun ome-powerline-setup ()
+  (powerline-default-theme))
 
-  (ome-install 'powerline)
+(ome-install 'powerline)
 #+END_SRC
+
 * Yascroll
   :PROPERTIES:
   :CUSTOM_ID: yascroll
@@ -135,10 +137,10 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
 
 #+NAME: yascroll
 #+BEGIN_SRC emacs-lisp
-  (defun ome-yascroll-setup ()
-    (global-yascroll-bar-mode 1))
+(defun ome-yascroll-setup ()
+  (global-yascroll-bar-mode 1))
 
-  (ome-install 'yascroll)
+(ome-install 'yascroll)
 #+END_SRC
 
 * Linum-relative
@@ -152,10 +154,10 @@ I made it a default for oh-my-emacs.
 
 #+NAME: linum-relative
 #+BEGIN_SRC emacs-lisp
-  (defun ome-linum-relative-setup ()
-    (require 'linum-relative))
+(defun ome-linum-relative-setup ()
+  (require 'linum-relative))
 
-  (ome-install 'linum-relative)
+(ome-install 'linum-relative)
 #+END_SRC
 
 * Todo

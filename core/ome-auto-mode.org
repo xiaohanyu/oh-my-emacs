@@ -18,7 +18,7 @@ scripts, so we just set SCons build file work with python-mode.
 
 #+NAME: scons
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'auto-mode-alist '("SConstruct" . python-mode))
+(add-to-list 'auto-mode-alist '("SConstruct" . python-mode))
 #+END_SRC
 
 * Puppet
@@ -32,11 +32,11 @@ DSL, so the emacs builtin =ruby-mode= is not proper for editing puppet files.
 
 #+NAME: puppet
 #+BEGIN_SRC emacs-lisp
-  (defun ome-puppet-mode-setup ()
-    (when (featurep 'evil)
-      (add-hook 'puppet-mode-hook 'turn-on-evil-mode)))
+(defun ome-puppet-mode-setup ()
+  (when (featurep 'evil)
+    (add-hook 'puppet-mode-hook 'turn-on-evil-mode)))
 
-  (ome-install 'puppet-mode)
+(ome-install 'puppet-mode)
 #+END_SRC
 
 * ArchLinux PKGBUILD
@@ -57,8 +57,8 @@ fingertips.
 
 #+NAME: pkgbuild
 #+BEGIN_SRC emacs-lisp
-  (when (executable-find "pacman")
-    (ome-install 'pkgbuild-mode))
+(when (executable-find "pacman")
+  (ome-install 'pkgbuild-mode))
 #+END_SRC
 
 * Wikipedia
@@ -78,11 +78,11 @@ please tell me.
 
 #+NAME: wikipedia
 #+BEGIN_SRC emacs-lisp
-  (defun ome-wikipedia-mode-setup ()
-    (add-to-list 'auto-mode-alist
-                 '("\\.wiki\\'" . wikipedia-mode)))
+(defun ome-wikipedia-mode-setup ()
+  (add-to-list 'auto-mode-alist
+               '("\\.wiki\\'" . wikipedia-mode)))
 
-  (ome-install 'wikipedia-mode)
+(ome-install 'wikipedia-mode)
 #+END_SRC
 * YAML
   :PROPERTIES:
@@ -96,10 +96,10 @@ solve this by adopting =el-get=. Thanks =el-get= again!
 
 #+NAME: yaml
 #+BEGIN_SRC emacs-lisp
-  (defun ome-yaml-mode-setup ()
-    (add-hook 'yaml-mode-hook
-              (lambda ()
-                (linum-mode 1))))
+(defun ome-yaml-mode-setup ()
+  (add-hook 'yaml-mode-hook
+            (lambda ()
+              (linum-mode 1))))
 
-  (ome-install 'yaml-mode)
+(ome-install 'yaml-mode)
 #+END_SRC

@@ -54,33 +54,33 @@ way to solve this.
 
 #+NAME: js3-mode
 #+BEGIN_SRC emacs-lisp
-  (defun ome-js3-mode-setup ()
-    (add-hook 'js3-mode-hook
-              (lambda ()
-                (setq js3-auto-indent-p t
-                      js3-curly-indent-offset 0
-                      js3-enter-indents-newline t
-                      js3-expr-indent-offset 2
-                      js3-indent-on-enter-key t
-                      js3-lazy-commas t
-                      js3-lazy-dots t
-                      js3-lazy-operators t
-                      js3-paren-indent-offset 2
-                      js3-square-indent-offset 4)
-                (linum-mode 1)))
+(defun ome-js3-mode-setup ()
+  (add-hook 'js3-mode-hook
+            (lambda ()
+              (setq js3-auto-indent-p t
+                    js3-curly-indent-offset 0
+                    js3-enter-indents-newline t
+                    js3-expr-indent-offset 2
+                    js3-indent-on-enter-key t
+                    js3-lazy-commas t
+                    js3-lazy-dots t
+                    js3-lazy-operators t
+                    js3-paren-indent-offset 2
+                    js3-square-indent-offset 4)
+              (linum-mode 1)))
 
-              ;; https://github.com/Fuco1/smartparens/issues/239
-              ;; (defadvice js3-enter-key (after fix-sp-state activate)
-              ;;   (setq sp-last-operation 'sp-self-insert))
+            ;; https://github.com/Fuco1/smartparens/issues/239
+            ;; (defadvice js3-enter-key (after fix-sp-state activate)
+            ;;   (setq sp-last-operation 'sp-self-insert))
 
-              ;; (sp-local-pair 'js3-mode
-              ;;                "{"
-              ;;                nil
-              ;;                :post-handlers
-              ;;                '((ome-create-newline-and-enter-sexp js3-enter-key))))
-    (add-to-list 'ac-modes 'js3-mode))
+            ;; (sp-local-pair 'js3-mode
+            ;;                "{"
+            ;;                nil
+            ;;                :post-handlers
+            ;;                '((ome-create-newline-and-enter-sexp js3-enter-key))))
+  (add-to-list 'ac-modes 'js3-mode))
 
-  (ome-install 'js3-mode)
+(ome-install 'js3-mode)
 #+END_SRC
 
 * Tern
@@ -121,18 +121,18 @@ auto-complete for JavaScript programming in Emacs.
 
 #+NAME: tern
 #+BEGIN_SRC emacs-lisp
-  (defun ome-tern-setup ()
-    (when (el-get-package-installed-p 'js2-mode)
-      (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
-    (when (el-get-package-installed-p 'js3-mode)
-      (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
-    (setq tern-command (cons (executable-find "tern") '()))
-    (eval-after-load 'tern
-      '(progn
-         (require 'tern-auto-complete)
-         (tern-ac-setup))))
+(defun ome-tern-setup ()
+  (when (el-get-package-installed-p 'js2-mode)
+    (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
+  (when (el-get-package-installed-p 'js3-mode)
+    (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
+  (setq tern-command (cons (executable-find "tern") '()))
+  (eval-after-load 'tern
+    '(progn
+       (require 'tern-auto-complete)
+       (tern-ac-setup))))
 
-  (ome-install 'tern)
+(ome-install 'tern)
 #+END_SRC
 
 * js2-mode
@@ -154,15 +154,15 @@ settings and works as expected.
 
 #+NAME: js2-mode
 #+BEGIN_SRC emacs-lisp :tangle no
-  (defun ome-js2-mode-setup ()
-    (add-hook 'js2-mode-hook
-              (lambda ()
-                (setq js2-basic-offset 2)))
-    (setq js2-bounce-indent-p t))
-    ;; (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
-    ;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+(defun ome-js2-mode-setup ()
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (setq js2-basic-offset 2)))
+  (setq js2-bounce-indent-p t))
+  ;; (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
 
-  (ome-install 'js2-mode)
+(ome-install 'js2-mode)
 #+END_SRC
 
 * swank-js
@@ -189,34 +189,34 @@ setup and configure SLIME and js3-mode correctly.
 
 #+NAME: swank-js
 #+BEGIN_SRC emacs-lisp :tangle no
-  (defun ome-swank-js-setup ()
-    (require 'slime-js)
-    (add-hook 'js3-mode-hook
-              (lambda ()
-                (slime-js-minor-mode 1)))
-    (add-hook 'css-mode-hook
-              (lambda ()
-                (define-key css-mode-map (kbd "M-C-x") 'slime-js-refresh-css)
-                (define-key css-mode-map (kbd "C-c C-r") 'slime-js-embed-css))))
+(defun ome-swank-js-setup ()
+  (require 'slime-js)
+  (add-hook 'js3-mode-hook
+            (lambda ()
+              (slime-js-minor-mode 1)))
+  (add-hook 'css-mode-hook
+            (lambda ()
+              (define-key css-mode-map (kbd "M-C-x") 'slime-js-refresh-css)
+              (define-key css-mode-map (kbd "C-c C-r") 'slime-js-embed-css))))
 
-  ;; Wow, swank-js has lots of dependencies.
-  (when (and (require 'slime nil 'noerror)
-             (require 'js3-mode nil 'noerror)
-             (executable-find "npm")
-             (executable-find "swank-js"))
-    (ome-install 'swank-js))
+;; Wow, swank-js has lots of dependencies.
+(when (and (require 'slime nil 'noerror)
+           (require 'js3-mode nil 'noerror)
+           (executable-find "npm")
+           (executable-find "swank-js"))
+  (ome-install 'swank-js))
 
-  (eval-after-load 'auto-complete
-    '(progn
-       (add-to-list 'ac-modes 'js-mode)
-       (add-to-list 'ac-modes 'js2-mode)
-       (add-to-list 'ac-modes 'js3-mode)
-       (add-hook 'slime-mode-hook 'set-up-slime-ac)
-       (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
+(eval-after-load 'auto-complete
+  '(progn
+     (add-to-list 'ac-modes 'js-mode)
+     (add-to-list 'ac-modes 'js2-mode)
+     (add-to-list 'ac-modes 'js3-mode)
+     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
 
-  (eval-after-load 'slime
-    '(progn
-       (slime-setup '(slime-repl slime-js))))
+(eval-after-load 'slime
+  '(progn
+     (slime-setup '(slime-repl slime-js))))
 #+END_SRC
 
 * nodejs-repl
@@ -231,9 +231,9 @@ lacks some interactive commands, which need to be improved.
 
 #+NAME: nodejs-repl
 #+BEGIN_SRC emacs-lisp
-  (defun ome-nodejs-repl-setup ())
+(defun ome-nodejs-repl-setup ())
 
-  (ome-install 'nodejs-repl)
+(ome-install 'nodejs-repl)
 #+END_SRC
 
 * js-comint
@@ -247,27 +247,27 @@ is not born when js-comint was first released.
 
 #+NAME: js-comint
 #+BEGIN_SRC emacs-lisp :tangle no
-  (defun ome-js-comint-setup ()
-    (setq inferior-js-program-command "node")
-    (add-hook 'js3-mode-hook
-              '(lambda ()
-                 (local-set-key (kbd "C-x C-e")
-                                'js-send-last-sexp)
-                 (local-set-key (kbd "C-M-x")
-                                'js-send-last-sexp-and-go)
-                 (local-set-key (kbd "C-c b")
-                                'js-send-buffer)
-                 (local-set-key (kbd "C-c C-b")
-                                'js-send-buffer-and-go)
-                 (local-set-key (kbd "C-c l")
-                                'js-load-file-and-go)))
-    (setenv "NODE_NO_READLINE" "1")
-    (setq inferior-js-mode-hook
-          (lambda ()
-            ;; We like nice colors
-            (ansi-color-for-comint-mode-on))))
+(defun ome-js-comint-setup ()
+  (setq inferior-js-program-command "node")
+  (add-hook 'js3-mode-hook
+            '(lambda ()
+               (local-set-key (kbd "C-x C-e")
+                              'js-send-last-sexp)
+               (local-set-key (kbd "C-M-x")
+                              'js-send-last-sexp-and-go)
+               (local-set-key (kbd "C-c b")
+                              'js-send-buffer)
+               (local-set-key (kbd "C-c C-b")
+                              'js-send-buffer-and-go)
+               (local-set-key (kbd "C-c l")
+                              'js-load-file-and-go)))
+  (setenv "NODE_NO_READLINE" "1")
+  (setq inferior-js-mode-hook
+        (lambda ()
+          ;; We like nice colors
+          (ansi-color-for-comint-mode-on))))
 
-  (ome-install 'js-comint)
+(ome-install 'js-comint)
 #+END_SRC
 
 * Skewer-mode
@@ -301,10 +301,10 @@ code is kept here just for reference.
 
 #+NAME: skewer-mode
 #+BEGIN_SRC emacs-lisp :tangle no
-  (defun ome-skewer-mode-setup ()
-    (add-hook 'js2-mode-hook 'skewer-mode)
-    (add-hook 'css-mode-hook 'skewer-css-mode)
-    (add-hook 'html-mode-hook 'skewer-html-mode))
+(defun ome-skewer-mode-setup ()
+  (add-hook 'js2-mode-hook 'skewer-mode)
+  (add-hook 'css-mode-hook 'skewer-css-mode)
+  (add-hook 'html-mode-hook 'skewer-html-mode))
 
-  (ome-install 'skewer-mode)
+(ome-install 'skewer-mode)
 #+END_SRC

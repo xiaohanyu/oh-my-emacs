@@ -36,7 +36,7 @@ programming in Emacs, so any pull request will be appreciated.
 
 #+NAME: php-mode
 #+BEGIN_SRC emacs-lisp
-  (defun ome-php-mode-setup ())
+(defun ome-php-mode-setup ())
 
-  (ome-install 'php-mode)
+(ome-install 'php-mode)
 #+END_SRC

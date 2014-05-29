@@ -45,9 +45,9 @@ By default, the narrowing commands are considered to be dangerous, we just
 remove the dangerous tag here.
 
 #+BEGIN_SRC emacs-lisp
-  (put 'narrow-to-page 'disabled nil)
-  (put 'narrow-to-region 'disabled nil)
-  (put 'upcase-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
 #+END_SRC
 * Toggle server mode .
   :PROPERTIES:
@@ -80,8 +80,8 @@ emacs if you use =(server-start)= while keeps emacs alive if you use
 
 #+NAME: random-number
 #+BEGIN_SRC emacs-lisp
-  ;; Seed the random-number generator
-  (random t)
+;; Seed the random-number generator
+(random t)
 #+END_SRC
 
 * Rainbow Delimiters
@@ -97,10 +97,10 @@ given depth."
 
 #+NAME: rainbow-delimiters
 #+BEGIN_SRC emacs-lisp
-  (defun ome-rainbow-delimiters-setup ()
-    (global-rainbow-delimiters-mode))
+(defun ome-rainbow-delimiters-setup ()
+  (global-rainbow-delimiters-mode))
 
-  (ome-install 'rainbow-delimiters)
+(ome-install 'rainbow-delimiters)
 #+END_SRC
 
 * Transparently Open Compressed Files
@@ -113,7 +113,7 @@ are automatically uncompressed for reading, and compressed when writing."
 
 #+NAME: auto-compression-mode
 #+BEGIN_SRC emacs-lisp
-  (auto-compression-mode t)
+(auto-compression-mode t)
 #+END_SRC
 
 * Allowing Opening Images
@@ -125,8 +125,9 @@ are automatically uncompressed for reading, and compressed when writing."
 
 #+NAME: auto-image-file-mode
 #+BEGIN_SRC emacs-lisp
-  (auto-image-file-mode t)
+(auto-image-file-mode t)
 #+END_SRC
+
 * Outline mode
   :PROPERTIES:
   :CUSTOM_ID: outline
@@ -148,14 +149,14 @@ keybindings for =outline-minor-mode=.
 
 #+NAME: outline
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (outline-minor-mode t)))
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (outline-minor-mode t)))
 
-  ;; (add-hook 'outline-minor-mode-hook
-  ;;           (lambda ()
-  ;;             (local-set-key (kbd "C-c C-o")
-  ;;                            outline-mode-prefix-map)))
+;; (add-hook 'outline-minor-mode-hook
+;;           (lambda ()
+;;             (local-set-key (kbd "C-c C-o")
+;;                            outline-mode-prefix-map)))
 
 #+END_SRC
 
@@ -172,15 +173,15 @@ I just gave up. Since for any questions in =po-mode=, you can just type =?= or
 
 #+NAME: po-mode
 #+BEGIN_SRC emacs-lisp
-  (defun ome-po-mode-setup ()
-    (add-hook 'po-mode-hook
-              (lambda ()
-                (linum-mode 1)))
-    ;; disable evil-mode since some key binding conflicts
-    (when (featurep 'evil)
-      (add-hook 'po-mode-hook 'turn-off-evil-mode)))
+(defun ome-po-mode-setup ()
+  (add-hook 'po-mode-hook
+            (lambda ()
+              (linum-mode 1)))
+  ;; disable evil-mode since some key binding conflicts
+  (when (featurep 'evil)
+    (add-hook 'po-mode-hook 'turn-off-evil-mode)))
 
-  (ome-install 'po-mode)
+(ome-install 'po-mode)
 #+END_SRC
 
 * Magit
@@ -217,15 +218,15 @@ check the magit [[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]] for
 
 #+NAME: magit
 #+BEGIN_SRC emacs-lisp
-  (defun ome-magit-setup ()
-    ;; magit-status is the entry point
-    (global-set-key (kbd "C-x g") 'magit-status)
-    (add-hook 'git-rebase-mode-hook
-              (lambda ()
-                (evil-local-mode -1))))
+(defun ome-magit-setup ()
+  ;; magit-status is the entry point
+  (global-set-key (kbd "C-x g") 'magit-status)
+  (add-hook 'git-rebase-mode-hook
+            (lambda ()
+              (evil-local-mode -1))))
 
-  (if (executable-find "git")
-      (ome-install 'magit))
+(if (executable-find "git")
+    (ome-install 'magit))
 #+END_SRC
 
 * git-gutter-fringe
@@ -252,32 +253,32 @@ detailed differences, check [[https://github.com/syohex/emacs-git-gutter][git-gu
 
 #+NAME: git-gutter-fringe
 #+BEGIN_SRC emacs-lisp
-  (defun ome-git-gutter-fringe-setup ()
-    (dolist (mode-hook '(text-mode-hook prog-mode-hook))
-      (add-hook mode-hook
-                (lambda ()
-                  ;; set fringe width to better display
-                  (setq left-fringe-width 10)
-                  (setq right-fringe-width 10))))
+(defun ome-git-gutter-fringe-setup ()
+  (dolist (mode-hook '(text-mode-hook prog-mode-hook))
+    (add-hook mode-hook
+              (lambda ()
+                ;; set fringe width to better display
+                (setq left-fringe-width 10)
+                (setq right-fringe-width 10))))
 
-    ;; some keybindings
-    (global-set-key (kbd "C-x v g") 'git-gutter:toggle)
-    (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
-    ;; Jump to next/previous hunk
-    (global-set-key (kbd "C-x v p") 'git-gutter:previous-hunk)
-    (global-set-key (kbd "C-x v n") 'git-gutter:next-hunk)
-    ;; Stage current hunk
-    (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
-    ;; Revert current hunk
-    (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+  ;; some keybindings
+  (global-set-key (kbd "C-x v g") 'git-gutter:toggle)
+  (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
+  ;; Jump to next/previous hunk
+  (global-set-key (kbd "C-x v p") 'git-gutter:previous-hunk)
+  (global-set-key (kbd "C-x v n") 'git-gutter:next-hunk)
+  ;; Stage current hunk
+  (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
+  ;; Revert current hunk
+  (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
-    ;; improve performance
-    ;; (setq git-gutter:update-hooks '(after-save-hook after-revert-hook))
+  ;; improve performance
+  ;; (setq git-gutter:update-hooks '(after-save-hook after-revert-hook))
 
-    (require 'git-gutter-fringe)
-    (global-git-gutter-mode))
+  (require 'git-gutter-fringe)
+  (global-git-gutter-mode))
 
-  (ome-install 'git-gutter-fringe)
+(ome-install 'git-gutter-fringe)
 #+END_SRC
 
 * Visual-line-mode
@@ -296,7 +297,7 @@ of the time. But we still turn on it globally to make it a fallback when
 
 #+NAME: visual-line-mode
 #+BEGIN_SRC emacs-lisp
-  (global-visual-line-mode t)
+(global-visual-line-mode t)
 #+END_SRC
 
 * Projectile
@@ -330,12 +331,12 @@ just enjoy it!
 
 #+NAME: projectile
 #+BEGIN_SRC emacs-lisp
-  (defun ome-projectile-setup ()
-    (projectile-global-mode)
-    (setq projectile-enable-caching t)
-    (global-set-key (kbd "C-x c h") 'helm-projectile))
+(defun ome-projectile-setup ()
+  (projectile-global-mode)
+  (setq projectile-enable-caching t)
+  (global-set-key (kbd "C-x c h") 'helm-projectile))
 
-  (ome-install 'projectile)
+(ome-install 'projectile)
 #+END_SRC
 
 * Smartparens
@@ -379,118 +380,117 @@ some time to master these wonderful commands, which will make your life easier.
 
 #+NAME: smartparens
 #+BEGIN_SRC emacs-lisp
-  (defun ome-create-newline-and-enter-sexp (&rest _ignored)
-    "Open a new brace or bracket expression, with relevant newlines and indent. "
-    (previous-line)
-    (indent-according-to-mode)
-    (forward-line)
-    (newline)
-    (indent-according-to-mode)
-    (forward-line -1)
-    (indent-according-to-mode))
+(defun ome-create-newline-and-enter-sexp (&rest _ignored)
+  "Open a new brace or bracket expression, with relevant newlines and indent. "
+  (previous-line)
+  (indent-according-to-mode)
+  (forward-line)
+  (newline)
+  (indent-according-to-mode)
+  (forward-line -1)
+  (indent-according-to-mode))
 
-  (defun ome-smartparens-setup ()
-    ;; global
-    (require 'smartparens-config)
-    (setq sp-autoskip-closing-pair 'always)
-    (setq sp-navigate-close-if-unbalanced t)
-    (smartparens-global-mode t)
+(defun ome-smartparens-setup ()
+  ;; global
+  (require 'smartparens-config)
+  (setq sp-autoskip-closing-pair 'always)
+  (setq sp-navigate-close-if-unbalanced t)
+  (smartparens-global-mode t)
 
-    ;; turn on smartparens-strict-mode on all lisp-like mode
-    (dolist (sp--lisp-mode-hook
-             (mapcar (lambda (x)
-                       (intern (concat (symbol-name x) "-hook")))
-                     sp--lisp-modes))
-      (add-hook sp--lisp-mode-hook
-                'smartparens-strict-mode)
-      ;; inferior-emacs-lisp-mode-hook is an alias of ielm-mode-hook
-      ;; and it will be overrided when you first start ielm
-      (add-hook 'ielm-mode-hook
-                'smartparens-strict-mode))
+  ;; turn on smartparens-strict-mode on all lisp-like mode
+  (dolist (sp--lisp-mode-hook
+           (mapcar (lambda (x)
+                     (intern (concat (symbol-name x) "-hook")))
+                   sp--lisp-modes))
+    (add-hook sp--lisp-mode-hook
+              'smartparens-strict-mode)
+    ;; inferior-emacs-lisp-mode-hook is an alias of ielm-mode-hook
+    ;; and it will be overrided when you first start ielm
+    (add-hook 'ielm-mode-hook
+              'smartparens-strict-mode))
 
-    ;; highlights matching pairs
-    (show-smartparens-global-mode t)
+  ;; highlights matching pairs
+  (show-smartparens-global-mode t)
 
-    ;; keybinding management
-    (define-key sp-keymap (kbd "M-s f") 'sp-forward-sexp)
-    (define-key sp-keymap (kbd "M-s b") 'sp-backward-sexp)
+  ;; keybinding management
+  (define-key sp-keymap (kbd "M-s f") 'sp-forward-sexp)
+  (define-key sp-keymap (kbd "M-s b") 'sp-backward-sexp)
 
-    (define-key sp-keymap (kbd "M-s d") 'sp-down-sexp)
-    (define-key sp-keymap (kbd "M-s D") 'sp-backward-down-sexp)
-    (define-key sp-keymap (kbd "M-s a") 'sp-beginning-of-sexp)
-    (define-key sp-keymap (kbd "M-s e") 'sp-end-of-sexp)
+  (define-key sp-keymap (kbd "M-s d") 'sp-down-sexp)
+  (define-key sp-keymap (kbd "M-s D") 'sp-backward-down-sexp)
+  (define-key sp-keymap (kbd "M-s a") 'sp-beginning-of-sexp)
+  (define-key sp-keymap (kbd "M-s e") 'sp-end-of-sexp)
 
-    (define-key sp-keymap (kbd "M-s u") 'sp-up-sexp)
-    ;; (define-key emacs-lisp-mode-map (kbd ")") 'sp-up-sexp)
-    (define-key sp-keymap (kbd "M-s U") 'sp-backward-up-sexp)
-    (define-key sp-keymap (kbd "M-s t") 'sp-transpose-sexp)
+  (define-key sp-keymap (kbd "M-s u") 'sp-up-sexp)
+  ;; (define-key emacs-lisp-mode-map (kbd ")") 'sp-up-sexp)
+  (define-key sp-keymap (kbd "M-s U") 'sp-backward-up-sexp)
+  (define-key sp-keymap (kbd "M-s t") 'sp-transpose-sexp)
 
-    (define-key sp-keymap (kbd "M-s n") 'sp-next-sexp)
-    (define-key sp-keymap (kbd "M-s p") 'sp-previous-sexp)
+  (define-key sp-keymap (kbd "M-s n") 'sp-next-sexp)
+  (define-key sp-keymap (kbd "M-s p") 'sp-previous-sexp)
 
-    (define-key sp-keymap (kbd "M-s k") 'sp-kill-sexp)
-    (define-key sp-keymap (kbd "M-s w") 'sp-copy-sexp)
+  (define-key sp-keymap (kbd "M-s k") 'sp-kill-sexp)
+  (define-key sp-keymap (kbd "M-s w") 'sp-copy-sexp)
 
-    (define-key sp-keymap (kbd "M-s s") 'sp-forward-slurp-sexp)
-    (define-key sp-keymap (kbd "M-s r") 'sp-forward-barf-sexp)
-    (define-key sp-keymap (kbd "M-s S") 'sp-backward-slurp-sexp)
-    (define-key sp-keymap (kbd "M-s R") 'sp-backward-barf-sexp)
-    (define-key sp-keymap (kbd "M-s F") 'sp-forward-symbol)
-    (define-key sp-keymap (kbd "M-s B") 'sp-backward-symbol)
+  (define-key sp-keymap (kbd "M-s s") 'sp-forward-slurp-sexp)
+  (define-key sp-keymap (kbd "M-s r") 'sp-forward-barf-sexp)
+  (define-key sp-keymap (kbd "M-s S") 'sp-backward-slurp-sexp)
+  (define-key sp-keymap (kbd "M-s R") 'sp-backward-barf-sexp)
+  (define-key sp-keymap (kbd "M-s F") 'sp-forward-symbol)
+  (define-key sp-keymap (kbd "M-s B") 'sp-backward-symbol)
 
-    (define-key sp-keymap (kbd "M-s [") 'sp-select-previous-thing)
-    (define-key sp-keymap (kbd "M-s ]") 'sp-select-next-thing)
+  (define-key sp-keymap (kbd "M-s [") 'sp-select-previous-thing)
+  (define-key sp-keymap (kbd "M-s ]") 'sp-select-next-thing)
 
-    (define-key sp-keymap (kbd "M-s M-i") 'sp-splice-sexp)
-    (define-key sp-keymap (kbd "M-s <delete>") 'sp-splice-sexp-killing-forward)
-    (define-key sp-keymap (kbd "M-s <backspace>") 'sp-splice-sexp-killing-backward)
-    (define-key sp-keymap (kbd "M-s M-<backspace>") 'sp-splice-sexp-killing-around)
+  (define-key sp-keymap (kbd "M-s M-i") 'sp-splice-sexp)
+  (define-key sp-keymap (kbd "M-s <delete>") 'sp-splice-sexp-killing-forward)
+  (define-key sp-keymap (kbd "M-s <backspace>") 'sp-splice-sexp-killing-backward)
+  (define-key sp-keymap (kbd "M-s M-<backspace>") 'sp-splice-sexp-killing-around)
 
-    (define-key sp-keymap (kbd "M-s M-d") 'sp-unwrap-sexp)
-    (define-key sp-keymap (kbd "M-s M-b") 'sp-backward-unwrap-sexp)
+  (define-key sp-keymap (kbd "M-s M-d") 'sp-unwrap-sexp)
+  (define-key sp-keymap (kbd "M-s M-b") 'sp-backward-unwrap-sexp)
 
-    (define-key sp-keymap (kbd "M-s M-t") 'sp-prefix-tag-object)
-    (define-key sp-keymap (kbd "M-s M-p") 'sp-prefix-pair-object)
-    (define-key sp-keymap (kbd "M-s M-c") 'sp-convolute-sexp)
-    (define-key sp-keymap (kbd "M-s M-a") 'sp-absorb-sexp)
-    (define-key sp-keymap (kbd "M-s M-e") 'sp-emit-sexp)
-    (define-key sp-keymap (kbd "M-s M-p") 'sp-add-to-previous-sexp)
-    (define-key sp-keymap (kbd "M-s M-n") 'sp-add-to-next-sexp)
-    (define-key sp-keymap (kbd "M-s M-j") 'sp-join-sexp)
-    (define-key sp-keymap (kbd "M-s M-s") 'sp-split-sexp)
-    (define-key sp-keymap (kbd "M-s M-r") 'sp-raise-sexp)
+  (define-key sp-keymap (kbd "M-s M-t") 'sp-prefix-tag-object)
+  (define-key sp-keymap (kbd "M-s M-p") 'sp-prefix-pair-object)
+  (define-key sp-keymap (kbd "M-s M-c") 'sp-convolute-sexp)
+  (define-key sp-keymap (kbd "M-s M-a") 'sp-absorb-sexp)
+  (define-key sp-keymap (kbd "M-s M-e") 'sp-emit-sexp)
+  (define-key sp-keymap (kbd "M-s M-p") 'sp-add-to-previous-sexp)
+  (define-key sp-keymap (kbd "M-s M-n") 'sp-add-to-next-sexp)
+  (define-key sp-keymap (kbd "M-s M-j") 'sp-join-sexp)
+  (define-key sp-keymap (kbd "M-s M-s") 'sp-split-sexp)
+  (define-key sp-keymap (kbd "M-s M-r") 'sp-raise-sexp)
 
-    ;; pair management
-    (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
+  ;; pair management
+  (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
 
-    ;; markdown-mode
-    (sp-with-modes '(markdown-mode gfm-mode rst-mode)
-      (sp-local-pair "*" "*" :bind "C-*")
-      (sp-local-tag "2" "**" "**")
-      (sp-local-tag "s" "```scheme" "```")
-      (sp-local-tag "<"  "<_>" "</_>" :transform 'sp-match-sgml-tags))
+  ;; markdown-mode
+  (sp-with-modes '(markdown-mode gfm-mode rst-mode)
+    (sp-local-pair "*" "*" :bind "C-*")
+    (sp-local-tag "2" "**" "**")
+    (sp-local-tag "s" "```scheme" "```")
+    (sp-local-tag "<"  "<_>" "</_>" :transform 'sp-match-sgml-tags))
 
-    ;; tex-mode latex-mode
-    (sp-with-modes '(tex-mode plain-tex-mode latex-mode)
-      (sp-local-tag "i" "\"<" "\">"))
+  ;; tex-mode latex-mode
+  (sp-with-modes '(tex-mode plain-tex-mode latex-mode)
+    (sp-local-tag "i" "\"<" "\">"))
 
-    ;; html-mode
-    (sp-with-modes '(html-mode sgml-mode)
-      (sp-local-pair "<" ">"))
+  ;; html-mode
+  (sp-with-modes '(html-mode sgml-mode)
+    (sp-local-pair "<" ">"))
 
-    ;; lisp modes
-    (sp-with-modes sp--lisp-modes
-      (sp-local-pair "(" nil :bind "C-("))
+  ;; lisp modes
+  (sp-with-modes sp--lisp-modes
+    (sp-local-pair "(" nil :bind "C-("))
 
-    (dolist (mode '(c-mode c++-mode java-mode js2-mode sh-mode css-mode))
-      (sp-local-pair mode
-                     "{"
-                     nil
-                     :post-handlers
-                     '((ome-create-newline-and-enter-sexp "RET")))))
+  (dolist (mode '(c-mode c++-mode java-mode js2-mode sh-mode css-mode))
+    (sp-local-pair mode
+                   "{"
+                   nil
+                   :post-handlers
+                   '((ome-create-newline-and-enter-sexp "RET")))))
 
-  (ome-install 'smartparens)
-
+(ome-install 'smartparens)
 #+END_SRC
 
 * Emacs-w3m
@@ -580,14 +580,14 @@ Some commonly used keybindings for =w3m-mode=:
 
 #+NAME: emacs-w3m
 #+BEGIN_SRC emacs-lisp
-  (defun ome-emacs-w3m-setup ()
-    ;; (setq w3m-default-display-inline-images t)
-    (setq w3m-home-page "http://www.google.com/ncr")
-    (setq browse-url-browser-function 'w3m-browse-url)
-    (global-set-key (kbd "C-x w") 'browse-url-at-point))
+(defun ome-emacs-w3m-setup ()
+  ;; (setq w3m-default-display-inline-images t)
+  (setq w3m-home-page "http://www.google.com/ncr")
+  (setq browse-url-browser-function 'w3m-browse-url)
+  (global-set-key (kbd "C-x w") 'browse-url-at-point))
 
-  (when (executable-find "w3m")
-    (ome-install 'emacs-w3m))
+(when (executable-find "w3m")
+  (ome-install 'emacs-w3m))
 #+END_SRC
 
 * Quickrun
@@ -600,7 +600,7 @@ way. Just run it, without thinking about too much other chores.
 
 #+NAME: quickrun
 #+BEGIN_SRC emacs-lisp
-  (ome-install 'quickrun)
+(ome-install 'quickrun)
 #+END_SRC
 
 * Diminish
@@ -631,43 +631,43 @@ like.
 
 #+NAME: diminish
 #+BEGIN_SRC emacs-lisp
-  (defun ome-diminish-setup ()
-    ;; diminish some builtin mode
-    (eval-after-load "abbrev"
-      '(diminish 'abbrev-mode))
+(defun ome-diminish-setup ()
+  ;; diminish some builtin mode
+  (eval-after-load "abbrev"
+    '(diminish 'abbrev-mode))
 
-    (eval-after-load 'simple
-      '(progn
-         ;; diminish auto-fill-mode
-         (diminish 'auto-fill-function)
-         ;; https://github.com/xiaohanyu/oh-my-emacs/issues/36
-         (when (string< emacs-version "24.3.50")
-           (diminish 'global-visual-line-mode))
-         (diminish 'visual-line-mode)))
+  (eval-after-load 'simple
+    '(progn
+       ;; diminish auto-fill-mode
+       (diminish 'auto-fill-function)
+       ;; https://github.com/xiaohanyu/oh-my-emacs/issues/36
+       (when (string< emacs-version "24.3.50")
+         (diminish 'global-visual-line-mode))
+       (diminish 'visual-line-mode)))
 
-    (eval-after-load "outline"
-      '(diminish 'outline-minor-mode))
+  (eval-after-load "outline"
+    '(diminish 'outline-minor-mode))
 
-    (eval-after-load "eldoc"
-      '(diminish 'eldoc-mode))
+  (eval-after-load "eldoc"
+    '(diminish 'eldoc-mode))
 
-    ;; diminish third-party mode
-    (eval-after-load "elisp-slime-nav"
-      '(diminish 'elisp-slime-nav-mode))
+  ;; diminish third-party mode
+  (eval-after-load "elisp-slime-nav"
+    '(diminish 'elisp-slime-nav-mode))
 
-    (eval-after-load "helm"
-      '(diminish 'helm-mode))
+  (eval-after-load "helm"
+    '(diminish 'helm-mode))
 
-    (eval-after-load "projectile"
-      '(diminish 'projectile-mode "Prjl"))
+  (eval-after-load "projectile"
+    '(diminish 'projectile-mode "Prjl"))
 
-    (eval-after-load "undo-tree"
-      '(diminish 'undo-tree-mode))
+  (eval-after-load "undo-tree"
+    '(diminish 'undo-tree-mode))
 
-    (eval-after-load "git-gutter-fringe"
-      '(diminish 'git-gutter-mode)))
+  (eval-after-load "git-gutter-fringe"
+    '(diminish 'git-gutter-mode)))
 
-  (ome-install 'diminish)
+(ome-install 'diminish)
 #+END_SRC
 
 * Todo

@@ -36,72 +36,72 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: basic
 #+BEGIN_SRC emacs-lisp
-  ;; fix the mac PATH variable
-  (defun ome-set-exec-path-from-shell-PATH ()
-    (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
-      (setenv "PATH" path-from-shell)
-      (setq exec-path (split-string path-from-shell path-separator))))
+;; fix the mac PATH variable
+(defun ome-set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
 
-  (when (eq system-type 'darwin)
-    (when window-system (ome-set-exec-path-from-shell-PATH)))
+(when (eq system-type 'darwin)
+  (when window-system (ome-set-exec-path-from-shell-PATH)))
 
-  ;; set environment coding system
-  (set-language-environment "UTF-8")
-  ;; auto revert buffer globally
-  (global-auto-revert-mode t)
-  ;; set TAB and indention
-  (setq-default tab-width 4)
-  (setq-default indent-tabs-mode nil)
-  ;; y or n is suffice for a yes or no question
-  (fset 'yes-or-no-p 'y-or-n-p)
-  ;; always add new line to the end of a file
-  (setq require-final-newline t)
-  ;; add no new lines when "arrow-down key" at the end of a buffer
-  (setq next-line-add-newlines nil)
-  ;; prevent the annoying beep on errors
-  (setq ring-bell-function 'ignore)
-  ;; remove trailing whitespaces before save
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
-  ;; enable to support navigate in camelCase words
-  (global-subword-mode t)
-  ;; hide startup splash screen
-  (setq inhibit-startup-screen t)
+;; set environment coding system
+(set-language-environment "UTF-8")
+;; auto revert buffer globally
+(global-auto-revert-mode t)
+;; set TAB and indention
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+;; y or n is suffice for a yes or no question
+(fset 'yes-or-no-p 'y-or-n-p)
+;; always add new line to the end of a file
+(setq require-final-newline t)
+;; add no new lines when "arrow-down key" at the end of a buffer
+(setq next-line-add-newlines nil)
+;; prevent the annoying beep on errors
+(setq ring-bell-function 'ignore)
+;; remove trailing whitespaces before save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; enable to support navigate in camelCase words
+(global-subword-mode t)
+;; hide startup splash screen
+(setq inhibit-startup-screen t)
 
-  ;; shell-mode settings
-  (unless (eq system-type 'windows-nt)
-    (setq explicit-shell-file-name "/bin/bash")
-    (setq shell-file-name "/bin/bash"))
-  ;; always insert at the bottom
-  (setq comint-scroll-to-bottom-on-input t)
-  ;; no duplicates in command history
-  (setq comint-input-ignoredups t)
-  ;; what to run when i press enter on a line above the current prompt
-  (setq comint-get-old-input (lambda () ""))
-  ;; max shell history size
-  (setq comint-input-ring-size 1000)
-  ;; show all in emacs interactive output
-  (setenv "PAGER" "cat")
-  ;; set lang to enable Chinese display in shell-mode
-  (setenv "LANG" "en_US.UTF-8")
+;; shell-mode settings
+(unless (eq system-type 'windows-nt)
+  (setq explicit-shell-file-name "/bin/bash")
+  (setq shell-file-name "/bin/bash"))
+;; always insert at the bottom
+(setq comint-scroll-to-bottom-on-input t)
+;; no duplicates in command history
+(setq comint-input-ignoredups t)
+;; what to run when i press enter on a line above the current prompt
+(setq comint-get-old-input (lambda () ""))
+;; max shell history size
+(setq comint-input-ring-size 1000)
+;; show all in emacs interactive output
+(setenv "PAGER" "cat")
+;; set lang to enable Chinese display in shell-mode
+(setenv "LANG" "en_US.UTF-8")
 
-  ;; set text-mode as the default major mode, instead of fundamental-mode
-  ;; The first of the two lines in parentheses tells Emacs to turn on Text mode
-  ;; when you find a file, unless that file should go into some other mode, such
-  ;; as C mode.
-  (setq-default major-mode 'text-mode)
+;; set text-mode as the default major mode, instead of fundamental-mode
+;; The first of the two lines in parentheses tells Emacs to turn on Text mode
+;; when you find a file, unless that file should go into some other mode, such
+;; as C mode.
+(setq-default major-mode 'text-mode)
 
-  ;;; ido-mode
-  (setq ido-enable-prefix nil)
-  (setq ido-enable-case nil)
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode t)
+;;; ido-mode
+(setq ido-enable-prefix nil)
+(setq ido-enable-case nil)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode t)
 
-  ;; use icomplete in minibuffer
-  (icomplete-mode t)
+;; use icomplete in minibuffer
+(icomplete-mode t)
 
-  ;; delete the selection with a keypress
-  (delete-selection-mode t)
+;; delete the selection with a keypress
+(delete-selection-mode t)
 #+END_SRC
 
 * Mac OS X compatibilities
@@ -119,9 +119,9 @@ to bind Mac's =Command= and =Option= key to Emacs's =Meta= and =Control= key,
 respectively.
 
 #+BEGIN_SRC emacs-lisp
-  (when (eq system-type 'darwin)
-    (setq mac-command-modifier 'meta)
-    (setq mac-option-modifier 'control))
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'control))
 #+END_SRC
 
 * Auto-fill Mode
@@ -147,9 +147,9 @@ Commands]].
 
 #+NAME: auto-fill
 #+BEGIN_SRC emacs-lisp
-  (setq-default fill-column 79)
-  (add-hook 'text-mode-hook 'turn-on-auto-fill)
-  (add-hook 'prog-mode-hook 'turn-on-auto-fill)
+(setq-default fill-column 79)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'prog-mode-hook 'turn-on-auto-fill)
 #+END_SRC
 
 * Save Place in Opened Files
@@ -162,9 +162,9 @@ previously visited the same file. The following code comes from [[http://emacs-f
 
 #+NAME: saveplace
 #+BEGIN_SRC emacs-lisp
-  (setq-default save-place t)
-  (setq save-place-file (concat user-emacs-directory ".saved-places"))
-  (require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (concat user-emacs-directory ".saved-places"))
+(require 'saveplace)
 #+END_SRC
 
 * Recentf
@@ -182,27 +182,27 @@ The following code comes from [[http://www.masteringemacs.org/articles/2011/01/2
 
 #+NAME: recentf
 #+BEGIN_SRC emacs-lisp
-  (require 'recentf)
+(require 'recentf)
 
-  ;; get rid of `find-file-read-only' and replace it with something
-  ;; more useful.
-  (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+;; get rid of `find-file-read-only' and replace it with something
+;; more useful.
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
-  ;; save the .recentf file to .emacs.d/
-  (setq recentf-save-file (concat user-emacs-directory ".recentf"))
+;; save the .recentf file to .emacs.d/
+(setq recentf-save-file (concat user-emacs-directory ".recentf"))
 
-  ;; enable recent files mode.
-  (recentf-mode t)
+;; enable recent files mode.
+(recentf-mode t)
 
-  ;; 50 files ought to be enough.
-  (setq recentf-max-saved-items 50)
+;; 50 files ought to be enough.
+(setq recentf-max-saved-items 50)
 
-  (defun ido-recentf-open ()
-    "Use `ido-completing-read' to \\[find-file] a recent file"
-    (interactive)
-    (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-        (message "Opening file...")
-      (message "Aborting")))
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
 #+END_SRC
 
 * Uniquify
@@ -242,9 +242,9 @@ Ispell]]. The following code snippets comes from [[https://github.com/bbatsov/pr
 
 #+NAME: flyspell
 #+BEGIN_SRC emacs-lisp
-  ;; use aspell instead of ispell
-  (setq ispell-program-name "aspell"
-        ispell-extra-args '("--sug-mode=ultra"))
+;; use aspell instead of ispell
+(setq ispell-program-name "aspell"
+      ispell-extra-args '("--sug-mode=ultra"))
 #+END_SRC
 
 * Flycheck
@@ -257,12 +257,12 @@ extension for GNU Emacs 24.
 
 #+NAME: flycheck
 #+BEGIN_SRC emacs-lisp
-  (defun ome-flycheck-setup ()
-    (eval-after-load 'flycheck
-      '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
-    (add-hook 'prog-mode-hook 'flycheck-mode))
+(defun ome-flycheck-setup ()
+  (eval-after-load 'flycheck
+    '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
+  (add-hook 'prog-mode-hook 'flycheck-mode))
 
-  (ome-install 'flycheck)
+(ome-install 'flycheck)
 #+END_SRC
 
 * Todo

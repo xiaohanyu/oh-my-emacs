@@ -58,16 +58,16 @@ to =$HOME/.emacs.d/init.el=:
 
 #+NAME: org-mode-upgrade
 #+BEGIN_SRC emacs-lisp :tangle no
-  (defun ome-org-mode-setup ()
-    ;; markdown export support
-    (require 'ox-md))
+(defun ome-org-mode-setup ()
+  ;; markdown export support
+  (require 'ox-md))
 
-  (add-to-list 'el-get-sources
-               '(:name org-mode
-                       :after (progn
-                                (ome-org-mode-setup))))
+(add-to-list 'el-get-sources
+             '(:name org-mode
+                     :after (progn
+                              (ome-org-mode-setup))))
 
-  (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 #+END_SRC
 
 * Keybindings
@@ -77,17 +77,17 @@ to =$HOME/.emacs.d/init.el=:
 
 #+NAME: keybindings
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (local-set-key (kbd "M-C-n") 'outline-next-visible-heading)
-              (local-set-key (kbd "M-C-p") 'outline-previous-visible-heading)
-              (local-set-key (kbd "M-C-u") 'outline-up-heading)
-              ;; table
-              (local-set-key (kbd "M-C-w") 'org-table-copy-region)
-              (local-set-key (kbd "M-C-y") 'org-table-paste-rectangle)
-              (local-set-key (kbd "M-C-l") 'org-table-sort-lines)
-              ;; display images
-              (local-set-key (kbd "M-I") 'org-toggle-iimage-in-org)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key (kbd "M-C-n") 'outline-next-visible-heading)
+            (local-set-key (kbd "M-C-p") 'outline-previous-visible-heading)
+            (local-set-key (kbd "M-C-u") 'outline-up-heading)
+            ;; table
+            (local-set-key (kbd "M-C-w") 'org-table-copy-region)
+            (local-set-key (kbd "M-C-y") 'org-table-paste-rectangle)
+            (local-set-key (kbd "M-C-l") 'org-table-sort-lines)
+            ;; display images
+            (local-set-key (kbd "M-I") 'org-toggle-iimage-in-org)))
 #+END_SRC
 
 * Speed keys
@@ -106,7 +106,7 @@ display a list of the code blocks commands and their related keys.
 
 #+NAME: speed-keys
 #+BEGIN_SRC emacs-lisp
-  (setq org-use-speed-commands t)
+(setq org-use-speed-commands t)
 #+END_SRC
 
 * Code blocks
@@ -121,16 +121,17 @@ contains an up to date list of the currently supported languages.
 
 #+NAME: babel
 #+BEGIN_SRC emacs-lisp :tangle no
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (sh . t)))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (sh . t)))
 #+END_SRC
 
 You are encouraged to add the following to your personal configuration
 although it is not added by default as a security precaution.
+
 #+BEGIN_SRC emacs-lisp :tangle no
-  (setq org-confirm-babel-evaluate nil)
+(setq org-confirm-babel-evaluate nil)
 #+END_SRC
 
 Use =C-c '= to edit the current code block. This brings up a language
@@ -142,7 +143,8 @@ this buffer into a separate file using auto-save-mode. Use =C-c '= again to
 exit.
 
 #+BEGIN_SRC emacs-lisp
-  (setq org-edit-src-auto-save-idle-delay 5)
+(setq org-edit-src-auto-save-idle-delay 5)
+(setq org-edit-src-content-indentation 0)
 #+END_SRC
 
 * Code block fontification
@@ -157,8 +159,8 @@ much more like reading and editing of code using its major mode.
 
 #+NAME: code-block-fontification
 #+BEGIN_SRC emacs-lisp
-  (setq org-src-fontify-natively t)
-  (setq org-src-tab-acts-natively t)
+(setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
 #+END_SRC
 
 * The Library of Babel
@@ -197,18 +199,18 @@ code block, which may be a bug of =rainbow-delimiters-mode=.
 
 #+NAME: htmlize
 #+BEGIN_SRC emacs-lisp
-  (defadvice htmlize-buffer-1 (around ome-htmlize-buffer-1 disable)
-    (rainbow-delimiters-mode -1)
-    ad-do-it
-    (rainbow-delimiters-mode t))
+(defadvice htmlize-buffer-1 (around ome-htmlize-buffer-1 disable)
+  (rainbow-delimiters-mode -1)
+  ad-do-it
+  (rainbow-delimiters-mode t))
 
-  (defun ome-htmlize-setup ()
-    (if (el-get-read-package-status 'rainbow-delimiters)
-        (progn
-          (ad-enable-advice 'htmlize-buffer-1 'around 'ome-htmlize-buffer-1)
-          (ad-activate 'htmlize-buffer-1))))
+(defun ome-htmlize-setup ()
+  (if (el-get-read-package-status 'rainbow-delimiters)
+      (progn
+        (ad-enable-advice 'htmlize-buffer-1 'around 'ome-htmlize-buffer-1)
+        (ad-activate 'htmlize-buffer-1))))
 
-  (ome-install 'htmlize)
+(ome-install 'htmlize)
 #+END_SRC
 
 * Org-LaTeX
@@ -229,29 +231,29 @@ still use org-mode 7.x, you may need to [[http://orgmode.org/worg/org-tutorials/
 
 #+NAME: org-latex
 #+BEGIN_SRC emacs-lisp
-  ;; code snippet comes from
-  ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
-  ;; Include the latex-exporter
-  ;; check whether org-mode 8.x is available
-  (when (require 'ox-latex nil 'noerror)
-    ;; You need to install pygments to use minted
-    (when (executable-find "pygmentize")
-      ;; Add minted to the defaults packages to include when exporting.
-      (add-to-list 'org-latex-packages-alist '("" "minted"))
-      ;; Tell the latex export to use the minted package for source
-      ;; code coloration.
-      (setq org-latex-listings 'minted)
-      ;; Let the exporter use the -shell-escape option to let latex
-      ;; execute external programs.
-      ;; This obviously and can be dangerous to activate!
-      (setq org-latex-minted-options
-            '(("mathescape" "true")
-              ("linenos" "true")
-              ("numbersep" "5pt")
-              ("frame" "lines")
-              ("framesep" "2mm")))
-      (setq org-latex-pdf-process
-            '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
+;; code snippet comes from
+;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
+;; Include the latex-exporter
+;; check whether org-mode 8.x is available
+(when (require 'ox-latex nil 'noerror)
+  ;; You need to install pygments to use minted
+  (when (executable-find "pygmentize")
+    ;; Add minted to the defaults packages to include when exporting.
+    (add-to-list 'org-latex-packages-alist '("" "minted"))
+    ;; Tell the latex export to use the minted package for source
+    ;; code coloration.
+    (setq org-latex-listings 'minted)
+    ;; Let the exporter use the -shell-escape option to let latex
+    ;; execute external programs.
+    ;; This obviously and can be dangerous to activate!
+    (setq org-latex-minted-options
+          '(("mathescape" "true")
+            ("linenos" "true")
+            ("numbersep" "5pt")
+            ("frame" "lines")
+            ("framesep" "2mm")))
+    (setq org-latex-pdf-process
+          '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
 #+END_SRC
 
 * Org-CDLaTeX
@@ -264,8 +266,8 @@ math]]" for details.
 
 #+NAME: org-cdlatex
 #+BEGIN_SRC emacs-lisp
-  (when (el-get-package-is-installed 'cdlatex-mode)
-    (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
+(when (el-get-package-is-installed 'cdlatex-mode)
+  (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
 #+END_SRC
 
 * Todo
