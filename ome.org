@@ -474,6 +474,54 @@ you really need it.
 #+END_SRC
 
 ** Load User/System Specific Files
+*** How to disable an el-get package?
+
+To modify ome itself, you need to know something about [[http://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming][org-babel]]. In general,
+all ome packages are loaded in a org-mode's code block, the general format of
+which is:
+
+#+BEGIN_VERSE
+#+NAME: <name>
+#+BEGIN_SRC <language> <switches> <header arguments>
+       <body>
+#+END_SRC
+#+END_VERSE
+
+The [[http://orgmode.org/manual/Header-arguments.html#Header-arguments][header arguments]] can control things like whether code is executed when
+=org-babel-load-file=, or exported when =org-export-xxxx=. If you want to
+disable a code block in =org-babel-load-file=, you should use the [[http://orgmode.org/manual/tangle.html#tangle][:tangle]]
+header argument by settings it to =:tangle no=. Thus this code block will not
+be tangled by org-babel and ome won't execute this code block when starts.
+
+For example, here's a general code block for package-abc:
+
+#+BEGIN_VERSE
+#+BEGIN_SRC emacs-lisp
+(defun ome-package-abc-setup ()
+  ;; some custom code for package-abc
+  )
+
+(ome-install 'package-abc)
+#+END_SRC
+#+END_VERSE
+
+If you want to disable package-abc, you just add a =:tangle no= to this code
+block:
+
+#+BEGIN_VERSE
+#+BEGIN_SRC emacs-lisp :tangle no
+(defun ome-package-abc-setup ()
+  ;; some custom code for package-abc
+  )
+
+(ome-install 'package-abc)
+#+END_SRC
+#+END_VERSE
+
+Although you disabled package-abs'c code block, package-abs still keep
+installed in your emacs. Sometimes, you even want to disable this package from
+the bottom. Then you should first remove package-abc via =el-get-remove
+package-abc=, and add =:tangle no= to that code block.
 
 *** General custom code
 
@@ -539,13 +587,6 @@ After we've loaded all the oh-my-emacs defaults, lets load the user's stuff.
              (mapcar #'remove-extension
                      (directory-files user-dir t ".*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
              :test #'string=)))))
-#+END_SRC
-
-*** Settings from M-x customize
-#+NAME: m-x-customize-customizations
-#+BEGIN_SRC emacs-lisp
-(setq custom-file (concat ome-dir "custom.el"))
-(load custom-file 'noerror)
 #+END_SRC
 
 * Todo
