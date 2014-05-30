@@ -106,10 +106,10 @@ oh-my-emacs.
 
 #+NAME: color-theme
 #+BEGIN_SRC emacs-lisp
-(defun ome-color-theme-solarized-setup ()
+(defun ome-solarized-theme-setup ()
   (load-theme 'solarized-dark t))
 
-(ome-install 'color-theme-solarized)
+(ome-install 'solarized-theme)
 #+END_SRC
 
 ** Q&A
