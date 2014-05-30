@@ -42,6 +42,8 @@ Note:
 | [[https://github.com/nflath/hungry-delete][hungry-delete]]    | Experimental | Enables hungry deletion in all modes.                 |
 | [[http://doxymacs.sourceforge.net/][doxymacs]]         | Experimental | Literate comments for cc-mode.                        |
 | [[https://github.com/zk-phi/sublimity][sublimity]]        | Experimental | Bring sublime's smooth-scrolling and minimap to emacs |
+| [[https://github.com/emacsmirror/pos-tip][pos-tip]]          | Experimental | Show tooltip at point                                 |
+| [[https://github.com/flycheck/flycheck-pos-tip][flycheck-pos-tip]] | Experimental | Flycheck errors display in tooltip                    |
 
 Note:
 - [[http://doxymacs.sourceforge.net/][doxymacs]]: There're many Mac OS users having problems building with this
@@ -230,4 +232,48 @@ After installing sublimity, type =M-x sublimity-mode= to enable it.
     (require 'sublimity-map))
 
   (ome-install 'sublimity)
+#+END_SRC
+
+* Pos-tip
+  :PROPERTIES:
+  :CUSTOM_ID: pos-tip
+  :END:
+
+By default, =auto-complete= will use =popup.el= library to display completion
+list, while =popup.el= itself can show some tooltip to display annotations of
+the menu items when available. However, sometimes the layout of the tooltip
+looks bad when you use the builtin =popup.el= windows. Fortunately, =pos-tip=
+provide a better way to display tooltips in a specified location, and it can be
+used by other frontend program like =popup.el=. Auto-complete has a builtin
+variable =ac-quick-help-prefer-pos-tip=, which defaults to =t=, that means when
+we have =pos-tip= library installed, we will have a better tooltip window. I
+tried and it works like a charm. However, some users of ome reported that they
+have various problem installing =pos-tip=, see github issue [[https://github.com/xiaohanyu/oh-my-emacs/issues/70][70]] and [[https://github.com/xiaohanyu/oh-my-emacs/issues/71][71]], so I
+made it a experimental package in ome ome-experimental module, and I hope you
+have a good luck and able to enjoy it. To get this package, just =(ome-load
+"modules/ome-experimental.org" "pos-tip")=
+
+#+NAME: pos-tip
+#+BEGIN_SRC emacs-lisp
+(defun ome-pos-tip-setup ()
+  (require 'pos-tip))
+
+(ome-install 'pos-tip)
+
+#+END_SRC
+
+By default, flycheck show errors in [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Echo-Area.html][echo area]], which is not intuitive. This
+[[https://github.com/flycheck/flycheck-pos-tip][flycheck-pos-tip]] extention will display errors under point using [[https://github.com/emacsmirror/pos-tip][pos-tip]].
+
+#+NAME: flycheck-pos-tip
+#+BEGIN_SRC emacs-lisp
+(defun ome-flycheck-pos-tip-setup ()
+  (eval-after-load 'flycheck
+    '(progn
+       (require 'flycheck-pos-tip)
+       (setq flycheck-display-errors-function
+             #'flycheck-pos-tip-error-messages)
+       (setq flycheck-pos-tip-timeout 10))))
+
+(ome-install 'flycheck-pos-tip)
 #+END_SRC

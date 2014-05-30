@@ -56,17 +56,6 @@ according to =ac-modes=, which in turn determines what major mode
 =auto-complete-mode= can run on. Oh-my-emacs add =org-mode= and =text-mode= to
 =ac-modes=.
 
-By default, =auto-complete= will use =popup.el= library to display completion
-list, while =popup.el= itself can show some tooltip to display annotations of
-the menu items when available. However, sometimes the layout of the tooltip
-looks bad when you use the builtin =popup.el= windows. Fortunately, =pos-tip=
-provide a better way to display tooltips in a specified location, and it can be
-used by other frontend program like =popup.el=. Auto-complete has a builtin
-variable =ac-quick-help-prefer-pos-tip=, which defaults to =t=, that means when
-we have =pos-tip= library installed, we will have a better tooltip window. I
-tried and it works like a charm. So I made it a default package in oh-my-emacs,
-and I hope you enjoy it.
-
 #+NAME: auto-complete
 #+BEGIN_SRC emacs-lisp
 (defun ome-auto-complete-setup ()
@@ -84,10 +73,6 @@ and I hope you enjoy it.
 
   (ac-config-default))
 
-(defun ome-pos-tip-setup ()
-  (require 'pos-tip))
-
-(ome-install 'pos-tip)
 (ome-install 'auto-complete)
 #+END_SRC
 

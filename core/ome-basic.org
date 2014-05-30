@@ -21,13 +21,13 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: basic-el-get-packages
 #+CAPTION: el-get packages for ome-basic module
-|                | Status      | Description                                       |
-|----------------+-------------+---------------------------------------------------|
-| saveplace      | Builtin     | Save cursor place in opened files.                |
-| recentf        | Builtin     | Maintains a recent opened file list.              |
-| uniquify       | Builtin     | Better differentiate buffers with same file name. |
-| auto-fill-mode | Builtin     | We should still obey the 80-characters rule.      |
-| [[https://github.com/flycheck/flycheck][Flycheck]]       | Recommended | aka "Flymake done right"                           |
+|                  | Status      | Description                                       |
+|------------------+-------------+---------------------------------------------------|
+| saveplace        | Builtin     | Save cursor place in opened files.                |
+| recentf          | Builtin     | Maintains a recent opened file list.              |
+| uniquify         | Builtin     | Better differentiate buffers with same file name. |
+| auto-fill-mode   | Builtin     | We should still obey the 80-characters rule.      |
+| [[https://github.com/flycheck/flycheck][flycheck]]         | Recommended | aka "Flymake done right"                          |
 
 * Some Basic Settings
   :PROPERTIES:
@@ -262,16 +262,7 @@ extension for GNU Emacs 24.
     '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
   (add-hook 'prog-mode-hook 'flycheck-mode))
 
-(defun ome-flycheck-pos-tip-setup ()
-  (eval-after-load 'flycheck
-    '(progn
-       (require 'flycheck-pos-tip)
-       (setq flycheck-display-errors-function
-             #'flycheck-pos-tip-error-messages)
-       (setq flycheck-pos-tip-timeout 10))))
-
 (ome-install 'flycheck)
-(ome-install 'flycheck-pos-tip)
 #+END_SRC
 
 * Todo
