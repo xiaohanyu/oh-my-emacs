@@ -392,7 +392,6 @@ auto-fill."
 
 #+END_SRC
 
-
 ** oh-my-emacs core functions
    :PROPERTIES:
    :CUSTOM_ID: core
@@ -414,6 +413,27 @@ auto-fill."
         (funcall function))
     (switch-to-buffer-other-window buffer-name)))
 #+END_SRC
+
+** Writing Portable Emacs Lisp Configurations
+- Use =executable-find= to set path to external tools instead of by writing the
+  tool full path by hand.
+- Check necessary external tools before require a package if a package do need
+  that tool.
+- Try your best to avoid binding keys to function keys since some function keys
+  are easy be conflicted with system keys, and some keyboard do not have
+  function keys at all, such as HHKB.
+- Narrow you variable definition scope, for example, use =define-key= with a
+  mode map instead of =global-set-key=, and you'd better set mode related keys
+  within the mode hook.
+- Try to use system tools to get necessary configuration, for example, you can
+  use =pkg-config= to get necessary header file paths for a particular lib,
+  this is useful for settings with =auto-complete-clang=.
+- Emacs cannot do all things, it do need some external tools to facilitate its
+  jobs. For example, =semantic= from =cedet= is a bad idea, it's bloated, slow
+  and buggy. Consider using clang/jedi for completion. If there is a better
+  external tools, do not hesitate, just use it. Do not reinvent the same wheel
+  in emacs lisp, all you need to do is integrate that tool to emacs with an emacs
+  interface.
 
 * Load settings
 
@@ -604,8 +624,6 @@ After we've loaded all the oh-my-emacs defaults, lets load the user's stuff.
 - =autoload= for lazy loading?
 
 ** El-get
-- Documentation work about why choosing =el-get= over the builtin =package.el=
-  with =melpa= in doc.
 - Investigate whether or not =el-get-remove= will remove all packages that
   depends on the removed package, if not, how to solve this problem?
 - Investigate more on =el-get= to know how to reinitialize a package without
@@ -615,27 +633,6 @@ After we've loaded all the oh-my-emacs defaults, lets load the user's stuff.
 - When you =el-get-update=, =el-get= will first =el-get-remove= then
   =el-get-install=, any way to just do things like =git pull= instead of =git
   clone= from the beginning?
-
-** Writing Portable Emacs Lisp Configurations
-- Use =executable-find= to set path to external tools instead of by writing the
-  tool full path by hand.
-- Check necessary external tools before require a package if a package do need
-  that tool.
-- Try your best to avoid binding keys to function keys since some function keys
-  are easy be conflicted with system keys, and some keyboard do not have
-  function keys at all, such as HHKB.
-- Narrow you variable definition scope, for example, use =define-key= with a
-  mode map instead of =global-set-key=, and you'd better set mode related keys
-  within the mode hook.
-- Try to use system tools to get necessary configuration, for example, you can
-  use =pkg-config= to get necessary header file paths for a particular lib,
-  this is useful for settings with =auto-complete-clang=.
-- Emacs cannot do all things, it do need some external tools to facilitate its
-  jobs. For example, =semantic= from =cedet= is a bad idea, it's bloated, slow
-  and buggy. Consider using clang/jedi for completion. If there is a better
-  external tools, do not hesitate, just use it. Do not reinvent the same wheel
-  in emacs lisp, all you need to do is integrate that tool to emacs with an emacs
-  interface.
 
 
 [1] If you already have a directory at =~/.emacs.d= move it out of the way and

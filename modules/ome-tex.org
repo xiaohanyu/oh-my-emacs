@@ -246,10 +246,6 @@ various AUCTeX backend. So we need some tricks to get around this. Thanks
 ;; (define-key org-mode-map (kbd "C-c C-x x") 'ome-LaTeX-toggle-shell-escape)
 #+END_SRC
 
-** Todo
-- Add =auto-complete= support,
-  https://github.com/monsanto/auto-complete-auctex.
-
 * CDLaTeX
   :PROPERTIES:
   :CUSTOM_ID: cdlatex

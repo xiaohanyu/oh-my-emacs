@@ -197,6 +197,5 @@ tags and directives in ruby comments.
 #+END_SRC
 
 * Todo
-- Auto-complete support, maybe [[https://github.com/dgutov/robe][robe]] is a good choice.
 - Ah, rails support, lots of works, so, as it always said, any help will be
   appreciated.

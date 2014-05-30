@@ -283,9 +283,6 @@ serveral months and it's amazing.
 
 * Todo
 *** Evil mode
-- I only enable =evil-local-mode= for =text-mode= and =prog-mode=, but I don't
-  know why =evil-local-mode= is enabled for =magit-log-mode= by default and
-  shadowed a lot of =magit= keybindings?
 - Evil has some conflicts with smartparens due to cursor position. I should
   temporarily disable =evil-local-mode= when I do operations like
   =sp-up-sexp=. Maybe I can get this by =post-command-hook= or smartparens's

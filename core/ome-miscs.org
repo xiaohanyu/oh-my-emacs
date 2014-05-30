@@ -652,8 +652,6 @@ like.
   as =babel= or =gtranslate=?
 - Set emacs auto-save temporary dir instead of .emacs.d
 - Investigate how to use =imenu= and =imenu rescan=.
-- Add zencoding-mode(emmet-mode) to emacs, maybe I should propose an emmet
-  recipe to =el-get=.
 - Learn more about emacs mark and selection, why CapsLK turn on selection mode.
 - Integrate elnode, skewer-mode and emacs-request to emacs.
 - Write a proper major-mode for GAS assembly language.
