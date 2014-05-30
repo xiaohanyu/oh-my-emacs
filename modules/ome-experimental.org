@@ -44,6 +44,7 @@ Note:
 | [[https://github.com/zk-phi/sublimity][sublimity]]        | Experimental | Bring sublime's smooth-scrolling and minimap to emacs |
 | [[https://github.com/emacsmirror/pos-tip][pos-tip]]          | Experimental | Show tooltip at point                                 |
 | [[https://github.com/flycheck/flycheck-pos-tip][flycheck-pos-tip]] | Experimental | Flycheck errors display in tooltip                    |
+| [[http://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html][po-mode]]          | Experimental | Emacs's PO File Editor                                |
 
 Note:
 - [[http://doxymacs.sourceforge.net/][doxymacs]]: There're many Mac OS users having problems building with this
@@ -276,4 +277,28 @@ By default, flycheck show errors in [[http://www.gnu.org/software/emacs/manual/h
        (setq flycheck-pos-tip-timeout 10))))
 
 (ome-install 'flycheck-pos-tip)
+#+END_SRC
+
+* Po-mode
+  :PROPERTIES:
+  :CUSTOM_ID: po-mode
+  :END:
+
+Emacs always bring you some surprises for you daily job. Some day I wanted to
+do some i18n/l10n work for a python project, and I found [[http://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html][PO-Mode]], which is
+really awesome. I even wanted to write a tiny tutorial for this great mode, but
+I just gave up. Since for any questions in =po-mode=, you can just type =?= or
+=h=, and you will get a brief and concise answer.
+
+#+NAME: po-mode
+#+BEGIN_SRC emacs-lisp
+(defun ome-po-mode-setup ()
+  (add-hook 'po-mode-hook
+            (lambda ()
+              (linum-mode 1)))
+  ;; disable evil-mode since some key binding conflicts
+  (when (featurep 'evil)
+    (add-hook 'po-mode-hook 'turn-off-evil-mode)))
+
+(ome-install 'po-mode)
 #+END_SRC
