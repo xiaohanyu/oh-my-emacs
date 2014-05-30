@@ -144,6 +144,23 @@ emacs rbenv support. By default, oh-my-emacs enables =global-rbenv-mode=.
   (ome-install 'rbenv))
 #+END_SRC
 
+* Yard-mode
+  :PROPERTIES:
+  :CUSTOM_ID: yard-mode
+  :END:
+
+[[https://github.com/pd/yard-mode.el][yard-mode]] is a minor mode that provide rudimentary support for fontifying [[http://yardoc.org/][YARD]]
+tags and directives in ruby comments.
+
+#+NAME: yard-mode
+#+BEGIN_SRC emacs-lisp
+(defun ome-yard-mode-setup ()
+  (add-hook 'ruby-mode-hook 'yard-mode)
+  (add-hook 'ruby-mode-hook 'eldoc-mode))
+
+(ome-install 'yard-mode)
+#+END_SRC
+
 * Todo
 - Auto-complete support, maybe [[https://github.com/dgutov/robe][robe]] is a good choice.
 - Ah, rails support, lots of works, so, as it always said, any help will be
