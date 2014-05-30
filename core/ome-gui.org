@@ -112,6 +112,15 @@ oh-my-emacs.
 (ome-install 'color-theme-solarized)
 #+END_SRC
 
+** Q&A
+
+Q: How to change the default solarized color theme for ome?
+
+A: Just [[http://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming][untangle]]
+the related code block by convert =#+BEGIN_SRC emacs-lisp= to =#+BEGIN_SRC
+emacs-lisp :tangle no=, and choose any color-theme as you like. Check github
+[[https://github.com/xiaohanyu/oh-my-emacs/issues/58][issue]] for detailed discussion.
+
 * Powerline
   :PROPERTIES:
   :CUSTOM_ID: powerline
