@@ -27,16 +27,18 @@ work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
 
 #+NAME: ruby-el-get-packages
 #+CAPTION: El-get packages for ome-ruby module
-|                    | Status     | Description                       |
-|--------------------+------------+-----------------------------------|
-| [[https://github.com/qoobaa/ruby-electric][ruby-electric]]      | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.           |
-| [[https://github.com/adolfosousa/ruby-block.el][ruby-block]]         | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.           |
-| [[https://github.com/rejeep/ruby-end][ruby-end]]           | Deprecated | [[https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby.el][smartparens-ruby]] is amazing, too. |
-| [[http://rubygems.org/gems/rcodetools][rcodetools]]         | Deprecated | Long time no update.              |
-| [[http://www.cx4a.org/pub/auto-complete-ruby.el][auto-complete-ruby]] | Deprecated | Depends on [[http://rubygems.org/gems/rcodetools][rcodetools]].            |
-| [[https://github.com/nonsequitur/inf-ruby][inf-ruby]]           | Required   | Ruby [[http://en.wikipedia.org/wiki/Read%25E2%2580%2593eval%25E2%2580%2593print_loop][REPL]] in Emacs.               |
-| [[https://github.com/Fuco1/smartparens][smartparens]]        | Required   | Smartparens is amazing.           |
-| [[https://github.com/senny/rbenv.el][rbenv.el]]           | Required   | Emacs integration for [[https://github.com/sstephenson/rbenv][rbenv]].      |
+|                    | Status     | Description                                                   |
+|--------------------+------------+---------------------------------------------------------------|
+| [[https://github.com/qoobaa/ruby-electric][ruby-electric]]      | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.                                       |
+| [[https://github.com/adolfosousa/ruby-block.el][ruby-block]]         | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.                                       |
+| [[https://github.com/rejeep/ruby-end][ruby-end]]           | Deprecated | [[https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby.el][smartparens-ruby]] is amazing, too.                             |
+| [[http://rubygems.org/gems/rcodetools][rcodetools]]         | Deprecated | Long time no update.                                          |
+| [[http://www.cx4a.org/pub/auto-complete-ruby.el][auto-complete-ruby]] | Deprecated | Depends on [[http://rubygems.org/gems/rcodetools][rcodetools]].                                        |
+| [[https://github.com/nonsequitur/inf-ruby][inf-ruby]]           | Required   | Ruby [[http://en.wikipedia.org/wiki/Read%25E2%2580%2593eval%25E2%2580%2593print_loop][REPL]] in Emacs.                                           |
+| [[https://github.com/dgutov/robe][robe-mode]]          | Required   | Code navigation, documentation lookup and completion for Ruby |
+| [[https://github.com/pd/yard-mode.el][yard-mode]]          | Required   | Emacs minor mode for editing YARD tags                        |
+| [[https://github.com/Fuco1/smartparens][smartparens]]        | Required   | Smartparens is amazing.                                       |
+| [[https://github.com/senny/rbenv.el][rbenv.el]]           | Required   | Emacs integration for [[https://github.com/sstephenson/rbenv][rbenv]].                                  |
 
 * Ruby-mode
   :PROPERTIES:
@@ -95,6 +97,39 @@ evaluate ruby code snippets.
     (setq inf-ruby-default-implementation "pry")))
 
 (ome-install 'inf-ruby)
+#+END_SRC
+
+* Robe-mode
+  :PROPERTIES:
+  :CUSTOM_ID: robe-mode
+  :END:
+
+#+BEGIN_QUOTE
+Robe is a code assistance tool that uses a Ruby REPL subprocess with your
+application or gem code loaded, to provide information about loaded classes and
+modules, and where each method is defined.
+#+END_QUOTE
+
+The general work flow with [[https://github.com/dgutov/robe][robe]] is:
+- start an =inf-ruby= buffer by =C-c C-z=
+- =M-x robe-start=
+
+Basic features of robe:
+- Jump to method definition
+- Jump to =super= or a constructor called at point
+- Jump to a module or class (provided it has at least one method defined)
+- Display method documentation
+- Display information about method called at point using ElDoc
+- Method and constant name completion
+
+#+NAME: robe-mode
+#+BEGIN_SRC emacs-lisp
+(defun ome-robe-mode-setup ()
+  (add-hook 'robe-mode-hook 'ac-robe-setup)
+  (add-to-list 'ac-modes 'inf-ruby-mode)
+  (add-hook 'inf-ruby-mode-hook 'ac-robe-setup))
+
+(ome-install 'robe-mode)
 #+END_SRC
 
 * Smartparens-ruby
