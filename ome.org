@@ -474,16 +474,35 @@ you really need it.
 #+END_SRC
 
 ** Load User/System Specific Files
+
+*** General custom code
+
+Ome push some small code snippets to =custom.el=.
+
+#+NAME: m-x-customize-customizations
+#+BEGIN_SRC emacs-lisp
+(setq custom-file (concat ome-dir "custom.el"))
+(load custom-file 'noerror)
+#+END_SRC
+
 *** System/User specific customizations
 You can keep system- or user-specific customizations here in either raw
 emacs-lisp files or as embedded elisp in org-mode files (as done in this
 document).
 
-You can keep elisp source in the =src= directory.  Packages loaded from here
+You can keep elisp source in the =src= directory. Packages loaded from here
 will override those installed by ELPA.  This is useful if you want to track the
 development versions of a project, or if a project is not in elpa.
 
-After we've loaded all the oh-my-emacs defaults, lets load the User's stuff.
+For example, if your username is =testuser=, then you can put a =testuser.el=
+file in your =$HOME/.emacs.d=, and then put anything you like in
+=testuser.el=. You may wonder what's the difference between ome's =custom.el=
+and =testuser.el=. Actually, =custom.el= is ome's own code snippets, while
+=testuser.el= is your own code snippet and no need to =git add testuser.el=. So
+you can keep sync with upstream while keep your own customizations.
+
+After we've loaded all the oh-my-emacs defaults, lets load the user's stuff.
+
 #+NAME: ome-load-files
 #+BEGIN_SRC emacs-lisp
 (flet ((sk-load (base)
