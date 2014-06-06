@@ -113,9 +113,8 @@ make auto-complete unoperative when you try to complete function arguments with
 day to trace this problem and finally find here. So I use =(elpy-enable t)=
 instead. Please =C-h f elpy-enable RET= to get details.
 
-Note: currently, =virtualenv.el=, one of the dependencies of elpy, still has
-some [[https://github.com/jorgenschaefer/elpy/issues/144][problems]], the author of =elpy= is considering to replace =virtualenv.el=
-with his newly-written =pyvenv.el=, see [[https://github.com/jorgenschaefer/elpy/issues/149][here]] for details.
+From version 1.3, elpy replaced [[https://github.com/aculich/virtualenv.el][virtualenv.el]] with [[https://github.com/jorgenschaefer/pyvenv][pyvenv]], see [[https://github.com/jorgenschaefer/elpy/issues/149][here]] for
+details.
 
 Also, elpy integrates with [[http://nose.readthedocs.org/en/latest/][nosetests]], =C-c C-t= will run nose on your
 project. So you should =pip install nose= if you want to use nosetests with
@@ -127,7 +126,7 @@ elpy.
   (ome-install 'python24))
 
 (defun ome-elpy-setup ()
-  (elpy-enable)
+  (elpy-enable t)
   (setq elpy-rpc-backend "jedi")
   (when (executable-find "ipython")
     (elpy-use-ipython))
