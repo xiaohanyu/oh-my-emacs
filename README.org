@@ -109,58 +109,58 @@ editor".
 
 #+NAME: what's-in-oh-my-emacs
 #+CAPTION: What's in oh-my-emacs
-| Module           | Package               | Description                                                                                              |
-|------------------+-----------------------+----------------------------------------------------------------------------------------------------------|
-| ome-advanced     | [[http://gitorious.org/evil/pages/Home][evil]]                  | Evil is an extensible vi layer for Emacs.                                                                |
-|                  | [[http://github.com/cofi/evil-leader][evil-leader]]           | Add <leader> shortcuts to Evil.                                                                          |
-|                  | [[http://github.com/timcharper/evil-surround][evil-surround]]         | Emulate Tim Pope's surround.vim in evil.                                                                 |
-|                  | [[https://github.com/magnars/expand-region.el#readme][expand-region]]         | Expand region increases the selected region by semantic units.                                           |
-|                  | [[https://github.com/winterTTr/ace-jump-mode/wiki][ace-jump-mode]]         | A quick cursor location minor mode for emacs                                                             |
-|                  | [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]]        | Yet another front-end for ack                                                                            |
-| ome-auto-mode    | [[https://github.com/lunaryorn/puppet-mode][puppet-mode]]           | A simple mode for editing puppet manifests                                                               |
-|                  | [[nil][wikipedia-mode]]        | Mode for editing Wikipedia articles off-line                                                             |
-|                  | [[https://github.com/yoshiki/yaml-mode][yaml-mode]]             | Simple major mode to edit YAML file for emacs                                                            |
-| ome-basic        | [[https://github.com/lunaryorn/flycheck][flycheck]]              | On-the-fly syntax checking extension                                                                     |
-| ome-cc           | [[https://github.com/vmfhrmfoaj/cscope-el][xcscope]]               | Cscope interface for (X)Emacs                                                                            |
-|                  | [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]]   | Auto-complete sources for Clang. Combine the power of AC, Clang and Yasnippet.                           |
-| ome-clojure      | [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]]          | Emacs support for the Clojure language.                                                                  |
-|                  | [[https://github.com/clojure-emacs/cider][cider]]                 | CIDER is a Clojure IDE and REPL.                                                                         |
-|                  | [[https://github.com/purcell/ac-nrepl][ac-nrepl]]              | Nrepl completion source for Emacs auto-complete package                                                  |
-| ome-common-lisp  | [[https://github.com/antifuchs/slime][slime]]                 | Superior Lisp Interaction Mode for Emacs                                                                 |
-|                  | [[https://github.com/purcell/ac-slime][ac-slime]]              | Emacs auto-complete plugin for Slime symbols                                                             |
-| ome-completion   | [[https://github.com/auto-complete/auto-complete][auto-complete]]         | The most intelligent auto-completion extension.                                                          |
-|                  | [[https://github.com/emacs-helm/helm][helm]]                  | Emacs incremental and narrowing framework                                                                |
-|                  | [[https://github.com/auto-complete/popup-el][popup]]                 | Visual Popup Interface Library for Emacs                                                                 |
-|                  | [[https://github.com/capitaomorte/yasnippet.git][yasnippet]]             | YASnippet is a template system for Emacs.                                                                |
-| ome-emacs-lisp   | [[https://github.com/purcell/elisp-slime-nav][elisp-slime-nav]]       | Slime-style navigation for Emacs Lisp                                                                    |
-| ome-experimental | [[https://raw.github.com/emacsmirror/emacswiki.org/master/lacarte.el][lacarte]]               | Execute menu items as commands, with completion.                                                         |
-|                  | [[nil][sr-speedbar]]           | Same frame speedbar                                                                                      |
-|                  | [[https://github.com/aspiers/smooth-scrolling][smooth-scrolling]]      | Make emacs scroll smoothly.                                                                              |
-|                  | [[https://github.com/nflath/hungry-delete][hungry-delete]]         | Enables hungry deletion in all modes.                                                                    |
-|                  | [[http://doxymacs.sourceforge.net/][doxymacs]]              | Doxymacs is Doxygen + {X}Emacs.                                                                          |
-| ome-gui          | [[https://github.com/sellout/emacs-color-theme-solarized][color-theme-solarized]] | Emacs highlighting using Ethan Schoonover's Solarized color scheme                                       |
-|                  | [[https://github.com/milkypostman/powerline][powerline]]             | Powerline for Emacs                                                                                      |
-|                  | [[https://github.com/m2ym/yascroll-el][yascroll]]              | Yet Another Scroll Bar Mode                                                                              |
-| ome-java         | [[https://github.com/senny/emacs-eclim/][eclim]]                 | This project brings some of the great eclipse features to emacs developers.                              |
-| ome-miscs        | [[https://github.com/jlr/rainbow-delimiters#readme][rainbow-delimiters]]    | Color nested parentheses, brackets, and braces according to their depth.                                 |
-|                  | [[http://cvs.savannah.gnu.org/viewvc/*checkout*/gettext/gettext/gettext-tools/misc/po-mode.el][po-mode]]               | Major mode for GNU gettext PO files                                                                      |
-|                  | [[https://github.com/magit/magit#readme][magit]]                 | It's Magit! An Emacs mode for Git.                                                                       |
-|                  | [[https://github.com/bbatsov/projectile][projectile]]            | Project navigation and management library for Emacs                                                      |
-|                  | [[https://github.com/Fuco1/smartparens][smartparens]]           | Autoinsert pairs of defined brackets and wrap regions                                                    |
-|                  | [[http://emacs-w3m.namazu.org/][emacs-w3m]]             | A simple Emacs interface to w3m                                                                          |
-|                  | [[https://github.com/syohex/emacs-quickrun][quickrun]]              | Run commands quickly                                                                                     |
-|                  | [[http://www.eskimo.com/~seldon/diminish.el][diminish]]              | An Emacs package that diminishes the amount of space taken on the mode line by the names of minor modes. |
-| ome-ocaml        | [[http://caml.inria.fr/svn/ocaml/trunk/emacs][caml-mode]]             | O'Caml code editing commands for Emacs                                                                   |
-|                  | [[svn://svn.forge.ocamlcore.org/svn/tuareg/trunk][tuareg-mode]]           | A GOOD Emacs mode to edit Objective Caml code.                                                           |
-| ome-org          | [[http://orgmode.org][org-mode]]              | Org-mode 8.x branch.                                                                                     |
-|                  | [[http://www.emacswiki.org/emacs/Htmlize][htmlize]]               | Convert buffer text and decorations to HTML.                                                             |
-| ome-python       | [[https://github.com/jorgenschaefer/elpy][elpy]]                  | Emacs Python Development Environment                                                                     |
-| ome-ruby         | [[https://github.com/nonsequitur/inf-ruby][inf-ruby]]              | Inferior Ruby Mode - ruby process in a buffer.                                                           |
-| ome-scheme       | [[http://www.nongnu.org/geiser/][geiser]]                | Make Scheme hacking inside Emacs (even more) fun.                                                        |
-|                  | [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]]             | Emacs auto-complete backend for geiser                                                                   |
-| ome-tex          | [[http://www.gnu.org/software/auctex/][auctex]]                | AUCTeX is an extensible package for writing and formatting TeX files Emacs.                              |
-|                  | [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/cdlatex.el][cdlatex-mode]]          | a minor mode which re-implements many features also found in the AUCTeX LaTeX mode.                      |
-| ome-writing      | [[http://jblevins.org/projects/markdown-mode/][markdown-mode]]         | Major mode to edit Markdown files in Emacs                                                               |
+| Module           | Package             | Description                                                                                              |
+|------------------+---------------------+----------------------------------------------------------------------------------------------------------|
+| ome-advanced     | [[http://gitorious.org/evil/pages/Home][evil]]                | Evil is an extensible vi layer for Emacs.                                                                |
+|                  | [[http://github.com/cofi/evil-leader][evil-leader]]         | Add <leader> shortcuts to Evil.                                                                          |
+|                  | [[http://github.com/timcharper/evil-surround][evil-surround]]       | Emulate Tim Pope's surround.vim in evil.                                                                 |
+|                  | [[https://github.com/magnars/expand-region.el#readme][expand-region]]       | Expand region increases the selected region by semantic units.                                           |
+|                  | [[https://github.com/winterTTr/ace-jump-mode/wiki][ace-jump-mode]]       | A quick cursor location minor mode for emacs                                                             |
+|                  | [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]]      | Yet another front-end for ack                                                                            |
+| ome-auto-mode    | [[https://github.com/lunaryorn/puppet-mode][puppet-mode]]         | A simple mode for editing puppet manifests                                                               |
+|                  | [[nil][wikipedia-mode]]      | Mode for editing Wikipedia articles off-line                                                             |
+|                  | [[https://github.com/yoshiki/yaml-mode][yaml-mode]]           | Simple major mode to edit YAML file for emacs                                                            |
+| ome-basic        | [[https://github.com/lunaryorn/flycheck][flycheck]]            | On-the-fly syntax checking extension                                                                     |
+| ome-cc           | [[https://github.com/vmfhrmfoaj/cscope-el][xcscope]]             | Cscope interface for (X)Emacs                                                                            |
+|                  | [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]] | Auto-complete sources for Clang. Combine the power of AC, Clang and Yasnippet.                           |
+| ome-clojure      | [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]]        | Emacs support for the Clojure language.                                                                  |
+|                  | [[https://github.com/clojure-emacs/cider][cider]]               | CIDER is a Clojure IDE and REPL.                                                                         |
+|                  | [[https://github.com/purcell/ac-nrepl][ac-nrepl]]            | Nrepl completion source for Emacs auto-complete package                                                  |
+| ome-common-lisp  | [[https://github.com/antifuchs/slime][slime]]               | Superior Lisp Interaction Mode for Emacs                                                                 |
+|                  | [[https://github.com/purcell/ac-slime][ac-slime]]            | Emacs auto-complete plugin for Slime symbols                                                             |
+| ome-completion   | [[https://github.com/auto-complete/auto-complete][auto-complete]]       | The most intelligent auto-completion extension.                                                          |
+|                  | [[https://github.com/emacs-helm/helm][helm]]                | Emacs incremental and narrowing framework                                                                |
+|                  | [[https://github.com/auto-complete/popup-el][popup]]               | Visual Popup Interface Library for Emacs                                                                 |
+|                  | [[https://github.com/capitaomorte/yasnippet.git][yasnippet]]           | YASnippet is a template system for Emacs.                                                                |
+| ome-emacs-lisp   | [[https://github.com/purcell/elisp-slime-nav][elisp-slime-nav]]     | Slime-style navigation for Emacs Lisp                                                                    |
+| ome-experimental | [[https://raw.github.com/emacsmirror/emacswiki.org/master/lacarte.el][lacarte]]             | Execute menu items as commands, with completion.                                                         |
+|                  | [[nil][sr-speedbar]]         | Same frame speedbar                                                                                      |
+|                  | [[https://github.com/aspiers/smooth-scrolling][smooth-scrolling]]    | Make emacs scroll smoothly.                                                                              |
+|                  | [[https://github.com/nflath/hungry-delete][hungry-delete]]       | Enables hungry deletion in all modes.                                                                    |
+|                  | [[http://doxymacs.sourceforge.net/][doxymacs]]            | Doxymacs is Doxygen + {X}Emacs.                                                                          |
+| ome-gui          | [[https://github.com/bbatsov/solarized-emacs][solarized-emacs]]     | Emacs highlighting using Ethan Schoonover's Solarized color scheme                                       |
+|                  | [[https://github.com/milkypostman/powerline][powerline]]           | Powerline for Emacs                                                                                      |
+|                  | [[https://github.com/m2ym/yascroll-el][yascroll]]            | Yet Another Scroll Bar Mode                                                                              |
+| ome-java         | [[https://github.com/senny/emacs-eclim/][eclim]]               | This project brings some of the great eclipse features to emacs developers.                              |
+| ome-miscs        | [[https://github.com/jlr/rainbow-delimiters#readme][rainbow-delimiters]]  | Color nested parentheses, brackets, and braces according to their depth.                                 |
+|                  | [[http://cvs.savannah.gnu.org/viewvc/*checkout*/gettext/gettext/gettext-tools/misc/po-mode.el][po-mode]]             | Major mode for GNU gettext PO files                                                                      |
+|                  | [[https://github.com/magit/magit#readme][magit]]               | It's Magit! An Emacs mode for Git.                                                                       |
+|                  | [[https://github.com/bbatsov/projectile][projectile]]          | Project navigation and management library for Emacs                                                      |
+|                  | [[https://github.com/Fuco1/smartparens][smartparens]]         | Autoinsert pairs of defined brackets and wrap regions                                                    |
+|                  | [[http://emacs-w3m.namazu.org/][emacs-w3m]]           | A simple Emacs interface to w3m                                                                          |
+|                  | [[https://github.com/syohex/emacs-quickrun][quickrun]]            | Run commands quickly                                                                                     |
+|                  | [[http://www.eskimo.com/~seldon/diminish.el][diminish]]            | An Emacs package that diminishes the amount of space taken on the mode line by the names of minor modes. |
+| ome-ocaml        | [[http://caml.inria.fr/svn/ocaml/trunk/emacs][caml-mode]]           | O'Caml code editing commands for Emacs                                                                   |
+|                  | [[svn://svn.forge.ocamlcore.org/svn/tuareg/trunk][tuareg-mode]]         | A GOOD Emacs mode to edit Objective Caml code.                                                           |
+| ome-org          | [[http://orgmode.org][org-mode]]            | Org-mode 8.x branch.                                                                                     |
+|                  | [[http://www.emacswiki.org/emacs/Htmlize][htmlize]]             | Convert buffer text and decorations to HTML.                                                             |
+| ome-python       | [[https://github.com/jorgenschaefer/elpy][elpy]]                | Emacs Python Development Environment                                                                     |
+| ome-ruby         | [[https://github.com/nonsequitur/inf-ruby][inf-ruby]]            | Inferior Ruby Mode - ruby process in a buffer.                                                           |
+| ome-scheme       | [[http://www.nongnu.org/geiser/][geiser]]              | Make Scheme hacking inside Emacs (even more) fun.                                                        |
+|                  | [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]]           | Emacs auto-complete backend for geiser                                                                   |
+| ome-tex          | [[http://www.gnu.org/software/auctex/][auctex]]              | AUCTeX is an extensible package for writing and formatting TeX files Emacs.                              |
+|                  | [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/cdlatex.el][cdlatex-mode]]        | a minor mode which re-implements many features also found in the AUCTeX LaTeX mode.                      |
+| ome-writing      | [[http://jblevins.org/projects/markdown-mode/][markdown-mode]]       | Major mode to edit Markdown files in Emacs                                                               |
 
 * Gallery
 [[http://www.douban.com/photos/album/117065634/][Here]]'re some screenshots of oh-my-emacs:

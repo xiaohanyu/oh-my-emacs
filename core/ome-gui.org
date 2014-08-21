@@ -10,12 +10,12 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: gui-el-get-packages
 #+CAPTION: El-get packages for ome-gui module
-|                       | Status   | Description                            |
-|-----------------------+----------+----------------------------------------|
-| [[https://github.com/sellout/emacs-color-theme-solarized.git][color-theme-solarized]] | Required | Adopt this as the default color-theme. |
-| [[https://github.com/milkypostman/powerline][powerline]]             | Required | Eye candy for Emacs mode line.         |
-| [[https://github.com/m2ym/yascroll-el][yascroll]]              | Required | Eye candy for Emacs scroll bar.        |
-| [[https://github.com/coldnew/linum-relative][linum-relative]]        | Required | Eye candy for Emacs linum-mode.        |
+|                 | Status   | Description                            |
+|-----------------+----------+----------------------------------------|
+| [[https://github.com/bbatsov/solarized-emacs][solarized-emacs]] | Required | Adopt this as the default color-theme. |
+| [[https://github.com/milkypostman/powerline][powerline]]       | Required | Eye candy for Emacs mode line.         |
+| [[https://github.com/m2ym/yascroll-el][yascroll]]        | Required | Eye candy for Emacs scroll bar.        |
+| [[https://github.com/coldnew/linum-relative][linum-relative]]  | Required | Eye candy for Emacs linum-mode.        |
 
 * Basic GUI Settings
 #+NAME: gui-basics
@@ -104,12 +104,32 @@ starting point.
 applications, not only for emacs. I'll set this as the default theme for
 oh-my-emacs.
 
+There're multiple el-get/elpa packages for solarized theme, and the original
+oh-my-emacs adopts [[https://github.com/sellout/emacs-color-theme-solarized.git][color-theme-solarized]] package, which requires [[http://www.nongnu.org/color-theme][color-theme]]
+package as a dependency, which failed to install sometimes. So oh-my-emacs now
+adopts [[https://github.com/bbatsov/solarized-emacs][solarized-emacs]] package. One thing you should be aware of is, you should
+use =M-x load-theme= instead of =color-theme-xxxx= to change current color
+theme.
+
 #+NAME: color-theme
 #+BEGIN_SRC emacs-lisp
-(defun ome-solarized-theme-setup ()
+(defun ome-solarized-emacs-setup ()
+  ;; make the fringe stand out from the background
+  (setq solarized-distinct-fringe-background t)
+  ;; make the modeline high contrast
+  (setq solarized-high-contrast-mode-line t)
+  ;; Use less bolding
+  (setq solarized-use-less-bold t)
+  ;; Use more italics
+  (setq solarized-use-more-italic t)
+  ;; Use less colors for indicators such as git:gutter, flycheck and similar.
+  (setq solarized-emphasize-indicators nil)
+
+  (setq x-underline-at-descent-line t)
+
   (load-theme 'solarized-dark t))
 
-(ome-install 'solarized-theme)
+(ome-install 'solarized-emacs)
 #+END_SRC
 
 ** Q&A
