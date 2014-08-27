@@ -126,7 +126,7 @@ idea. =sr-speedbar= solves this problem, however, it brings some new problems:
   :CUSTOM_ID: smooth-scrolling
   :END:
 
-Make emacs scroll smoothly.
+Make emacs scroll smoothly. *WARNING*: This makes your emacs slow.
 
 #+NAME: smooth-scrolling
 #+BEGIN_SRC emacs-lisp
@@ -225,6 +225,8 @@ features to emacs, such as [[http://www.emacswiki.org/emacs/MiniMap][minimap.el]
 than others.
 
 After installing sublimity, type =M-x sublimity-mode= to enable it.
+
+*WARNING*: This makes your emacs slow.
 
 #+NAME: sublimity
 #+BEGIN_SRC emacs-lisp

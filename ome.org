@@ -490,7 +490,7 @@ you really need it.
 (ome-load "modules/ome-ocaml.org")
 (ome-load "modules/ome-tex.org")
 (ome-load "modules/ome-web.org")
-(ome-load "modules/ome-experimental.org" "smooth-scrolling" "sublimity")
+;; (ome-load "modules/ome-experimental.org" "smooth-scrolling" "sublimity")
 #+END_SRC
 
 ** Load User/System Specific Files
