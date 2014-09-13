@@ -465,8 +465,8 @@ you really need it.
 - [[file:modules/ome-ocaml.org][ome-ocaml.org]]: minimal settings for OCaml.
 - [[file:modules/ome-tex.org][ome-tex.org]]: AUCTeX and CDLaTeX for \TeX{} editing.
 - [[file:modules/ome-web.org][ome-web.org]]: settings for HTML/CSS web development.
-- [[file:modules/ome-experimental.org][ome-experimental.org]]: some experimental packages, such as sppedbar, minimap,
-  etc. Not stable yet now.
+- [[file:modules/ome-experimental.org][ome-experimental.org]]: some experimental packages, such as sppedbar, minimap, etc. Not stable yet now.
+- [[file:modules/ome-haskell.org][ome-haskell.org]]: settings for haskell
 
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
@@ -491,6 +491,7 @@ you really need it.
 (ome-load "modules/ome-tex.org")
 (ome-load "modules/ome-web.org")
 ;; (ome-load "modules/ome-experimental.org" "smooth-scrolling" "sublimity")
+(ome-load "modules/ome-haskell.org")
 #+END_SRC
 
 ** Load User/System Specific Files
