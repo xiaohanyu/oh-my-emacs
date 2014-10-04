@@ -1,0 +1,54 @@
+#+TITLE: Oh My Emacs CC
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: sml-prerequisites
+  :END:
+
+#+NAME: sml-prerequisites
+#+CAPTION: Prerequisites for ome-sml module
+|     | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|-----+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.smlnj.org][SML/NJ]] |         | smlnj                |           |        |          | Yes        |
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: sml-el-get-packages
+  :END:
+
+#+NAME: sml-el-get-packages
+#+CAPTION: El-get packages for ome-sml module
+|              | Status   | Description                                       |
+|--------------+----------+---------------------------------------------------|
+| [[http://www.iro.umontreal.ca/~monnier/elisp/][sml-mode]] | Required | This is a package for developing sml in Emacs |
+
+* What's SML
+  Standard ML is a safe, modular, strict, functional, polymorphic
+programming language with compile-time type checking and type
+inference, garbage collection, exception handling, immutable data
+types and updatable references, abstract data types, and parametric
+modules. It has efficient implementations and a formal definition
+with a proof of soundness.
+  Check for more details of SML and SML/NJ [[http://www.smlnj.org][here]].
+
+* sml-mode
+  :PROPERTIES:
+  :CUSTOM_ID: sml-mode
+  :END:
+
+SML Mode is an extension to Emacs that is not Emacs itself or SML/NJ itself.
+It displays SML code nicely with syntax coloring and clean indentation, and
+provides a way to run SML from within Emacs. The website is:
+http://www.iro.umontreal.ca/~monnier/elisp/
+
+#+NAME: sml-mode
+#+BEGIN_SRC emacs-lisp
+(defun ome-sml-mode-setup ())
+
+
+(when (executable-find "sml")
+  (ome-install 'sml-mode))
+#+END_SRC
