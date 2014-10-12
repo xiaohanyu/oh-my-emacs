@@ -217,12 +217,6 @@ code block, which may be a bug of =rainbow-delimiters-mode=.
   ad-do-it
   (rainbow-delimiters-mode t))
 
-(defun ome-htmlize-setup ()
-  (if (el-get-read-package-status 'rainbow-delimiters)
-      (progn
-        (ad-enable-advice 'htmlize-buffer-1 'around 'ome-htmlize-buffer-1)
-        (ad-activate 'htmlize-buffer-1))))
-
 (ome-install 'htmlize)
 #+END_SRC
 
