@@ -129,6 +129,7 @@ editing your document at your fingertips.
       "y" 'helm-show-kill-ring
       "t" 'helm-top
       "m" 'helm-man-woman
+      "o" 'helm-occur
       "j" 'helm-M-x
       "e" 'helm-find-files
       "b" 'helm-buffers-list))
