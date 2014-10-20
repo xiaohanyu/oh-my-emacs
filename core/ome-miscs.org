@@ -98,8 +98,7 @@ given depth."
 #+NAME: rainbow-delimiters
 #+BEGIN_SRC emacs-lisp
 (defun ome-rainbow-delimiters-setup ()
-  (global-rainbow-delimiters-mode))
-
+  (rainbow-delimiters-mode))
 (ome-install 'rainbow-delimiters)
 #+END_SRC
 
