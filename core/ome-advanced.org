@@ -77,6 +77,7 @@ Emacs session.
 #+NAME: evil
 #+BEGIN_SRC emacs-lisp
 (defun ome-evil-setup ()
+  (define-key evil-insert-state-map (kbd "C-[") 'evil-force-normal-state)
   (setq evil-auto-indent t)
   (setq evil-regexp-search t)
   (setq evil-want-C-i-jump t)
@@ -128,6 +129,7 @@ editing your document at your fingertips.
       "y" 'helm-show-kill-ring
       "t" 'helm-top
       "m" 'helm-man-woman
+      "o" 'helm-occur
       "j" 'helm-M-x
       "e" 'helm-find-files
       "b" 'helm-buffers-list))
