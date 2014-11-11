@@ -45,6 +45,10 @@
 ;; default el-get recipe to get around bugs.
 (add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
 
+;; tell el-get to look into local customizations for every package into
+;; `~/.emacs.d/init-<package>.el'
+(setq el-get-user-package-directory "~/.emacs.d")
+
 ;; Some workaround for emacs version < 24.0, thanks Silthanis@github.
 (if (< emacs-major-version 24)
     (defun file-name-base (&optional filename)
