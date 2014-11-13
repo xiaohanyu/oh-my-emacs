@@ -109,9 +109,21 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
   :CUSTOM_ID: mac
   :END:
 
+** Installation
+
 There're multiple [[http://wikemacs.org/index.php/Installing_Emacs_on_OS_X][choices]] to install Emacs on Mac OS X. I prefer [[http://brew.sh/][Homebrew]], and
 got my Emacs with =brew install emacs --cocoa=. This version of emacs even has
 native [[http://batsov.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/][full screen support]].
+
+You'd better remove the outdated OS X's emacs to avoid conflicts with the new
+one.
+
+#+BEGIN_SRC sh
+sudo rm /usr/bin/emacs
+sudo rm -rf /usr/share/emacs
+#+END_SRC
+
+** Keybindings
 
 Another problem with emacs on Mac OX X is the keybindings to =Meta= and
 =Control=. Since most of the macbooks lack the right =Control= key, I prefer
@@ -122,6 +134,28 @@ respectively.
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'control))
+#+END_SRC
+
+** Homebrew
+
+Lots of oh-my-emacs packages depends on external tools/libs/packages, which can
+be installed by apt(Ubuntu/Debian/Mint), yum(Fedora), homebrew(ala, Mac OS
+X). However, unlike other linux distributions, Mac OS X often has two different
+package collections, one is the system builtin, the other is something like
+homebrew. Sometimes, there're conflicts that makes you think that you have got
+the latest packages while actually emacs still use the system's builtin,
+outdated packages. So we need some special settings for this.
+
+Many el-get packages(such as [[http://common-lisp.net/project/slime/][slime]] in ome-common-lisp module) need [[http://www.gnu.org/software/texinfo/][texinfo]]. You
+can get latest texinfo by:
+
+#+BEGIN_SRC sh
+brew install texinfo
+#+END_SRC
+
+then you must do something to make texinfo become emacs's good friend.
+#+BEGIN_SRC sh
+brew link texinfo --force
 #+END_SRC
 
 * Auto-fill Mode
