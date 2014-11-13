@@ -128,8 +128,6 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
                  slime-banner
                  slime-highlight-edits)))
 
-(ome-install 'slime)
-
 (defun ome-ac-slime-setup ()
   (add-hook 'slime-mode-hook
             (lambda ()
@@ -140,7 +138,12 @@ Enough stuff, enjoy your Common Lisp journey with Emacs and SLIME.
   (eval-after-load "auto-complete"
     '(add-to-list 'ac-modes 'slime-repl-mode)))
 
-(ome-install 'ac-slime)
+(when (or (executable-find "sbcl")
+          (executable-find "ccl")
+          (executable-find "ccl64")
+          (executable-find "clisp"))
+  (ome-install 'slime)
+  (ome-install 'ac-slime))
 #+END_SRC
 
 * Todos
