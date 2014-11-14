@@ -61,9 +61,6 @@ Say code checking tools,
 
 Say developing tools,
 - What is [[http://www.virtualenv.org/en/latest/][virtualenv]]?
-- What about code completion? Maybe after two days' google, you finally make
-  [[http://cx4a.org/software/auto-complete/][auto-complete]] works with a completion backend, such as [[http://rope.sourceforge.net/][rope]] or [[https://github.com/davidhalter/jedi][jedi]], but how
-  can you make completion be virtualenv-awared?
 
 Choices, choices, choices, choices are where all happiness and headaches
 begins. Just google a minute you'll find articles which use different
@@ -107,12 +104,6 @@ Thanks [[https://github.com/jorgenschaefer/elpy][elpy]] again, for time it saves
 on Python, on our life, instead of the details to make choices. Elpy is the
 ultimate out-of-box Emacs Python "IDE" solution.
 
-By default, =(elpy-enable)= will [[https://github.com/jorgenschaefer/elpy/blob/master/elpy.el#L343][modify]] auto-complete's keymap, which would
-make auto-complete unoperative when you try to complete function arguments with
-[[https://github.com/brianjcj/auto-complete-clang/blob/master/screenshot/clang-3.png][auto-complete-clang]] by utilize =yas-expand= from YASnippet. I've spent a whole
-day to trace this problem and finally find here. So I use =(elpy-enable t)=
-instead. Please =C-h f elpy-enable RET= to get details.
-
 From version 1.3, elpy replaced [[https://github.com/aculich/virtualenv.el][virtualenv.el]] with [[https://github.com/jorgenschaefer/pyvenv][pyvenv]], see [[https://github.com/jorgenschaefer/elpy/issues/149][here]] for
 details.
 
@@ -152,11 +143,6 @@ initialization, which is just a plain python file.
 * Todo
 - Add some django-mode support? Maybe
   https://github.com/fgallina/python-django.el is a good candidate.
-- Auto-complete support for completion in =inferior-python-mode= like
-  SLIME. Maybe the general auto-complete readline backend
-  https://github.com/monsanto/readline-complete.el is the ultimate solution
-  for REPL languages.
-
 
 [1] See [[http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/][here]], [[http://caisah.info/emacs-for-python/][here]], [[http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/][here]], [[http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/][here]], and [[http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/][here]].
 [2] =pip install pkg= with root can make =pkg= accessible in newly created

@@ -26,8 +26,6 @@ to organize and embed elisp code in org-mode files, I wanted to make some
 contribution to make it a full-blown hacking environment, but I stopped after
 I dived into the code a little, since I want:
 - Adapt =el-get= instead of the builtin =package.el=, and
-- Have a better completion including =auto-complete= and various =ac-sources=
-  projects for various programming languages.
 
 The starter kit projects is just starter's kit, what I want is a full-blown
 hacker's kit. So I start my own project, [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]], whose name is inspired
@@ -42,15 +40,14 @@ by [[https://github.com/robbyrussell/oh-my-zsh][oh-my-zsh]].
   provides automatic documentation management, customizable user's recipe
   support, etc.
 - Self-adapted, only install necessary packages when it satisfies the
-  prerequisities. You need to install [[http://clang.llvm.org/][clang]] for [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]], for
-  example.
+  prerequisities.
 - Modular, only load necessary packages as you need.
 - Literate, each package has comprehensive documentation or even a tiny
   tutorial with it, together with necessary web links. Say goodbye to old,
   out-dated emacs lisp code from Google.
 - Work as expected, completion every where when possible, semantic code
-  completion through [[https://github.com/auto-complete/auto-complete][auto-complete]] with various ac backend, [[https://github.com/emacs-helm/helm][helm]] for
-  minibuffer completion, etc.
+  completion through [[https://github.com/company-mode/company-mode][company-mode]] with various ac backend, [[https://github.com/emacs-helm/helm][helm]] for minibuffer
+  completion, etc.
 - Full-blown, oh-my-emacs is not another starter kit, it is hacker kit.
 
 * Quick Start
@@ -122,15 +119,10 @@ editor".
 |                  | [[https://github.com/yoshiki/yaml-mode][yaml-mode]]           | Simple major mode to edit YAML file for emacs                                                            |
 | ome-basic        | [[https://github.com/lunaryorn/flycheck][flycheck]]            | On-the-fly syntax checking extension                                                                     |
 | ome-cc           | [[https://github.com/vmfhrmfoaj/cscope-el][xcscope]]             | Cscope interface for (X)Emacs                                                                            |
-|                  | [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]] | Auto-complete sources for Clang. Combine the power of AC, Clang and Yasnippet.                           |
 | ome-clojure      | [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]]        | Emacs support for the Clojure language.                                                                  |
 |                  | [[https://github.com/clojure-emacs/cider][cider]]               | CIDER is a Clojure IDE and REPL.                                                                         |
-|                  | [[https://github.com/purcell/ac-nrepl][ac-nrepl]]            | Nrepl completion source for Emacs auto-complete package                                                  |
 | ome-common-lisp  | [[https://github.com/antifuchs/slime][slime]]               | Superior Lisp Interaction Mode for Emacs                                                                 |
-|                  | [[https://github.com/purcell/ac-slime][ac-slime]]            | Emacs auto-complete plugin for Slime symbols                                                             |
-| ome-completion   | [[https://github.com/auto-complete/auto-complete][auto-complete]]       | The most intelligent auto-completion extension.                                                          |
 |                  | [[https://github.com/emacs-helm/helm][helm]]                | Emacs incremental and narrowing framework                                                                |
-|                  | [[https://github.com/auto-complete/popup-el][popup]]               | Visual Popup Interface Library for Emacs                                                                 |
 |                  | [[https://github.com/capitaomorte/yasnippet.git][yasnippet]]           | YASnippet is a template system for Emacs.                                                                |
 | ome-emacs-lisp   | [[https://github.com/purcell/elisp-slime-nav][elisp-slime-nav]]     | Slime-style navigation for Emacs Lisp                                                                    |
 | ome-experimental | [[https://raw.github.com/emacsmirror/emacswiki.org/master/lacarte.el][lacarte]]             | Execute menu items as commands, with completion.                                                         |
@@ -157,7 +149,6 @@ editor".
 | ome-python       | [[https://github.com/jorgenschaefer/elpy][elpy]]                | Emacs Python Development Environment                                                                     |
 | ome-ruby         | [[https://github.com/nonsequitur/inf-ruby][inf-ruby]]            | Inferior Ruby Mode - ruby process in a buffer.                                                           |
 | ome-scheme       | [[http://www.nongnu.org/geiser/][geiser]]              | Make Scheme hacking inside Emacs (even more) fun.                                                        |
-|                  | [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]]           | Emacs auto-complete backend for geiser                                                                   |
 | ome-tex          | [[http://www.gnu.org/software/auctex/][auctex]]              | AUCTeX is an extensible package for writing and formatting TeX files Emacs.                              |
 |                  | [[http://staff.science.uva.nl/~dominik/Tools/cdlatex/cdlatex.el][cdlatex-mode]]        | a minor mode which re-implements many features also found in the AUCTeX LaTeX mode.                      |
 | ome-writing      | [[http://jblevins.org/projects/markdown-mode/][markdown-mode]]       | Major mode to edit Markdown files in Emacs                                                               |
@@ -168,17 +159,8 @@ editor".
 - Startup screen:
 [[http://img3.douban.com/view/photo/large/public/p2134421167.jpg]]
 
-- =org-babel= from org-mode, auto-complete for emacs lisp:
-[[http://img3.douban.com/view/photo/large/public/p2134421326.jpg]]
-
 - helm-grep to search words in multiple files:
 [[http://img3.douban.com/view/photo/large/public/p2134421804.jpg]]
-
-- auto-complete for C++ QT
-[[http://img3.douban.com/view/photo/large/public/p2134420940.jpg]]
-
-- auto-complete for python
-[[http://img4.douban.com/view/photo/large/public/p2134421478.jpg]]
 
 - AUCTeX with outline-minor-mode, helm completion for TeX commands
 [[http://img3.douban.com/view/photo/large/public/p2134420730.jpg]]

@@ -92,20 +92,10 @@ Java Development in Emacs]] show you an illustrated guide.
   ;; eclim-mode
   (help-at-pt-set-timer)
 
-  ;; keep consistent which other auto-complete backend.
-  (custom-set-faces
-   '(ac-emacs-eclim-candidate-face ((t (:inherit ac-candidate-face))))
-   '(ac-emacs-eclim-selection-face ((t (:inherit ac-selection-face)))))
-
-  ;; Hook eclim up with auto complete mode
-  (require 'ac-emacs-eclim-source)
-  ;; (ac-emacs-eclim-config)
-
   (require 'eclimd)
 
   (add-hook 'java-mode-hook
             (lambda ()
-              (add-to-list 'ac-sources 'ac-source-emacs-eclim)
               (eclim-mode t))))
 
 (when (executable-find "eclipse")

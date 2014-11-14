@@ -33,7 +33,6 @@ work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
 | [[https://github.com/adolfosousa/ruby-block.el][ruby-block]]         | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.                                       |
 | [[https://github.com/rejeep/ruby-end][ruby-end]]           | Deprecated | [[https://github.com/Fuco1/smartparens/blob/master/smartparens-ruby.el][smartparens-ruby]] is amazing, too.                             |
 | [[http://rubygems.org/gems/rcodetools][rcodetools]]         | Deprecated | Long time no update.                                          |
-| [[http://www.cx4a.org/pub/auto-complete-ruby.el][auto-complete-ruby]] | Deprecated | Depends on [[http://rubygems.org/gems/rcodetools][rcodetools]].                                        |
 | [[https://github.com/nonsequitur/inf-ruby][inf-ruby]]           | Required   | Ruby [[http://en.wikipedia.org/wiki/Read%25E2%2580%2593eval%25E2%2580%2593print_loop][REPL]] in Emacs.                                           |
 | [[https://github.com/dgutov/robe][robe-mode]]          | Required   | Code navigation, documentation lookup and completion for Ruby |
 | [[https://github.com/pd/yard-mode.el][yard-mode]]          | Required   | Emacs minor mode for editing YARD tags                        |

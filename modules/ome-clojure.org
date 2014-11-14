@@ -31,7 +31,6 @@ Note:
 |--------------+----------+-------------------------------------------|
 | [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] | Required | Major mode for Clojure.                   |
 | [[https://github.com/clojure-emacs/cider][CIDER]]        | Required | CIDER is a Clojure IDE and REPL for Emacs |
-| [[https://github.com/purcell/ac-nrepl.git][ac-nrepl]]     | Required | AC backend for nrepl.                     |
 
 * Clojure
   :PROPERTIES:
@@ -78,14 +77,6 @@ It's really really awesome, ah?
   (setq nrepl-buffer-name-show-port t))
 
 (ome-install 'cider)
-
-(defun ome-ac-nrepl-setup ()
-  (add-hook 'cider-mode-hook 'ac-nrepl-setup)
-  (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
-  (eval-after-load "auto-complete"
-    '(add-to-list 'ac-modes 'cider-repl-mode)))
-
-(ome-install 'ac-nrepl)
 #+END_SRC
 
 * Todos

@@ -37,7 +37,6 @@ Note:
 | cc-mode             | Builtin     | Where all the magic starts.     |
 | [[http://www.itk.org/Wiki/CMake_Editors_Support][cmake-mode]]          | Recommended | Editing support for CMake.      |
 | [[https://github.com/vmfhrmfoaj/cscope-el.git][xcscope]]             | Recommended | Code indexing and browsing.     |
-| [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]] | Required    | Semantic completiong for C/C++. |
 
 * Basic CC-Mode Settings
   :PROPERTIES:
@@ -179,79 +178,6 @@ cscope. The default keybindings use the =C-c s= prefix:
     (ome-install 'xcscope))
 
 #+END_SRC
-* Auto-complete-clang
-  :PROPERTIES:
-  :CUSTOM_ID: auto-complete-clang
-  :END:
-
-Completion in Emacs is always a hot topic in Emacs community. Of course,
-there're always solutions, but none of them is perfect. The traditional
-approach relies on [[http://cedet.sourceforge.net/semantic.shtml][semantic]] from [[http://cedet.sourceforge.net/semantic.shtml][cedet]], which provides a parser for C/C++ and
-various other lanauges. But I don't think it's a good idea to written a parser
-in Elisp, especially a C++ parser. IMHO, semantic is bloated, slow, and often
-make your Emacs stuck. So I didn't use it in oh-my-emacs.
-
-The second choice is [[http://cx4a.org/software/gccsense/][GCCSense]], which is written by the same author of
-[[http://cx4a.org/software/auto-complete/][auto-complete]]. I've read the manual but I found it a little complex to
-install. So I won't adopt it.
-
-Instead, I use [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]], which combines the power of auto-complete,
-clang, and yasnippet. I also write some wrapper functions for it, one of them
-is interactive [[http://www.freedesktop.org/wiki/Software/pkg-config/][pkg-config]] completion support. Thus, if you just write a "hello
-world" program with C/C++ standard library, then the semantic completion is
-already at your fingertips. Otherwise, if you want to write some huge
-programs with third-party libs, then just =M-x
-ome-pkg-config-enable-clang-flag name-of-lib=, and completion will be right
-here. Ensure that you have pkg-config installed and all the necessary libs
-installed if you want to write program with that library.
-
-The default auto-complete-clang package didn't provide completion for C/C++
-macros, so I did a little hack by setting =ac-clang-flags=, see
-https://github.com/Rip-Rip/clang_complete/issues/42 for technical details.
-
-#+NAME: auto-complete-clang
-#+BEGIN_SRC emacs-lisp
-(defun ome-pkg-config-enable-clang-flag (pkg-config-lib)
-  "This function will add necessary header file path of a
-specified by `pkg-config-lib' to `ac-clang-flags', which make it
-completionable by auto-complete-clang"
-  (interactive "spkg-config lib: ")
-  (if (executable-find "pkg-config")
-      (if (= (shell-command
-              (format "pkg-config %s" pkg-config-lib))
-             0)
-          (setq ac-clang-flags
-                (append ac-clang-flags
-                        (split-string
-                         (shell-command-to-string
-                          (format "pkg-config --cflags-only-I %s"
-                                  pkg-config-lib)))))
-        (message "Error, pkg-config lib %s not found." pkg-config-lib))
-    (message "Error: pkg-config tool not found.")))
-
-;; (ome-pkg-config-enable-clang-flag "QtGui")
-
-(defun ome-auto-complete-clang-setup ()
-  (require 'auto-complete-clang)
-  (setq command "echo | g++ -v -x c++ -E - 2>&1 |
-                 grep -A 20 starts | grep include | grep -v search")
-  (setq ac-clang-flags
-        (mapcar (lambda (item)
-                  (concat "-I" item))
-                (split-string
-                 (shell-command-to-string command))))
-  ;; completion for C/C++ macros.
-  (push "-code-completion-macros" ac-clang-flags)
-  (push "-code-completion-patterns" ac-clang-flags)
-  (dolist (mode-hook '(c-mode-hook c++-mode-hook))
-    (add-hook mode-hook
-              (lambda ()
-                (add-to-list 'ac-sources 'ac-source-clang)))))
-
-(when (executable-find "clang")
-  (ome-install 'auto-complete-clang))
-#+END_SRC
-
 * Todo
 - Port cc-mode's =hungry-delete= to other mode.
 - Documentation for some useful cc-mode keybindings such as
@@ -260,8 +186,4 @@ completionable by auto-complete-clang"
 - Integrate [[http://www.wonderworks.com/download/filladapt.el][filladapt]] package to enhance emacs's adaptive filling.
 - Add special font-lock support for some Qt's "keywords" such as "signal" and
   "slot".
-- Auto-complete-clang:
-  - For huge C/C++ programs, auto-complete-clang maybe a little slow, maybe
-    https://github.com/Golevka/emacs-clang-complete-async is a better
-    solution.
 - Learn something about [[http://www.gnu.org/software/global/][GNU Global]], thanks [[http://www.reddit.com/user/stack_pivot][stack_pivot]].

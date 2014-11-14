@@ -12,10 +12,8 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 #+CAPTION: El-get packages for ome-completion module
 |               | Status   | Description                                 |
 |---------------+----------+---------------------------------------------|
-| [[http://cx4a.org/software/auto-complete/][auto-complete]] | Required | I really like it.                           |
 | [[https://github.com/emacs-helm/helm][helm]]          | Required | Completion everywhere, highly recommended.  |
 | [[https://github.com/capitaomorte/yasnippet][YASnippet]]     | Required | Quick snippet template insertion.           |
-| [[http://www.emacswiki.org/emacs/PosTip][pos-tip]]       | Required | For better auto-complete popup tips window. |
 
 * Hippie expand
 =M-x hippie-expand= is a single command providing a variety of completions and
@@ -35,131 +33,6 @@ expansions. The following code segment comes from [[https://github.com/bbatsov/p
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
 #+END_SRC
-
-* Auto complete
-  :PROPERTIES:
-  :CUSTOM_ID: auto-complete
-  :END:
-
-[[http://cx4a.org/software/auto-complete/][Auto-Complete]] is an intelligent auto-completion extension for Emacs. It extends
-the standard Emacs completion interface and provides an environment that allows
-users to concentrate more on their own work.
-
-Actually, there're multiple completion packages for Emacs, say Emacs builtin
-[[http://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html][completion]], there're =completion-at-point= function for [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Completion-in-Buffers.html][completion in buffers]],
-[[http://www.emacswiki.org/emacs/ProgrammableCompletion][pcomplete]] for completion mainly for =comint-mode=, such as [[http://www.masteringemacs.org/articles/2012/01/16/pcomplete-context-sensitive-completion-emacs/][completion in
-Eshell]], =ido-mode= for completion in minibuffers. Say auto-complete, there's
-also a [[http://stackoverflow.com/questions/4704748/emacs-completion-autocomplete-or-company][competitive]] [[http://company-mode.github.io/][company-mode]].
-
-By default, function =global-auto-complete-mode= will toggle on auto-complete
-according to =ac-modes=, which in turn determines what major mode
-=auto-complete-mode= can run on. Oh-my-emacs add =org-mode= and =text-mode= to
-=ac-modes=.
-
-#+NAME: auto-complete
-#+BEGIN_SRC emacs-lisp
-(defun ome-auto-complete-setup ()
-  (require 'auto-complete-config)
-
-  (define-key ac-mode-map (kbd "M-/") 'ac-fuzzy-complete)
-  (dolist (ac-mode '(text-mode org-mode))
-    (add-to-list 'ac-modes ac-mode))
-  (dolist (ac-mode-hook '(text-mode-hook org-mode-hook prog-mode-hook))
-    (add-hook ac-mode-hook
-              (lambda ()
-                (setq ac-fuzzy-enable t)
-                (add-to-list 'ac-sources 'ac-source-files-in-current-dir)
-                (add-to-list 'ac-sources 'ac-source-filename))))
-
-  (ac-config-default))
-
-(ome-install 'auto-complete)
-#+END_SRC
-
-** Integrate pcomplete with Auto-complete
-   :PROPERTIES:
-   :CUSTOM_ID: ac-source-pcomplete
-   :END:
-
-You may wonder why oh-my-emacs choose auto-complete? In a word, auto-complete
-is flexible which provides a plugin mechanism through which you can define your
-own =ac-source=, thus you get unlimited possibilities to complete in various
-programming languages, major modes, etc.
-
-The following code comes from [[http://www.emacswiki.org/emacs/EshellCompletion][EmacsWiki]], which defines a =ac-source-pcomplete=
-that integrates pcomplete as a completion backend to auto-complete.
-
-#+NAME: ac-source-pcomplete
-#+BEGIN_SRC emacs-lisp
-(defun ac-pcomplete ()
-  ;; eshell uses `insert-and-inherit' to insert a \t if no completion
-  ;; can be found, but this must not happen as auto-complete source
-  (flet ((insert-and-inherit (&rest args)))
-    ;; this code is stolen from `pcomplete' in pcomplete.el
-    (let* (tramp-mode ;; do not automatically complete remote stuff
-           (pcomplete-stub)
-           (pcomplete-show-list t) ;; inhibit patterns like * being deleted
-           pcomplete-seen pcomplete-norm-func
-           pcomplete-args pcomplete-last pcomplete-index
-           (pcomplete-autolist pcomplete-autolist)
-           (pcomplete-suffix-list pcomplete-suffix-list)
-           (candidates (pcomplete-completions))
-           (beg (pcomplete-begin))
-           ;; note, buffer text and completion argument may be
-           ;; different because the buffer text may bet transformed
-           ;; before being completed (e.g. variables like $HOME may be
-           ;; expanded)
-           (buftext (buffer-substring beg (point)))
-           (arg (nth pcomplete-index pcomplete-args)))
-      ;; we auto-complete only if the stub is non-empty and matches
-      ;; the end of the buffer text
-      (when (and (not (zerop (length pcomplete-stub)))
-                 (or (string= pcomplete-stub ; Emacs 23
-                              (substring buftext
-                                         (max 0
-                                              (- (length buftext)
-                                                 (length pcomplete-stub)))))
-                     (string= pcomplete-stub ; Emacs 24
-                              (substring arg
-                                         (max 0
-                                              (- (length arg)
-                                                 (length pcomplete-stub)))))))
-        ;; Collect all possible completions for the stub. Note that
-        ;; `candidates` may be a function, that's why we use
-        ;; `all-completions`.
-        (let* ((cnds (all-completions pcomplete-stub candidates))
-               (bnds (completion-boundaries pcomplete-stub
-                                            candidates
-                                            nil
-                                            ""))
-               (skip (- (length pcomplete-stub) (car bnds))))
-          ;; We replace the stub at the beginning of each candidate by
-          ;; the real buffer content.
-          (mapcar #'(lambda (cand) (concat buftext (substring cand skip)))
-                  cnds))))))
-
-(defvar ac-source-pcomplete
-  '((candidates . ac-pcomplete)))
-#+END_SRC
-
-** Auto-complete usability matrix
-   :PROPERTIES:
-   :CUSTOM_ID: auto-complete-usability-matrix
-   :END:
-
-Semantic completion based on [[http://cx4a.org/software/auto-complete/][auto-complete]] is one of the major goals of
-oh-my-emacs. The following matrix show the current status of oh-my-emacs
-semantic completion.
-
-#+NAME: auto-complete-usability-matrix
-|             | AC Usability | AC Backend          | Detail                             |
-|-------------+--------------+---------------------+------------------------------------|
-| C/C++       |          80% | [[https://github.com/brianjcj/auto-complete-clang][auto-complete-clang]] | Issue with function argument list. |
-| Python      |         100% | [[https://github.com/jorgenschaefer/elpy][elpy]]                | elpy is amazing.                   |
-| Emacs Lisp  |         100% | Builtin             | You kown that.                     |
-| Common Lisp |         100% | [[https://github.com/purcell/ac-slime][ac-slime]]            | SLIME is amazing, too.             |
-| Scheme      |          80% | [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]]           | Yeah, I'm the author of ac-geiser. |
-| Clojure     |         100% | [[https://github.com/clojure-emacs/ac-nrepl][ac-nrepl]]            | It even completes Java!            |
 
 * Helm
   :PROPERTIES:

@@ -78,7 +78,7 @@ way to solve this.
             ;;                nil
             ;;                :post-handlers
             ;;                '((ome-create-newline-and-enter-sexp js3-enter-key))))
-  (add-to-list 'ac-modes 'js3-mode))
+ )
 
 (ome-install 'js3-mode)
 #+END_SRC
@@ -116,8 +116,7 @@ example, to get completion for both nodejs and jquery, just put a
 #+END_SRC
 
 It is quite easy to setup and configure tern, the only thing you need to do is
-=sudo npm install -g tern=. Enjoy the auto-completion support from tern and
-auto-complete for JavaScript programming in Emacs.
+=sudo npm install -g tern=.
 
 #+NAME: tern
 #+BEGIN_SRC emacs-lisp
@@ -126,11 +125,7 @@ auto-complete for JavaScript programming in Emacs.
     (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
   (when (el-get-package-installed-p 'js3-mode)
     (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
-  (setq tern-command (cons (executable-find "tern") '()))
-  (eval-after-load 'tern
-    '(progn
-       (require 'tern-auto-complete)
-       (tern-ac-setup))))
+  (setq tern-command (cons (executable-find "tern") '())))
 
 (ome-install 'tern)
 #+END_SRC
@@ -145,8 +140,6 @@ originally written by [[http://steve-yegge.blogspot.com/][Steve Yegge]]. I said 
 JavaScript [[http://en.wikipedia.org/wiki/Abstract_syntax_tree][AST]] using emacs-lisp, thus there're even some third party "plugins"
 for js2-mode:
 - [[https://github.com/magnars/js2-refactor.el][js2-refactor]]: A JavaScript refactoring library for emacs.
-- [[https://github.com/ScottyB/ac-js2][ac-js2]]: Javascript auto-completion in Emacs using Js2-mode's parser and
-  Skewer-mode.
 
 The only thing I dislike about js2-mode is indentation. That's why I adopt
 [[https://github.com/thomblake/js3-modej][js3-mode]] for oh-my-emacs since js3-mode provides more friendly indentation
@@ -205,14 +198,6 @@ setup and configure SLIME and js3-mode correctly.
            (executable-find "npm")
            (executable-find "swank-js"))
   (ome-install 'swank-js))
-
-(eval-after-load 'auto-complete
-  '(progn
-     (add-to-list 'ac-modes 'js-mode)
-     (add-to-list 'ac-modes 'js2-mode)
-     (add-to-list 'ac-modes 'js3-mode)
-     (add-hook 'slime-mode-hook 'set-up-slime-ac)
-     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
 
 (eval-after-load 'slime
   '(progn

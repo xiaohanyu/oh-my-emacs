@@ -29,7 +29,6 @@ Note:
 |           | Status   | Description                                    |
 |-----------+----------+------------------------------------------------|
 | [[http://www.nongnu.org/geiser/][geiser]]    | Required | Geiser to Scheme is what slime to Common Lisp. |
-| [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]] | Required | Auto-complete backend for geiser.              |
 
 * Scheme
   :PROPERTIES:
@@ -49,25 +48,14 @@ Geiser also provide flexible methods for user customization, check its [[http://
 for details. For guile, I just =(setq geiser-guile-load-init-file-p t)= to make
 it load =$HOME/.guile= when start.
 
-There's a new experimental [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]] project, written by me --- yeah, it's me,
-I am the author, which provides a auto-complete backend for geiser. It is
-still in beta version, however, and will be sent to el-get when stable.
-
 #+NAME: geiser
 #+BEGIN_SRC emacs-lisp
 (defun ome-geiser-setup ()
   (setq geiser-default-implementation 'guile)
   (setq geiser-guile-load-init-file-p t))
 
-(defun ome-ac-geiser-setup ()
-  (add-hook 'geiser-mode-hook 'ac-geiser-setup)
-  (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
-  (eval-after-load "auto-complete"
-    '(add-to-list 'ac-modes 'geiser-repl-mode)))
-
 (when (or (executable-find "guile") (executable-find "racket"))
-  (ome-install 'geiser)
-  (ome-install 'ac-geiser))
+  (ome-install 'geiser))
 
 ;; (ome-install 'quack)
 #+END_SRC
