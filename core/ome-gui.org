@@ -24,7 +24,7 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 (dolist (mode '(column-number-mode line-number-mode))
   (when (fboundp mode) (funcall mode t)))
 
-(dolist (mode-hook '(text-mode-hook prog-mode-hook))
+(dolist (mode-hook '(text-mode-hook prog-mode-hook conf-mode-hook))
   (add-hook mode-hook
             (lambda ()
               (linum-mode 1))))
