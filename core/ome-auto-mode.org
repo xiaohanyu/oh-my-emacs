@@ -99,7 +99,8 @@ solve this by adopting =el-get=. Thanks =el-get= again!
 (defun ome-yaml-mode-setup ()
   (add-hook 'yaml-mode-hook
             (lambda ()
-              (linum-mode 1))))
+              (linum-mode 1)
+              (evil-local-mode 1))))
 
 (ome-install 'yaml-mode)
 #+END_SRC
