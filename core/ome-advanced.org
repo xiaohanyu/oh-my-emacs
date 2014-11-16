@@ -81,10 +81,14 @@ Emacs session.
   (setq evil-auto-indent t)
   (setq evil-regexp-search t)
   (setq evil-want-C-i-jump t)
-  (add-hook 'text-mode-hook 'turn-on-evil-mode)
-  (add-hook 'prog-mode-hook 'turn-on-evil-mode)
-  (add-hook 'comint-mode-hook 'turn-on-evil-mode)
-  (add-hook 'Info-mode-hook 'turn-off-evil-mode))
+  (mapcar
+   (lambda (mode-hook)
+     (add-hook mode-hook 'turn-on-evil-mode))
+   '(text-mode-hook
+     prog-mode-hook
+     comint-mode-hook
+     conf-mode-hook
+     Info-mode-hook)))
 
 (ome-install 'evil)
 #+END_SRC
