@@ -31,7 +31,7 @@ Note:
 |--------------+----------+-------------------------------------------|
 | [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] | Required | Major mode for Clojure.                   |
 | [[https://github.com/clojure-emacs/cider][CIDER]]        | Required | CIDER is a Clojure IDE and REPL for Emacs |
-| [[https://github.com/purcell/ac-nrepl.git][ac-nrepl]]     | Required | AC backend for nrepl.                     |
+| [[https://github.com/clojure-emacs/ac-cider][ac-cider]]     | Required | Emacs auto-complete client for CIDER      |
 
 * Clojure
   :PROPERTIES:
@@ -56,6 +56,29 @@ lein version
 
 Or you can see leiningen's [[https://github.com/technomancy/leiningen/wiki/Upgrading][wiki]] for upgrading details.
 
+And to make leiningen works with emacs cider, you should make leiningen know
+something about cider, here's my =$HOME/.lein/profiles.clj=:
+
+#+BEGIN_SRC clojure
+{:user
+ {:plugins
+  [[cider/cider-nrepl "0.8.0-SNAPSHOT"]]}
+ :repl-options
+ {:nrepl-middleware
+  [cider.nrepl.middleware.apropos/wrap-apropos
+   cider.nrepl.middleware.classpath/wrap-classpath
+   cider.nrepl.middleware.complete/wrap-complete
+   cider.nrepl.middleware.info/wrap-info
+   cider.nrepl.middleware.inspect/wrap-inspect
+   cider.nrepl.middleware.macroexpand/wrap-macroexpand
+   cider.nrepl.middleware.ns/wrap-ns
+   cider.nrepl.middleware.resource/wrap-resource
+   cider.nrepl.middleware.stacktrace/wrap-stacktrace
+   cider.nrepl.middleware.test/wrap-test
+   cider.nrepl.middleware.trace/wrap-trace
+   cider.nrepl.middleware.undef/wrap-undef]}}
+#+END_SRC
+
 Now, just open a clojure file, then =cider-jack-in=, and you can program
 Clojure the SLIME way. [[http://vimeo.com/22798433][Here]] is an awesome live demo to demonstrate the Clojure
 workflow.
@@ -68,24 +91,36 @@ It's really really awesome, ah?
 
 (defun ome-cider-setup ()
   (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+  (setq nrepl-hide-special-buffers t)
   (setq cider-repl-tab-command 'indent-for-tab-command)
+  (setq cider-prefer-local-resources t)
+  (setq cider-repl-pop-to-buffer-on-connect nil)
   (setq cider-repl-pop-to-buffer-on-connect nil)
   (setq cider-popup-stacktraces nil)
   (setq cider-repl-popup-stacktraces t)
   (setq cider-auto-select-error-buffer t)
+  (setq nrepl-buffer-name-show-port t)
+  (setq cider-repl-display-in-current-window t)
+  (setq cider-repl-result-prefix ";; => ")
+  (setq cider-interactive-eval-result-prefix ";; => ")
+  (setq cider-repl-use-clojure-font-lock t)
+  (setq cider-test-show-report-on-success t)
   (setq nrepl-hide-special-buffers t)
   (setq nrepl-buffer-name-separator "-")
-  (setq nrepl-buffer-name-show-port t))
+  (setq nrepl-buffer-name-show-port t)
+  ;; repl history
+  (setq cider-repl-wrap-history t))
 
-(ome-install 'cider)
-
-(defun ome-ac-nrepl-setup ()
-  (add-hook 'cider-mode-hook 'ac-nrepl-setup)
-  (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
+(defun ome-ac-cider-setup ()
+  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+  (add-hook 'cider-mode-hook 'ac-cider-setup)
+  (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
   (eval-after-load "auto-complete"
     '(add-to-list 'ac-modes 'cider-repl-mode)))
 
-(ome-install 'ac-nrepl)
+(when (executable-find "lein")
+  (ome-install 'cider)
+  (ome-install 'ac-cider))
 #+END_SRC
 
 * Todos
