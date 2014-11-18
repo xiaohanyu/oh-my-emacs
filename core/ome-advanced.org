@@ -129,17 +129,21 @@ editing your document at your fingertips.
       "e" 'find-file
       "b" 'switch-to-buffer))
   (eval-after-load "helm"
-    (evil-leader/set-key
-      "f" 'helm-for-files
-      "l" 'helm-locate
-      "c" 'helm-colors
-      "y" 'helm-show-kill-ring
-      "t" 'helm-top
-      "m" 'helm-man-woman
-      "o" 'helm-occur
-      "j" 'helm-M-x
-      "e" 'helm-find-files
-      "b" 'helm-buffers-list))
+    (progn
+      (require 'helm-projectile)
+      (evil-leader/set-key
+        "f" 'helm-for-files
+        "l" 'helm-locate
+        "c" 'helm-colors
+        "y" 'helm-show-kill-ring
+        "t" 'helm-top
+        "m" 'helm-man-woman
+        "o" 'helm-occur
+        "j" 'helm-M-x
+        "e" 'helm-find-files
+        "b" 'helm-buffers-list
+        "h" 'helm-projectile-find-file
+        "H" 'helm-projectile)))
   (eval-after-load "expand-region"
     (progn
       (setq expand-region-contract-fast-key "z")
