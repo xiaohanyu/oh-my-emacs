@@ -179,16 +179,43 @@ powerful, but I found its documentatin really awkward. I choose helm since it
 is easy to install and config, user-friendly, powerful enough and quite
 intuitive to boost your workflow.
 
+
+
+To tell the truth, I, myself, the author of oh-my-emacs, is a heavy user of
+helm and never wish to go back to life with ido or some fuzzy match
+packages. Helm is one of my favourite emacs packages. The more you live with
+helm, the more you will find that you never want to go back. Helm can replace
+many builtin or third-party emacs packages, or even provide a better
+experience. For example, =helm-M-x= is a good competitor to [[https://github.com/nonsequitur/smex][smex]],
+=helm-show-kill-ring= provides a better way to interact with emacs kill ring
+than [[https://github.com/browse-kill-ring/browse-kill-ring][browse-kill-ring]]. Helm integrates various external tools(such as =grep=,
+=find=, =locate=, =md5sum=, =etags=, etc.) to emacs in a highly intuitive and
+interactive way. Helm can even help you install debian apt packages. If you
+have any question, just type =M-x helm-google-suggest= and then helm will fire
+a web browser opening google for you at your fingertip.
+
+And I've found a really great and awesome [[http://tuhdo.github.io/helm-intro.html][post]] written by [[http://tuhdo.github.io/index.html][tuhdo@github]], which
+demonstrate how powerful helm is with an intuitive way by posting lots of GIF
+images. I highly recommend you to read this post and I'm sure that you will
+fall in love with helm and never look back, just like me.
+
+I've also borrow lots of code from that [[http://tuhdo.github.io/helm-intro.html][post]] and make some incompatible changes
+about how to use helm in oh-my-emacs. *One of the most important is*,
+oh-my-emacs now binds =helm-execute-persistent-action= to =TAB= and
+=helm-select-action= to =C-z=, and also, you should use =C-o= to go to
+different "categories" in helm list, since oh-my-emacs set
+=helm-move-to-line-cycle-in-source= to =t=, check docs for details.
+
 To wrap your mind around the helm way, you need to remember a few key
 bindings. When helm starts, remember:
-- access the helm action menu with =TAB=. Maybe this is the most whirlwind
+- access the helm action menu with =C-z=. Maybe this is the most whirlwind
   turnaround since most name completion packages use =TAB= as completion
   key. Don't worry, helm doesn't need too much completion, since helm provides
   name completion by navigation instead by using =TAB= to complete character by
   character. Actually, the helm =TAB= brings you a new world, in which you
   combine several tasks into a series of successive keystrokes and get your job
   done.
-- Use persistent actions with =C-z=.
+- Use persistent actions with =TAB=.
 - Mark candidate with =M-<SPACE>=, thus you can do batch processing through helm.
 
 The [[https://github.com/emacs-helm/helm/wiki][helm wiki]] is a good place to explore this new world, but it's a little long
@@ -209,17 +236,6 @@ much helm key bindings. Some shortcuts:
 - =C-x c p=: =helm-list-emacs-process=
 - =C-x c M-y=: =helm-show-kill-ring=
 
-To tell the truth, helm is one of my most favourite emacs packages. The more
-you live with helm, the more you will find that you never want to come
-back. Helm can replace many builtin or third-party emacs packages, or even
-provide a better experience. For example, =helm-M-x= is a good competitor to
-[[https://github.com/nonsequitur/smex][smex]], =helm-show-kill-ring= provides a better way to interact with emacs kill
-ring than [[https://github.com/browse-kill-ring/browse-kill-ring][browse-kill-ring]]. Helm integrates various external tools(such as
-=grep=, =find=, =locate=, =md5sum=, =etags=, etc.) to emacs in a highly
-intuitive and interactive way. Helm can even help you install debian apt
-packages. If you have any question, just type =M-x helm-google-suggest= and
-then helm will fire a web browser opening google for you at your fingertip.
-
 To fully adopt helm power, I also set some custom helm keybindings in
 oh-my-emacs, you can change it as you like. Of course you can disable helm at
 all, then oh-my-emacs will use some other packages such as =ido-mode= as a
@@ -238,10 +254,34 @@ fallback. But I do suggest you to take some time to be familiar with helm.
           ('windows-nt "es %s")
           ('darwin "mdfind -name %s %s")
           (t "locate %s")))
+
   (global-set-key (kbd "C-x c g") 'helm-do-grep)
   (global-set-key (kbd "C-x c o") 'helm-occur)
   (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files))
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+  ;; rebind tab to run persistent action
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  ;; make TAB works in terminal
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+  ;; list actions using C-z
+  (define-key helm-map (kbd "C-z") 'helm-select-action)
+
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
+
+  (setq
+   ;; open helm buffer inside current window, not occupy whole other window
+   helm-split-window-in-side-p t
+   ;; fuzzy matching buffer names when non--nil
+   helm-buffers-fuzzy-matching t
+   ;; move to end or beginning of source when reaching top or bottom of source.
+   helm-move-to-line-cycle-in-source t
+   ;; search for library in `require' and `declare-function' sexp.
+   helm-ff-search-library-in-sexp t
+   ;; scroll 8 lines other window using M-<next>/M-<prior>
+   helm-scroll-amount 8
+   helm-ff-file-name-history-use-recentf t)))
 
 (ome-install 'helm)
 

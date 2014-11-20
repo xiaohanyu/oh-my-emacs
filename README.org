@@ -92,12 +92,14 @@ before I fall in love with [[https://github.com/emacs-helm/helm][helm]]. I highl
 way. Believe me, helm will bring you lots of surprise.
 
 There're two key points for helm beginners:
-- In helm, =TAB= is not used as the traditional completion key. Maybe this is
-  the most whirlwind turnaround with helm since so many packages use =TAB= for
-  completion. Remember, =TAB= in helm is used to access the helm action
-  menu. You may wonder, then, how can I do type completion in helm? The answer
-  is, no need to do type completion explicitly. Just type, and helm will lead
-  you to the right place.
+- In normal helm, =TAB= is not used as the traditional completion key. Maybe
+  this is the most whirlwind turnaround with helm since so many packages use
+  =TAB= for completion. Remember, =TAB= in helm is used to access the helm
+  action menu. You may wonder, then, how can I do type completion in helm? The
+  answer is, no need to do type completion explicitly. Just type, and helm will
+  lead you to the right place. However, oh-my-emacs has binded =TAB= to
+  =helm-execute-persistent-action= for you, which will makes you feel like
+  home. Type =C-z= for amazing things, and =C-SPC= to select and do some cool.
 - oh-my-emacs bind the traditional =C-x C-f= to =helm-find-files= by
   default. You should use =C-l= to go to the precedent directory level instead
   of =DEL=.
