@@ -246,6 +246,27 @@ fallback. But I do suggest you to take some time to be familiar with helm.
 (ome-install 'helm)
 
 #+END_SRC
+
+* helm-descbinds
+  :PROPERTIES:
+  :CUSTOM_ID: helm-descbinds
+  :END:
+
+Helm Descbinds provides an interface to emacs’ describe-bindings making the
+currently active key bindings interactively searchable with helm.
+
+Additionally you have the following helm persistent actions
+- Execute the command
+- Describe the command
+- Find the command
+
+#+BEGIN_SRC emacs-lisp
+(defun ome-helm-descbinds-setup ()
+  (helm-descbinds-mode 1))
+
+(ome-install 'helm-descbinds)
+#+END_SRC
+
 * Yasnippet
   :PROPERTIES:
   :CUSTOM_ID: yasnippet
