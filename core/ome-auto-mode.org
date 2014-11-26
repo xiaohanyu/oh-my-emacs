@@ -94,13 +94,18 @@ languages. I really like it for its simplicity and readability. However, Emacs
 didn't have a builtin mode for editing YAML files, so you know how easy to
 solve this by adopting =el-get=. Thanks =el-get= again!
 
+[[http://raml.org/][RAML]] is a spec for building RESTful APIs, it is built on top of
+YAML. Currently, as I know, there's no =raml-mode=.
+
 #+NAME: yaml
 #+BEGIN_SRC emacs-lisp
 (defun ome-yaml-mode-setup ()
   (add-hook 'yaml-mode-hook
             (lambda ()
               (linum-mode 1)
-              (evil-local-mode 1))))
+              (evil-local-mode 1)
+              (indent-guide-mode 1)))
+  (add-to-list 'auto-mode-alist '("\\.raml\\'" . yaml-mode)))
 
 (ome-install 'yaml-mode)
 #+END_SRC
