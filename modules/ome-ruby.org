@@ -173,6 +173,7 @@ emacs rbenv support. By default, oh-my-emacs enables =global-rbenv-mode=.
 #+NAME: rbenv
 #+BEGIN_SRC emacs-lisp
 (defun ome-rbenv-setup ()
+  (require 'rbenv)
   (global-rbenv-mode t))
 
 (when (file-exists-p "~/.rbenv/version")
