@@ -21,30 +21,37 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: basic-el-get-packages
 #+CAPTION: el-get packages for ome-basic module
-|                  | Status      | Description                                       |
-|------------------+-------------+---------------------------------------------------|
-| saveplace        | Builtin     | Save cursor place in opened files.                |
-| recentf          | Builtin     | Maintains a recent opened file list.              |
-| uniquify         | Builtin     | Better differentiate buffers with same file name. |
-| auto-fill-mode   | Builtin     | We should still obey the 80-characters rule.      |
-| [[https://github.com/flycheck/flycheck][flycheck]]         | Recommended | aka "Flymake done right"                          |
+|                      | Status      | Description                                                               |
+|----------------------+-------------+---------------------------------------------------------------------------|
+| saveplace            | Builtin     | Save cursor place in opened files.                                        |
+| recentf              | Builtin     | Maintains a recent opened file list.                                      |
+| uniquify             | Builtin     | Better differentiate buffers with same file name.                         |
+| auto-fill-mode       | Builtin     | We should still obey the 80-characters rule.                              |
+| [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]] | Required    | ensure environment variables inside Emacs the same as in the user's shell |
+| [[https://github.com/flycheck/flycheck][flycheck]]             | Recommended | aka "Flymake done right"                                                  |
 
 * Some Basic Settings
   :PROPERTIES:
   :CUSTOM_ID: basic
   :END:
 
+Sometimes you find weird thing in OS X's Emacs that a command works in your
+shell but not in Emacs. Thus you cannot install some el-get packages such as
+[[http://www.gnu.org/software/auctex/][auctex]].
+
+Thanks [[https://github.com/purcell/exec-path-from-shell][purcell/exec-path-from-shell]], it solves this problem perfectly.
+
+#+NAME: exec-path-from-shell
+#+BEGIN_SRC emacs-lisp
+(defun ome-exec-path-from-shell-setup ()
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
+
+(ome-install 'exec-path-from-shell)
+#+END_SRC
+
 #+NAME: basic
 #+BEGIN_SRC emacs-lisp
-;; fix the mac PATH variable
-(defun ome-set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-
-(when (eq system-type 'darwin)
-  (when window-system (ome-set-exec-path-from-shell-PATH)))
-
 ;; set environment coding system
 (set-language-environment "UTF-8")
 ;; auto revert buffer globally
