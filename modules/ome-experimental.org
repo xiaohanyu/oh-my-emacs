@@ -45,6 +45,7 @@ Note:
 | [[https://github.com/emacsmirror/pos-tip][pos-tip]]          | Experimental | Show tooltip at point                                 |
 | [[https://github.com/flycheck/flycheck-pos-tip][flycheck-pos-tip]] | Experimental | Flycheck errors display in tooltip                    |
 | [[http://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html][po-mode]]          | Experimental | Emacs's PO File Editor                                |
+| [[https://github.com/zk/emacs-dirtree][emacs-dirtree]]    | Experimental | Directory tree views in Emacs                         |
 
 Note:
 - [[http://doxymacs.sourceforge.net/][doxymacs]]: There're many Mac OS users having problems building with this
@@ -303,4 +304,21 @@ I just gave up. Since for any questions in =po-mode=, you can just type =?= or
     (add-hook 'po-mode-hook 'turn-off-evil-mode)))
 
 (ome-install 'po-mode)
+#+END_SRC
+
+* emacs-dirtree
+  :PROPERTIES:
+  :CUSTOM_ID: emacs-dirtree
+  :END:
+
+[[https://github.com/zk/emacs-dirtree][emacs-dirtree]] provide a long lost directory browser for Emacs. However, this
+package didn't update for a long time, so I only put this in ome-experimental
+module, and you can load this package by put `(ome-load
+"modules/ome-experimental.org" "emacs-dirtree")` in oh-my-emacs startup file.
+
+#+NAME: emacs-dirtree
+#+BEGIN_SRC emacs-lisp
+(defun ome-emacs-dirtree-setup ())
+
+(ome-install 'emacs-dirtree)
 #+END_SRC
