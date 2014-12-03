@@ -113,6 +113,13 @@ theme.
 
 #+NAME: color-theme
 #+BEGIN_SRC emacs-lisp
+(defadvice load-theme (around ome-load-theme disable)
+  ad-do-it
+
+  ;; Remove boxes from Powerline arrows
+  (set-face-attribute 'mode-line nil :box nil)
+  (set-face-attribute 'mode-line-inactive nil :box nil))
+
 (defun ome-solarized-emacs-setup ()
   ;; make the fringe stand out from the background
   (setq solarized-distinct-fringe-background t)
@@ -126,6 +133,9 @@ theme.
   (setq solarized-emphasize-indicators nil)
 
   (setq x-underline-at-descent-line t)
+
+  (ad-enable-advice 'load-theme 'around 'ome-load-theme)
+  (ad-activate 'load-theme)
 
   (load-theme 'solarized-dark t))
 
