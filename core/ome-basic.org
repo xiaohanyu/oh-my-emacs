@@ -133,14 +133,33 @@ sudo rm -rf /usr/share/emacs
 ** Keybindings
 
 Another problem with emacs on Mac OX X is the keybindings to =Meta= and
-=Control=. Since most of the macbooks lack the right =Control= key, I prefer
-to bind Mac's =Command= and =Option= key to Emacs's =Meta= and =Control= key,
+=Control=. Since most of the macbooks lack the right =Control= key, I prefer to
+bind Mac's =Command= and =Option= key to Emacs's =Meta= and =Control= key,
 respectively.
 
-#+BEGIN_SRC emacs-lisp
+However, sometimes, people would like to use an exteranl keyboard as the main
+input, so we need a switch between the "Mac" keys and "PC" keys via =M-x
+ome-switch-mac-keys=.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+(defvar mac-keys-p nil)
+
+(defun ome-switch-mac-keys ()
+  (interactive)
+  (if mac-keys-p
+      (progn
+        (setq mac-command-modifier 'super)
+        (setq mac-option-modifier 'meta)
+        (setq mac-keys-p nil)
+        (message "turn off Mac OS X's control/meta."))
+    (progn
+      (setq mac-command-modifier 'meta)
+      (setq mac-option-modifier 'control)
+      (setq mac-keys-p t)
+      (message "turn on Mac OS X's control/meta."))))
+
 (when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'control))
+  (ome-switch-mac-keys))
 #+END_SRC
 
 ** Homebrew
