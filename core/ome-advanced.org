@@ -157,7 +157,8 @@ editing your document at your fingertips.
       "p" 'git-gutter:previous-hunk))
   (evil-leader/set-key
     "k" 'kill-buffer
-    "d" 'dired)
+    "d" 'dired
+    "z" 'repeat)
   (global-evil-leader-mode))
 
 (ome-install 'evil-leader)
