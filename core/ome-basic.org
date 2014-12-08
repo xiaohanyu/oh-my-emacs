@@ -141,7 +141,7 @@ However, sometimes, people would like to use an exteranl keyboard as the main
 input, so we need a switch between the "Mac" keys and "PC" keys via =M-x
 ome-switch-mac-keys=.
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (defvar mac-keys-p nil)
 
 (defun ome-switch-mac-keys ()
