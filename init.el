@@ -15,8 +15,11 @@
 ;; know why.
 (setq debug-on-error t)
 
-;; believe me, you don't need menubar, toolbar nor scrollbar
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+;; believe me, you don't need menubar(execpt OSX), toolbar nor scrollbar
+(and (fboundp 'menu-bar-mode)
+     (not (eq system-type 'darwin))
+     (menu-bar-mode -1))
+(dolist (mode '(tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
 ;; Now install el-get at the very first
