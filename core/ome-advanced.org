@@ -257,7 +257,7 @@ By default, =<Leader>= is =<SPC>=, so you can use =<SPC> c= to activate
 
 * Ack-and-a-half
   :PROPERTIES:
-  :CUSTOM_ID: ack-and-a-ha
+  :CUSTOM_ID: ack-and-a-half
   :END:
 
 As we all know, Emacs is a good text editor. However, in some cases, we may
