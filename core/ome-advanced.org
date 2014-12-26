@@ -158,7 +158,11 @@ editing your document at your fingertips.
   (evil-leader/set-key
     "k" 'kill-buffer
     "d" 'dired
-    "z" 'repeat)
+    "z" 'repeat
+    "0" 'delete-window
+    "1" 'delete-other-windows
+    "2" 'split-window-below
+    "3" 'split-window-right)
   (global-evil-leader-mode))
 
 (ome-install 'evil-leader)
