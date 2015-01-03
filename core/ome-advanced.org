@@ -40,7 +40,8 @@ Notes:
 | [[https://github.com/magnars/expand-region.el][expand-region.el]] | Recommended | Expand and select.                            |
 | [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]         | Deprecated  | Use evil instead.                             |
 | [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]            | Deprecated  | Use evil instead.                             |
-| [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]]   | Recommended | Yet another emacs front-end to ack.           |
+| [[https://github.com/Wilfred/ag.el][ag.el]]            | Recommended | Better than ack.                              |
+| [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]]   | Deprecated  | Yet another emacs front-end to ack.           |
 | [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]    | Recommended | A quick cursor location minor mode for emacs. |
 
 * Evil
@@ -257,29 +258,6 @@ By default, =<Leader>= is =<SPC>=, so you can use =<SPC> c= to activate
       "l" 'ace-jump-line-mode)))
 
 (ome-install 'ace-jump-mode)
-#+END_SRC
-
-* Ack-and-a-half
-  :PROPERTIES:
-  :CUSTOM_ID: ack-and-a-half
-  :END:
-
-As we all know, Emacs is a good text editor. However, in some cases, we may
-spend most of our time to text reading instead of editing. As an advanced Emacs
-user, you may know [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Grep-Searching.html][grep-find]], and you may also know that you can jump to the
-next matching item by =M-g n=, oh, that's cool, really. But you still need to
-specify what type of file to search. You don't want to touch binary files with
-Emacs, ha? And, certainly you do want to ignore some hidden files such as files
-and directories used by various version control system. So there comes [[http://beyondgrep.com/][ack]],
-which works as expected.
-
-With the help of [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]], just go to the right place, then =M-x ack=,
-you'll get all you need. Enjoy it.
-
-#+NAME: ack-and-a-half
-#+BEGIN_SRC emacs-lisp
-(when (or (executable-find "ack") (executable-find "ack-grep"))
-  (ome-install 'ack-and-a-half))
 #+END_SRC
 
 * ag
