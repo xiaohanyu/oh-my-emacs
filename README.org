@@ -118,7 +118,6 @@ editor".
 |                  | [[http://github.com/timcharper/evil-surround][evil-surround]]       | Emulate Tim Pope's surround.vim in evil.                                                                 |
 |                  | [[https://github.com/magnars/expand-region.el#readme][expand-region]]       | Expand region increases the selected region by semantic units.                                           |
 |                  | [[https://github.com/winterTTr/ace-jump-mode/wiki][ace-jump-mode]]       | A quick cursor location minor mode for emacs                                                             |
-|                  | [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]]      | Yet another front-end for ack                                                                            |
 | ome-auto-mode    | [[https://github.com/lunaryorn/puppet-mode][puppet-mode]]         | A simple mode for editing puppet manifests                                                               |
 |                  | [[nil][wikipedia-mode]]      | Mode for editing Wikipedia articles off-line                                                             |
 |                  | [[https://github.com/yoshiki/yaml-mode][yaml-mode]]           | Simple major mode to edit YAML file for emacs                                                            |
