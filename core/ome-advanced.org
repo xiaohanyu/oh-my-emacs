@@ -144,6 +144,7 @@ editing your document at your fingertips.
         "e" 'helm-find-files
         "b" 'helm-buffers-list
         "h" 'helm-projectile-find-file
+        "r" 'helm-recentf
         "H" 'helm-projectile)))
   (eval-after-load "expand-region"
     (progn
