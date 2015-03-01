@@ -30,6 +30,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 | [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]] | Required    | ensure environment variables inside Emacs the same as in the user's shell |
 | [[https://github.com/flycheck/flycheck][flycheck]]             | Recommended | aka "Flymake done right"                                                  |
 | [[https://github.com/editorconfig/editorconfig-emacs][editorconfig]]         | Recommended | [[http://editorconfig.org][EditorConfig]] plugin for emacs                                             |
+| [[https://github.com/zk-phi/indent-guide][indent-guide]]         | Recommended | Show vertical lines to guide indentation                                  |
 
 * Some Basic Settings
   :PROPERTIES:
@@ -353,6 +354,27 @@ You need to install =editorconfig= before you use the emacs package, check
 
 (ome-install 'editorconfig)
 #+END_SRC
+
+* Indent-guide
+  :PROPERTIES:
+  :CUSTOM_ID: indent-guide
+  :END:
+
+Often we work with indented code, and it's better for our friend, the Emacs
+editor, to provide some indentation guide for us. Most of the builtin
+indentation features or third-party packages provide static indentation guide,
+which may be not good in some cases. Fortunately, a smart guy write a dynamic
+[[https://github.com/zk-phi/indent-guide][indent-guide]] package for us. It's amazing.
+
+#+NAME: indent-guide
+#+BEGIN_SRC emacs-lisp
+(defun ome-indent-guide-setup ()
+  (require 'indent-guide))
+
+(ome-install 'indent-guide)
+#+END_SRC
+
+[[https://github.com/zk-phi/indent-guide][indent-guide]]
 
 * Todo
 ** Flycheck
