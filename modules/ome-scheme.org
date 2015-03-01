@@ -1,7 +1,7 @@
 #+TITLE: Oh My Emacs Scheme
 #+OPTIONS: toc:2 num:nil ^:nil
 
-This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 This file contains some settings [[* Scheme][Scheme]] programming language.
 

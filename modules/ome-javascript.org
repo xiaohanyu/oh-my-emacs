@@ -1,7 +1,7 @@
 #+TITLE: Oh My Emacs JavaScript
 #+OPTIONS: toc:2 num:nil ^:nil
 
-This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 As with python, there're many choices to do JavaScript programming in Emacs,
 however, IMHO, none of them are perfect, and easy to use. I've spent weeks of

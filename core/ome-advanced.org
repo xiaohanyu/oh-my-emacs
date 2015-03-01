@@ -1,7 +1,7 @@
 #+TITLE: Oh My Emacs Advanced
 #+OPTIONS: toc:2 num:nil ^:nil
 
-This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 This file contains some advanced features or packages which could make emacs
 look unlike emacs. So ensure you have some basic knowledge and experience
@@ -32,7 +32,7 @@ Notes:
 
 #+NAME: advanced-el-get-packages
 #+CAPTION: El-get packages matrix for ome-advanced module
-|                  | Status      | Description                                   |
+| Package          | Status      | Description                                   |
 |------------------+-------------+-----------------------------------------------|
 | [[http://gitorious.org/evil][evil]]             | Required    | Finally, the Emacs OS get a good editor.      |
 | [[https://github.com/cofi/evil-leader][evil-leader]]      | Required    | <leader> key for evil.                        |

@@ -1,7 +1,7 @@
 #+TITLE: Oh My Emacs Keybindings
 #+OPTIONS: toc:nil num:nil ^:nil
 
-This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 Key bindings for oh-my-emacs, mainly imported from [[https://github.com/eschulte/emacs24-starter-kit][emacs24-starter-kit]].
 

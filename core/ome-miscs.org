@@ -1,7 +1,7 @@
 #+TITLE: Oh My Emacs Miscs
 #+OPTIONS: toc:nil num:nil ^:nil
 
-This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 This file contains things that still don't find a good place to put, :-).
 
