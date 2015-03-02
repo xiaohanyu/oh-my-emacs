@@ -12,9 +12,9 @@ This file contains things that still don't find a good place to put, :-).
 
 #+NAME: miscs-prerequisites
 #+CAPTION: Prerequisites for ome-miscs module
-|     | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|-----+---------+--------------------+-----------+--------+----------+------------|
-| [[http://w3m.sourceforge.net/][w3m]] |         | w3m, w3m-img       |           |        |          | No         |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://w3m.sourceforge.net/][w3m]]     |         | w3m, w3m-img       |           |        |          | No         |
 
 * El-get packages
   :PROPERTIES:
@@ -23,7 +23,7 @@ This file contains things that still don't find a good place to put, :-).
 
 #+NAME: miscs-el-get-packages
 #+CAPTION: El-get packages for ome-miscs module
-|                    | Status      | Description                                        |
+| Package            | Status      | Description                                        |
 |--------------------+-------------+----------------------------------------------------|
 | [[https://github.com/jlr/rainbow-delimiters][rainbow-delimiters]] | Required    | Colorful parens.                                   |
 | [[http://magit.github.io/magit/][magit]]              | Required    | Git in Emacs.                                      |

@@ -10,7 +10,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: gui-el-get-packages
 #+CAPTION: El-get packages for ome-gui module
-|                 | Status   | Description                            |
+| Package         | Status   | Description                            |
 |-----------------+----------+----------------------------------------|
 | [[https://github.com/bbatsov/solarized-emacs][solarized-emacs]] | Required | Adopt this as the default color-theme. |
 | [[https://github.com/jonathanchu/emacs-powerline][emacs-powerline]] | Required | Eye candy for Emacs mode line.         |

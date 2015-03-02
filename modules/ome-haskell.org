@@ -10,9 +10,9 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: haskell-prerequisites
 #+CAPTION: Prerequisites for ome-haskell module
-|     | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|-----+---------+--------------------+-----------+--------+----------+------------|
-| [[http://www.haskell.org/ghc/][GHC]] |         | ghc                |           |        |          | Yes        |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.haskell.org/ghc/][GHC]]     |         | ghc                |           |        |          | Yes        |
 
 * El-get packages
   :PROPERTIES:
@@ -21,10 +21,9 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: haskell-el-get-packages
 #+CAPTION: El-get packages for ome-haskell module
-|              | Status   | Description                                       |
+| Package      | Status   | Description                                       |
 |--------------+----------+---------------------------------------------------|
 | [[https://github.com/haskell/haskell-mode/wiki][haskell-mode]] | Required | This is a package for developing haskell in Emacs |
-
 
 * About Haskell
   You can find all the necessary information about haskell in the official [[http://www.haskell.org][site]].

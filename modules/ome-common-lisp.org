@@ -12,7 +12,7 @@ This file contains some settings for [[* Common Lisp][Common Lisp]].
 
 #+NAME: common-lisp-prerequisites
 #+CAPTION: Prerequisites for ome-common-lisp module
-|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+| Package    | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
 |------------+---------+--------------------+-----------+--------+----------+------------|
 | [[http://www.sbcl.org/][SBCL]]       |         | sbcl               |           |        |          | Yes        |
 | [[http://ccl.clozure.com/][Clozure CL]] |         | [web]              |           |        |          | No         |

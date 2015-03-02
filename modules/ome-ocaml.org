@@ -10,9 +10,9 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: ocaml-prerequisites
 #+CAPTION: Prerequisites for ome-ocaml module
-|       | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|-------+---------+--------------------+-----------+--------+----------+------------|
-| [[http://ocaml.org/][ocaml]] |         | ocaml              |           |        |          | Yes        |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://ocaml.org/][ocaml]]   |         | ocaml              |           |        |          | Yes        |
 
 * El-get packages
   :PROPERTIES:
@@ -21,7 +21,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: ocaml-el-get-packages
 #+CAPTION: El-get packages for ome-ocaml module
-|             | Status   | Description                                    |
+| Package     | Status   | Description                                    |
 |-------------+----------+------------------------------------------------|
 | [[http://caml.inria.fr/svn/ocaml/trunk/emacs][caml-mode]]   | Required | OCaml code editing commands for Emacs         |
 | [[http://tuareg.forge.ocamlcore.org/][tuareg-mode]] | Required | A GOOD Emacs mode to edit Objective Caml code. |

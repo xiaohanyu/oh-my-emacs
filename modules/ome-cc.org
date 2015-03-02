@@ -12,7 +12,7 @@ This file contains some settings for =cc-mode=.
 
 #+NAME: cc-prerequisites
 #+CAPTION: Prerequisites for ome-cc module
-|            | Windows | Ubuntu/Debian/Mint  | ArchLinux | Fedora | Mac OS X        | Mandatory? |
+| Package    | Windows | Ubuntu/Debian/Mint  | ArchLinux | Fedora | Mac OS X        | Mandatory? |
 |------------+---------+---------------------+-----------+--------+-----------------+------------|
 | [[http://www.xmlsoft.org/][libxml2]]    |         | libxml2 libxml2-dev |           |        | libxml2 libxslt | Yes        |
 | [[http://clang.llvm.org/][clang]]      |         | clang               |           |        |                 | Yes        |
@@ -32,7 +32,7 @@ Note:
 
 #+NAME: cc-el-get-packages
 #+CAPTION: El-get packages for ome-cc module
-|                     | Status      | Description                     |
+| Package             | Status      | Description                     |
 |---------------------+-------------+---------------------------------|
 | cc-mode             | Builtin     | Where all the magic starts.     |
 | [[http://www.itk.org/Wiki/CMake_Editors_Support][cmake-mode]]          | Recommended | Editing support for CMake.      |

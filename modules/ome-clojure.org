@@ -12,7 +12,7 @@ This file contains some settings for [[* Clojure][Clojure]] programming language
 
 #+NAME: clojure-prerequisites
 #+CAPTION: Prerequisites for ome-clojure module
-|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+| Package    | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
 |------------+---------+--------------------+-----------+--------+----------+------------|
 | [[http://leiningen.org/][Leiningen]]  | [web]   | [web]              | [web]     | [web]  | [web]    | Yes        |
 
@@ -27,7 +27,7 @@ Note:
 
 #+NAME: clojure-el-get-packages
 #+CAPTION: El-get packages for ome-clojure module
-|              | Status   | Description                               |
+| Package      | Status   | Description                               |
 |--------------+----------+-------------------------------------------|
 | [[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] | Required | Major mode for Clojure.                   |
 | [[https://github.com/clojure-emacs/cider][CIDER]]        | Required | CIDER is a Clojure IDE and REPL for Emacs |

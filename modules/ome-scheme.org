@@ -12,9 +12,9 @@ This file contains some settings [[* Scheme][Scheme]] programming language.
 
 #+NAME: scheme-prerequisites
 #+CAPTION: Prerequisites for ome-scheme module
-|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|------------+---------+--------------------+-----------+--------+----------+------------|
-| [[http://www.gnu.org/software/guile/][Guile]]      |         | guile-2.0          |           |        |          | Yes        |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.gnu.org/software/guile/][Guile]]   |         | guile-2.0          |           |        |          | Yes        |
 
 Note:
 - [[http://www.gnu.org/software/guile/][Guile]] or [[http://racket-lang.org/][Racket]] as a Scheme implementation. Geiser requires Guile >= 2.0.
@@ -26,7 +26,7 @@ Note:
 
 #+NAME: scheme-el-get-packages
 #+CAPTION: El-get packages for ome-scheme module
-|           | Status   | Description                                    |
+| Package   | Status   | Description                                    |
 |-----------+----------+------------------------------------------------|
 | [[http://www.nongnu.org/geiser/][geiser]]    | Required | Geiser to Scheme is what slime to Common Lisp. |
 | [[https://github.com/xiaohanyu/ac-geiser][ac-geiser]] | Required | Auto-complete backend for geiser.              |

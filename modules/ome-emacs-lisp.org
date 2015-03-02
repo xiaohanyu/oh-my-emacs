@@ -12,7 +12,7 @@ This file contains some settings [[* Emacs Lisp][Emacs Lisp]] programming.
 
 #+NAME: emacs-lisp-el-get-packages
 #+CAPTION: El-get packages for ome-emacs-lisp module
-|                 | Status   | Description                                    |
+| Package         | Status   | Description                                    |
 |-----------------+----------+------------------------------------------------|
 | [[https://github.com/purcell/elisp-slime-nav][elisp-slime-nav]] | Required | Shortcuts for browsing elisp code.             |
 

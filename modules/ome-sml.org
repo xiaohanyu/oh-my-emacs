@@ -1,4 +1,4 @@
-#+TITLE: Oh My Emacs CC
+#+TITLE: Oh My Emacs SML
 #+OPTIONS: toc:2 num:nil ^:nil
 
 This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
@@ -10,9 +10,9 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: sml-prerequisites
 #+CAPTION: Prerequisites for ome-sml module
-|     | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|-----+---------+--------------------+-----------+--------+----------+------------|
-| [[http://www.smlnj.org][SML/NJ]] |         | smlnj                |           |        |          | Yes        |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://www.smlnj.org][SML/NJ]]  |         | smlnj              |           |        |          | Yes        |
 
 * El-get packages
   :PROPERTIES:
@@ -21,18 +21,19 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: sml-el-get-packages
 #+CAPTION: El-get packages for ome-sml module
-|              | Status   | Description                                       |
-|--------------+----------+---------------------------------------------------|
+| Package  | Status   | Description                                   |
+|----------+----------+-----------------------------------------------|
 | [[http://www.iro.umontreal.ca/~monnier/elisp/][sml-mode]] | Required | This is a package for developing sml in Emacs |
 
 * What's SML
-  Standard ML is a safe, modular, strict, functional, polymorphic
-programming language with compile-time type checking and type
-inference, garbage collection, exception handling, immutable data
-types and updatable references, abstract data types, and parametric
-modules. It has efficient implementations and a formal definition
-with a proof of soundness.
-  Check for more details of SML and SML/NJ [[http://www.smlnj.org][here]].
+
+Standard ML is a safe, modular, strict, functional, polymorphic programming
+language with compile-time type checking and type inference, garbage
+collection, exception handling, immutable data types and updatable references,
+abstract data types, and parametric modules. It has efficient implementations
+and a formal definition with a proof of soundness.
+
+Check for more details of SML and SML/NJ [[http://www.smlnj.org][here]].
 
 * sml-mode
   :PROPERTIES:
@@ -47,7 +48,6 @@ http://www.iro.umontreal.ca/~monnier/elisp/
 #+NAME: sml-mode
 #+BEGIN_SRC emacs-lisp
 (defun ome-sml-mode-setup ())
-
 
 (when (executable-find "sml")
   (ome-install 'sml-mode))

@@ -6,14 +6,14 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 This file contains various settings for minor file types, such as SCons build
 file, archlinux's PKGBUILD file, etc.
 
-* El-get Packages
+* El-get packages
   :PROPERTIES:
   :CUSTOM_ID: auto-mode-el-get-packages
   :END:
 
 #+NAME: auto-mode-el-get-packages
 #+CAPTION: el-get packages for ome-auto-mode module
-|           | Status   | Description                         |
+| Package   | Status   | Description                         |
 |-----------+----------+-------------------------------------|
 | [[https://github.com/yoshiki/yaml-mode.git][yaml-mode]] | Required | Major mode for editting YAML files. |
 

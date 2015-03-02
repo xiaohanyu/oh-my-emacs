@@ -10,10 +10,9 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: php-prerequisites
 #+CAPTION: Prerequisites for ome-php module
-|     | Windows | Ubuntu/Debian/Mint     | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|-----+---------+------------------------+-----------+--------+----------+------------|
-| [[http://php.net/][php]] |         | php5 php5-cli php-pear |           |        |          | No         |
-
+| Package | Windows | Ubuntu/Debian/Mint     | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+------------------------+-----------+--------+----------+------------|
+| [[http://php.net/][php]]     |         | php5 php5-cli php-pear |           |        |          | No         |
 
 * El-get packages
   :PROPERTIES:
@@ -22,7 +21,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: php-el-get-packages
 #+CAPTION: El-get packages for ome-php module
-|          | Status   | Description         |
+| Package  | Status   | Description         |
 |----------+----------+---------------------|
 | [[https://github.com/ejmr/php-mode][php-mode]] | Required | Major mode for php. |
 

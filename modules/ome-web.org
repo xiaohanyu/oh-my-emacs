@@ -39,9 +39,9 @@ refer to [[file:ome-javascript.org][ome-javascript.org]] module.
 
 #+NAME: web-prerequisites
 #+CAPTION: Prerequisites for ome-web module
-|      | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|------+---------+--------------------+-----------+--------+----------+------------|
-| less | [npm]   | [npm]              | [npm]     | [npm]  | [npm]    | No         |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| less    | [npm]   | [npm]              | [npm]     | [npm]  | [npm]    | No         |
 
 * El-get packages
   :PROPERTIES:
@@ -50,7 +50,7 @@ refer to [[file:ome-javascript.org][ome-javascript.org]] module.
 
 #+NAME: web-el-get-packages
 #+CAPTION: El-get packages for ome-web module
-|               | Status   | Description                                    |
+| Package       | Status   | Description                                    |
 |---------------+----------+------------------------------------------------|
 | [[http://web-mode.org/][web-mode.el]]   | Required | An emacs major mode for editing html templates |
 | [[http://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode]]  | Required | Colorize color names in buffers                |

@@ -10,18 +10,18 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: basic-prerequisites
 #+CAPTION: Prerequisites for ome-basic module
-|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+| Package    | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
 |------------+---------+--------------------+-----------+--------+----------+------------|
 | [[http://aspell.net/][GNU Aspell]] |         | aspell, aspell-en  |           |        |          |            |
 
-* El-get Packages
+* El-get packages
   :PROPERTIES:
   :CUSTOM_ID: basic-el-get-packages
   :END:
 
 #+NAME: basic-el-get-packages
 #+CAPTION: el-get packages for ome-basic module
-|                      | Status      | Description                                                               |
+| Package              | Status      | Description                                                               |
 |----------------------+-------------+---------------------------------------------------------------------------|
 | saveplace            | Builtin     | Save cursor place in opened files.                                        |
 | recentf              | Builtin     | Maintains a recent opened file list.                                      |

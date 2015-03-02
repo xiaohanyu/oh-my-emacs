@@ -14,11 +14,11 @@ work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
 
 #+NAME: ruby-prerequisites-matrix
 #+CAPTION: Prerequisites for ome-ruby module
-|       | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|-------+---------+--------------------+-----------+--------+----------+------------|
-| ruby  |         | ruby               | ruby      | ruby   |          | Yes        |
-| [[https://github.com/sstephenson/rbenv][rbenv]] |         | [web]              | [web]     | [web]  | homebrew | Yes        |
-| pry   |         | [gem]              | [gem]     | [gem]  | [gem]    | No         |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| ruby    |         | ruby               | ruby      | ruby   |          | Yes        |
+| [[https://github.com/sstephenson/rbenv][rbenv]]   |         | [web]              | [web]     | [web]  | homebrew | Yes        |
+| pry     |         | [gem]              | [gem]     | [gem]  | [gem]    | No         |
 
 * El-get packages
   :PROPERTIES:
@@ -27,7 +27,7 @@ work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
 
 #+NAME: ruby-el-get-packages
 #+CAPTION: El-get packages for ome-ruby module
-|                    | Status     | Description                                                   |
+| Package            | Status     | Description                                                   |
 |--------------------+------------+---------------------------------------------------------------|
 | [[https://github.com/qoobaa/ruby-electric][ruby-electric]]      | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.                                       |
 | [[https://github.com/adolfosousa/ruby-block.el][ruby-block]]         | Deprecated | [[https://github.com/Fuco1/smartparens][smartparens]] is amazing.                                       |

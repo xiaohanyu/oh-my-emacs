@@ -15,10 +15,10 @@ figured out a not too bad solution based on [[https://github.com/thomblake/js3-m
 
 #+NAME: javascript-prerequisites
 #+CAPTION: Prerequisites for ome-javascript module
-|        | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
-|--------+---------+--------------------+-----------+--------+----------+------------|
-| [[http://nodejs.org/][nodejs]] |         | nodejs             |           |        |          | Yes        |
-| [[http://ternjs.net/][tern]]   |         | [npm]              | [npm]     | [npm]  | [npm]    | Yes        |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[http://nodejs.org/][nodejs]]  |         | nodejs             |           |        |          | Yes        |
+| [[http://ternjs.net/][tern]]    |         | [npm]              | [npm]     | [npm]  | [npm]    | Yes        |
 
 * El-get packages
   :PROPERTIES:
@@ -27,7 +27,7 @@ figured out a not too bad solution based on [[https://github.com/thomblake/js3-m
 
 #+NAME: javascript-el-get-packages
 #+CAPTION: El-get packages for ome-javascript module
-|             | Status     | Description                                         |
+| Package     | Status     | Description                                         |
 |-------------+------------+-----------------------------------------------------|
 | [[https://github.com/thomblake/js3-mode][js3-mode]]    | Required   | A chimeric fork of js2-mode and js-mode             |
 | [[https://github.com/marijnh/tern][tern]]        | Required   | A great JavaScript code analyzer                    |

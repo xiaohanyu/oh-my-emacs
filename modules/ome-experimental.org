@@ -5,7 +5,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 This file contains some experimental packages, which may be:
 - not stable enough
-- usable, with some minor annoying problems
+- usable, with some minor annoying problems, however
 - young packages without long time testing and validating.
 
 Load necessary packages as you like.
@@ -17,7 +17,7 @@ Load necessary packages as you like.
 
 #+NAME: experimental-prerequisites
 #+CAPTION: Prerequisites for ome-experimental module
-|         | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
 |---------+---------+--------------------+-----------+--------+----------+------------|
 | [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]] |         | doxygen            |           |        |          | No         |
 
@@ -34,7 +34,7 @@ Note:
 
 #+NAME: experimental-el-get-packages
 #+CAPTION: El-get packages for ome-experimental module
-|                  | Status       | Description                                           |
+| Package          | Status       | Description                                           |
 |------------------+--------------+-------------------------------------------------------|
 | [[http://www.emacswiki.org/emacs/LaCarte][lacarte]]          | Recommended  | Access menubar in minibuffer command loop.            |
 | [[http://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]]       | Experimental | Make [[http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html][Speedbar]] show in same frame.                     |

@@ -10,7 +10,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: java-prerequisites
 #+CAPTION: Prerequisites for ome-java module
-|         | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
 |---------+---------+--------------------+-----------+--------+----------+------------|
 | [[http://www.eclipse.org/][eclipse]] |         |                    |           |        |          | Yes        |
 
@@ -22,7 +22,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 #+NAME: java-el-get-packages
 #+CAPTION: El-get packages for ome-java module
 
-|             | Status   | Description                           |
+| Package     | Status   | Description                           |
 |-------------+----------+---------------------------------------|
 | [[https://github.com/senny/emacs-eclim][emacs-eclim]] | Required | The bridge between emacs and eclipse. |
 

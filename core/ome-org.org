@@ -20,7 +20,7 @@ which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
 
 #+NAME: org-el-get-packages
 #+CAPTION: El-get packages for ome-org module
-|            | Status      | Description                               |
+| Package    | Status      | Description                               |
 |------------+-------------+-------------------------------------------|
 | [[http://orgmode.org/][org-mode]]   | Required    | One of the killer Apps on Emacs platform. |
 | [[http://www.emacswiki.org/emacs/Htmlize][htmlize]].el | Recommended | Export an buffer to html format.          |

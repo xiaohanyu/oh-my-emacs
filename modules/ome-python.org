@@ -10,7 +10,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 #+NAME: python-prerequisites
 #+CAPTION: Prerequisites for ome-python module
-|            | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+| Package    | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
 |------------+---------+--------------------+-----------+--------+----------+------------|
 | [[http://www.python.org/][Python]]     |         | python             |           |        |          | Yes        |
 | [[http://www.pip-installer.org/en/latest/][pip]]        |         | python-pip         |           |        |          | Yes        |
@@ -28,9 +28,9 @@ Notes:
 
 #+NAME: python-el-get-packages
 #+CAPTION: El-get packages for ome-python module
-|      | Status   | Description                                    |
-|------+----------+------------------------------------------------|
-| [[https://github.com/jorgenschaefer/elpy][elpy]] | Required | Elpy is the one for all Emacs python solution. |
+| Package | Status   | Description                                    |
+|---------+----------+------------------------------------------------|
+| [[https://github.com/jorgenschaefer/elpy][elpy]]    | Required | Elpy is the one for all Emacs python solution. |
 
 * Elpy
   :PROPERTIES:
