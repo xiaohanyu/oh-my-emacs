@@ -157,8 +157,13 @@ Ruby is an actively evolving language. Things often happen when you need to
 support multiple versions of ruby with your code base. So you need tools to
 install, and switch between multiple versions of ruby. [[http://rvm.io/][RVM]] is one of the most
 famous ruby version manager tools, however, IMHO, it's just too bloated. I
-prefer [[https://github.com/sstephenson/rbenv][rbenv]] for now. Of course there're other [[https://github.com/postmodern/chruby#alternatives][choices]], but rbenv has [[https://github.com/senny/rbenv.el][emacs
-support]], and various [[https://github.com/sstephenson/rbenv/wiki/Plugins][plugins]], which will make your life much more easier.
+prefer [[https://github.com/sstephenson/rbenv][rbenv]] for now. There're other [[https://github.com/postmodern/chruby#alternatives][choices]], but rbenv has [[https://github.com/senny/rbenv.el][emacs support]], and
+various [[https://github.com/sstephenson/rbenv/wiki/Plugins][plugins]], which will make your life much more easier.
+
+Generally, you can get rbenv via plain old =git clone=, if you are a Mac OS X
+user, you can get it via homebrew, check the [[https://github.com/sstephenson/rbenv#installation][installation]] guide. When you get
+rbenv via homebrew, we need to do some tricks to make [[https://github.com/senny/rbenv.el][rbenv.el]] work in
+emacs.
 
 [[https://github.com/sstephenson/ruby-build][ruby-build]] is one of the most important plugins of rbenv, actually, you can
 consider it as a sister project of rbenv. Just as its name, it helps to install
@@ -173,6 +178,10 @@ emacs rbenv support. By default, oh-my-emacs enables =global-rbenv-mode=.
 #+NAME: rbenv
 #+BEGIN_SRC emacs-lisp
 (defun ome-rbenv-setup ()
+  ;; when user installed rbenv via homebrew on Mac OS X
+  (when (and (memq window-system '(mac ns))
+             (file-exists-p "/usr/local/opt/rbenv"))
+    (setq rbenv-installation-dir "/usr/local/opt/rbenv"))
   (require 'rbenv)
   (global-rbenv-mode t))
 
