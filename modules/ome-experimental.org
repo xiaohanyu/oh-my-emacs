@@ -38,6 +38,7 @@ Note:
 |------------------+--------------+-------------------------------------------------------|
 | [[http://www.emacswiki.org/emacs/LaCarte][lacarte]]          | Recommended  | Access menubar in minibuffer command loop.            |
 | [[http://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]]       | Experimental | Make [[http://www.gnu.org/software/emacs/manual/html_node/speedbar/index.html][Speedbar]] show in same frame.                     |
+| [[https://github.com/m2ym/yascroll-el][yascroll]]        | Required | Eye candy for Emacs scroll bar.        |
 | [[https://github.com/aspiers/smooth-scrolling][smooth-scrolling]] | Recommended  | Emacs smooth scrolling package.                       |
 | [[https://github.com/nflath/hungry-delete][hungry-delete]]    | Experimental | Enables hungry deletion in all modes.                 |
 | [[http://doxymacs.sourceforge.net/][doxymacs]]         | Experimental | Literate comments for cc-mode.                        |
@@ -120,6 +121,21 @@ idea. =sr-speedbar= solves this problem, however, it brings some new problems:
   (setq sr-speedbar-right-side nil))
 
 (ome-install 'sr-speedbar)
+#+END_SRC
+
+* Yascroll
+  :PROPERTIES:
+  :CUSTOM_ID: yascroll
+  :END:
+
+[[https://github.com/m2ym/yascroll-el][yascroll.el]] is Yet Another Scroll Bar Mode for GNU Emacs.
+
+#+NAME: yascroll
+#+BEGIN_SRC emacs-lisp
+(defun ome-yascroll-setup ()
+  (global-yascroll-bar-mode 1))
+
+(ome-install 'yascroll)
 #+END_SRC
 
 * Smooth-scrolling
