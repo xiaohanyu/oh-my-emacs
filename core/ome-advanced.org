@@ -152,6 +152,8 @@ editing your document at your fingertips.
       (evil-leader/set-key "xx" 'er/expand-region)))
   (eval-after-load "magit"
     (evil-leader/set-key "g" 'magit-status))
+  (eval-after-load "quickrun"
+    (evil-leader/set-key "q" 'quickrun))
   (eval-after-load "git-gutter-mode"
     (evil-leader/set-key
       "s" 'git-gutter:stage-hunk
