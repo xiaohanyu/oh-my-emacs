@@ -186,6 +186,28 @@ then you must do something to make texinfo become emacs's good friend.
 brew link texinfo --force
 #+END_SRC
 
+* File encoding
+
+By default, emacs will detect file encoding according to an encoding priority
+list when opening a file, you can get your file encoding information by =C-h
+C=, aka =(describe-coding-system)=. However, sometimes this encoding priority
+list may not be proper for you, in this case, you can change this encoding
+priority list by =(set-coding-system-priority &rest coding-systems)=.
+
+For example, if you are Chinese and often have to work with Windows text
+document, then =(set-coding-system-priority 'utf-8 'chinese-gb18030)= may be
+the right solution for you to avoid garbled text. This statement tells emacs
+first try to open a chinese text file with utf-8 encoding, if failed, then try
+to open again with [[http://en.wikipedia.org/wiki/GB_18030][gb18030]] encoding. This will works for most Chinese users.
+
+If you want to change the file encoding temporarily when opening a file,
+=M-x revert-buffer-with-coding-system=.
+
+Text encoding is a complex topic, check emacs [[https://www.gnu.org/software/emacs/manual/html_node/emacs/International.html][manual]] for internal details.
+
+Check https://github.com/xiaohanyu/oh-my-emacs/issues/132 for detailed
+discussion.
+
 * Auto-fill Mode
   :PROPERTIES:
   :CUSTOM_ID: auto-fill
