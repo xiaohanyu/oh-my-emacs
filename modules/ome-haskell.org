@@ -1,4 +1,4 @@
-#+TITLE: Oh My Emacs CC
+#+TITLE: Oh My Emacs Haskell
 #+OPTIONS: toc:2 num:nil ^:nil
 
 This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
