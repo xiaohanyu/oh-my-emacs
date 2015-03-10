@@ -62,6 +62,8 @@ minor teaks according personal preferences.
    '(haskell-stylish-on-save t))
 
   (add-hook 'haskell-mode-hook 'haskell-hook)
+  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+  (add-hook 'haskell-mode-hook 'haskell-indent-mode)
   (add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
 
   ;; Haskell main editing mode key bindings.
