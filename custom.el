@@ -62,3 +62,25 @@ inversion of gas-comment-region"
           (delete-char 1))
       (next-line))
     (goto-char end)))
+
+(defun cl-struct-define (name docstring parent type named slots children-sym
+                              tag print-auto)
+  (cl-assert (or type (equal '(cl-tag-slot) (car slots))))
+  (cl-assert (or type (not named)))
+  (if (boundp children-sym)
+      (add-to-list children-sym tag)
+    (set children-sym (list tag)))
+  (let* ((parent-class parent))
+    (while parent-class
+      (add-to-list (intern (format "cl-struct-%s-tags" parent-class)) tag)
+      (setq parent-class (get parent-class 'cl-struct-include))))
+  ;; If the cl-generic support, we need to be able to check
+  ;; if a vector is a cl-struct object, without knowing its particular type.
+  ;; So we use the (otherwise) unused function slots of the tag symbol
+  ;; to put a special witness value, to make the check easy and reliable.
+  (unless named (fset tag :quick-object-witness-check))
+  (put name 'cl-struct-slots slots)
+  (put name 'cl-struct-type (list type named))
+  (if parent (put name 'cl-struct-include parent))
+  (if print-auto (put name 'cl-struct-print print-auto))
+  (if docstring (put name 'structure-documentation docstring)))
