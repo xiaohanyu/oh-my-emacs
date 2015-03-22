@@ -175,7 +175,7 @@ this is done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
                            ("melpa" . "http://melpa.org/packages/")))
   (el-get-elpa-build-local-recipes))
 
-(add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
+(add-to-list 'el-get-recipe-path (expand-file-name "ome-el-get-recipes" ome-dir))
 
 ;; (el-get 'sync)
 #+END_SRC

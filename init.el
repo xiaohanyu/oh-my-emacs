@@ -15,6 +15,9 @@
 ;; know why.
 (setq debug-on-error t)
 
+(defvar ome-dir (file-name-directory (or load-file-name (buffer-file-name)))
+  "oh-my-emacs home directory.")
+
 ;; believe me, you don't need menubar(execpt OSX), toolbar nor scrollbar
 (and (fboundp 'menu-bar-mode)
      (not (eq system-type 'darwin))
@@ -46,7 +49,7 @@
 
 ;; Sometimes, we need to experiment with our own recipe, or override the
 ;; default el-get recipe to get around bugs.
-(add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
+(add-to-list 'el-get-recipe-path (expand-file-name "ome-el-get-recipes" ome-dir))
 
 ;; tell el-get to look into local customizations for every package into
 ;; `~/.emacs.d/init-<package>.el'
@@ -72,9 +75,6 @@ FILENAME defaults to `buffer-file-name'."
                               (ome-org-mode-setup))))
 
 (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
-
-(defvar ome-dir (file-name-directory (or load-file-name (buffer-file-name)))
-  "oh-my-emacs home directory.")
 
 ;; load up the ome
 (org-babel-load-file (expand-file-name "ome.org" ome-dir))
