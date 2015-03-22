@@ -552,7 +552,7 @@ Ome push some small code snippets to =custom.el=.
 
 #+NAME: m-x-customize-customizations
 #+BEGIN_SRC emacs-lisp
-(setq custom-file (concat ome-dir "custom.el"))
+(setq custom-file (expand-file-name "custom.el" ome-dir))
 (load custom-file 'noerror)
 #+END_SRC
 
