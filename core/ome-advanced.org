@@ -135,7 +135,6 @@ editing your document at your fingertips.
       (evil-leader/set-key
         "f" 'helm-for-files
         "l" 'helm-locate
-        "c" 'helm-colors
         "y" 'helm-show-kill-ring
         "t" 'helm-top
         "m" 'helm-man-woman
