@@ -164,16 +164,39 @@ with the current =org-src-mode=. So we have to do some hack to bind =:w= to
   :PROPERTIES:
   :CUSTOM_ID: code-block-fontification
   :END:
-The following displays the contents of code blocks in Org-mode files
-using the major-mode of the code.  It also changes the behavior of
-=TAB= to as if it were used in the appropriate major mode.  This means
-that reading and editing code form inside of your Org-mode files is
-much more like reading and editing of code using its major mode.
+
+The following displays the contents of code blocks in org-mode files using the
+major-mode of the code. It also changes the behavior of =TAB= to as if it were
+used in the appropriate major mode.  This means that reading and editing code
+form inside of your Org-mode files is much more like reading and editing of
+code using its major mode.
 
 #+NAME: code-block-fontification
 #+BEGIN_SRC emacs-lisp
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
+#+END_SRC
+
+When you use org-mode's inline [[http://orgmode.org/manual/Emphasis-and-monospace.html][markup formatting]], there're some characters
+which will make the markup failed, such as the "'"(single quote) and
+"`"(backtick) char in Lisp/Scheme/Clojure code. We need to do some hack to
+org-mode's parser, check [[http://stackoverflow.com/questions/16443386/how-to-escape-double-quote][stackoverflow: how to escape double quote?]] and
+[[http://stackoverflow.com/questions/24169333/how-can-i-emphasize-or-verbatim-quote-a-comma-in-org-mode][stackoverflow: how can I emphasize or verbatim quote a comma in org mode?]] for
+two examples.
+
+Besides, I've found that modify ~org-emphasis-regexp-components~ only affect
+fontification in org-mode, we need some extra work to make it work with
+~org-export~. I've spent almost 1.5 hours to figure out this, even read some
+code snippet of org-mode's parser. We need to ~(org-element--set-regexps)~
+manually after we modify ~org-emphasis-regexp-components~. Actually,
+~(org-element--set-regexps)~ will set some a new value for the hidden variable
+~org-element--object-regexp~, which is used to recognize org-mode's "element".
+
+#+NAME: inline-code-block-regexp
+#+BEGIN_SRC emacs-lisp
+(setcar (nthcdr 2 org-emphasis-regexp-components) " \t\n\r")
+(custom-set-variables `(org-emphasis-alist ',org-emphasis-alist))
+(org-element--set-regexps)
 #+END_SRC
 
 * The Library of Babel
