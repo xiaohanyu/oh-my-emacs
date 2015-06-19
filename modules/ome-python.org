@@ -128,18 +128,22 @@ elpy.
   (ome-install 'python24))
 
 (defun ome-elpy-setup ()
-  (elpy-enable t)
+  (elpy-enable)
   (setq elpy-rpc-backend "jedi")
   (when (executable-find "ipython")
     (elpy-use-ipython))
-  (when (el-get-package-installed-p 'flycheck)
-    (setq elpy-default-minor-modes
-          (remove 'flymake-mode
-                  elpy-default-minor-modes)))
+  (setq elpy-modules '(elpy-module-sane-defaults
+                       elpy-module-company
+                       elpy-module-eldoc
+                       elpy-module-highlight-indentation
+                       elpy-module-pyvenv
+                       elpy-module-yasnippet))
   (define-key python-mode-map (kbd "RET")
     'newline-and-indent)
   (add-hook 'python-mode-hook
-            (lambda () (set (make-local-variable 'comment-inline-offset) 2))))
+            (lambda ()
+              (set (make-local-variable 'comment-inline-offset) 2)
+              (auto-complete-mode -1))))
 
 (ome-install 'elpy)
 #+END_SRC
