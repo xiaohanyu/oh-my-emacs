@@ -17,7 +17,7 @@ work. Maybe [[http://www.ansibleworks.com/][ansible]] script is a good choice.
 | Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
 |---------+---------+--------------------+-----------+--------+----------+------------|
 | ruby    |         | ruby               | ruby      | ruby   |          | Yes        |
-| [[https://github.com/sstephenson/rbenv][rbenv]]   |         | [web]              | [web]     | [web]  | homebrew | Yes        |
+| [[https://github.com/sstephenson/rbenv][rbenv]]   |         | [web]              | [web]     | [web]  | [web]    | Yes        |
 | pry     |         | [gem]              | [gem]     | [gem]  | [gem]    | No         |
 
 * El-get packages
@@ -163,7 +163,7 @@ various [[https://github.com/sstephenson/rbenv/wiki/Plugins][plugins]], which wi
 Generally, you can get rbenv via plain old =git clone=, if you are a Mac OS X
 user, you can get it via homebrew, check the [[https://github.com/sstephenson/rbenv#installation][installation]] guide. When you get
 rbenv via homebrew, we need to do some tricks to make [[https://github.com/senny/rbenv.el][rbenv.el]] work in
-emacs.
+emacs. So I recommand you install rbenv via direct ~git clone~.
 
 [[https://github.com/sstephenson/ruby-build][ruby-build]] is one of the most important plugins of rbenv, actually, you can
 consider it as a sister project of rbenv. Just as its name, it helps to install

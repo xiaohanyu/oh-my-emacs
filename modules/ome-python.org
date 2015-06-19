@@ -17,6 +17,7 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 | [[http://ipython.org/][IPython]]    |         | ipython            |           |        |          | No         |
 | [[http://nose.readthedocs.org/en/latest/][nose]]       |         | [pip]              | [pip]     | [pip]  | [pip]    | No         |
 | [[http://www.virtualenv.org/en/latest/][virtualenv]] |         | [pip]              | [pip]     | [pip]  | [pip]    | No         |
+| [[https://github.com/yyuu/pyenv][pyenv]]      |         | [web]              | [web]     | [web]  | [web]    | Yes        |
 
 Notes:
 - [[http://www.python.org/][Python]], currently, I only tested Python 2.
@@ -28,9 +29,10 @@ Notes:
 
 #+NAME: python-el-get-packages
 #+CAPTION: El-get packages for ome-python module
-| Package | Status   | Description                                    |
-|---------+----------+------------------------------------------------|
-| [[https://github.com/jorgenschaefer/elpy][elpy]]    | Required | Elpy is the one for all Emacs python solution. |
+| Package  | Status   | Description                                    |
+|----------+----------+------------------------------------------------|
+| [[https://github.com/jorgenschaefer/elpy][elpy]]     | Required | Elpy is the one for all Emacs python solution. |
+| [[https://github.com/shellbj/pyenv.el][pyenv.el]] | Required | Emacs integration for pyenv.                   |
 
 * Elpy
   :PROPERTIES:
@@ -147,6 +149,44 @@ initialization, which is just a plain python file.
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.wsgi\\'" . python-mode))
+#+END_SRC
+
+* pyenv
+  :PROPERTIES:
+  :CUSTOM_ID: pyenv
+  :END:
+
+Just like Ruby, sometimes we need to work with different versions of Python, so
+it's helpful if there's some tool to help use manage and switch different
+versions of Python.
+
+As I know, there're three projects for this purpose:
+
+- [[https://github.com/utahta/pythonbrew][pythonbrew]]
+- [[https://github.com/saghul/pythonz][pythonz]]
+- [[https://github.com/yyuu/pyenv][pyenv]]
+
+However, pythonbrew is "no longer under active development" any more, pythonz
+is a fork of original pythonbrew, and pythonbrew recommand pyenv.
+
+Actually, [[https://github.com/yyuu/pyenv][pyenv]] was forked from [[https://github.com/sstephenson/rbenv][rbenv]] and [[https://github.com/sstephenson/ruby-build][ruby-build]], so if you're an old user
+of rbenv, you're all right. It's quite easy to get and install pyenv.
+
+Emacs has a [[https://github.com/cyberved/pyenv.el][pyenv.el]] package for integrating pyenv with Emacs, which, was also
+forked from the corresponding [[https://github.com/senny/rbenv.el][rbenv.el]].
+
+#+NAME: pyenv
+#+BEGIN_SRC emacs-lisp
+(defun ome-pyenv-setup ()
+  ;; when user installed pyenv via homebrew on Mac OS X
+  (when (and (memq window-system '(mac ns))
+             (file-exists-p "/usr/local/opt/pyenv"))
+    (setq pyenv-installation-dir "/usr/local/opt/pyenv"))
+  (require 'pyenv)
+  (global-pyenv-mode t))
+
+(when (file-exists-p "~/.pyenv/version")
+  (ome-install 'pyenv))
 #+END_SRC
 
 * Todo
