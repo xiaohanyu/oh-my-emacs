@@ -300,5 +300,34 @@ math]]" for details.
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
 #+END_SRC
 
+* Org-export
+  :PROPERTIES:
+  :CUSTOM_ID: org-export
+  :END:
+
+Org-mode has [[http://orgmode.org/manual/Exporting.html][export facilities]] to export Org documents or parts of Org
+documents to a variety of other formats.
+
+However, there're some conventions in different formats, so we need some
+[[http://orgmode.org/manual/Exporting.html]["smart" tricks]] to follow these conventions with exporting Org documents to
+other formats.
+
+** smart quotes
+
+The differentiation of single quote, double quote, back quote may comes from
+the world of \TeX of pre-Unicode eras trying to "improve" the typograph by
+using conventions that no longer hold any more[1].
+
+Org mode has builtin support for this "smart quote" feature. You can put a
+snippet of ~#+OPTIONS: ':t~ at the start of your Org document, or just turn on
+it globally.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-export-with-smart-quotes t)
+#+END_SRC
+
 * Todo
 - How to handle =org-mode= format like ===?
+
+[1] [[http://stackoverflow.com/questions/1432952/why-does-html-markup-often-enclose-text-with-backticks-and-single-quotes][Why does HTML markup often enclose text with backticks and single quotes?]]
+[2] [[http://stackoverflow.com/questions/15097114/how-to-get-smart-quotes-on-org-mode-export][how to get smart quotes on org-mode export?]]
