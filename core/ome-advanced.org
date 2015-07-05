@@ -41,6 +41,7 @@ Notes:
 | [[git://gitorious.org/vimpulse/vimpulse.git][vimpulse]]         | Deprecated  | Use evil instead.                             |
 | [[http://www.gnu.org/software/emacs/manual/html_node/viper/][viper]]            | Deprecated  | Use evil instead.                             |
 | [[https://github.com/Wilfred/ag.el][ag.el]]            | Recommended | Better than ack.                              |
+| [[https://github.com/syohex/emacs-helm-ag][helm-ag.el]]       | Recommended | Helm interface to ag.                         |
 | [[https://github.com/jhelwig/ack-and-a-half][ack-and-a-half]]   | Deprecated  | Yet another emacs front-end to ack.           |
 | [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]    | Recommended | A quick cursor location minor mode for emacs. |
 
@@ -145,6 +146,9 @@ editing your document at your fingertips.
         "h" 'helm-projectile-find-file
         "r" 'helm-recentf
         "H" 'helm-projectile)))
+  (eval-after-load "helm-ag"
+    (evil-leader/set-key
+      "a" 'helm-projectile-ag))
   (eval-after-load "expand-region"
     (progn
       (setq expand-region-contract-fast-key "z")
@@ -278,6 +282,19 @@ serveral months and it's amazing.
 #+BEGIN_SRC emacs-lisp
 (when (executable-find "ag")
   (ome-install 'ag))
+#+END_SRC
+
+* helm-ag
+  :PROPERTIES:
+  :CUSTOM_ID: helm-ag
+  :END:
+
+[[https://github.com/syohex/emacs-helm-ag][helm-ag.el]] provides interfaces of [[https://github.com/ggreer/the_silver_searcher][The Silver Searcher]] with helm.
+
+#+NAME: helm-ag
+#+BEGIN_SRC emacs-lisp
+(when (executable-find "ag")
+  (ome-install 'helm-ag))
 #+END_SRC
 
 * Todo
