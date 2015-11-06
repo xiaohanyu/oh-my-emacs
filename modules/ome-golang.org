@@ -88,3 +88,10 @@ the repo for all the features and other information for the go-mode.
 (when (executable-find "go")
   (ome-install 'go-mode))
 #+END_SRC
+
+* Note
+The settings listed above are mainly referred from the blog post
+[[http://yousefourabi.com/blog/2014/05/emacs-for-go/][Emacs for Go]], adapted to
+the oh-my-emacs framework with some other configurations. Credits also go to the
+original author of the blog post and also the authros of the awesome golang
+related emacs modes.
