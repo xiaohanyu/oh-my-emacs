@@ -72,6 +72,21 @@ fingertips.
   (ome-install 'pkgbuild-mode))
 #+END_SRC
 
+* Dockerfile
+  :PROPERTIES:
+  :CUSTOM_ID: dockerfile
+  :END:
+
+[[https://www.docker.com/][docker]] is a new awesome platform to building and shipping development and
+production environment.
+
+#+NAME: dockerfile-mode
+#+BEGIN_SRC emacs-lisp
+(defun dockerfile-mode-setup ())
+
+(ome-install 'dockerfile-mode)
+#+END_SRC
+
 * Wikipedia
   :PROPERTIES:
   :CUSTOM_ID: wikipedia
