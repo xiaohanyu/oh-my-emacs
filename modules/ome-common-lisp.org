@@ -59,6 +59,9 @@ Some good resources about SLIME:
 - [[http://ghostopera.org/blog/2012/06/24/the-newbie-guide-to-common-lisp/][The Newbie Guide to Getting Started on Common Lisp]] provides a concise and
   helpful guide to start programming with Common Lisp.
 
+Besides, [[http://www.whoishostingthis.com/resources/common-lisp/][wiht]] do a really good job to list many valuable links for learning
+common lisp.
+
 To use SLIME, you must install an [[http://www.cliki.net/common%2520lisp%2520implementation][Lisp Implementation]], just like if you want to do
 C programming, you must install a C compiler such as GCC. Here I recommend [[http://www.sbcl.org/][SBCL]]
 for you. You can get it by =sudo apt-get install sbcl= in Ubuntu/Mint/Debian.
