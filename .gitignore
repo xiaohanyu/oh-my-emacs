@@ -45,3 +45,10 @@ abbrev_defs
 
 # eshell
 eshell
+
+# tex and pdf
+*tex
+*pdf
+
+# ido.last
+ido.last
