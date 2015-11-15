@@ -37,6 +37,9 @@ This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 
 ;; Toggle line highlighting in all buffers
 (global-hl-line-mode t)
+
+;; http://stackoverflow.com/questions/27758800/why-does-emacs-leave-a-gap-when-trying-to-maximize-the-frame
+(setq frame-resize-pixelwise t)
 #+END_SRC
 
 * Choose Monaco as the Default English Font
