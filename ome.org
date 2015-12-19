@@ -468,6 +468,7 @@ you really need it.
 - [[file:modules/ome-experimental.org][ome-experimental.org]]: some experimental packages, such as sppedbar, minimap, etc. Not stable yet now.
 - [[file:modules/ome-haskell.org][ome-haskell.org]]: settings for haskell
 - [[file:modules/ome-sml.org][ome-sml.org]]: settings for sml
+- [[file:modules/ome-golang.org][ome-golang.org]]: settings for golang
 
 #+NAME: load various ome files
 #+BEGIN_SRC emacs-lisp
@@ -494,6 +495,7 @@ you really need it.
 ;; (ome-load "modules/ome-experimental.org" "smooth-scrolling" "sublimity")
 (ome-load "modules/ome-haskell.org")
 (ome-load "modules/ome-sml.org")
+(ome-load "modules/ome-golang.org")
 #+END_SRC
 
 ** Load User/System Specific Files

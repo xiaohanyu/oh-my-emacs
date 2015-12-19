@@ -1,0 +1,97 @@
+#+TITLE: Oh My Emacs golang
+#+OPTIONS: toc:2 num:nil ^:nil
+
+This is part of [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: golang-prerequisites
+  :END:
+
+#+NAME: golang-prerequisites
+#+CAPTION: Prerequisites for ome-golang module
+| Package | Windows | Ubuntu/Debian/Mint | ArchLinux | Fedora | Mac OS X | Mandatory? |
+|---------+---------+--------------------+-----------+--------+----------+------------|
+| [[https://golang.org/cmd/go][go tool]]            |         | go               |           |        |          | Yes       |
+| [[https://github.com/rogpeppe/godef][godef]]      |         | [go]             |           |        |          | No        |
+| [[https://github.com/dougm/goflymake][goflymake]] |         | [go]             |           |        |          | No        |
+| [[https://github.com/nsf/gocode][gocode]]         |         | [go]             |           |        |          | No        |
+
+* El-get packages
+  :PROPERTIES:
+  :CUSTOM_ID: golang-el-get-packages
+  :END:
+
+#+NAME: golang-el-get-packages
+#+CAPTION: El-get packages for ome-golang module
+| Package      | Status   | Description                                       |
+|--------------+----------+---------------------------------------------------|
+| [[https://github.com/dominikh/go-mode.el][go-mode]] | Required | This is the Emacs mode for editing Go code |
+
+* About Go
+  You can find all the necessary information about golang in the official [[https://golang.org][site]].
+
+* go-mode
+  :PROPERTIES:
+  :CUSTOM_ID: go-mode
+  :END:
+
+Beginning with Go 1.4, editor integration will not be part of the Go distribution
+anymore, making the github repository the canonical place for go-mode. Please refer
+the repo for all the features and other information for the go-mode.
+
+#+NAME: go-mode
+#+BEGIN_SRC emacs-lisp
+(defun ome-go-mode-setup ()
+
+  ; set the GOPATH here if not already
+  ; (setenv "GOPATH" "/home/chuchao/gowork")
+
+  ;; enable the go-mode
+  (require 'go-mode)
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  
+  ; key binding for go-remove-unused-imports
+  (add-hook 'go-mode-hook '(lambda ()
+    (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+
+  ; key binding for go-goto-imports
+  (add-hook 'go-mode-hook '(lambda ()
+    (local-set-key (kbd "C-c C-g") 'go-goto-imports)))
+    
+  ; bind C-c C-f for gofmt  
+  (add-hook 'go-mode-hook '(lambda ()
+    (local-set-key (kbd "C-c C-f") 'gofmt)))
+  
+  ; godoc
+  (when (executable-find "godoc")
+    (add-hook 'go-mode-hook '(lambda ()
+      (local-set-key (kbd "C-c C-k") 'godoc))))
+
+  ; goflymake
+  (when (executable-find "goflymake")
+    (add-to-list 'load-path (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake"))
+    (require 'go-flymake)
+    (require 'go-flycheck))
+
+  ; go-code
+  (when (executable-find "gocode")
+    
+    (add-to-list 'load-path (concat (getenv "GOPATH") "/src/github.com/nsf/gocode/emacs-company"))
+    (require 'company-go)
+
+    (add-hook 'go-mode-hook 'company-mode)
+    (add-hook 'go-mode-hook (lambda ()
+      (set (make-local-variable 'company-backends) '(company-go))
+      (company-mode)))))
+
+(when (executable-find "go")
+  (ome-install 'go-mode))
+#+END_SRC
+
+* Note
+The settings listed above are mainly referred from the blog post
+[[http://yousefourabi.com/blog/2014/05/emacs-for-go/][Emacs for Go]], adapted to
+the oh-my-emacs framework with some other configurations. Credits also go to the
+original author of the blog post and also the authros of the awesome golang
+related emacs modes.
