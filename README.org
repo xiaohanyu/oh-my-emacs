@@ -1,8 +1,36 @@
 #+TITLE: Oh My Emacs
+* Announcement
+Hey, emacsers,
+
+I've been inactive on this project for a long long time, sorry about that since
+I'm busy on my personal business. And I'm looking for a new maintainer for this
+project since I've switched to [[https://github.com/syl20bnr/spacemacs][spacemacs]] recently, and I must say that I'm
+really impressed by the work of spacemacs community.
+
+The reason to switch to spacemacs:
+- Spacemacs is much more faster than oh-my-emacs due to its lazy-loading feature.
+- Spacemacs has the best community among all "dotemacs" project, unfortunately,
+  I don't have enough time to foster a community for oh-my-emacs.
+- Spacemacs has more packages support, which is called [[https://github.com/syl20bnr/spacemacs/tree/master/layers][layers]] in its own words.
+- Spacemacs is driven by [[https://github.com/emacs-helm/helm][helm]] and [[https://bitbucket.org/lyro/evil/wiki/Home][evil]], two of my favourite and the most
+  powerful packages in emacs world, which is the same as oh-my-emacs.
+
+Among all of the above, however, I still prefer oh-my-emacs's org-mode based
+literate documentation. It's an amazing experimentation and a wonderful journey
+for [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]], in a modern way. This is the best part of oh-my-emacs.
+
+And I think it's better for emacs community to put major focus on one great
+project, so I think it's time to end this experimentation. And I may contribute
+some of the tiny great features of oh-my-emacs to spacemacs, when I have time.
+If anybody still has some interest in oh-my-emacs and want to be the new
+maintainer, contact me and we can discuss some internal details.
+
+Thanks. Thanks for all PR and contributions for oh-my-emacs. Happy with you in
+the last two years.
 
 * Introduction
 
-#+ATTR_HTML: title="Join the chat at https://gitter.im/xiaohanyu/oh-my-emacs" 
+#+ATTR_HTML: title="Join the chat at https://gitter.im/xiaohanyu/oh-my-emacs"
 [[https://gitter.im/xiaohanyu/oh-my-emacs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge][file:https://badges.gitter.im/Join%20Chat.svg]]
 
 It is said that Emacs is "a great operating system, lacking only a decent
