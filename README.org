@@ -238,18 +238,6 @@ following ways:
 
 - Contributing code. I've written a basic [[https://github.com/xiaohanyu/oh-my-emacs/blob/master/CONTRIBUTING.org][CONTRIBUTING]] guide about it. Please
   do read it before you fire github issue or send me a pull request.
-- Make some donations. Currently I'm a freelancer doing some part-time job for
-  my life. I create this project first for me, then share for you. So if you
-  think it is not useless and want to support this project, you can make some
-  donations for me via paypal or alipay:
-  - paypal: xiaohanyu1988<at>gmail.com (Paypal didn't support donation button
-    for Chinese user, damn.)
-  - alipay:
-#+BEGIN_HTML
-  <a href='http://me.alipay.com/xiaohanyu'>
-    <img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png'/>
-  </a>
-#+END_HTML
 
 * Footnotes
 [1] [[http://en.wikipedia.org/wiki/Editor_war][Editor war]]
