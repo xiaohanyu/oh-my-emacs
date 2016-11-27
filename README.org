@@ -136,7 +136,7 @@ There're two key points for helm beginners:
   default. You should use =C-l= to go to the precedent directory level instead
   of =DEL=.
 
-* What's in Oh-my-emacs
+* What's in oh-my-emacs
 
 Now you know why Emacs is "a great operating system, lacking only a decent
 editor".
@@ -199,22 +199,22 @@ editor".
 [[http://www.douban.com/photos/album/117065634/][Here]]'re some screenshots of oh-my-emacs:
 
 - Startup screen:
-[[http://img3.douban.com/view/photo/large/public/p2134421167.jpg]]
+[[file:screenshots/startup-screen.jpg]]
 
 - =org-babel= from org-mode, auto-complete for emacs lisp:
-[[http://img3.douban.com/view/photo/large/public/p2134421326.jpg]]
+[[file:screenshots/org-babel-emacs-lisp.jpg]]
 
 - helm-grep to search words in multiple files:
-[[http://img3.douban.com/view/photo/large/public/p2134421804.jpg]]
+[[file:screenshots/helm-grep.jpg]]
 
-- auto-complete for C++ QT
-[[http://img3.douban.com/view/photo/large/public/p2134420940.jpg]]
+- auto-complete for C++ QT:
+[[file:screenshots/auto-complete-cpp-qt.jpg]]
 
-- auto-complete for python
-[[http://img4.douban.com/view/photo/large/public/p2134421478.jpg]]
+- auto-complete for python:
+[[file:screenshots/auto-complete-python.jpg]]
 
-- AUCTeX with outline-minor-mode, helm completion for TeX commands
-[[http://img3.douban.com/view/photo/large/public/p2134420730.jpg]]
+- AUCTeX with outline-minor-mode, helm completion for TeX commands:
+[[file:screenshots/auctex-outline-minor-mode.jpg]]
 
 * References
 - [[https://github.com/bbatsov/prelude][Emacs Prelude]]: Prelude is an Emacs distribution that aims to enhance the
